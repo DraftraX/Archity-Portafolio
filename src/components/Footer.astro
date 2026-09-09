@@ -1,0 +1,98 @@
+---
+const year = new Date().getFullYear();
+
+// EDITA AQUÍ: redes y datos de contacto
+const socials = [
+  { label: "GitHub", href: "https://github.com/archity" },
+  { label: "LinkedIn", href: "https://linkedin.com/company/archity" },
+  { label: "X / Twitter", href: "https://x.com/archity" },
+];
+
+const navLinks = [
+  { label: "Productos", href: "#productos" },
+  { label: "Casos de éxito", href: "#casos" },
+  { label: "Contacto", href: "#contacto" },
+];
+---
+
+<footer id="contacto" class="scroll-mt-20 border-t border-neutral-200/70 bg-white">
+  <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
+    <div class="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
+
+      <!-- Marca con Isotipo y Logotipo -->
+      <div>
+        <a href="#" class="flex items-center gap-2.5" aria-label="Archity — inicio">
+          <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-900 text-white shadow-sm">
+            <svg viewBox="0 0 150 140" fill="currentColor" class="h-4 w-4" aria-hidden="true">
+              <polygon points="74.5,0 88.5,26 35.5,126 0,140" />
+              <polygon points="97,43.5 86,63.5 100.5,90.5 70,90.5 62.5,104.5 108,104.5 126.5,138.5 149,138.5" />
+            </svg>
+          </span>
+          <span class="font-display text-sm font-bold tracking-[0.25em] text-neutral-900">ARCHITY</span>
+        </a>
+        <p class="mt-4 max-w-xs text-sm leading-relaxed text-neutral-600">
+          Software a la medida y productos SaaS de alta precisión. Convertimos procesos manuales
+          en sistemas autónomos que escalan tu negocio.
+        </p>
+        <a
+          href="mailto:hola@archity.dev"
+          class="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-neutral-900 transition-colors hover:text-accent"
+        >
+          hola@archity.dev
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-3.5 w-3.5" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5 19.5 4.5m0 0H8.25m11.25 0v11.25" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- Navegación -->
+      <nav aria-label="Enlaces del pie de página">
+        <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400">Navegación</h3>
+        <ul class="mt-4 space-y-2.5">
+          {
+            navLinks.map((l) => (
+              <li>
+                <a href={l.href} class="text-sm text-neutral-600 transition-colors hover:text-neutral-900">
+                  {l.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <!-- Redes -->
+      <div>
+        <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400">Sígueme</h3>
+        <ul class="mt-4 space-y-2.5">
+          {
+            socials.map((s) => (
+              <li>
+                <a
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener"
+                  class="inline-flex items-center gap-1.5 text-sm text-neutral-600 transition-colors hover:text-accent"
+                >
+                  {s.label}
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-3 w-3" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5 19.5 4.5m0 0H8.25m11.25 0v11.25" />
+                  </svg>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Barra inferior de copyright -->
+    <div class="mt-12 flex flex-col items-center justify-between border-t border-neutral-200/70 pt-8 text-xs text-neutral-400 sm:flex-row">
+      <p>© {year} Archity. Todos los derechos reservados.</p>
+      <p class="mt-2 sm:mt-0 flex items-center gap-1.5">
+        Diseñado con precisión &amp; alto rendimiento
+      </p>
+    </div>
+  </div>
+</footer>

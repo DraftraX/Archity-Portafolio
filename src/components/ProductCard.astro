@@ -1,0 +1,90 @@
+---
+// Tarjeta individual de producto. Recibe un objeto "product" desde ProductGrid.
+interface Product {
+  name: string;
+  description: string;
+  tags: string[];
+  image?: string;   // Ruta en /public, ej: "/images/products/inventra.webp". Vacío ("") => placeholder gris.
+  status: string;   // "En producción" | "Beta" | "En desarrollo"
+  demoUrl: string;
+  moreUrl: string;
+}
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+
+const statusDot: Record<string, string> = {
+  "En producción": "bg-emerald-500",
+  "Beta": "bg-accent",
+  "En desarrollo": "bg-neutral-400",
+};
+---
+
+<article class="group flex flex-col overflow-hidden rounded-xl border border-neutral-200/80 bg-white transition duration-300 hover:-translate-y-1 hover:border-neutral-300 hover:shadow-lg hover:shadow-neutral-900/5">
+
+  <!-- Contenedor de imagen de referencia -->
+  <div class="relative aspect-[16/10] overflow-hidden border-b border-neutral-100 bg-neutral-50">
+    {
+      product.image ? (
+        <img
+          src={product.image}
+          alt={`Captura de referencia de ${product.name}`}
+          width="800"
+          height="500"
+          loading="lazy"
+          class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
+        />
+      ) : (
+        <div class="flex h-full w-full flex-col items-center justify-center gap-2 text-neutral-400 bg-gradient-to-br from-neutral-50 to-neutral-100/60">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-8 w-8 text-neutral-300 transition-transform group-hover:scale-110" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909M3.75 21h16.5A1.5 1.5 0 0 0 21.75 19.5V4.5A1.5 1.5 0 0 0 20.25 3H3.75A1.5 1.5 0 0 0 2.25 4.5v15A1.5 1.5 0 0 0 3.75 21Z" />
+          </svg>
+          <span class="text-xs font-medium text-neutral-400">Captura de referencia</span>
+        </div>
+      )
+    }
+    <span class="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-white/95 px-2.5 py-1 text-[11px] font-medium text-neutral-700 shadow-sm backdrop-blur">
+      <span class={`h-1.5 w-1.5 rounded-full ${statusDot[product.status] ?? "bg-neutral-400"}`} aria-hidden="true" />
+      {product.status}
+    </span>
+  </div>
+
+  <!-- Contenido -->
+  <div class="flex grow flex-col gap-3 p-5">
+    <h3 class="font-display text-lg font-semibold text-neutral-900">{product.name}</h3>
+    <p class="line-clamp-2 text-sm leading-relaxed text-neutral-600">{product.description}</p>
+
+    <ul class="flex flex-wrap gap-1.5" aria-label="Tecnologías utilizadas">
+      {
+        product.tags.map((t) => (
+          <li class="rounded-md border border-neutral-200/80 bg-neutral-50 px-2 py-0.5 text-[11px] font-medium text-neutral-600">
+            {t}
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="mt-auto flex items-center justify-between border-t border-neutral-100 pt-4">
+      <a
+        href={product.demoUrl}
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-1.5 rounded-lg bg-accent px-3.5 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-accent-dark"
+      >
+        Probar demo
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-3.5 w-3.5" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5 19.5 4.5m0 0H8.25m11.25 0v11.25" />
+        </svg>
+      </a>
+      <a
+        href={product.moreUrl}
+        class="rounded-lg px-3 py-2 text-sm font-medium text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-900"
+      >
+        Más detalles
+      </a>
+    </div>
+  </div>
+</article>

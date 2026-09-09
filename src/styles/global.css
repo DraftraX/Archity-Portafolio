@@ -1,0 +1,24 @@
+/* Tailwind CSS v4 */
+@import "tailwindcss";
+
+@theme {
+  /* Tipografías: Space Grotesk (títulos, combina con la marca angular) + Figtree (texto) */
+  --font-sans: "Figtree", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Space Grotesk", "Figtree", ui-sans-serif, system-ui, sans-serif;
+
+  /* Azul eléctrico estilo Kimi */
+  --color-accent: #1a5cff;
+  --color-accent-dark: #0b46e0;
+  --color-accent-soft: #edf2ff;
+}
+
+/* Detalles globales sutiles */
+::selection {
+  background-color: var(--color-accent);
+  color: #ffffff;
+}
+
+/* Estilo suave de scroll */
+html {
+  scroll-behavior: smooth;
+}
