@@ -33,8 +33,16 @@ Construido con **Astro v5**, **Tailwind CSS v4** y una paleta estricta monocrom�
 ## 📲 Contacto Directo
 
 - **Correo**: [wmanuelga@gmail.com](mailto:wmanuelga@gmail.com)
-- **WhatsApp**: [+51 940 771 896](https://wa.me/51940771896)
+- **WhatsApp**: [Iniciar Chat Directo por WhatsApp](https://wa.me/51940771896)
 - **LinkedIn**: [Archity en LinkedIn](https://www.linkedin.com/company/archit-tech/?viewAsMember=true)
+
+---
+
+## 🛠️ Stack Tecnológico (Iconos de svgl.app)
+
+- **Frontend**: Astro v5, React, Next.js, TypeScript, Tailwind CSS v4.
+- **Backend & Datos**: Django, Python, Node.js, PostgreSQL, Redis.
+- **Infraestructura**: Docker, Cloud Deployments.
 
 ---
 

@@ -1,12 +1,14 @@
 ---
-// Sección interactiva de cotización y contacto con paleta estricta: azul, negro y blanco
+// Sección interactiva de cotización y contacto
+// Paleta estricta: Azul complementario, Negro y Blanco.
+// Sin número de teléfono en texto plano. Iconos de svgl.app.
 ---
 
 <section id="contacto" class="scroll-mt-20 border-t border-neutral-200/80 bg-white py-20 sm:py-28">
   <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 
     <div class="grid gap-12 lg:grid-cols-2 lg:items-start">
-      <!-- Columna izquierda: Información -->
+      <!-- Columna izquierda: Información y Canales -->
       <div>
         <p class="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
           <span class="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
@@ -16,82 +18,100 @@
           Construyamos software que haga crecer tu negocio
         </h2>
         <p class="mt-4 text-base leading-relaxed text-neutral-600">
-          Desarrollamos <strong>tiendas virtuales e-commerce</strong> de alta velocidad, <strong>landing pages corporativas</strong> para tu empresa, <strong>plataformas SaaS</strong> y <strong>ERPs industriales</strong> a la medida. Cuéntanos qué necesitas y te responderemos de inmediato.
+          Desarrollamos <strong>tiendas virtuales e-commerce</strong> de alta velocidad, <strong>landing pages corporativas</strong> para empresas, <strong>plataformas SaaS</strong> y <strong>ERPs a medida</strong>. Escríbenos directamente o solicita una cotización.
         </p>
 
         <div class="mt-8 space-y-4">
-          <!-- Email -->
-          <div class="flex items-start gap-3.5">
-            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-neutral-900 text-white shadow-xs">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="h-5 w-5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+          <!-- Gmail con SVG oficial svgl -->
+          <div class="flex items-center gap-3.5 rounded-xl border border-neutral-200/80 bg-neutral-50/50 p-4 transition-colors hover:border-neutral-300">
+            <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white border border-neutral-200 shadow-2xs">
+              <svg class="h-5 w-5" viewBox="0 49.4 512 399.42">
+                <g fill="none" fill-rule="evenodd">
+                  <g fill-rule="nonzero">
+                    <path fill="#4285f4" d="M34.91 448.818h81.454V251L0 163.727V413.91c0 19.287 15.622 34.91 34.91 34.91z"/>
+                    <path fill="#34a853" d="M395.636 448.818h81.455c19.287 0 34.909-15.622 34.909-34.909V163.727L395.636 251z"/>
+                    <path fill="#fbbc04" d="M395.636 99.727V251L512 163.727v-46.545c0-43.142-49.25-67.782-83.782-41.891z"/>
+                  </g>
+                  <path fill="#ea4335" d="M116.364 251V99.727L256 204.455 395.636 99.727V251L256 355.727z"/>
+                  <path fill="#c5221f" fill-rule="nonzero" d="M0 117.182v46.545L116.364 251V99.727L83.782 75.291C49.25 49.4 0 74.04 0 117.18z"/>
+                </g>
               </svg>
             </div>
             <div>
-              <strong class="block text-sm font-semibold text-neutral-900">Correo Electrónico</strong>
-              <a href="mailto:wmanuelga@gmail.com" class="text-sm font-medium text-accent hover:underline transition-colors">wmanuelga@gmail.com</a>
-            </div>
-          </div>
-
-          <!-- WhatsApp -->
-          <div class="flex items-start gap-3.5">
-            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent text-white shadow-xs">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="h-5 w-5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v5.009z" />
-              </svg>
-            </div>
-            <div>
-              <strong class="block text-sm font-semibold text-neutral-900">WhatsApp Directo</strong>
-              <a href="https://wa.me/51940771896" target="_blank" rel="noopener" class="text-sm font-medium text-accent hover:underline transition-colors">
-                +51 940 771 896
+              <span class="block text-xs font-semibold text-neutral-500 uppercase tracking-wider">Correo Electrónico</span>
+              <a href="mailto:wmanuelga@gmail.com" class="text-sm font-semibold text-neutral-900 hover:text-accent transition-colors">
+                wmanuelga@gmail.com
               </a>
-              <span class="block text-xs text-neutral-500">Atención rápida y coordinación de reuniones</span>
             </div>
           </div>
 
-          <!-- LinkedIn -->
-          <div class="flex items-start gap-3.5">
-            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-neutral-100 text-neutral-900 border border-neutral-200">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9h2.8v8.37h-2.8v-8.37M7.86 6.81a1.63 1.63 0 1 0 1.63 1.63 1.63 1.63 0 0 0-1.63-1.63Z" />
+          <!-- WhatsApp con SVG oficial svgl (SIN número en texto plano) -->
+          <div class="flex items-center gap-3.5 rounded-xl border border-neutral-200/80 bg-neutral-50/50 p-4 transition-colors hover:border-neutral-300">
+            <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white border border-neutral-200 shadow-2xs">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 360 362">
+                <path fill="#25D366" fill-rule="evenodd" d="M307.546 52.566C273.709 18.684 228.706.017 180.756 0 81.951 0 1.538 80.404 1.504 179.235c-.017 31.594 8.242 62.432 23.928 89.609L0 361.736l95.024-24.925c26.179 14.285 55.659 21.805 85.655 21.814h.077c98.788 0 179.21-80.413 179.244-179.244.017-47.898-18.608-92.926-52.454-126.807v-.008Zm-126.79 275.788h-.06c-26.73-.008-52.952-7.194-75.831-20.765l-5.44-3.231-56.391 14.791 15.05-54.981-3.542-5.638c-14.912-23.721-22.793-51.139-22.776-79.286.035-82.14 66.867-148.973 149.051-148.973 39.793.017 77.198 15.53 105.328 43.695 28.131 28.157 43.61 65.596 43.593 105.398-.035 82.149-66.867 148.982-148.982 148.982v.008Zm81.719-111.577c-4.478-2.243-26.497-13.073-30.606-14.568-4.108-1.496-7.09-2.243-10.073 2.243-2.982 4.487-11.568 14.577-14.181 17.559-2.613 2.991-5.226 3.361-9.704 1.117-4.477-2.243-18.908-6.97-36.02-22.226-13.313-11.878-22.304-26.54-24.916-31.027-2.613-4.486-.275-6.91 1.959-9.136 2.011-2.011 4.478-5.234 6.721-7.847 2.244-2.613 2.983-4.486 4.478-7.469 1.496-2.991.748-5.603-.369-7.847-1.118-2.243-10.073-24.289-13.812-33.253-3.636-8.732-7.331-7.546-10.073-7.692-2.613-.13-5.595-.155-8.586-.155-2.991 0-7.839 1.118-11.947 5.604-4.108 4.486-15.677 15.324-15.677 37.361s16.047 43.344 18.29 46.335c2.243 2.991 31.585 48.225 76.51 67.632 10.684 4.615 19.029 7.374 25.535 9.437 10.727 3.412 20.49 2.931 28.208 1.779 8.604-1.289 26.498-10.838 30.228-21.298 3.73-10.46 3.73-19.433 2.613-21.298-1.117-1.865-4.108-2.991-8.586-5.234l.008-.017Z" clip-rule="evenodd"/>
               </svg>
             </div>
             <div>
-              <strong class="block text-sm font-semibold text-neutral-900">LinkedIn Corporativo</strong>
-              <a href="https://www.linkedin.com/company/archit-tech/?viewAsMember=true" target="_blank" rel="noopener" class="text-sm font-medium text-accent hover:underline transition-colors">
+              <span class="block text-xs font-semibold text-neutral-500 uppercase tracking-wider">WhatsApp Corporativo</span>
+              <a href="https://wa.me/51940771896" target="_blank" rel="noopener" class="text-sm font-semibold text-neutral-900 hover:text-accent transition-colors flex items-center gap-1">
+                Iniciar conversación directa
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- LinkedIn con SVG oficial svgl -->
+          <div class="flex items-center gap-3.5 rounded-xl border border-neutral-200/80 bg-neutral-50/50 p-4 transition-colors hover:border-neutral-300">
+            <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white border border-neutral-200 shadow-2xs">
+              <svg class="h-5 w-5" preserveAspectRatio="xMidYMid" viewBox="0 0 256 256">
+                <path d="M218.123 218.127h-37.931v-59.403c0-14.165-.253-32.4-19.728-32.4-19.756 0-22.779 15.434-22.779 31.369v60.43h-37.93V95.967h36.413v16.694h.51a39.907 39.907 0 0 1 35.928-19.733c38.445 0 45.533 25.288 45.533 58.186l-.016 67.013ZM56.955 79.27c-12.157.002-22.014-9.852-22.016-22.009-.002-12.157 9.851-22.014 22.008-22.016 12.157-.003 22.014 9.851 22.016 22.008A22.013 22.013 0 0 1 56.955 79.27m18.966 138.858H37.95V95.967h37.97v122.16ZM237.033.018H18.89C8.58-.098.125 8.161-.001 18.471v219.053c.122 10.315 8.576 18.582 18.89 18.474h218.144c10.336.128 18.823-8.139 18.966-18.474V18.454c-.147-10.33-8.635-18.588-18.966-18.453" fill="#0A66C2"/>
+              </svg>
+            </div>
+            <div>
+              <span class="block text-xs font-semibold text-neutral-500 uppercase tracking-wider">LinkedIn Corporativo</span>
+              <a href="https://www.linkedin.com/company/archit-tech/?viewAsMember=true" target="_blank" rel="noopener" class="text-sm font-semibold text-neutral-900 hover:text-accent transition-colors flex items-center gap-1">
                 Archity en LinkedIn
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
               </a>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Columna derecha: Formulario interactivo -->
+      <!-- Columna derecha: Formulario de cotización minimalista -->
       <div class="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8 shadow-xs">
-        <h3 class="font-display text-lg font-bold text-neutral-900 mb-4">
-          Solicita una cotización o asesoría técnica
+        <h3 class="font-display text-lg font-bold text-neutral-900 mb-1">
+          Solicitar cotización
         </h3>
+        <p class="text-xs text-neutral-500 mb-5">
+          Respuesta en menos de 24 horas laborables.
+        </p>
 
         <form id="contact-form" class="space-y-4">
           <!-- Tipo de proyecto -->
           <div>
-            <label class="block text-xs font-semibold text-neutral-700 mb-1.5">¿Qué deseas construir?</label>
+            <label class="block text-xs font-semibold text-neutral-700 mb-1.5">Solución requerida</label>
             <div class="grid grid-cols-2 gap-2 text-xs">
-              <label class="flex items-center gap-2 rounded-lg border border-neutral-200 bg-white p-2.5 cursor-pointer hover:border-accent transition-colors">
-                <input type="radio" name="tipo" value="Tienda Virtual / E-commerce" checked class="text-accent focus:ring-accent" />
-                <span class="font-medium">Tienda Virtual E-commerce</span>
+              <label class="flex items-center gap-2 rounded-lg border border-neutral-200 bg-white p-2.5 cursor-pointer hover:border-neutral-900 transition-colors">
+                <input type="radio" name="tipo" value="Tienda Virtual / E-commerce" checked class="text-neutral-900 focus:ring-neutral-900" />
+                <span class="font-medium text-neutral-800">Tienda Virtual</span>
               </label>
-              <label class="flex items-center gap-2 rounded-lg border border-neutral-200 bg-white p-2.5 cursor-pointer hover:border-accent transition-colors">
-                <input type="radio" name="tipo" value="Landing Page Empresarial" class="text-accent focus:ring-accent" />
-                <span class="font-medium">Landing Page Empresa</span>
+              <label class="flex items-center gap-2 rounded-lg border border-neutral-200 bg-white p-2.5 cursor-pointer hover:border-neutral-900 transition-colors">
+                <input type="radio" name="tipo" value="Landing Page Empresarial" class="text-neutral-900 focus:ring-neutral-900" />
+                <span class="font-medium text-neutral-800">Landing Page</span>
               </label>
-              <label class="flex items-center gap-2 rounded-lg border border-neutral-200 bg-white p-2.5 cursor-pointer hover:border-accent transition-colors">
-                <input type="radio" name="tipo" value="Plataforma SaaS" class="text-accent focus:ring-accent" />
-                <span class="font-medium">Plataforma SaaS</span>
+              <label class="flex items-center gap-2 rounded-lg border border-neutral-200 bg-white p-2.5 cursor-pointer hover:border-neutral-900 transition-colors">
+                <input type="radio" name="tipo" value="Plataforma SaaS" class="text-neutral-900 focus:ring-neutral-900" />
+                <span class="font-medium text-neutral-800">Plataforma SaaS</span>
               </label>
-              <label class="flex items-center gap-2 rounded-lg border border-neutral-200 bg-white p-2.5 cursor-pointer hover:border-accent transition-colors">
-                <input type="radio" name="tipo" value="ERP / Sistema a Medida" class="text-accent focus:ring-accent" />
-                <span class="font-medium">ERP / Sistema a Medida</span>
+              <label class="flex items-center gap-2 rounded-lg border border-neutral-200 bg-white p-2.5 cursor-pointer hover:border-neutral-900 transition-colors">
+                <input type="radio" name="tipo" value="ERP / Sistema a Medida" class="text-neutral-900 focus:ring-neutral-900" />
+                <span class="font-medium text-neutral-800">ERP a Medida</span>
               </label>
             </div>
           </div>
@@ -105,53 +125,53 @@
                 id="nombre"
                 name="nombre"
                 required
-                placeholder="Ej. Manuel García"
-                class="w-full rounded-lg border border-neutral-200 bg-white px-3.5 py-2 text-sm text-neutral-900 placeholder-neutral-400 focus:border-accent focus:outline-hidden focus:ring-1 focus:ring-accent"
+                placeholder="Nombre completo"
+                class="w-full rounded-lg border border-neutral-200 bg-white px-3.5 py-2 text-sm text-neutral-900 placeholder-neutral-400 focus:border-neutral-900 focus:outline-hidden focus:ring-1 focus:ring-neutral-900"
               />
             </div>
             <div>
-              <label for="email" class="block text-xs font-semibold text-neutral-700 mb-1">Tu Correo Electrónico</label>
+              <label for="email" class="block text-xs font-semibold text-neutral-700 mb-1">Correo Electrónico</label>
               <input
                 type="email"
                 id="email"
                 name="email"
                 required
                 placeholder="tu@empresa.com"
-                class="w-full rounded-lg border border-neutral-200 bg-white px-3.5 py-2 text-sm text-neutral-900 placeholder-neutral-400 focus:border-accent focus:outline-hidden focus:ring-1 focus:ring-accent"
+                class="w-full rounded-lg border border-neutral-200 bg-white px-3.5 py-2 text-sm text-neutral-900 placeholder-neutral-400 focus:border-neutral-900 focus:outline-hidden focus:ring-1 focus:ring-neutral-900"
               />
             </div>
           </div>
 
           <!-- Mensaje -->
           <div>
-            <label for="mensaje" class="block text-xs font-semibold text-neutral-700 mb-1">Detalles de tu requerimiento</label>
+            <label for="mensaje" class="block text-xs font-semibold text-neutral-700 mb-1">Descripción del proyecto</label>
             <textarea
               id="mensaje"
               name="mensaje"
               rows="3"
               required
-              placeholder="Cuéntanos sobre tu tienda virtual, landing page o sistema que deseas desarrollar..."
-              class="w-full rounded-lg border border-neutral-200 bg-white px-3.5 py-2 text-sm text-neutral-900 placeholder-neutral-400 focus:border-accent focus:outline-hidden focus:ring-1 focus:ring-accent"
+              placeholder="Describe los requerimientos o funcionalidades principales..."
+              class="w-full rounded-lg border border-neutral-200 bg-white px-3.5 py-2 text-sm text-neutral-900 placeholder-neutral-400 focus:border-neutral-900 focus:outline-hidden focus:ring-1 focus:ring-neutral-900"
             ></textarea>
           </div>
 
-          <!-- Botones de envío: estricto azul y negro -->
+          <!-- Botones de envío: Azul complementario y Negro minimalista -->
           <div class="pt-2 flex flex-col sm:flex-row gap-2.5">
             <button
               type="submit"
-              class="w-full rounded-lg bg-accent px-5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-accent-dark transition-colors"
+              class="w-full rounded-lg bg-neutral-900 px-5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-neutral-800 transition-colors"
             >
-              Enviar por Correo
+              Enviar Requerimiento
             </button>
             <button
               type="button"
               id="btn-whatsapp"
-              class="w-full rounded-lg border border-neutral-900 bg-neutral-900 px-5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-neutral-800 transition-colors flex items-center justify-center gap-2"
+              class="w-full rounded-lg border border-neutral-300 bg-white px-5 py-2.5 text-center text-sm font-semibold text-neutral-900 shadow-xs hover:bg-neutral-50 transition-colors flex items-center justify-center gap-2"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              <svg class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 360 362">
+                <path fill="#25D366" fill-rule="evenodd" d="M307.546 52.566C273.709 18.684 228.706.017 180.756 0 81.951 0 1.538 80.404 1.504 179.235c-.017 31.594 8.242 62.432 23.928 89.609L0 361.736l95.024-24.925c26.179 14.285 55.659 21.805 85.655 21.814h.077c98.788 0 179.21-80.413 179.244-179.244.017-47.898-18.608-92.926-52.454-126.807v-.008Zm-126.79 275.788h-.06c-26.73-.008-52.952-7.194-75.831-20.765l-5.44-3.231-56.391 14.791 15.05-54.981-3.542-5.638c-14.912-23.721-22.793-51.139-22.776-79.286.035-82.14 66.867-148.973 149.051-148.973 39.793.017 77.198 15.53 105.328 43.695 28.131 28.157 43.61 65.596 43.593 105.398-.035 82.149-66.867 148.982-148.982 148.982v.008Zm81.719-111.577c-4.478-2.243-26.497-13.073-30.606-14.568-4.108-1.496-7.09-2.243-10.073 2.243-2.982 4.487-11.568 14.577-14.181 17.559-2.613 2.991-5.226 3.361-9.704 1.117-4.477-2.243-18.908-6.97-36.02-22.226-13.313-11.878-22.304-26.54-24.916-31.027-2.613-4.486-.275-6.91 1.959-9.136 2.011-2.011 4.478-5.234 6.721-7.847 2.244-2.613 2.983-4.486 4.478-7.469 1.496-2.991.748-5.603-.369-7.847-1.118-2.243-10.073-24.289-13.812-33.253-3.636-8.732-7.331-7.546-10.073-7.692-2.613-.13-5.595-.155-8.586-.155-2.991 0-7.839 1.118-11.947 5.604-4.108 4.486-15.677 15.324-15.677 37.361s16.047 43.344 18.29 46.335c2.243 2.991 31.585 48.225 76.51 67.632 10.684 4.615 19.029 7.374 25.535 9.437 10.727 3.412 20.49 2.931 28.208 1.779 8.604-1.289 26.498-10.838 30.228-21.298 3.73-10.46 3.73-19.433 2.613-21.298-1.117-1.865-4.108-2.991-8.586-5.234l.008-.017Z" clip-rule="evenodd"/>
               </svg>
-              Escribir al WhatsApp
+              <span>Chatear por WhatsApp</span>
             </button>
           </div>
         </form>
@@ -173,9 +193,9 @@
     const tipo = formData.get("tipo") || "";
     const mensaje = formData.get("mensaje") || "";
 
-    const subject = encodeURIComponent(`[Archity] Solicitud de Cotización: ${tipo} - ${nombre}`);
+    const subject = encodeURIComponent(`[Archity] Solicitud: ${tipo} - ${nombre}`);
     const body = encodeURIComponent(
-      `Hola equipo de Archity,\n\nMi nombre es: ${nombre}\nEmail: ${email}\nTipo de proyecto: ${tipo}\n\nDetalles del proyecto:\n${mensaje}\n\nQuedo atento a su propuesta.`
+      `Hola equipo de Archity,\n\nMi nombre es: ${nombre}\nEmail: ${email}\nTipo de solución: ${tipo}\n\nDetalles:\n${mensaje}\n\nQuedo atento a su respuesta.`
     );
     window.location.href = `mailto:wmanuelga@gmail.com?subject=${subject}&body=${body}`;
   });
@@ -183,9 +203,9 @@
   btnWhatsapp?.addEventListener("click", () => {
     const formData = form ? new FormData(form) : null;
     const nombre = formData?.get("nombre") || "Hola";
-    const tipo = formData?.get("tipo") || "un proyecto de software";
+    const tipo = formData?.get("tipo") || "un proyecto";
     const text = encodeURIComponent(
-      `¡Hola Archity! Mi nombre es ${nombre}. Me gustaría cotizar: ${tipo}.`
+      `¡Hola Archity! Mi nombre es ${nombre}. Me gustaría consultar sobre: ${tipo}.`
     );
     window.open(`https://wa.me/51940771896?text=${text}`, "_blank");
   });

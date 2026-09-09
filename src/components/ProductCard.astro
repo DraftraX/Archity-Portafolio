@@ -1,5 +1,6 @@
 ---
 // Tarjeta individual de producto con paleta estricta: Azul, Negro y Blanco
+import TechBadge from "./TechBadge.astro";
 interface Product {
   name: string;
   category: string;
@@ -90,12 +91,12 @@ const statusDot: Record<string, string> = {
       </ul>
     )}
 
-    <!-- Tags -->
+    <!-- Tags con SVGs oficiales -->
     <ul class="mt-2 flex flex-wrap gap-1.5" aria-label="Tecnologías utilizadas">
       {
         product.tags.map((t) => (
-          <li class="rounded-md border border-neutral-200/80 bg-neutral-50 px-2 py-0.5 text-[11px] font-medium text-neutral-600">
-            {t}
+          <li>
+            <TechBadge name={t} />
           </li>
         ))
       }
