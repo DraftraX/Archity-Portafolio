@@ -1,13 +1,16 @@
 ---
-// Tarjeta individual de producto. Recibe un objeto "product" desde ProductGrid.
+// Tarjeta individual de producto con soporte para demo real y landing interna
 interface Product {
   name: string;
+  category: string;
   description: string;
   tags: string[];
-  image?: string;   // Ruta en /public, ej: "/images/products/inventra.webp". Vacío ("") => placeholder gris.
+  image?: string;
+  badge?: string;
   status: string;   // "En producción" | "Beta" | "En desarrollo"
   demoUrl: string;
-  moreUrl: string;
+  landingUrl?: string;
+  features?: string[];
 }
 
 interface Props {
@@ -23,41 +26,72 @@ const statusDot: Record<string, string> = {
 };
 ---
 
-<article class="group flex flex-col overflow-hidden rounded-xl border border-neutral-200/80 bg-white transition duration-300 hover:-translate-y-1 hover:border-neutral-300 hover:shadow-lg hover:shadow-neutral-900/5">
+<article class="group flex flex-col overflow-hidden rounded-2xl border border-neutral-200/80 bg-white transition duration-300 hover:-translate-y-1 hover:border-neutral-300 hover:shadow-xl hover:shadow-neutral-900/5">
 
-  <!-- Contenedor de imagen de referencia -->
-  <div class="relative aspect-[16/10] overflow-hidden border-b border-neutral-100 bg-neutral-50">
+  <!-- Header visual de la tarjeta -->
+  <div class="relative aspect-[16/9] overflow-hidden border-b border-neutral-100 bg-neutral-50">
     {
       product.image ? (
         <img
           src={product.image}
           alt={`Captura de referencia de ${product.name}`}
           width="800"
-          height="500"
+          height="450"
           loading="lazy"
-          class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
+          class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
         />
       ) : (
-        <div class="flex h-full w-full flex-col items-center justify-center gap-2 text-neutral-400 bg-gradient-to-br from-neutral-50 to-neutral-100/60">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-8 w-8 text-neutral-300 transition-transform group-hover:scale-110" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909M3.75 21h16.5A1.5 1.5 0 0 0 21.75 19.5V4.5A1.5 1.5 0 0 0 20.25 3H3.75A1.5 1.5 0 0 0 2.25 4.5v15A1.5 1.5 0 0 0 3.75 21Z" />
-          </svg>
-          <span class="text-xs font-medium text-neutral-400">Captura de referencia</span>
+        <div class="relative flex h-full w-full flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-neutral-50 via-neutral-100/50 to-neutral-100">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-white border border-neutral-200 shadow-xs text-neutral-800 font-display font-bold text-xl mb-2 group-hover:border-accent group-hover:text-accent transition-colors">
+            {product.name.slice(0, 2).toUpperCase()}
+          </div>
+          <span class="text-xs font-semibold text-neutral-500">{product.category}</span>
+          <span class="text-[11px] text-neutral-400 mt-0.5">Sistema en producción real</span>
         </div>
       )
     }
-    <span class="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-white/95 px-2.5 py-1 text-[11px] font-medium text-neutral-700 shadow-sm backdrop-blur">
-      <span class={`h-1.5 w-1.5 rounded-full ${statusDot[product.status] ?? "bg-neutral-400"}`} aria-hidden="true" />
-      {product.status}
-    </span>
+
+    <!-- Badges superiores -->
+    <div class="absolute left-3 top-3 flex items-center gap-1.5">
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-white/95 px-2.5 py-1 text-[11px] font-medium text-neutral-700 shadow-xs backdrop-blur">
+        <span class={`h-1.5 w-1.5 rounded-full ${statusDot[product.status] ?? "bg-neutral-400"}`} aria-hidden="true" />
+        {product.status}
+      </span>
+      {product.badge && (
+        <span class="rounded-full bg-accent-soft px-2.5 py-1 text-[11px] font-semibold text-accent border border-accent/20">
+          {product.badge}
+        </span>
+      )}
+    </div>
   </div>
 
   <!-- Contenido -->
-  <div class="flex grow flex-col gap-3 p-5">
-    <h3 class="font-display text-lg font-semibold text-neutral-900">{product.name}</h3>
-    <p class="line-clamp-2 text-sm leading-relaxed text-neutral-600">{product.description}</p>
+  <div class="flex grow flex-col p-6">
+    <div class="flex items-baseline justify-between gap-2">
+      <div>
+        <span class="text-[11px] font-bold uppercase tracking-wider text-accent">{product.category}</span>
+        <h3 class="font-display text-xl font-bold text-neutral-900 mt-0.5">{product.name}</h3>
+      </div>
+    </div>
 
-    <ul class="flex flex-wrap gap-1.5" aria-label="Tecnologías utilizadas">
+    <p class="mt-2.5 text-sm leading-relaxed text-neutral-600">{product.description}</p>
+
+    <!-- Lista de características clave si existen -->
+    {product.features && product.features.length > 0 && (
+      <ul class="my-3 space-y-1.5 border-t border-b border-neutral-100 py-3 text-xs text-neutral-600">
+        {product.features.map((f) => (
+          <li class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-emerald-600 shrink-0" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            <span>{f}</span>
+          </li>
+        ))}
+      </ul>
+    )}
+
+    <!-- Tags -->
+    <ul class="mt-2 flex flex-wrap gap-1.5" aria-label="Tecnologías utilizadas">
       {
         product.tags.map((t) => (
           <li class="rounded-md border border-neutral-200/80 bg-neutral-50 px-2 py-0.5 text-[11px] font-medium text-neutral-600">
@@ -67,23 +101,30 @@ const statusDot: Record<string, string> = {
       }
     </ul>
 
-    <div class="mt-auto flex items-center justify-between border-t border-neutral-100 pt-4">
+    <!-- Botones de acción -->
+    <div class="mt-6 flex flex-wrap items-center justify-between gap-2 border-t border-neutral-100 pt-4">
+      {product.landingUrl && (
+        <a
+          href={product.landingUrl}
+          class="inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-semibold text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 transition-colors"
+        >
+          Ver detalles
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-3.5 w-3.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
+        </a>
+      )}
+
       <a
         href={product.demoUrl}
         target="_blank"
         rel="noopener"
-        class="inline-flex items-center gap-1.5 rounded-lg bg-accent px-3.5 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-accent-dark"
+        class="inline-flex items-center gap-1.5 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white shadow-xs transition-colors hover:bg-accent-dark ml-auto"
       >
-        Probar demo
+        Visitar plataforma
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-3.5 w-3.5" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5 19.5 4.5m0 0H8.25m11.25 0v11.25" />
         </svg>
-      </a>
-      <a
-        href={product.moreUrl}
-        class="rounded-lg px-3 py-2 text-sm font-medium text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-900"
-      >
-        Más detalles
       </a>
     </div>
   </div>

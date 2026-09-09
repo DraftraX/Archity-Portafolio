@@ -1,29 +1,30 @@
 ---
-// Sección principal: título potente + subtítulo + dos acciones
-// EDITA AQUÍ: textos del hero
-const badge = "Disponible para nuevos proyectos";
-const stats = ["+25 sistemas en producción", "8 años de experiencia", "Soporte y evolución continua"];
+// Sección principal: tono de empresa de software moderna en Perú
+const badge = "Software Studio & Incubadora SaaS · Perú";
+const stats = [
+  "SaaS en operación real",
+  "Sistemas industriales de alta escala",
+  "Arquitectura Cloud & Código Limpio",
+];
 ---
 
-<section class="border-b border-neutral-200/70 bg-gradient-to-b from-neutral-50/50 to-white">
+<section class="border-b border-neutral-200/70 bg-gradient-to-b from-neutral-50/60 via-white to-white">
   <div class="mx-auto max-w-6xl px-4 py-20 text-center sm:px-6 sm:py-28 lg:px-8">
 
-    <span class="inline-flex items-center gap-2 rounded-full border border-neutral-200/90 bg-neutral-50/80 px-3.5 py-1.5 text-xs font-medium text-neutral-600 shadow-sm backdrop-blur">
+    <span class="inline-flex items-center gap-2 rounded-full border border-neutral-200/90 bg-white px-4 py-1.5 text-xs font-medium text-neutral-700 shadow-xs backdrop-blur">
       <span class="relative flex h-2 w-2">
-        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60"></span>
+        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span>
         <span class="relative inline-flex h-2 w-2 rounded-full bg-accent"></span>
       </span>
       {badge}
     </span>
 
-    <h1 class="mx-auto mt-6 max-w-3xl font-display text-4xl font-bold leading-[1.1] tracking-tight text-neutral-900 sm:text-5xl md:text-6xl">
-      Software a la medida que <span class="text-accent">escala</span> con tu negocio
+    <h1 class="mx-auto mt-6 max-w-4xl font-display text-4xl font-bold leading-[1.12] tracking-tight text-neutral-900 sm:text-5xl md:text-6xl">
+      Ingeniería de software moderna para productos <span class="text-accent">SaaS</span> y sistemas <span class="text-accent">a la medida</span>
     </h1>
 
-    <p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-neutral-600 sm:text-lg">
-      Diseño y desarrollo productos SaaS y sistemas de gestión que automatizan procesos
-      y hacen crecer a las empresas. Explora mis productos, revisa casos reales
-      y llévalos a tu operación.
+    <p class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-neutral-600 sm:text-lg">
+      En <strong>Archity</strong> creamos tecnología de alto rendimiento: incubamos nuestras propias plataformas SaaS como <strong class="text-neutral-900">AltoPlanta</strong> y desarrollamos sistemas empresariales complejos como el <strong class="text-neutral-900">ERP de Grupo Pineda</strong>. Soluciones reales, operativas y hechas para escalar.
     </p>
 
     <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -31,24 +32,24 @@ const stats = ["+25 sistemas en producción", "8 años de experiencia", "Soporte
         href="#productos"
         class="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-accent-dark hover:shadow-md hover:shadow-accent/20 sm:w-auto"
       >
-        Explorar productos
+        Explorar sistemas
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12l-7.5 7.5M21 12H3" />
         </svg>
       </a>
       <a
-        href="#casos"
-        class="inline-flex w-full items-center justify-center rounded-lg border border-neutral-300 bg-white px-6 py-3 text-sm font-semibold text-neutral-800 shadow-sm transition-colors hover:border-neutral-400 hover:bg-neutral-50 sm:w-auto"
+        href="#contacto"
+        class="inline-flex w-full items-center justify-center rounded-lg border border-neutral-300 bg-white px-6 py-3 text-sm font-semibold text-neutral-800 shadow-xs transition-colors hover:border-neutral-400 hover:bg-neutral-50 sm:w-auto"
       >
-        Ver casos de éxito
+        Cotizar proyecto a medida
       </a>
     </div>
 
-    <ul class="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm text-neutral-500">
+    <ul class="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-neutral-500">
       {
         stats.map((s) => (
           <li class="flex items-center gap-2">
-            <span class="h-1.5 w-1.5 rounded-full bg-neutral-300" aria-hidden="true" />
+            <span class="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
             {s}
           </li>
         ))
