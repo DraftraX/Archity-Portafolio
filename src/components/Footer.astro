@@ -3,9 +3,9 @@ const year = new Date().getFullYear();
 
 const navLinks = [
   { label: "AltoPlanta (SaaS PropTech)", href: "/productos/altoplanta" },
-  { label: "ERP Grupo Pineda", href: "/productos/grupo-pineda" },
-  { label: "Capacidades de Software", href: "/#servicios" },
-  { label: "Casos de Éxito", href: "/#casos" },
+  { label: "ERP Grupo Pineda (Industrial)", href: "/productos/grupo-pineda" },
+  { label: "Tiendas Virtuales & E-commerce", href: "/#servicios" },
+  { label: "Landing Pages para Empresas", href: "/#servicios" },
   { label: "Contacto & Cotización", href: "/#contacto" },
 ];
 
@@ -15,13 +15,13 @@ const externalProducts = [
 ];
 
 const socials = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/archit-tech/?viewAsMember=true" },
+  { label: "WhatsApp: 940771896", href: "https://wa.me/51940771896" },
   { label: "GitHub", href: "https://github.com/DraftraX" },
-  { label: "LinkedIn", href: "https://linkedin.com/in/" },
-  { label: "WhatsApp", href: "https://wa.me/" },
 ];
 ---
 
-<footer class="border-t border-neutral-200/70 bg-white">
+<footer class="border-t border-neutral-200/80 bg-white">
   <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
     <div class="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
 
@@ -37,14 +37,14 @@ const socials = [
           <span class="font-display text-sm font-bold tracking-[0.25em] text-neutral-900">ARCHITY</span>
         </a>
         <p class="mt-4 max-w-xs text-sm leading-relaxed text-neutral-600">
-          Estudio de ingeniería de software en Perú. Creadores de plataformas SaaS como <strong>AltoPlanta</strong> y sistemas de gestión industrial a medida como el <strong>ERP de Grupo Pineda</strong>.
+          Estudio de ingeniería de software en Perú. Creamos <strong>tiendas virtuales</strong>, <strong>landing pages corporativas</strong>, <strong>plataformas SaaS</strong> y <strong>ERPs a medida</strong>.
         </p>
         <a
-          href="mailto:hola@archity.dev"
-          class="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-neutral-900 transition-colors hover:text-accent"
+          href="mailto:wmanuelga@gmail.com"
+          class="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline transition-colors"
         >
-          hola@archity.dev
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-3.5 w-3.5" aria-hidden="true">
+          wmanuelga@gmail.com
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-3.5 w-3.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5 19.5 4.5m0 0H8.25m11.25 0v11.25" />
           </svg>
         </a>
@@ -52,7 +52,7 @@ const socials = [
 
       <!-- Navegación interna -->
       <nav aria-label="Enlaces del pie de página">
-        <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400">Sistemas &amp; Empresa</h3>
+        <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400">Soluciones &amp; Páginas</h3>
         <ul class="mt-4 space-y-2.5">
           {
             navLinks.map((l) => (
@@ -89,13 +89,16 @@ const socials = [
           }
         </ul>
 
-        <h3 class="mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400">Conectar</h3>
-        <ul class="mt-3 flex gap-3 text-xs text-neutral-600">
+        <h3 class="mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400">Canales Directos</h3>
+        <ul class="mt-3 space-y-2 text-xs">
           {
             socials.map((s) => (
               <li>
-                <a href={s.href} target="_blank" rel="noopener" class="hover:text-accent transition-colors">
-                  {s.label}
+                <a href={s.href} target="_blank" rel="noopener" class="text-neutral-600 hover:text-accent transition-colors flex items-center gap-1">
+                  <span>{s.label}</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
                 </a>
               </li>
             ))
@@ -106,9 +109,9 @@ const socials = [
     </div>
 
     <!-- Barra inferior de copyright -->
-    <div class="mt-12 flex flex-col items-center justify-between border-t border-neutral-200/70 pt-8 text-xs text-neutral-400 sm:flex-row">
+    <div class="mt-12 flex flex-col items-center justify-between border-t border-neutral-200/80 pt-8 text-xs text-neutral-400 sm:flex-row">
       <p>© {year} Archity. Hecho con precisión técnica en Perú.</p>
-      <p class="mt-2 sm:mt-0 flex items-center gap-1.5">
+      <p class="mt-2 sm:mt-0 flex items-center gap-1.5 font-medium text-neutral-500">
         Astro v5 · Tailwind v4 · Cloud Native
       </p>
     </div>

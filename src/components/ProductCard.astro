@@ -1,5 +1,5 @@
 ---
-// Tarjeta individual de producto con soporte para demo real y landing interna
+// Tarjeta individual de producto con paleta estricta: Azul, Negro y Blanco
 interface Product {
   name: string;
   category: string;
@@ -20,8 +20,8 @@ interface Props {
 const { product } = Astro.props;
 
 const statusDot: Record<string, string> = {
-  "En producción": "bg-emerald-500",
-  "Beta": "bg-accent",
+  "En producción": "bg-accent",
+  "Beta": "bg-neutral-900",
   "En desarrollo": "bg-neutral-400",
 };
 ---
@@ -51,10 +51,10 @@ const statusDot: Record<string, string> = {
       )
     }
 
-    <!-- Badges superiores -->
+    <!-- Badges superiores (azul, negro y blanco) -->
     <div class="absolute left-3 top-3 flex items-center gap-1.5">
       <span class="inline-flex items-center gap-1.5 rounded-full bg-white/95 px-2.5 py-1 text-[11px] font-medium text-neutral-700 shadow-xs backdrop-blur">
-        <span class={`h-1.5 w-1.5 rounded-full ${statusDot[product.status] ?? "bg-neutral-400"}`} aria-hidden="true" />
+        <span class={`h-1.5 w-1.5 rounded-full ${statusDot[product.status] ?? "bg-accent"}`} aria-hidden="true" />
         {product.status}
       </span>
       {product.badge && (
@@ -76,12 +76,12 @@ const statusDot: Record<string, string> = {
 
     <p class="mt-2.5 text-sm leading-relaxed text-neutral-600">{product.description}</p>
 
-    <!-- Lista de características clave si existen -->
+    <!-- Lista de características con iconos azul eléctrico -->
     {product.features && product.features.length > 0 && (
       <ul class="my-3 space-y-1.5 border-t border-b border-neutral-100 py-3 text-xs text-neutral-600">
         {product.features.map((f) => (
           <li class="flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-emerald-600 shrink-0" viewBox="0 0 20 20" fill="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-accent shrink-0" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
             </svg>
             <span>{f}</span>
@@ -108,7 +108,7 @@ const statusDot: Record<string, string> = {
           href={product.landingUrl}
           class="inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-semibold text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 transition-colors"
         >
-          Ver detalles
+          Ver landing dedicada
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-3.5 w-3.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
           </svg>
@@ -121,7 +121,7 @@ const statusDot: Record<string, string> = {
         rel="noopener"
         class="inline-flex items-center gap-1.5 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white shadow-xs transition-colors hover:bg-accent-dark ml-auto"
       >
-        Visitar plataforma
+        Visitar sitio oficial
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-3.5 w-3.5" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5 19.5 4.5m0 0H8.25m11.25 0v11.25" />
         </svg>

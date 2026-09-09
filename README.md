@@ -1,50 +1,52 @@
-# ARCHITY — Software a la Medida & SaaS Hub
+# ARCHITY — Software Studio & Incubadora SaaS
 
-Portafolio y Hub de productos tecnológicos de **ARCHITY**, diseñado con una estética limpia y minimalista inspirada en Kimi.ai, construido con **Astro v5** y **Tailwind CSS v4**.
+Hub oficial y portafolio de **ARCHITY**, estudio de ingeniería de software en Perú especializado en **tiendas virtuales e-commerce**, **landing pages corporativas**, **plataformas SaaS** y **ERPs a la medida**.
 
-## ✨ Características
+Construido con **Astro v5**, **Tailwind CSS v4** y una paleta estricta monocromática con acento azul eléctrico: **Azul (`#1a5cff`), Negro (`#09090b`) y Blanco (`#ffffff`)**.
 
-- ⚡ **Astro v5 + Tailwind CSS v4 (@tailwindcss/vite)**: Máximo rendimiento, CSS compilado en milisegundos con cero dependencias innecesarias.
-- 📐 **Identidad Vectorial SVG**:
-  - `logo-icon.svg`: Isotipo geométrico angular de la "A".
-  - `logo-full.svg`: Marca completa ARCHITY en vectores puros.
-  - `favicon.svg`: Icono optimizado para navegadores.
-- 🎨 **Estética Kimi.ai**: Superficies blancas, bordes sutiles, micro-interacciones suaves y acento en azul eléctrico (`#1a5cff`).
-- 📱 **100% Responsive**: Navegación adaptativa con menú desplegable para dispositivos móviles.
-- 📦 **Componentes Modulares**:
-  - `Header.astro`: Barra sticky con desenfoque de fondo.
-  - `Hero.astro`: Encabezado de alto impacto con indicador de estado en vivo.
-  - `ProductGrid.astro` & `ProductCard.astro`: Catálogo de sistemas SaaS listos para operar.
-  - `PortfolioSection.astro`: Casos de éxito con métricas cuantitativas.
-  - `Footer.astro`: Pie de página corporativo con enlaces y contacto.
+---
 
-## 🚀 Inicio Rápido
+## 🚀 Soluciones que Desarrollamos
+
+- 🛒 **Tiendas Virtuales & E-commerce**: Catálogos ultra rápidos, carrito sin fricción, integración con pasarelas de pago peruanas e internacionales (Yape, Plin, Culqi, Stripe) y pedidos a WhatsApp.
+- 🎯 **Landing Pages Corporativas**: Sitios web de alta conversión para empresas, diseño exclusivo minimalista, carga instantánea y optimización SEO.
+- ☁️ **Plataformas SaaS & Marketplaces**: Arquitectura cloud escalable, suscripciones, tours virtuales 360°, generación de proformas PDF y CRMs.
+- 🏭 **ERPs & Sistemas Industriales**: Automatización de plantas, telemetría de balanzas, control de canteras, maquinaria pesada y facturación electrónica B2B.
+
+---
+
+## 💎 Sistemas Insignia en Producción Real
+
+1. **[AltoPlanta](https://altoplanta.com/)**: Plataforma digital inmobiliaria líder en Perú (búsqueda nacional, tours 360°, cotizaciones PDF y CRM de leads).
+2. **[ERP Grupo Pineda](https://grupopineda.pe/)**: Sistema integral para consorcio de infraestructura, minería no metálica y plantas de concreto automatizado en el nororiente peruano.
+
+---
+
+## 📐 Identidad Vectorial
+
+- `public/logo-icon.svg`: Isotipo geométrico angular de la "A".
+- `public/logo-full.svg`: Marca completa ARCHITY en vectores puros.
+- `public/favicon.svg`: Icono optimizado para navegadores.
+
+---
+
+## 📲 Contacto Directo
+
+- **Correo**: [wmanuelga@gmail.com](mailto:wmanuelga@gmail.com)
+- **WhatsApp**: [+51 940 771 896](https://wa.me/51940771896)
+- **LinkedIn**: [Archity en LinkedIn](https://www.linkedin.com/company/archit-tech/?viewAsMember=true)
+
+---
+
+## ⚡ Comandos
 
 ```bash
-# 1. Instalar dependencias
+# Instalar dependencias
 npm install
 
-# 2. Iniciar servidor de desarrollo
+# Servidor de desarrollo
 npm run dev
 
-# 3. Compilar para producción
+# Compilación estática
 npm run build
-```
-
-## 📁 Estructura
-
-```
-archoty/
-├── public/
-│   ├── favicon.svg
-│   ├── logo-icon.svg
-│   ├── logo-full.svg
-│   └── images/
-├── src/
-│   ├── components/
-│   ├── layouts/
-│   ├── pages/
-│   └── styles/
-├── astro.config.mjs
-└── package.json
 ```
