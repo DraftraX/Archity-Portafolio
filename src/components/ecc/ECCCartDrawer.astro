@@ -384,7 +384,7 @@
     if (freeShippingPercent) freeShippingPercent.textContent = `${progress}%`;
     if (freeShippingText) {
       if (subtotal >= targetShipping) {
-        freeShippingText.textContent = "🎉 ¡Felicidades! Tienes Envío Gratis activado";
+        freeShippingText.textContent = "¡Felicidades! Tienes Envío Gratis activado";
       } else {
         const missing = (targetShipping - subtotal).toFixed(2);
         freeShippingText.textContent = `Agrega S/ ${missing} más para Envío Gratis`;

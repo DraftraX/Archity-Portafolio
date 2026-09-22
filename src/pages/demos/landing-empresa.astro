@@ -1,7 +1,5 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
 import ECCEnterpriseROI from "../../components/ecc/ECCEnterpriseROI.astro";
 
 const sectors = [
@@ -11,6 +9,7 @@ const sectors = [
     tagline: "Telemetría de balanzas, control de canteras y dosificación de concreto",
     stat: "780 TM/Día",
     statDesc: "Capacidad monitoreada en tiempo real",
+    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80",
     modules: ["Balanza Electrónica", "Control de Mixer & Flota", "Mermas de Agregados", "Facturación Masiva"],
   },
   {
@@ -19,14 +18,16 @@ const sectors = [
     tagline: "Liquidación automática de impuesto predial y cobranza municipal/inmobiliaria",
     stat: "100% Digital",
     statDesc: "Cuponeras y cartografía catastral en la nube",
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80",
     modules: ["Cálculo UIT & Tramos", "Emisión de Cuponeras PDF", "Portal Contribuyente", "Prorrateo Arbitrios"],
   },
   {
     id: "logistica",
-    title: "Logística & Despacho",
+    title: "Logística & Despacho Pesado",
     tagline: "Trazabilidad de combustible, guías de remisión electrónicas y rutas pesadas",
     stat: "-35% Costos",
     statDesc: "Reducción de combustible no justificado",
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
     modules: ["Control de Cisternas", "Guías GRE SUNAT", "Mantenimiento Preventivo", "Checklist Operadores"],
   },
   {
@@ -35,6 +36,7 @@ const sectors = [
     tagline: "Portales de compras mayoristas, integración Yape/Plin/Pasarelas y pedidos WhatsApp",
     stat: "24 / 7",
     statDesc: "Disponibilidad operativa sin caídas",
+    image: "https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=600&q=80",
     modules: ["Catálogo Mayorista", "Líneas de Crédito B2B", "Inventario Multi-almacén", "API ERP Contable"],
   },
 ];
@@ -46,7 +48,7 @@ const plans = [
     price: "S/ 3,500",
     period: "pago único de implementación",
     features: [
-      "Diseño corporativo exclusivo a medida (sin WordPress)",
+      "Diseño corporativo exclusivo a medida (sin plantillas lentas)",
       "Carga ultrarrápida (Astro + Tailwind CSS v4)",
       "Formularios inteligentes y alertas a WhatsApp",
       "Integración básica con pasarelas de pago o cotizador",
@@ -90,60 +92,103 @@ const plans = [
 ---
 
 <Layout
-  title="Landing Page para Empresas B2B — Demostración de Soluciones Corporativas | Archity"
-  description="Demo interactiva para empresas y consorcios: arquitectura de software a medida, calculadora de retorno de inversión (ROI), agendamiento de demostraciones y catálogo de soluciones."
+  title="ORION ENTERPRISE SYSTEMS — Software Corporativo & Arquitectura Cloud | Demo Archity"
+  description="Soluciones de software de alta gama para empresas y consorcios industriales: arquitectura B2B, calculadora de retorno de inversión (ROI) y agendamiento de demostraciones técnicas."
 >
-  <Header />
+  <!-- Barra superior permanente: Demo Mode Archity -->
+  <div class="sticky top-0 z-50 flex items-center justify-between border-b border-neutral-800 bg-neutral-950 px-4 py-2 text-xs text-neutral-300">
+    <div class="flex items-center gap-2">
+      <span class="inline-flex h-2 w-2 rounded-full bg-accent"></span>
+      <span class="font-medium">Demostración de Landing Corporativa B2B</span>
+      <span class="hidden sm:inline text-neutral-500">· Desarrollada por Archity</span>
+    </div>
+    <a
+      href="/"
+      class="inline-flex items-center gap-1.5 rounded-md bg-neutral-800 px-3 py-1 font-semibold text-white hover:bg-neutral-700 transition-colors"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+      Volver al Portafolio
+    </a>
+  </div>
+
+  <!-- Header Propio de Orion Enterprise Systems -->
+  <header class="sticky top-8 z-40 border-b border-neutral-200 bg-white/95 backdrop-blur-md shadow-xs">
+    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      
+      <!-- Logotipo Corporativo -->
+      <a href="/demos/landing-empresa" class="flex items-center gap-3">
+        <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-neutral-900 text-white shadow-sm font-bold">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+          </svg>
+        </span>
+        <div>
+          <span class="block font-display text-base font-bold tracking-tight text-neutral-900">ORION ENTERPRISE</span>
+          <span class="block text-[10px] uppercase tracking-widest text-neutral-500 font-semibold">Sistemas Cloud &amp; ERP Industrial</span>
+        </div>
+      </a>
+
+      <!-- Navegación B2B -->
+      <nav class="hidden md:flex items-center gap-6 text-xs font-semibold text-neutral-600">
+        <a href="#soluciones-sectores" class="hover:text-accent transition-colors">Soluciones por Sector</a>
+        <a href="#calculadora-roi" class="hover:text-accent transition-colors">Calculadora ROI</a>
+        <a href="#planes-enterprise" class="hover:text-accent transition-colors">Planes &amp; Precios</a>
+        <a href="#agendar-demo" class="hover:text-accent transition-colors">Contacto Técnico</a>
+      </nav>
+
+      <!-- Teléfono & Botón Agendar Demo -->
+      <div class="flex items-center gap-3">
+        <a
+          href="tel:+51940771896"
+          class="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium text-neutral-700 hover:text-accent"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          <span>(01) 480-9900</span>
+        </a>
+
+        <a
+          href="#agendar-demo"
+          class="flex items-center gap-2 rounded-lg bg-accent px-3.5 py-2 text-xs font-bold text-white hover:bg-accent-dark transition-colors shadow-xs"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          Agendar Sesión
+        </a>
+      </div>
+
+    </div>
+  </header>
 
   <main>
-    <!-- Banner de navegación de demos -->
-    <div class="border-b border-accent/20 bg-accent-soft/60 px-4 py-2 text-center text-xs font-medium text-accent">
-      <span class="font-bold">Demostración en Front-End:</span> Estás viendo el ejemplo interactivo de Landing Corporativa B2B de Archity.
-      <a href="/demos/ecommerce" class="ml-2 font-bold underline hover:text-accent-dark">
-        Ver Demo de E-Commerce &rarr;
-      </a>
-    </div>
-
     <!-- Hero B2B Corporativo -->
-    <section class="relative overflow-hidden border-b border-neutral-200/80 bg-gradient-to-b from-neutral-50 via-white to-white py-20 sm:py-28">
+    <section class="relative overflow-hidden border-b border-neutral-200/80 bg-gradient-to-b from-neutral-50 via-white to-white py-16 sm:py-24">
       <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        
-        <!-- Breadcrumbs -->
-        <nav class="flex items-center gap-2 text-xs font-medium text-neutral-500 mb-8" aria-label="Breadcrumb">
-          <a href="/" class="hover:text-neutral-900 transition-colors">Inicio</a>
-          <span>/</span>
-          <a href="/#servicios" class="hover:text-neutral-900 transition-colors">Demos &amp; Soluciones</a>
-          <span>/</span>
-          <span class="text-neutral-900">Landing para Empresas B2B</span>
-        </nav>
-
         <div class="grid gap-12 lg:grid-cols-12 lg:items-center">
           <div class="lg:col-span-7">
             <div class="flex items-center gap-2">
-              <span class="inline-flex items-center gap-1.5 rounded-full bg-accent-soft border border-accent/20 px-3 py-1 text-xs font-semibold text-accent">
-                <span class="h-2 w-2 rounded-full bg-accent animate-pulse" />
-                Solución B2B Enterprise
-              </span>
-              <span class="rounded-full bg-neutral-100 border border-neutral-200 px-3 py-1 text-xs font-semibold text-neutral-800">
-                Astro + Tailwind v4 + ECC Architecture
-              </span>
+              <span class="inline-flex h-2.5 w-2.5 rounded-full bg-accent animate-pulse"></span>
+              <span class="text-xs font-bold uppercase tracking-wider text-accent">Arquitectura Enterprise &amp; Nube Privada</span>
             </div>
 
             <h1 class="mt-4 font-display text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl">
-              Software e Infraestructura Digital de Alta Precisión para <span class="text-accent">Empresas &amp; Consorcios</span>
+              Software de Alta Precisión para <span class="text-accent">Empresas &amp; Consorcios</span>
             </h1>
 
-            <p class="mt-6 text-base leading-relaxed text-neutral-600 sm:text-lg">
+            <p class="mt-5 text-base leading-relaxed text-neutral-600 sm:text-lg">
               Diseñamos portales corporativos, plataformas SaaS y ERPs industriales que transforman operaciones complejas en flujos eficientes, transparentes y auditables.
             </p>
 
-            <!-- Acciones -->
             <div class="mt-8 flex flex-wrap items-center gap-3">
               <a
                 href="#calculadora-roi"
-                class="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-sm font-semibold text-white shadow-xs transition-all hover:bg-accent-dark hover:shadow-md hover:shadow-accent/25"
+                class="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3.5 text-sm font-semibold text-white shadow-xs transition-all hover:bg-accent-dark hover:shadow-md hover:shadow-accent/25 active:scale-95"
               >
-                Calcular ROI de tu Empresa
+                Calcular Retorno de Inversión (ROI)
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                 </svg>
@@ -157,33 +202,33 @@ const plans = [
               </a>
             </div>
 
-            <!-- Badges de credibilidad corporativa -->
+            <!-- Badges de credibilidad corporativa con números limpios -->
             <div class="mt-10 grid grid-cols-3 gap-6 border-t border-neutral-200/80 pt-6 text-left">
               <div>
                 <span class="block font-display text-2xl font-bold text-neutral-900">99.9%</span>
-                <span class="text-xs text-neutral-500">Disponibilidad en la nube</span>
+                <span class="text-xs text-neutral-500">Disponibilidad Cloud</span>
               </div>
               <div>
                 <span class="block font-display text-2xl font-bold text-accent">&lt; 1s</span>
-                <span class="text-xs text-neutral-500">Tiempo de carga web</span>
+                <span class="text-xs text-neutral-500">Tiempo de Carga Web</span>
               </div>
               <div>
                 <span class="block font-display text-2xl font-bold text-neutral-900">100%</span>
-                <span class="text-xs text-neutral-500">Código propio y auditable</span>
+                <span class="text-xs text-neutral-500">Propiedad del Código</span>
               </div>
             </div>
           </div>
 
           <!-- Mockup Interactivo de Tablero Corporativo -->
           <div class="lg:col-span-5">
-            <div class="rounded-2xl border border-neutral-200/90 bg-white p-6 shadow-2xl shadow-neutral-900/10">
+            <div class="overflow-hidden rounded-2xl border border-neutral-200/90 bg-white p-6 shadow-2xl">
               <div class="flex items-center justify-between border-b border-neutral-100 pb-3">
                 <div class="flex items-center gap-2">
                   <span class="h-2.5 w-2.5 rounded-full bg-rose-400"></span>
                   <span class="h-2.5 w-2.5 rounded-full bg-amber-400"></span>
                   <span class="h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
                 </div>
-                <span class="text-[11px] font-mono text-neutral-400">console.archity.pe</span>
+                <span class="text-[11px] font-mono text-neutral-400">console.orion-enterprise.pe</span>
               </div>
 
               <div class="mt-4 space-y-4">
@@ -192,90 +237,79 @@ const plans = [
                   <div class="mt-2 space-y-2">
                     <div class="flex items-center justify-between text-xs">
                       <a href="https://altoplanta.com/" target="_blank" rel="noopener" class="font-bold text-neutral-900 hover:text-accent">
-                        • AltoPlanta SaaS (Tributo Inmobiliario) ↗
+                        AltoPlanta SaaS (Tributo Inmobiliario)
                       </a>
                       <span class="text-emerald-600 font-semibold">Producción</span>
                     </div>
                     <div class="flex items-center justify-between text-xs">
                       <a href="https://grupopineda.pe/" target="_blank" rel="noopener" class="font-bold text-neutral-900 hover:text-accent">
-                        • ERP Grupo Pineda (Consorcio) ↗
+                        Grupo Pineda ERP (Consorcio Minero)
                       </a>
                       <span class="text-emerald-600 font-semibold">Producción</span>
-                    </div>
-                    <div class="flex items-center justify-between text-xs">
-                      <a href="/demos/ecommerce" class="font-bold text-neutral-900 hover:text-accent">
-                        • Portal E-Commerce Transaccional ↗
-                      </a>
-                      <span class="text-accent font-semibold">Demo en Vivo</span>
                     </div>
                   </div>
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
-                  <div class="rounded-xl border border-neutral-200 bg-white p-3">
-                    <span class="text-[10px] font-bold text-neutral-400 uppercase">Consultas Prediales</span>
-                    <div class="font-display text-lg font-bold text-accent mt-0.5">+14,800</div>
-                    <span class="text-[10px] text-neutral-500">Procesadas en AltoPlanta</span>
+                  <div class="rounded-xl border border-neutral-100 p-3 bg-white">
+                    <span class="text-[10px] text-neutral-400">Transacciones Hoy</span>
+                    <div class="mt-1 font-display text-lg font-bold text-neutral-900">4,812 ops</div>
                   </div>
-                  <div class="rounded-xl border border-neutral-200 bg-white p-3">
-                    <span class="text-[10px] font-bold text-neutral-400 uppercase">Pesaje Balanzas</span>
-                    <div class="font-display text-lg font-bold text-neutral-900 mt-0.5">780 TM/Día</div>
-                    <span class="text-[10px] text-neutral-500">Telemetría ROCAFER</span>
+                  <div class="rounded-xl border border-neutral-100 p-3 bg-white">
+                    <span class="text-[10px] text-neutral-400">Latencia API</span>
+                    <div class="mt-1 font-display text-lg font-bold text-emerald-600">38 ms</div>
                   </div>
-                </div>
-
-                <div class="rounded-xl bg-neutral-900 p-4 text-white">
-                  <span class="text-[11px] font-bold uppercase tracking-wider text-accent">Garantía Corporativa</span>
-                  <p class="mt-1 text-xs text-neutral-300 leading-relaxed">
-                    Soporte directo por ingenieros senior. Sin intermediarios, con documentación OpenAPI y entrega de repositorios.
-                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
-    <!-- Selector Interactivo de Sectores Empresariales -->
-    <section class="border-b border-neutral-200/80 bg-neutral-50/50 py-16 sm:py-24">
+    <!-- Soluciones por Sector -->
+    <section id="soluciones-sectores" class="border-b border-neutral-200/80 bg-neutral-50 py-16 sm:py-24">
       <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div class="max-w-2xl">
-          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Especialización por Sector</p>
+          <span class="text-xs font-bold uppercase tracking-widest text-accent">Verticales de Especialización</span>
           <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
-            Soluciones adaptadas al modelo de tu organización
+            Arquitectura diseñada para sectores de alta exigencia operativa
           </h2>
-          <p class="mt-3 text-sm leading-relaxed text-neutral-600">
-            No usamos plantillas genéricas. Cada módulo responde a las normativas peruanas, las operaciones de campo y la alta dirección.
-          </p>
         </div>
 
         <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {sectors.map((s) => (
-            <div class="flex flex-col justify-between rounded-2xl border border-neutral-200/90 bg-white p-6 shadow-sm hover:shadow-md transition-shadow">
-              <div>
-                <span class="text-[11px] font-bold uppercase tracking-wider text-accent">{s.title}</span>
-                <p class="mt-2 text-xs font-medium text-neutral-600 leading-relaxed">{s.tagline}</p>
-
-                <div class="mt-4 border-t border-neutral-100 pt-3">
-                  <span class="font-display text-2xl font-bold text-neutral-900">{s.stat}</span>
-                  <span class="block text-[11px] text-neutral-500">{s.statDesc}</span>
-                </div>
+            <div class="flex flex-col justify-between overflow-hidden rounded-2xl border border-neutral-200/80 bg-white shadow-xs transition duration-300 hover:-translate-y-1 hover:border-neutral-300 hover:shadow-xl">
+              <!-- Foto Real del Sector -->
+              <div class="h-36 w-full overflow-hidden bg-neutral-100">
+                <img
+                  src={s.image}
+                  alt={s.title}
+                  class="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                  loading="lazy"
+                />
               </div>
 
-              <div class="mt-6 border-t border-neutral-100 pt-4">
-                <span class="text-[10px] uppercase font-bold text-neutral-400 tracking-wider">Módulos Clave:</span>
-                <ul class="mt-2 space-y-1 text-xs text-neutral-700">
-                  {s.modules.map((m) => (
-                    <li class="flex items-center gap-1.5">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-accent shrink-0" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                      </svg>
-                      <span>{m}</span>
-                    </li>
-                  ))}
-                </ul>
+              <div class="p-5 flex-1 flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between">
+                    <span class="font-display text-lg font-bold text-accent">{s.stat}</span>
+                    <span class="text-[10px] font-semibold text-neutral-400">Vertical B2B</span>
+                  </div>
+
+                  <h3 class="mt-2 font-display text-base font-bold text-neutral-900">{s.title}</h3>
+                  <p class="mt-1.5 text-xs text-neutral-600 leading-relaxed">{s.tagline}</p>
+                </div>
+
+                <div class="mt-4 border-t border-neutral-100 pt-3">
+                  <div class="flex flex-wrap gap-1">
+                    {s.modules.map((m) => (
+                      <span class="rounded bg-neutral-100 px-2 py-0.5 text-[10px] font-medium text-neutral-600">
+                        {m}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           ))}
@@ -284,19 +318,19 @@ const plans = [
     </section>
 
     <!-- Componente ECC: Calculadora de Retorno de Inversión (ROI) -->
-    <section id="calculadora-roi" class="scroll-mt-20 border-b border-neutral-200/80 bg-white py-16 sm:py-24">
+    <section id="calculadora-roi" class="scroll-mt-20 border-b border-neutral-200/80 py-16 sm:py-24 bg-white">
       <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <ECCEnterpriseROI />
       </div>
     </section>
 
-    <!-- Matriz de Planes & Modelos de Implementación -->
-    <section class="border-b border-neutral-200/80 bg-neutral-50/50 py-16 sm:py-24">
+    <!-- Planes y Modelos de Implementación -->
+    <section id="planes-enterprise" class="scroll-mt-20 border-b border-neutral-200/80 bg-neutral-50 py-16 sm:py-24">
       <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-2xl mx-auto">
-          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Esquemas de Contratación</p>
+          <span class="text-xs font-bold uppercase tracking-widest text-accent">Propuesta Comercial Clara</span>
           <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
-            Planes Claros, Sin Fricciones Ocultas
+            Planes de Implementación para Empresas
           </h2>
           <p class="mt-3 text-sm text-neutral-600">
             Trabajamos por hitos entregables con total transparencia en presupuesto, cronogramas y propiedad intelectual.
@@ -338,7 +372,7 @@ const plans = [
                   href="#agendar-demo"
                   class={`flex w-full items-center justify-center rounded-lg py-3 text-center text-xs font-bold transition-colors ${p.popular ? "bg-accent text-white hover:bg-accent-dark shadow-xs" : "border border-neutral-300 bg-white text-neutral-800 hover:bg-neutral-50"}`}
                 >
-                  {p.cta} &rarr;
+                  {p.cta}
                 </a>
               </div>
             </div>
@@ -364,22 +398,22 @@ const plans = [
           <form id="demo-schedule-form" class="mt-8 grid gap-4 sm:grid-cols-2 text-xs">
             <div>
               <label class="block font-bold text-neutral-300">Nombre &amp; Apellidos</label>
-              <input type="text" required placeholder="Ej. Ing. Carlos Mendoza" class="mt-1.5 w-full rounded-lg border border-neutral-700 bg-neutral-800 px-3.5 py-2.5 text-xs text-white placeholder:text-neutral-500 focus:border-accent focus:outline-none" />
+              <input type="text" id="b2b-nombre" required placeholder="Ej. Ing. Carlos Mendoza" class="mt-1.5 w-full rounded-lg border border-neutral-700 bg-neutral-800 px-3.5 py-2.5 text-xs text-white placeholder:text-neutral-500 focus:border-accent focus:outline-none" />
             </div>
 
             <div>
               <label class="block font-bold text-neutral-300">Empresa o Consorcio</label>
-              <input type="text" required placeholder="Ej. Constructora del Norte SAC" class="mt-1.5 w-full rounded-lg border border-neutral-700 bg-neutral-800 px-3.5 py-2.5 text-xs text-white placeholder:text-neutral-500 focus:border-accent focus:outline-none" />
+              <input type="text" id="b2b-empresa" required placeholder="Ej. Constructora del Norte SAC" class="mt-1.5 w-full rounded-lg border border-neutral-700 bg-neutral-800 px-3.5 py-2.5 text-xs text-white placeholder:text-neutral-500 focus:border-accent focus:outline-none" />
             </div>
 
             <div>
               <label class="block font-bold text-neutral-300">Teléfono / WhatsApp Corporativo</label>
-              <input type="tel" required placeholder="+51 940 000 000" class="mt-1.5 w-full rounded-lg border border-neutral-700 bg-neutral-800 px-3.5 py-2.5 text-xs text-white placeholder:text-neutral-500 focus:border-accent focus:outline-none" />
+              <input type="tel" id="b2b-telefono" required placeholder="+51 940 771 896" class="mt-1.5 w-full rounded-lg border border-neutral-700 bg-neutral-800 px-3.5 py-2.5 text-xs text-white placeholder:text-neutral-500 focus:border-accent focus:outline-none" />
             </div>
 
             <div>
               <label class="block font-bold text-neutral-300">Solución de Interés</label>
-              <select class="mt-1.5 w-full rounded-lg border border-neutral-700 bg-neutral-800 px-3 py-2.5 text-xs text-white focus:border-accent focus:outline-none">
+              <select id="b2b-solucion" class="mt-1.5 w-full rounded-lg border border-neutral-700 bg-neutral-800 px-3 py-2.5 text-xs text-white focus:border-accent focus:outline-none">
                 <option>ERP de Consorcio Empresarial (Estilo Grupo Pineda)</option>
                 <option>SaaS de Tributo Inmobiliario (Estilo AltoPlanta)</option>
                 <option>Plataforma E-Commerce B2B / B2C</option>
@@ -390,29 +424,28 @@ const plans = [
 
             <div class="sm:col-span-2">
               <label class="block font-bold text-neutral-300">Detalles o requerimientos específicos</label>
-              <textarea rows="3" placeholder="Describe brevemente tus operaciones actuales o metas de digitalización..." class="mt-1.5 w-full rounded-lg border border-neutral-700 bg-neutral-800 p-3 text-xs text-white placeholder:text-neutral-500 focus:border-accent focus:outline-none"></textarea>
+              <textarea id="b2b-detalles" rows="3" placeholder="Describe brevemente tus operaciones actuales o metas de digitalización..." class="mt-1.5 w-full rounded-lg border border-neutral-700 bg-neutral-800 p-3 text-xs text-white placeholder:text-neutral-500 focus:border-accent focus:outline-none"></textarea>
             </div>
 
             <div class="sm:col-span-2 pt-2">
               <button
                 type="submit"
-                class="w-full rounded-lg bg-accent py-3 font-semibold text-white hover:bg-accent-dark transition-all shadow-md hover:shadow-accent/25"
+                class="w-full rounded-lg bg-accent py-3.5 font-semibold text-white hover:bg-accent-dark transition-all shadow-md hover:shadow-accent/25 active:scale-98"
               >
-                Confirmar Solicitud de Demostración Técnica
+                Confirmar Solicitud de Demostración por WhatsApp
               </button>
             </div>
           </form>
 
-          <!-- Mensaje de éxito simulado -->
           <div id="demo-success-msg" class="hidden mt-6 rounded-xl bg-emerald-950/60 border border-emerald-500/40 p-4 text-emerald-300 text-xs">
             <div class="flex items-center gap-2">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-emerald-400" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
               </svg>
-              <strong class="font-bold">¡Solicitud recibida correctamente!</strong>
+              <strong class="font-bold">¡Solicitud generada correctamente!</strong>
             </div>
             <p class="mt-1 text-neutral-300">
-              Un consultor senior de Archity se comunicará vía WhatsApp o correo para confirmar el enlace de Google Meet.
+              Se abrió el canal directo para coordinar la sesión con el equipo de ingeniería.
             </p>
           </div>
         </div>
@@ -420,7 +453,75 @@ const plans = [
     </section>
   </main>
 
-  <Footer />
+  <!-- Footer Propio de Orion Enterprise Systems -->
+  <footer id="contacto-orion" class="border-t border-neutral-200 bg-neutral-900 text-neutral-300">
+    <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        
+        <!-- Col 1: Marca & Razón Social -->
+        <div>
+          <div class="flex items-center gap-2.5">
+            <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-800 text-accent font-bold">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+            </span>
+            <span class="font-display text-sm font-bold tracking-tight text-white">ORION ENTERPRISE</span>
+          </div>
+          <p class="mt-3 text-xs leading-relaxed text-neutral-400">
+            Firma de ingeniería de software corporativo y consultoría cloud. Especialistas en automatización para minería, construcción y finanzas.
+          </p>
+          <div class="mt-4 text-[11px] text-neutral-400">
+            <p><span class="font-semibold text-neutral-200">Razón Social:</span> Orion Systems Peru S.A.C.</p>
+            <p><span class="font-semibold text-neutral-200">RUC:</span> 20607914831</p>
+          </div>
+        </div>
+
+        <!-- Col 2: Oficinas en Lima -->
+        <div>
+          <h4 class="font-display text-xs font-bold uppercase tracking-wider text-white">Sedes Corporativas</h4>
+          <ul class="mt-3 space-y-2 text-xs text-neutral-400">
+            <li><strong class="text-neutral-200">Centro Financiero:</strong> Av. República de Panamá 3055, San Isidro</li>
+            <li><strong class="text-neutral-200">Hub Tecnológico:</strong> Av. Circunvalación del Golf 206, Surco</li>
+            <li><strong class="text-neutral-200">Laboratorio IoT:</strong> Parque Industrial Infantas, Los Olivos</li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Canales Técnicos -->
+        <div>
+          <h4 class="font-display text-xs font-bold uppercase tracking-wider text-white">Mesa de Ayuda &amp; Ventas</h4>
+          <ul class="mt-3 space-y-2 text-xs text-neutral-400">
+            <li><strong class="text-neutral-200">Central Telefónica:</strong> (01) 480-9900</li>
+            <li><strong class="text-neutral-200">WhatsApp B2B:</strong> +51 940 771 896</li>
+            <li><strong class="text-neutral-200">Ingeniería &amp; SLAs:</strong> arquitectura@orion-enterprise.pe</li>
+            <li><strong class="text-neutral-200">Soporte Crítico 24/7:</strong> Para clientes con plan Enterprise</li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Certificaciones y Cumplimiento -->
+        <div>
+          <h4 class="font-display text-xs font-bold uppercase tracking-wider text-white">Cumplimiento &amp; Seguridad</h4>
+          <p class="mt-3 text-xs leading-relaxed text-neutral-400">
+            Infraestructura cloud certificada bajo los estándares ISO/IEC 27001 y políticas de protección de datos personales Ley N° 29733.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2 text-[11px] text-neutral-400">
+            <span class="rounded bg-neutral-800 px-2 py-1 text-accent font-mono">ISO 27001 Ready</span>
+            <span class="rounded bg-neutral-800 px-2 py-1">Libro de Reclamaciones</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-10 flex flex-col items-center justify-between gap-4 border-t border-neutral-800 pt-6 text-xs text-neutral-500 sm:flex-row">
+        <p>© 2026 Orion Systems Peru S.A.C. Todos los derechos reservados.</p>
+        <div class="flex items-center gap-4">
+          <a href="/" class="text-accent hover:text-accent-dark">Portafolio Archity</a>
+          <a href="/demos/ecommerce" class="hover:text-neutral-300">Demo E-Commerce</a>
+          <a href="/demos/inmobiliaria" class="hover:text-neutral-300">Demo Inmobiliaria</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </Layout>
 
 <script>
@@ -429,6 +530,23 @@ const plans = [
 
   form?.addEventListener("submit", (e) => {
     e.preventDefault();
+    const nombre = (document.getElementById("b2b-nombre") as HTMLInputElement)?.value || "";
+    const empresa = (document.getElementById("b2b-empresa") as HTMLInputElement)?.value || "";
+    const telefono = (document.getElementById("b2b-telefono") as HTMLInputElement)?.value || "";
+    const solucion = (document.getElementById("b2b-solucion") as HTMLSelectElement)?.value || "";
+    const detalles = (document.getElementById("b2b-detalles") as HTMLTextAreaElement)?.value || "";
+
+    const mensaje = encodeURIComponent(
+      `Hola Orion Enterprise Systems, solicito agendar una demostración técnica:\n\n` +
+      `Nombre: ${nombre}\n` +
+      `Empresa: ${empresa}\n` +
+      `Teléfono: ${telefono}\n` +
+      `Solución de Interés: ${solucion}\n` +
+      `Detalles: ${detalles}\n\n` +
+      `Por favor coordinar horario para la reunión técnica vía Google Meet.`
+    );
+
+    window.open(`https://wa.me/51940771896?text=${mensaje}`, "_blank");
     successMsg?.classList.remove("hidden");
     form?.reset();
   });

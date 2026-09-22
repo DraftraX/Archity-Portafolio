@@ -44,7 +44,6 @@ const interactiveDemos = [
     title: "Empresas B2B & ROI",
     category: "Corporativo B2B",
     badge: "Calculadora ROI",
-    icon: "💼",
     description: "Captación de clientes corporativos con calculadora interactiva de retorno de inversión, agenda de demos y planes a medida.",
     url: "/demos/landing-empresa",
     tags: ["Calculadora ROI", "Agendador B2B", "Enterprise"],
@@ -53,7 +52,6 @@ const interactiveDemos = [
     title: "Tienda E-Commerce",
     category: "Comercio Digital",
     badge: "Paginación & Carrito",
-    icon: "🛍️",
     description: "Catálogo con paginación funcional, drawer de carrito deslizable, cupones de descuento y checkout simulado con Yape.",
     url: "/demos/ecommerce",
     tags: ["Paginación Front", "Drawer Carrito", "Cupones"],
@@ -62,16 +60,14 @@ const interactiveDemos = [
     title: "Restaurante & Brasas",
     category: "Gastronomía",
     badge: "Carta Paginada",
-    icon: "🍽️",
     description: "Menú digital con paginación por categorías, comanda de delivery en tiempo real y reserva de mesas interactiva.",
     url: "/demos/restaurante",
     tags: ["Menú Paginado", "Reserva Mesas", "Delivery WhatsApp"],
   },
   {
     title: "Botica & Farmacia",
-    category: "Salud & Botica",
+    category: "Salud & Farmacia",
     badge: "Buscador Paginado",
-    icon: "💊",
     description: "Catálogo farmacéutico con paginación funcional, búsqueda por principio activo, control de recetas y pedido express.",
     url: "/demos/botica",
     tags: ["Paginación", "Receta Médica", "Despacho 45min"],
@@ -80,7 +76,6 @@ const interactiveDemos = [
     title: "Clínica Veterinaria",
     category: "Pet Care & Salud",
     badge: "Citas & Pet Shop",
-    icon: "🐾",
     description: "Agendador interactivo de consultas médicas/grooming para mascotas y tienda pet shop con paginación funcional.",
     url: "/demos/veterinaria",
     tags: ["Citas Mascotas", "Pet Shop Paginado", "Urgencias"],
@@ -89,7 +84,6 @@ const interactiveDemos = [
     title: "Portal Inmobiliario",
     category: "PropTech & Vivienda",
     badge: "Simulador Cuotas",
-    icon: "🏛️",
     description: "Búsqueda avanzada de inmuebles con paginación funcional, filtros por distrito/precio y simulador de crédito hipotecario.",
     url: "/demos/inmobiliaria",
     tags: ["Inmuebles Paginados", "Crédito Hipotecario", "Visitas"],
@@ -156,9 +150,8 @@ const interactiveDemos = [
                   {d.badge}
                 </span>
               </div>
-              <h4 class="font-display text-lg font-bold text-neutral-900 group-hover:text-accent transition-colors flex items-center gap-2">
-                <span>{d.icon}</span>
-                <span>{d.title}</span>
+              <h4 class="font-display text-lg font-bold text-neutral-900 group-hover:text-accent transition-colors">
+                {d.title}
               </h4>
               <p class="mt-2 text-xs text-neutral-600 leading-relaxed line-clamp-3">
                 {d.description}
