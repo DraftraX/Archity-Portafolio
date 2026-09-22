@@ -1,0 +1,579 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import ECCProductCard from "../../components/ecc/ECCProductCard.astro";
+import ECCCartDrawer from "../../components/ecc/ECCCartDrawer.astro";
+
+const products = [
+  {
+    id: "prod-1",
+    name: "Terminal de Balanza IoT Industrial",
+    category: "Hardware",
+    price: 680.00,
+    originalPrice: 790.00,
+    badge: "Más Vendido",
+    stock: 8,
+    rating: 4.9,
+    description: "Cerebro de adquisición de datos para balanzas camioneras, conexión Ethernet y sincronización directa con ERP.",
+    tags: ["Telemetría", "RS-232 / Modbus", "Garantía 1 año"],
+  },
+  {
+    id: "prod-2",
+    name: "Licencia Anual SaaS AltoPlanta Tributario",
+    category: "Software",
+    price: 1200.00,
+    originalPrice: 1500.00,
+    badge: "SaaS Propio",
+    stock: 99,
+    rating: 5.0,
+    description: "Acceso ilimitado a liquidación de impuesto predial, arbitrios municipales, estados de cuenta y proformas PDF.",
+    tags: ["Cloud 24/7", "Multicontribuyente", "Soporte Legal"],
+  },
+  {
+    id: "prod-3",
+    name: "Kit de Telemetría para Plantas de Concreto",
+    category: "Hardware",
+    price: 1450.00,
+    originalPrice: 1800.00,
+    badge: "Industrial",
+    stock: 5,
+    rating: 4.8,
+    description: "Sensores de pesaje de áridos, cemento y aditivos para plantas dosificadoras tipo MATEPCO.",
+    tags: ["Automatización", "Alta Precisión", "Caudalímetros"],
+  },
+  {
+    id: "prod-4",
+    name: "Módulo ERP Guías Remisión Electrónicas SUNAT",
+    category: "Software",
+    price: 450.00,
+    originalPrice: 550.00,
+    badge: "Normativa SUNAT",
+    stock: 50,
+    rating: 4.9,
+    description: "Emisión y validación instantánea de Guías de Remisión Electrónicas (GRE) para transporte de carga pesada.",
+    tags: ["API SUNAT", "Código QR", "Envío Automático"],
+  },
+  {
+    id: "prod-5",
+    name: "Impresora Térmica Robusta para Balanza",
+    category: "Hardware",
+    price: 320.00,
+    originalPrice: 380.00,
+    badge: "Stock Inmediato",
+    stock: 14,
+    rating: 4.7,
+    description: "Impresión continua de tickets de pesaje de camiones de alto tráfico, resistente al polvo y calor de canteras.",
+    tags: ["Tickets 80mm", "Corte Automático", "USB / Serial"],
+  },
+  {
+    id: "prod-6",
+    name: "Sensor de Nivel de Silos y Tolvas",
+    category: "Industrial",
+    price: 890.00,
+    originalPrice: 1050.00,
+    badge: "Canteras & Cemento",
+    stock: 6,
+    rating: 4.8,
+    description: "Radar de nivel continuo para silos de cemento y tolvas de agregados chancados en plantas ROCAFER.",
+    tags: ["4-20 mA", "Grado IP67", "Anti-abrasión"],
+  },
+  {
+    id: "prod-7",
+    name: "Pack de 100 Tags RFID Vehiculares",
+    category: "Accesorios",
+    price: 240.00,
+    originalPrice: 290.00,
+    badge: "Control de Flotas",
+    stock: 25,
+    rating: 4.9,
+    description: "Etiquetas RFID UHF de largo alcance para parabrisas de volquetes y mixers. Lectura en balanza sin descender.",
+    tags: ["UHF EPC Gen2", "Anticopia", "Adhesivo 3M"],
+  },
+  {
+    id: "prod-8",
+    name: "Consultoría de Arquitectura Cloud & Despliegue",
+    category: "Servicios",
+    price: 950.00,
+    originalPrice: 1200.00,
+    badge: "Especializado",
+    stock: 4,
+    rating: 5.0,
+    description: "Auditoría de rendimiento, migración a servidores seguros y configuración de copias de seguridad continuas.",
+    tags: ["DevOps", "Astro / Docker", "PostgreSQL"],
+  },
+  {
+    id: "prod-9",
+    name: "Cámara IP Anti-Polvo para Tolva de Pesaje",
+    category: "Hardware",
+    price: 480.00,
+    originalPrice: 580.00,
+    badge: "Seguridad Industrial",
+    stock: 10,
+    rating: 4.8,
+    description: "Cámara de alta resolución con carcasa metálica IP68 para supervisar carga de volquetes en balanza.",
+    tags: ["Visión Nocturna", "Carcasa IP68", "PoE"],
+  },
+  {
+    id: "prod-10",
+    name: "Licencia Anual ERP Multi-Empresa Consorcio",
+    category: "Software",
+    price: 2800.00,
+    originalPrice: 3500.00,
+    badge: "Consorcios",
+    stock: 20,
+    rating: 5.0,
+    description: "Gestión centralizada para consorcios empresariales: plantas de producción, balanzas y flota vehicular.",
+    tags: ["Multi-RUC", "Telemetría", "MATEPCO Style"],
+  },
+  {
+    id: "prod-11",
+    name: "Balanza de Plataforma Digital 1500 kg",
+    category: "Industrial",
+    price: 1650.00,
+    originalPrice: 1950.00,
+    badge: "Calibrada INACAL",
+    stock: 3,
+    rating: 4.9,
+    description: "Estructura de acero reforzado con celdas de carga selladas, interfaz de comunicación serial y batería de respaldo.",
+    tags: ["Uso Rudo", "Celdas Selladas", "Batería 72h"],
+  },
+  {
+    id: "prod-12",
+    name: "Gateway LoRaWAN Industrial para Canteras",
+    category: "Hardware",
+    price: 720.00,
+    originalPrice: 850.00,
+    badge: "Largo Alcance",
+    stock: 7,
+    rating: 4.7,
+    description: "Comunicación inalámbrica de hasta 10 km entre maquinaria en cantera y el servidor central de operaciones.",
+    tags: ["LoRaWAN 915MHz", "10 km Alcance", "Anti-interferencia"],
+  },
+  {
+    id: "prod-13",
+    name: "Lector de Código de Barras y QR Inalámbrico",
+    category: "Accesorios",
+    price: 190.00,
+    originalPrice: 240.00,
+    badge: "Despacho Rápido",
+    stock: 30,
+    rating: 4.8,
+    description: "Lectura rápida de guías de remisión impresas y códigos QR de facturación en casetas de despacho.",
+    tags: ["Wireless 2.4G", "Resistente a caídas", "Plug & Play"],
+  },
+  {
+    id: "prod-14",
+    name: "Módulo de Facturación Electrónica Masiva",
+    category: "Software",
+    price: 520.00,
+    originalPrice: 650.00,
+    badge: "Conexión OSE",
+    stock: 45,
+    rating: 4.9,
+    description: "Emisión de miles de boletas y facturas XML/PDF homologadas ante SUNAT con firma digital en segundos.",
+    tags: ["Firma Digital", "Envío Directo", "CDR SUNAT"],
+  },
+  {
+    id: "prod-15",
+    name: "Medidor de Flujo Digital para Agua y Aditivos",
+    category: "Industrial",
+    price: 630.00,
+    originalPrice: 750.00,
+    badge: "Concreto Preciso",
+    stock: 9,
+    rating: 4.8,
+    description: "Caudalímetro de pulso para control exacto de litros por metro cúbico en plantas dosificadoras de concreto.",
+    tags: ["Precisión ±0.5%", "Salida Pulsos", "Acero Inox"],
+  },
+  {
+    id: "prod-16",
+    name: "Kit de Mantenimiento Preventivo de Sensores",
+    category: "Accesorios",
+    price: 180.00,
+    originalPrice: 220.00,
+    badge: "Repuestos",
+    stock: 18,
+    rating: 4.7,
+    description: "Cables blindados, conectores herméticos y líquido limpiador dieléctrico para sensores industriales.",
+    tags: ["IP68 Seals", "Cable Apantallado", "Dieléctrico"],
+  },
+];
+---
+
+<Layout
+  title="Demo E-Commerce en Front-End con Paginación Funcional | Archity"
+  description="Demostración interactiva de tienda virtual moderna: catálogo reactivo con paginación funcional, filtros en vivo, drawer de carrito deslizable, cupones de descuento y pedidos por WhatsApp."
+>
+  <Header />
+
+  <main>
+    <!-- Banner de navegación de demos -->
+    <div class="border-b border-accent/20 bg-accent-soft/60 px-4 py-2 text-center text-xs font-medium text-accent">
+      <span class="font-bold">Demostración en Front-End:</span> Tienda interactiva con paginación funcional, carrito reactivo y pasarela simulada.
+      <a href="/demos/landing-empresa" class="ml-2 font-bold underline hover:text-accent-dark">
+        Ver Demo Landing Corporativa &rarr;
+      </a>
+    </div>
+
+    <!-- Header Promocional de la Tienda -->
+    <section class="border-b border-neutral-200/80 bg-neutral-900 py-12 text-white">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div class="max-w-2xl">
+            <div class="flex items-center gap-2">
+              <span class="inline-flex h-2 w-2 rounded-full bg-accent animate-pulse"></span>
+              <span class="text-xs font-bold uppercase tracking-wider text-accent">Tienda Virtual Demo con Paginación</span>
+            </div>
+            <h1 class="mt-2 font-display text-3xl sm:text-4xl font-bold tracking-tight text-white">
+              E-Commerce &amp; Catálogo Digital de Alta Conversión
+            </h1>
+            <p class="mt-2 text-sm text-neutral-300 leading-relaxed">
+              Prueba la experiencia de compra: navega entre páginas con paginación en vivo, añade productos, usa los cupones <span class="font-mono bg-neutral-800 px-2 py-0.5 rounded text-accent font-bold">ARCHITY10</span> (10% OFF) o <span class="font-mono bg-neutral-800 px-2 py-0.5 rounded text-accent font-bold">EMPRESA20</span> (20% OFF) y simula el checkout con Yape o WhatsApp.
+            </p>
+          </div>
+
+          <!-- Botón Flotante / Acceso al Carrito -->
+          <div class="flex items-center gap-3">
+            <button
+              type="button"
+              class="ecc-open-cart flex items-center gap-2.5 rounded-xl bg-accent px-5 py-3 text-xs font-bold text-white shadow-lg shadow-accent/25 hover:bg-accent-dark transition-all active:scale-95"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+              </svg>
+              <span>Ver Carrito</span>
+              <span class="ecc-cart-badge-count flex h-5 w-5 items-center justify-center rounded-full bg-white text-xs font-black text-neutral-900">
+                0
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Barra de Controles: Filtros de Categoría, Búsqueda y Orden -->
+    <section class="sticky top-16 z-40 border-b border-neutral-200 bg-white/90 backdrop-blur-md py-4">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          
+          <!-- Filtro por categoría -->
+          <div class="flex flex-wrap items-center gap-1.5" id="category-filter-bar">
+            <button
+              type="button"
+              data-filter="all"
+              class="filter-cat-btn rounded-lg bg-neutral-900 px-3 py-1.5 text-xs font-semibold text-white transition-colors"
+            >
+              Todos ({products.length})
+            </button>
+            <button
+              type="button"
+              data-filter="Hardware"
+              class="filter-cat-btn rounded-lg bg-neutral-100 px-3 py-1.5 text-xs font-semibold text-neutral-600 hover:bg-neutral-200 transition-colors"
+            >
+              Hardware IoT
+            </button>
+            <button
+              type="button"
+              data-filter="Software"
+              class="filter-cat-btn rounded-lg bg-neutral-100 px-3 py-1.5 text-xs font-semibold text-neutral-600 hover:bg-neutral-200 transition-colors"
+            >
+              Software SaaS
+            </button>
+            <button
+              type="button"
+              data-filter="Industrial"
+              class="filter-cat-btn rounded-lg bg-neutral-100 px-3 py-1.5 text-xs font-semibold text-neutral-600 hover:bg-neutral-200 transition-colors"
+            >
+              Industrial
+            </button>
+            <button
+              type="button"
+              data-filter="Accesorios"
+              class="filter-cat-btn rounded-lg bg-neutral-100 px-3 py-1.5 text-xs font-semibold text-neutral-600 hover:bg-neutral-200 transition-colors"
+            >
+              Accesorios
+            </button>
+          </div>
+
+          <!-- Búsqueda en vivo y ordenamiento -->
+          <div class="flex items-center gap-3">
+            <div class="relative flex-1 sm:w-64">
+              <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-neutral-400">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </span>
+              <input
+                type="text"
+                id="search-products-input"
+                placeholder="Buscar solución o equipo..."
+                class="w-full rounded-lg border border-neutral-300 bg-neutral-50/70 py-1.5 pl-9 pr-3 text-xs focus:border-accent focus:bg-white focus:outline-none focus:ring-1 focus:ring-accent"
+              />
+            </div>
+
+            <!-- Botón directo al carrito en la barra sticky -->
+            <button
+              type="button"
+              class="ecc-open-cart relative flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-neutral-300 bg-white text-neutral-700 hover:bg-neutral-50"
+              aria-label="Abrir carrito"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+              </svg>
+              <span class="ecc-cart-badge-count absolute -top-1.5 -right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-accent text-[10px] font-bold text-white">
+                0
+              </span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Grid de Productos E-Commerce con Paginación -->
+    <section class="py-12 sm:py-16 bg-white min-h-[60vh]">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        
+        <!-- Mensaje de conteo y paginación actual -->
+        <div class="flex items-center justify-between text-xs text-neutral-500 mb-6">
+          <span>Mostrando <strong id="product-count-display" class="text-neutral-900">8</strong> de <strong id="total-filtered-count">{products.length}</strong> productos</span>
+          <span class="font-medium text-accent">Página <span id="current-page-num">1</span> de <span id="total-pages-num">2</span></span>
+        </div>
+
+        <!-- Grid -->
+        <div id="products-grid-container" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {products.map((p) => (
+            <ECCProductCard
+              id={p.id}
+              name={p.name}
+              category={p.category}
+              price={p.price}
+              originalPrice={p.originalPrice}
+              badge={p.badge}
+              stock={p.stock}
+              rating={p.rating}
+              description={p.description}
+              tags={p.tags}
+            />
+          ))}
+        </div>
+
+        <!-- Barra de Paginación Funcional -->
+        <div id="pagination-controls-wrapper" class="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-neutral-200/80 pt-6">
+          <div class="text-xs text-neutral-500">
+            8 productos por página · Paginación 100% reactiva en front-end
+          </div>
+          <div class="flex items-center gap-2" id="pagination-buttons-container">
+            <button
+              type="button"
+              id="btn-prev-page"
+              disabled
+              class="inline-flex items-center gap-1 rounded-lg border border-neutral-300 bg-white px-3 py-1.5 text-xs font-semibold text-neutral-700 hover:bg-neutral-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+            >
+              &larr; Anterior
+            </button>
+            
+            <div id="page-numbers-list" class="flex items-center gap-1">
+              <!-- Botones de número de página generados dinámicamente -->
+            </div>
+
+            <button
+              type="button"
+              id="btn-next-page"
+              class="inline-flex items-center gap-1 rounded-lg border border-neutral-300 bg-white px-3 py-1.5 text-xs font-semibold text-neutral-700 hover:bg-neutral-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+            >
+              Siguiente &rarr;
+            </button>
+          </div>
+        </div>
+
+        <!-- Sin resultados -->
+        <div id="no-products-found" class="hidden flex-col items-center justify-center py-20 text-center">
+          <p class="font-display text-lg font-bold text-neutral-900">No se encontraron productos coincidentes</p>
+          <p class="mt-1 text-xs text-neutral-500">Prueba con otro término de búsqueda o selecciona otra categoría.</p>
+          <button
+            type="button"
+            id="reset-filters-btn"
+            class="mt-4 rounded-lg bg-accent px-4 py-2 text-xs font-semibold text-white hover:bg-accent-dark"
+          >
+            Restablecer Filtros
+          </button>
+        </div>
+
+        <!-- Banner de Construcción a Medida -->
+        <div class="mt-16 rounded-2xl border border-neutral-200 bg-neutral-50 p-8 sm:p-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div class="max-w-xl">
+            <span class="text-xs font-bold uppercase tracking-wider text-accent">¿Necesitas una tienda como esta?</span>
+            <h3 class="mt-1 font-display text-2xl font-bold text-neutral-900">
+              Desarrollamos tu E-Commerce a la Medida
+            </h3>
+            <p class="mt-2 text-xs text-neutral-600 leading-relaxed">
+              Catálogo ultrarrápido, carrito sin fricción, pagos peruanos automáticos (Yape, Plin, Culqi, Stripe), facturación electrónica SUNAT y panel de inventario simple.
+            </p>
+          </div>
+          <div class="flex items-center gap-3">
+            <a
+              href="/#contacto"
+              class="inline-flex items-center gap-2 rounded-lg bg-neutral-900 px-5 py-3 text-xs font-bold text-white hover:bg-neutral-800 transition-colors shadow-xs"
+            >
+              Cotizar Tienda Virtual &rarr;
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Componente ECC: Carrito Deslizable en Front-End -->
+    <ECCCartDrawer />
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  const searchInput = document.getElementById("search-products-input") as HTMLInputElement | null;
+  const categoryButtons = document.querySelectorAll(".filter-cat-btn");
+  const productCards = Array.from(document.querySelectorAll("#products-grid-container > div")) as HTMLElement[];
+  
+  const countDisplay = document.getElementById("product-count-display");
+  const totalFilteredEl = document.getElementById("total-filtered-count");
+  const currentPageNumEl = document.getElementById("current-page-num");
+  const totalPagesNumEl = document.getElementById("total-pages-num");
+  
+  const noProductsMsg = document.getElementById("no-products-found");
+  const resetBtn = document.getElementById("reset-filters-btn");
+
+  const btnPrev = document.getElementById("btn-prev-page") as HTMLButtonElement | null;
+  const btnNext = document.getElementById("btn-next-page") as HTMLButtonElement | null;
+  const pageNumbersList = document.getElementById("page-numbers-list");
+  const paginationWrapper = document.getElementById("pagination-controls-wrapper");
+
+  const ITEMS_PER_PAGE = 8;
+  let currentPage = 1;
+  let activeCategory = "all";
+  let activeSearch = "";
+
+  function getFilteredCards(): HTMLElement[] {
+    return productCards.filter((card) => {
+      const category = card.getAttribute("data-product-category") || "";
+      const name = card.getAttribute("data-product-name") || "";
+
+      const matchesCat = activeCategory === "all" || category.toLowerCase() === activeCategory.toLowerCase();
+      const matchesSearch = !activeSearch || name.includes(activeSearch.toLowerCase());
+
+      return matchesCat && matchesSearch;
+    });
+  }
+
+  function renderPagination() {
+    const filtered = getFilteredCards();
+    const totalItems = filtered.length;
+    const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE) || 1;
+
+    if (currentPage > totalPages) currentPage = totalPages;
+    if (currentPage < 1) currentPage = 1;
+
+    // Ocultar todos los cards primero
+    productCards.forEach((card) => card.classList.add("hidden"));
+
+    // Mostrar solo los de la página actual
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const endIndex = startIndex + ITEMS_PER_PAGE;
+    const pageItems = filtered.slice(startIndex, endIndex);
+
+    pageItems.forEach((card) => card.classList.remove("hidden"));
+
+    // Actualizar contadores
+    if (countDisplay) countDisplay.textContent = pageItems.length.toString();
+    if (totalFilteredEl) totalFilteredEl.textContent = totalItems.toString();
+    if (currentPageNumEl) currentPageNumEl.textContent = currentPage.toString();
+    if (totalPagesNumEl) totalPagesNumEl.textContent = totalPages.toString();
+
+    // Mensaje vacío
+    if (totalItems === 0) {
+      noProductsMsg?.classList.remove("hidden");
+      noProductsMsg?.classList.add("flex");
+      paginationWrapper?.classList.add("hidden");
+    } else {
+      noProductsMsg?.classList.add("hidden");
+      noProductsMsg?.classList.remove("flex");
+      paginationWrapper?.classList.remove("hidden");
+    }
+
+    // Botones Prev / Next
+    if (btnPrev) btnPrev.disabled = currentPage <= 1;
+    if (btnNext) btnNext.disabled = currentPage >= totalPages;
+
+    // Números de página
+    if (pageNumbersList) {
+      pageNumbersList.innerHTML = "";
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.textContent = i.toString();
+        btn.className = i === currentPage
+          ? "h-8 w-8 rounded-lg bg-neutral-900 text-xs font-bold text-white shadow-xs"
+          : "h-8 w-8 rounded-lg border border-neutral-300 bg-white text-xs font-semibold text-neutral-700 hover:bg-neutral-100 transition-colors";
+        
+        btn.addEventListener("click", () => {
+          currentPage = i;
+          renderPagination();
+          window.scrollTo({ top: 350, behavior: "smooth" });
+        });
+        pageNumbersList.appendChild(btn);
+      }
+    }
+  }
+
+  categoryButtons.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const target = (e.currentTarget as HTMLElement).getAttribute("data-filter") || "all";
+      activeCategory = target;
+      currentPage = 1;
+
+      categoryButtons.forEach((b) => {
+        b.className = "filter-cat-btn rounded-lg bg-neutral-100 px-3 py-1.5 text-xs font-semibold text-neutral-600 hover:bg-neutral-200 transition-colors";
+      });
+      (e.currentTarget as HTMLElement).className = "filter-cat-btn rounded-lg bg-neutral-900 px-3 py-1.5 text-xs font-semibold text-white transition-colors";
+
+      renderPagination();
+    });
+  });
+
+  searchInput?.addEventListener("input", () => {
+    activeSearch = searchInput.value.trim();
+    currentPage = 1;
+    renderPagination();
+  });
+
+  btnPrev?.addEventListener("click", () => {
+    if (currentPage > 1) {
+      currentPage--;
+      renderPagination();
+      window.scrollTo({ top: 350, behavior: "smooth" });
+    }
+  });
+
+  btnNext?.addEventListener("click", () => {
+    const totalPages = Math.ceil(getFilteredCards().length / ITEMS_PER_PAGE);
+    if (currentPage < totalPages) {
+      currentPage++;
+      renderPagination();
+      window.scrollTo({ top: 350, behavior: "smooth" });
+    }
+  });
+
+  resetBtn?.addEventListener("click", () => {
+    if (searchInput) searchInput.value = "";
+    activeSearch = "";
+    activeCategory = "all";
+    currentPage = 1;
+    const allBtn = document.querySelector('[data-filter="all"]') as HTMLElement | null;
+    allBtn?.click();
+  });
+
+  // Inicializar
+  renderPagination();
+</script>

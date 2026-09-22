@@ -2,16 +2,17 @@
 import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
+import ECCTaxSimulator from "../../components/ecc/ECCTaxSimulator.astro";
 ---
 
 <Layout
-  title="AltoPlanta — SaaS PropTech Inmobiliario en Perú | Desarrollado por Archity"
-  description="Plataforma digital inmobiliaria en Perú: búsqueda de propiedades, tours virtuales 360°, proformas en PDF y CRM comercial para agentes."
+  title="AltoPlanta — SaaS de Tributo Inmobiliario & Fiscalización Catastral en Perú | Archity"
+  description="Plataforma SaaS líder para la determinación, liquidación y gestión del tributo inmobiliario: impuesto predial, arbitrios municipales, alcabala, emisión de cuponeras PDF y fiscalización catastral."
 >
   <Header />
 
   <main>
-    <!-- Hero del Producto -->
+    <!-- Hero del Producto SaaS Tributario -->
     <section class="border-b border-neutral-200/70 bg-gradient-to-b from-neutral-50/70 via-white to-white py-16 sm:py-24">
       <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         
@@ -26,13 +27,13 @@ import Footer from "../../components/Footer.astro";
 
         <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
           <div>
-            <div class="flex items-center gap-2">
+            <div class="flex flex-wrap items-center gap-2">
               <span class="inline-flex items-center gap-1.5 rounded-full bg-accent-soft border border-accent/20 px-3 py-1 text-xs font-semibold text-accent">
                 <span class="h-2 w-2 rounded-full bg-accent animate-pulse" />
-                En producción real
+                SaaS Operativo en Vivo
               </span>
               <span class="rounded-full bg-neutral-100 border border-neutral-200 px-3 py-1 text-xs font-semibold text-neutral-800">
-                SaaS PropTech Archity
+                Tributo Inmobiliario &amp; Catastro
               </span>
             </div>
 
@@ -40,11 +41,11 @@ import Footer from "../../components/Footer.astro";
               AltoPlanta
             </h1>
             <p class="text-lg font-medium text-accent mt-1">
-              Plataforma Digital Inmobiliaria en Perú
+              SaaS para la Gestión y Fiscalización del Tributo Inmobiliario en Perú
             </p>
 
             <p class="mt-4 text-base leading-relaxed text-neutral-600 sm:text-lg">
-              Diseñada y construida por <strong>Archity</strong>, <strong>AltoPlanta</strong> es la solución integral para buscar, comprar, vender y alquilar viviendas, terrenos y lotes a nivel nacional. Integra tecnología de punta para conectar propietarios, agentes y compradores con máxima transparencia.
+              Diseñada y construida por <strong>Archity</strong>, <strong>AltoPlanta</strong> (<a href="https://altoplanta.com/" target="_blank" rel="noopener" class="text-accent underline font-semibold">altoplanta.com</a>) es la plataforma tecnológica especializada en automatizar la determinación, liquidación, emisión de cuponeras y fiscalización del tributo inmobiliario: <strong>Impuesto Predial (D. Leg. 776)</strong>, <strong>Arbitrios Municipales</strong>, <strong>Impuesto de Alcabala</strong> y cartografía catastral para municipalidades, consorcios y gestores inmobiliarios.
             </p>
 
             <!-- Acciones -->
@@ -62,31 +63,31 @@ import Footer from "../../components/Footer.astro";
               </a>
 
               <a
-                href="#caracteristicas"
+                href="#simulador-tributario"
                 class="inline-flex items-center justify-center rounded-lg border border-neutral-300 bg-white px-5 py-3 text-sm font-semibold text-neutral-700 transition-colors hover:bg-neutral-50"
               >
-                Ver características
+                Probar Simulador de Impuestos
               </a>
             </div>
 
-            <!-- Stats breves -->
+            <!-- Stats reales del sistema tributario -->
             <div class="mt-10 grid grid-cols-3 gap-4 border-t border-neutral-200/80 pt-6 text-left">
               <div>
-                <span class="block font-display text-2xl font-bold text-neutral-900">Perú</span>
-                <span class="text-xs text-neutral-500">Cobertura Nacional</span>
+                <span class="block font-display text-2xl font-bold text-neutral-900">D.L. 776</span>
+                <span class="text-xs text-neutral-500">Normativa Tributaria Perú</span>
               </div>
               <div>
-                <span class="block font-display text-2xl font-bold text-accent">360°</span>
-                <span class="text-xs text-neutral-500">Tours Virtuales</span>
+                <span class="block font-display text-2xl font-bold text-accent">100%</span>
+                <span class="text-xs text-neutral-500">Liquidación Automatizada</span>
               </div>
               <div>
-                <span class="block font-display text-2xl font-bold text-neutral-900">CRM</span>
-                <span class="text-xs text-neutral-500">Gestión de Leads</span>
+                <span class="block font-display text-2xl font-bold text-neutral-900">PDF</span>
+                <span class="text-xs text-neutral-500">Cuponeras &amp; Cartas Masivas</span>
               </div>
             </div>
           </div>
 
-          <!-- Mockup visual representativo de AltoPlanta -->
+          <!-- Mockup visual representativo de AltoPlanta Tributario -->
           <div class="relative">
             <div class="overflow-hidden rounded-2xl border border-neutral-200/90 bg-white shadow-xl shadow-neutral-900/5">
               <!-- Barra superior simulada -->
@@ -105,60 +106,60 @@ import Footer from "../../components/Footer.astro";
                 <span class="text-[10px] font-semibold text-accent bg-accent-soft px-2 py-0.5 rounded border border-accent/20">En vivo</span>
               </div>
 
-              <!-- Interfaz simulada -->
+              <!-- Interfaz simulada del SaaS -->
               <div class="p-6 space-y-6">
-                <!-- Buscador de propiedades -->
-                <div class="rounded-xl border border-neutral-200 bg-white p-4 shadow-xs">
-                  <div class="flex items-center justify-between mb-3 text-xs">
-                    <span class="font-bold text-neutral-800">Encuentra tu próximo espacio</span>
-                    <span class="text-accent font-medium">Venta · Alquiler</span>
+                <!-- Tarjeta de Determinación Tributaria -->
+                <div class="rounded-xl border border-neutral-200 bg-neutral-50/70 p-4">
+                  <div class="flex items-center justify-between mb-2 text-xs">
+                    <span class="font-bold text-neutral-900">Módulo de Fiscalización Predial</span>
+                    <span class="text-accent font-semibold">UIT 2026: S/ 5,350</span>
                   </div>
                   <div class="grid grid-cols-3 gap-2 text-xs">
-                    <div class="rounded-lg bg-neutral-50 border border-neutral-200/70 p-2 text-neutral-700">
-                      <span class="block text-[10px] text-neutral-400">Ubicación</span>
-                      <strong class="font-semibold">Lima / Tarapoto</strong>
+                    <div class="rounded-lg bg-white border border-neutral-200 p-2 text-neutral-700">
+                      <span class="block text-[10px] text-neutral-400">Predios Fiscalizados</span>
+                      <strong class="font-bold text-neutral-900">4,280</strong>
                     </div>
-                    <div class="rounded-lg bg-neutral-50 border border-neutral-200/70 p-2 text-neutral-700">
-                      <span class="block text-[10px] text-neutral-400">Tipo</span>
-                      <strong class="font-semibold">Terrenos / Lotes</strong>
+                    <div class="rounded-lg bg-white border border-neutral-200 p-2 text-neutral-700">
+                      <span class="block text-[10px] text-neutral-400">Autovalúo Total</span>
+                      <strong class="font-bold text-accent">S/ 482.4M</strong>
                     </div>
-                    <div class="rounded-lg bg-accent text-white p-2 text-center font-semibold flex items-center justify-center">
-                      Buscar
+                    <div class="rounded-lg bg-white border border-neutral-200 p-2 text-neutral-700">
+                      <span class="block text-[10px] text-neutral-400">Recaudación Estimada</span>
+                      <strong class="font-bold text-emerald-600">S/ 3.84M</strong>
                     </div>
                   </div>
                 </div>
 
-                <!-- Preview de tarjeta con Tour 360 -->
-                <div class="rounded-xl border border-neutral-200 overflow-hidden bg-neutral-50">
-                  <div class="relative h-32 bg-neutral-900 flex items-center justify-center text-white">
-                    <div class="text-center">
-                      <div class="inline-flex items-center gap-1.5 rounded-full bg-neutral-800/80 px-3 py-1 text-xs backdrop-blur font-medium border border-neutral-700">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                        </svg>
-                        Tour Virtual 360° Interactivo
-                      </div>
-                      <p class="text-[11px] text-neutral-400 mt-1">Explora cada rincón en alta resolución</p>
+                <!-- Preview de Cuponera Digital -->
+                <div class="rounded-xl border border-neutral-200 overflow-hidden bg-white">
+                  <div class="bg-neutral-900 px-4 py-2.5 text-white flex items-center justify-between text-xs">
+                    <div class="flex items-center gap-2">
+                      <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+                      <span class="font-mono font-bold">HOJA RESUMEN (HR) &amp; PREDIO URBANO (PU)</span>
                     </div>
+                    <span class="text-[10px] text-neutral-400">Cálculo Escalonado Ley 776</span>
                   </div>
-                  <div class="p-4 bg-white flex items-center justify-between text-xs">
+                  <div class="p-4 flex items-center justify-between text-xs">
                     <div>
-                      <strong class="block text-neutral-900 font-semibold text-sm">Residencial Valle Verde</strong>
-                      <span class="text-neutral-500">Lotes de 200 m² con proforma PDF</span>
+                      <strong class="block text-neutral-900 font-semibold text-sm">Predio Urbano: Av. San Martín 450</strong>
+                      <span class="text-neutral-500">Uso: Comercial | Área de Terreno: 480.00 m²</span>
                     </div>
-                    <span class="rounded-md bg-accent-soft text-accent px-2.5 py-1 font-bold border border-accent/20">
-                      Descargar PDF
-                    </span>
+                    <a
+                      href="#simulador-tributario"
+                      class="rounded-md bg-accent-soft text-accent px-2.5 py-1.5 font-bold border border-accent/20 hover:bg-accent hover:text-white transition-colors"
+                    >
+                      Calcular S/
+                    </a>
                   </div>
                 </div>
 
-                <!-- Mini lead card -->
-                <div class="flex items-center justify-between rounded-lg border border-neutral-100 bg-neutral-50/80 p-3 text-xs">
+                <!-- Mini estatus catastral -->
+                <div class="flex items-center justify-between rounded-lg border border-neutral-200 bg-neutral-50/80 p-3 text-xs">
                   <div class="flex items-center gap-2.5">
                     <span class="h-2 w-2 rounded-full bg-accent"></span>
-                    <span class="font-medium text-neutral-700">CRM: 12 nuevos leads hoy</span>
+                    <span class="font-medium text-neutral-700">Detección de Omisos Catastrales: 184 predios regularizados</span>
                   </div>
-                  <span class="text-neutral-400 text-[11px]">Sincronizado vía WhatsApp &amp; Web</span>
+                  <span class="text-neutral-400 text-[11px]">Cruce con SUNARP &amp; Satélite</span>
                 </div>
               </div>
             </div>
@@ -168,98 +169,115 @@ import Footer from "../../components/Footer.astro";
       </div>
     </section>
 
-    <!-- Funcionalidades Principales -->
-    <section id="caracteristicas" class="py-20 bg-white">
+    <!-- Componente ECC: Simulador Interactivo de Impuesto Predial y Arbitrios -->
+    <section id="simulador-tributario" class="scroll-mt-20 py-16 sm:py-24 bg-neutral-50/50 border-b border-neutral-200/80">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mb-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Demostración Interactiva en Vivo</p>
+          <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
+            Prueba el Algoritmo Tributario de AltoPlanta
+          </h2>
+          <p class="mt-3 text-neutral-600 text-sm">
+            Ingresa un valor de autovalúo y selecciona el destino del inmueble. El simulador computa tramo por tramo la escala progresiva acumulativa del Impuesto Predial peruano y estima los arbitrios municipales.
+          </p>
+        </div>
+
+        <ECCTaxSimulator />
+      </div>
+    </section>
+
+    <!-- Funcionalidades Principales del SaaS -->
+    <section id="caracteristicas" class="py-20 bg-white border-b border-neutral-200/80">
       <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         
         <div class="max-w-2xl text-center mx-auto">
-          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Pilas Tecnológicas</p>
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Arquitectura &amp; Funcionalidades</p>
           <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
-            Funcionalidades Principales de AltoPlanta
+            Módulos Clave del SaaS AltoPlanta
           </h2>
           <p class="mt-3 text-neutral-600">
-            Diseñamos un ecosistema completo para digitalizar el ciclo inmobiliario en el mercado peruano.
+            Diseñado para cumplir rigurosamente con la Ley de Tributación Municipal y modernizar la gestión catastral en el Perú.
           </p>
         </div>
 
         <div class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          <!-- 1. Búsqueda y Publicación -->
+          <!-- 1. Motor de Impuesto Predial -->
           <div class="rounded-2xl border border-neutral-200/80 p-8 bg-neutral-50/50 hover:bg-white hover:shadow-lg transition duration-300">
             <div class="h-10 w-10 rounded-xl bg-accent text-white flex items-center justify-center font-bold mb-5 shadow-xs">
               01
             </div>
-            <h3 class="font-display text-xl font-bold text-neutral-900">Búsqueda &amp; Publicación Nacional</h3>
+            <h3 class="font-display text-xl font-bold text-neutral-900">Motor de Impuesto Predial (D.L. 776)</h3>
             <p class="mt-3 text-sm leading-relaxed text-neutral-600">
-              Permite a propietarios, agentes y empresas inmobiliarias ofrecer inmuebles organizados exhaustivamente por departamento, provincia, distrito, precio y tipo de operación (venta, alquiler o traspaso).
+              Aplica automáticamente la escala progresiva acumulativa legal: hasta 15 UIT (0.2%), de 15 a 60 UIT (0.6%) y más de 60 UIT (1.0%), con actualización anual de la UIT nacional.
             </p>
             <ul class="mt-4 space-y-1.5 text-xs text-neutral-500">
-              <li>• Filtros dinámicos por metraje y comodidades</li>
-              <li>• Optimización para viviendas, terrenos y lotes</li>
-              <li>• Geolocalización exacta en mapa satelital</li>
+              <li>• Cálculo de autovalúo arancelario de terreno y construcción</li>
+              <li>• Regla de mínimo legal de 0.6% de 1 UIT</li>
+              <li>• Desglose en 4 cuotas trimestrales de vencimiento</li>
             </ul>
           </div>
 
-          <!-- 2. Tours Virtuales 360° -->
+          <!-- 2. Arbitrios Municipales -->
           <div class="rounded-2xl border border-neutral-200/80 p-8 bg-neutral-50/50 hover:bg-white hover:shadow-lg transition duration-300">
             <div class="h-10 w-10 rounded-xl bg-neutral-900 text-white flex items-center justify-center font-bold mb-5 shadow-xs">
               02
             </div>
-            <h3 class="font-display text-xl font-bold text-neutral-900">Tours Virtuales 360°</h3>
+            <h3 class="font-display text-xl font-bold text-neutral-900">Prorrateo &amp; Liquidación de Arbitrios</h3>
             <p class="mt-3 text-sm leading-relaxed text-neutral-600">
-              Visualización inmersiva en 360 grados directamente desde el navegador, permitiendo a los interesados recorrer la propiedad a distancia antes de coordinar una visita presencial.
+              Parametrización por ordenanzas distritales de los servicios esenciales: Barrido de Calles, Recolección de Residuos Sólidos, Parques y Jardines Públicos y Serenazgo Municipal.
             </p>
             <ul class="mt-4 space-y-1.5 text-xs text-neutral-500">
-              <li>• Carga ultra rápida sin descargas pesadas</li>
-              <li>• Navegación fluida por habitaciones y exteriores</li>
-              <li>• Compatible con móviles, tablets y PCs</li>
+              <li>• Diferenciación por uso (casa habitación, comercio, industria)</li>
+              <li>• Tasas por frontis lineal y metraje techado</li>
+              <li>• Incentivos por pronto pago y beneficios al adulto mayor</li>
             </ul>
           </div>
 
-          <!-- 3. Proformas en PDF -->
+          <!-- 3. Impuesto de Alcabala -->
           <div class="rounded-2xl border border-neutral-200/80 p-8 bg-neutral-50/50 hover:bg-white hover:shadow-lg transition duration-300">
             <div class="h-10 w-10 rounded-xl bg-accent text-white flex items-center justify-center font-bold mb-5 shadow-xs">
               03
             </div>
-            <h3 class="font-display text-xl font-bold text-neutral-900">Proformas &amp; Cotizaciones PDF</h3>
+            <h3 class="font-display text-xl font-bold text-neutral-900">Impuesto de Alcabala &amp; Tasaciones</h3>
             <p class="mt-3 text-sm leading-relaxed text-neutral-600">
-              Generador automatizado de fichas técnicas y proformas comerciales en PDF. Un clic basta para compartir información profesional con clientes por WhatsApp o correo.
+              Cálculo instantáneo para transferencias notariales de propiedad. Aplica la inafectación legal de las primeras 10 UIT y liquida la tasa del 3% sobre el mayor valor entre venta y autovalúo.
             </p>
             <ul class="mt-4 space-y-1.5 text-xs text-neutral-500">
-              <li>• Fichas técnicas elegantes con fotos HD</li>
-              <li>• Membrete y datos de contacto del agente</li>
-              <li>• Cálculo automático de cuotas y financiamiento</li>
+              <li>• Validación de constancia de no adeudo previa</li>
+              <li>• Generación de proformas para minutas notariales</li>
+              <li>• Trazabilidad histórica de compraventas de predios</li>
             </ul>
           </div>
 
-          <!-- 4. CRM Inmobiliario -->
+          <!-- 4. Cartografía y Catastro -->
           <div class="rounded-2xl border border-neutral-200/80 p-8 bg-neutral-50/50 hover:bg-white hover:shadow-lg transition duration-300">
             <div class="h-10 w-10 rounded-xl bg-neutral-900 text-white flex items-center justify-center font-bold mb-5 shadow-xs">
               04
             </div>
-            <h3 class="font-display text-xl font-bold text-neutral-900">CRM &amp; Gestión Comercial de Leads</h3>
+            <h3 class="font-display text-xl font-bold text-neutral-900">Catastro Urbano &amp; Fiscalización</h3>
             <p class="mt-3 text-sm leading-relaxed text-neutral-600">
-              Panel comercial centralizado para profesionales del rubro inmobiliario: registro de prospectos, estados de negociación (embudo de ventas) y seguimiento de llamadas.
+              Mapeo georreferenciado de predios, identificación de ampliaciones no declaradas mediante imágenes satelitales y regularización catastral de contribuyentes omisos y subvaluadores.
             </p>
             <ul class="mt-4 space-y-1.5 text-xs text-neutral-500">
-              <li>• Pipeline visual de oportunidades comerciales</li>
-              <li>• Asignación de prospectos a miembros de equipo</li>
-              <li>• Historial completo de interacciones</li>
+              <li>• Georreferenciación de manzanas y lotizaciones</li>
+              <li>• Detección de cambios de uso (residencial a comercial)</li>
+              <li>• Sincronización con fichas catastrales municipales</li>
             </ul>
           </div>
 
-          <!-- 5. Multiusuario y Roles -->
+          <!-- 5. Emisión Masiva de Cuponeras PDF -->
           <div class="rounded-2xl border border-neutral-200/80 p-8 bg-neutral-50/50 hover:bg-white hover:shadow-lg transition duration-300">
             <div class="h-10 w-10 rounded-xl bg-accent text-white flex items-center justify-center font-bold mb-5 shadow-xs">
               05
             </div>
-            <h3 class="font-display text-xl font-bold text-neutral-900">Perfiles para Agentes &amp; Empresas</h3>
+            <h3 class="font-display text-xl font-bold text-neutral-900">Cuponeras Digitales &amp; Estados de Cuenta</h3>
             <p class="mt-3 text-sm leading-relaxed text-neutral-600">
-              Cuentas especializadas para agentes inmobiliarios independientes y constructoras que administran múltiples proyectos o lotizaciones a gran escala.
+              Generación de miles de cuponeras mecanizadas en PDF en cuestión de segundos: Hoja Resumen (HR), Predio Urbano (PU) y recibos de pago con códigos QR y barras para recaudación bancaria.
             </p>
             <ul class="mt-4 space-y-1.5 text-xs text-neutral-500">
-              <li>• Perfil verificado de agente y reputación</li>
-              <li>• Gestión multisede y catálogos corporativos</li>
-              <li>• Métricas de vistas e interés por propiedad</li>
+              <li>• Formato oficial estándar homologado por MEF</li>
+              <li>• Código QR para pago exprés desde celular</li>
+              <li>• Envío masivo por correo electrónico y WhatsApp</li>
             </ul>
           </div>
 
@@ -268,14 +286,14 @@ import Footer from "../../components/Footer.astro";
             <div class="h-10 w-10 rounded-xl bg-neutral-900 text-white flex items-center justify-center font-bold mb-5 shadow-xs">
               06
             </div>
-            <h3 class="font-display text-xl font-bold text-neutral-900">Ingeniería &amp; Disponibilidad 24/7</h3>
+            <h3 class="font-display text-xl font-bold text-neutral-900">Infraestructura Segura &amp; PostgreSQL</h3>
             <p class="mt-3 text-sm leading-relaxed text-neutral-600">
-              Desarrollado sobre infraestructura cloud de alta velocidad, optimizado para indexar miles de inmuebles en Google y soportar picos masivos de tráfico.
+              Arquitectura multi-inquilino en la nube desarrollada con Astro y base de datos relacional PostgreSQL con soporte GIS (PostGIS) para geometrías de predios y consultas de alta concurrencia.
             </p>
             <ul class="mt-4 space-y-1.5 text-xs text-neutral-500">
-              <li>• Renderizado estático e interactivo híbrido</li>
-              <li>• Base de datos relacional PostgreSQL con réplicas</li>
-              <li>• Seguridad encriptada SSL y protección DDoS</li>
+              <li>• Soporte GIS para geometrías de parcelas</li>
+              <li>• Encriptación SSL y copias de seguridad continuas</li>
+              <li>• API REST para integración con tesorería y bancos</li>
             </ul>
           </div>
         </div>
@@ -286,11 +304,12 @@ import Footer from "../../components/Footer.astro";
     <!-- Banner CTA final -->
     <section class="border-t border-neutral-200/70 bg-neutral-900 text-white py-16">
       <div class="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-        <h2 class="font-display text-3xl font-bold tracking-tight sm:text-4xl">
-          Explora AltoPlanta en operación hoy
+        <span class="text-xs font-bold uppercase tracking-widest text-accent">Plataforma Operativa en Línea</span>
+        <h2 class="mt-2 font-display text-3xl font-bold tracking-tight sm:text-4xl">
+          Conoce AltoPlanta en Producción Real
         </h2>
         <p class="mt-4 text-neutral-400 max-w-xl mx-auto text-sm sm:text-base">
-          Visita la plataforma oficial, explora las propiedades disponibles en todo el Perú o contáctanos en Archity si deseas una solución tecnológica similar para tu empresa.
+          Accede directamente al dominio oficial de AltoPlanta o contáctanos en Archity si necesitas implementar un motor tributario, catastral o SaaS a medida.
         </p>
         <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
           <a
@@ -299,16 +318,22 @@ import Footer from "../../components/Footer.astro";
             rel="noopener"
             class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white hover:bg-accent-dark transition-colors shadow-xs"
           >
-            Ir a altoplanta.com
+            Visitar altoplanta.com
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
             </svg>
           </a>
           <a
+            href="/demos/landing-empresa"
+            class="w-full sm:w-auto inline-flex items-center justify-center rounded-lg border border-neutral-700 bg-neutral-800 px-6 py-3 text-sm font-semibold text-white hover:bg-neutral-700 transition-colors"
+          >
+            Ver Demo de Landing Corporativa B2B
+          </a>
+          <a
             href="/#contacto"
             class="w-full sm:w-auto inline-flex items-center justify-center rounded-lg border border-neutral-700 bg-neutral-800 px-6 py-3 text-sm font-semibold text-white hover:bg-neutral-700 transition-colors"
           >
-            Construir mi plataforma con Archity
+            Cotizar Sistema con Archity
           </a>
         </div>
       </div>

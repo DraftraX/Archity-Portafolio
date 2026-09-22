@@ -1,5 +1,14 @@
 ---
-// Barra de navegación minimalista, sticky con blur
+// Barra de navegación minimalista, sticky con blur y enlaces a productos y las 5 demos completas
+const demos = [
+  { label: "Empresas B2B (ROI)", href: "/demos/landing-empresa", icon: "💼" },
+  { label: "Tienda E-Commerce", href: "/demos/ecommerce", icon: "🛍️" },
+  { label: "Restaurante & Brasas", href: "/demos/restaurante", icon: "🍽️" },
+  { label: "Botica & Farmacia", href: "/demos/botica", icon: "💊" },
+  { label: "Veterinaria & Pets", href: "/demos/veterinaria", icon: "🐾" },
+  { label: "Portal Inmobiliario", href: "/demos/inmobiliaria", icon: "🏛️" },
+];
+
 const links = [
   { label: "Productos", href: "/#productos" },
   { label: "Servicios", href: "/#servicios" },
@@ -26,16 +35,63 @@ const cta = { label: "Cotizar proyecto", href: "/#contacto" };
 
     <!-- Nav escritorio -->
     <nav class="hidden items-center gap-1 md:flex" aria-label="Navegación principal">
-      {
-        links.map((l) => (
-          <a
-            href={l.href}
-            class="rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900"
-          >
-            {l.label}
-          </a>
-        ))
-      }
+      <a
+        href="/#productos"
+        class="rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900"
+      >
+        Productos
+      </a>
+
+      <!-- Dropdown Demos en Vivo -->
+      <div class="relative group">
+        <button
+          type="button"
+          class="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900"
+        >
+          <span>Demos en Vivo</span>
+          <span class="rounded bg-accent-soft px-1.5 py-0.2 text-[10px] font-bold text-accent border border-accent/20">6</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-neutral-400 group-hover:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div class="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 absolute top-full left-0 mt-1 w-64 rounded-xl border border-neutral-200 bg-white p-2 shadow-xl shadow-neutral-900/10">
+          <div class="px-2 py-1.5 text-[10px] font-bold uppercase tracking-wider text-neutral-400">
+            Laboratorio de Demos Front-End
+          </div>
+          <div class="space-y-0.5">
+            {demos.map((d) => (
+              <a
+                href={d.href}
+                class="flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-xs font-semibold text-neutral-700 hover:bg-neutral-100 hover:text-accent transition-colors"
+              >
+                <span>{d.icon}</span>
+                <span>{d.label}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <a
+        href="/#servicios"
+        class="rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900"
+      >
+        Servicios
+      </a>
+      <a
+        href="/#casos"
+        class="rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900"
+      >
+        Casos de éxito
+      </a>
+      <a
+        href="/#contacto"
+        class="rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900"
+      >
+        Contacto
+      </a>
+
       <a
         href={cta.href}
         class="ml-3 rounded-lg bg-neutral-900 px-4 py-2 text-sm font-semibold text-white shadow-xs transition-colors hover:bg-neutral-800"
@@ -63,16 +119,37 @@ const cta = { label: "Cotizar proyecto", href: "/#contacto" };
   </div>
 
   <!-- Menú móvil -->
-  <div id="mobile-menu" class="hidden border-t border-neutral-200/70 bg-white md:hidden">
-    <nav class="mx-auto max-w-6xl space-y-1 px-4 py-3" aria-label="Navegación móvil">
-      {
-        links.map((l) => (
-          <a href={l.href} class="block rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-700 hover:bg-neutral-100">
-            {l.label}
+  <div id="mobile-menu" class="hidden border-t border-neutral-200/70 bg-white md:hidden max-h-[85vh] overflow-y-auto">
+    <nav class="mx-auto max-w-6xl space-y-1 px-4 py-3 text-xs" aria-label="Navegación móvil">
+      <a href="/#productos" class="block rounded-lg px-3 py-2 text-sm font-semibold text-neutral-800 hover:bg-neutral-100">
+        🏛️ Productos &amp; SaaS Insignia
+      </a>
+
+      <div class="pt-2 pb-1 px-3 text-[10px] font-bold uppercase tracking-wider text-neutral-400">
+        Demos Interactivas en Front-End
+      </div>
+      <div class="grid grid-cols-2 gap-1 px-1">
+        {demos.map((d) => (
+          <a href={d.href} class="flex items-center gap-1.5 rounded-lg p-2 text-xs font-medium text-neutral-700 hover:bg-neutral-100 hover:text-accent">
+            <span>{d.icon}</span>
+            <span class="truncate">{d.label}</span>
           </a>
-        ))
-      }
-      <a href={cta.href} class="mt-2 block rounded-lg bg-neutral-900 px-3 py-2.5 text-center text-sm font-semibold text-white hover:bg-neutral-800 transition-colors">
+        ))}
+      </div>
+
+      <div class="pt-2 border-t border-neutral-100 space-y-1">
+        <a href="/#servicios" class="block rounded-lg px-3 py-2 font-medium text-neutral-700 hover:bg-neutral-100">
+          Servicios de Software
+        </a>
+        <a href="/#casos" class="block rounded-lg px-3 py-2 font-medium text-neutral-700 hover:bg-neutral-100">
+          Casos de Éxito
+        </a>
+        <a href="/#contacto" class="block rounded-lg px-3 py-2 font-medium text-neutral-700 hover:bg-neutral-100">
+          Contacto &amp; Cotización
+        </a>
+      </div>
+
+      <a href={cta.href} class="mt-3 block rounded-lg bg-neutral-900 px-3 py-2.5 text-center text-sm font-semibold text-white hover:bg-neutral-800 transition-colors">
         {cta.label}
       </a>
     </nav>

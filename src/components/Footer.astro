@@ -2,10 +2,14 @@
 const year = new Date().getFullYear();
 
 const navLinks = [
-  { label: "AltoPlanta (SaaS PropTech)", href: "/productos/altoplanta" },
-  { label: "ERP Grupo Pineda (Industrial)", href: "/productos/grupo-pineda" },
-  { label: "Tiendas Virtuales & E-commerce", href: "/#servicios" },
-  { label: "Landing Pages para Empresas", href: "/#servicios" },
+  { label: "AltoPlanta (SaaS Tributo Inmobiliario)", href: "/productos/altoplanta" },
+  { label: "ERP Grupo Pineda (Consorcio)", href: "/productos/grupo-pineda" },
+  { label: "Demo: Restaurante & Brasas", href: "/demos/restaurante" },
+  { label: "Demo: E-Commerce Paginado", href: "/demos/ecommerce" },
+  { label: "Demo: Botica & Farmacia", href: "/demos/botica" },
+  { label: "Demo: Veterinaria & Pet Care", href: "/demos/veterinaria" },
+  { label: "Demo: Portal Inmobiliario", href: "/demos/inmobiliaria" },
+  { label: "Demo: Empresas B2B & ROI", href: "/demos/landing-empresa" },
   { label: "Contacto & Cotización", href: "/#contacto" },
 ];
 
@@ -37,7 +41,7 @@ const socials = [
           <span class="font-display text-sm font-bold tracking-[0.25em] text-neutral-900">ARCHITY</span>
         </a>
         <p class="mt-4 max-w-xs text-sm leading-relaxed text-neutral-600">
-          Estudio de ingeniería de software en Perú. Creamos <strong>tiendas virtuales</strong>, <strong>landing pages corporativas</strong>, <strong>plataformas SaaS</strong> y <strong>ERPs a medida</strong>.
+          Estudio de ingeniería de software en Perú. Creadores de <strong>AltoPlanta</strong> (SaaS tributario inmobiliario) y del <strong>ERP de Consorcio Grupo Pineda</strong>. Desarrollamos tiendas virtuales, landing pages y sistemas a la medida con arquitectura ECC.
         </p>
         <a
           href="mailto:wmanuelga@gmail.com"
@@ -52,12 +56,12 @@ const socials = [
 
       <!-- Navegación interna -->
       <nav aria-label="Enlaces del pie de página">
-        <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400">Soluciones &amp; Páginas</h3>
-        <ul class="mt-4 space-y-2.5">
+        <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400">Soluciones &amp; Demos</h3>
+        <ul class="mt-4 space-y-2 text-xs">
           {
             navLinks.map((l) => (
               <li>
-                <a href={l.href} class="text-sm text-neutral-600 transition-colors hover:text-neutral-900">
+                <a href={l.href} class="text-neutral-600 transition-colors hover:text-neutral-900">
                   {l.label}
                 </a>
               </li>
@@ -68,7 +72,7 @@ const socials = [
 
       <!-- Plataformas en vivo & Redes -->
       <div>
-        <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400">Plataformas en Vivo</h3>
+        <h3 class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400">Plataformas Oficiales</h3>
         <ul class="mt-4 space-y-2.5">
           {
             externalProducts.map((p) => (
@@ -124,7 +128,7 @@ const socials = [
     <div class="mt-12 flex flex-col items-center justify-between border-t border-neutral-200/80 pt-8 text-xs text-neutral-400 sm:flex-row">
       <p>© {year} Archity. Hecho con precisión técnica en Perú.</p>
       <p class="mt-2 sm:mt-0 flex items-center gap-1.5 font-medium text-neutral-500">
-        Astro v5 · Tailwind v4 · Cloud Native
+        Astro v5 · Tailwind v4 · Arquitectura ECC
       </p>
     </div>
   </div>

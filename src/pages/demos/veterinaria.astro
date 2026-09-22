@@ -1,0 +1,790 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+const petProducts = [
+  {
+    id: "vet-1",
+    name: "Alimento Súper Premium Canino Adulto Raza Mediana 15kg",
+    category: "Alimentos",
+    price: 245.00,
+    originalPrice: 280.00,
+    badge: "Más Vendido",
+    stock: 20,
+    rating: 4.9,
+    description: "Fórmula balanceada con cordero y arroz integral, ácidos grasos Omega 3 y 6 para pelaje brillante.",
+  },
+  {
+    id: "vet-2",
+    name: "Antipulgas & Garrapatas Masticable 10-20kg (3 Meses)",
+    category: "Salud",
+    price: 135.00,
+    originalPrice: 160.00,
+    badge: "Protección Total",
+    stock: 35,
+    rating: 5.0,
+    description: "Tableta masticable sabor a carne que elimina pulgas, garrapatas y ácaros de la sarna durante 12 semanas.",
+  },
+  {
+    id: "vet-3",
+    name: "Alimento Felino Castrado / Esterilizado Control Peso 7.5kg",
+    category: "Alimentos",
+    price: 185.00,
+    originalPrice: 215.00,
+    badge: "Salud Urinaria",
+    stock: 14,
+    rating: 4.8,
+    description: "Niveles controlados de magnesio y fósforo para prevenir cálculos renales en gatos adultos esterilizados.",
+  },
+  {
+    id: "vet-4",
+    name: "Shampoo Hipoalergénico de Avena & Aloe Vera 500ml",
+    category: "Higiene",
+    price: 38.00,
+    originalPrice: 45.00,
+    badge: "Piel Sensible",
+    stock: 28,
+    rating: 4.7,
+    description: "Alivia la picazón, combate la caspa canina y deja un aroma fresco sin irritar ojos ni mucosas.",
+  },
+  {
+    id: "vet-5",
+    name: "Snacks Dentales para Perros Grandes (Bolsa 28 Sticks)",
+    category: "Snacks",
+    price: 32.00,
+    originalPrice: 40.00,
+    badge: "Cero Sarro",
+    stock: 45,
+    rating: 4.9,
+    description: "Textura masticable estriada científicamente probada para reducir la acumulación de placa bacteriana.",
+  },
+  {
+    id: "vet-6",
+    name: "Arnés Antitirones Reflectivo Ergonómico Talla L",
+    category: "Accesorios",
+    price: 68.00,
+    originalPrice: 85.00,
+    badge: "Paseo Seguro",
+    stock: 16,
+    rating: 4.8,
+    description: "Distribución uniforme de presión en el pecho, tejido transpirable acolchado y agarre de emergencia superior.",
+  },
+  {
+    id: "vet-7",
+    name: "Arena Sanitaria Aglomerante de Bentonita para Gatos 10kg",
+    category: "Higiene",
+    price: 42.00,
+    originalPrice: 50.00,
+    badge: "Control Olores",
+    stock: 30,
+    rating: 4.9,
+    description: "Formación instantánea de terrones compactos fáciles de retirar con aroma suave a lavanda natural.",
+  },
+  {
+    id: "vet-8",
+    name: "Condroprotector Articular con Glucosamina 60 Tabletas",
+    category: "Salud",
+    price: 95.00,
+    originalPrice: 120.00,
+    badge: "Senior Care",
+    stock: 12,
+    rating: 4.9,
+    description: "Suplemento para perros mayores o con displasia, regenera el cartílago y mejora la movilidad.",
+  },
+  {
+    id: "vet-9",
+    name: "Rascador de Árbol Torre 3 Niveles con Hamaca para Gatos",
+    category: "Accesorios",
+    price: 175.00,
+    originalPrice: 220.00,
+    badge: "Diversión Felina",
+    stock: 7,
+    rating: 4.8,
+    description: "Postes envueltos en sisal natural grueso para afilar garras, plataforma de descanso y cueva suave.",
+  },
+  {
+    id: "vet-10",
+    name: "Alimento Húmedo Pouch Salmón en Gravy 85g (Pack x12)",
+    category: "Snacks",
+    price: 48.00,
+    originalPrice: 58.00,
+    badge: "Gourmet",
+    stock: 50,
+    rating: 4.8,
+    description: "Trozos reales de salmón en suculenta salsa, rico en hidratación y nutrientes para paladares exigentes.",
+  },
+  {
+    id: "vet-11",
+    name: "Gotas Óticas Limpiadoras Antibacterianas 60ml",
+    category: "Salud",
+    price: 36.00,
+    originalPrice: 44.00,
+    badge: "Prevención Otitis",
+    stock: 22,
+    rating: 4.7,
+    description: "Elimina el cerumen acumulado, calma el enrojecimiento y previene infecciones en orejas caídas.",
+  },
+  {
+    id: "vet-12",
+    name: "Cama Ortopédica Antiestrés de Felpa Suave 80cm",
+    category: "Accesorios",
+    price: 110.00,
+    originalPrice: 140.00,
+    badge: "Descanso Profundo",
+    stock: 15,
+    rating: 4.9,
+    description: "Borde elevado que proporciona soporte para cabeza y cuello, aliviando la ansiedad de perros y gatos.",
+  },
+  {
+    id: "vet-13",
+    name: "Lata Terapéutica Renal / Urinaria Canina 370g (Pack x4)",
+    category: "Alimentos",
+    price: 76.00,
+    originalPrice: 92.00,
+    badge: "Dieta Clínica",
+    stock: 18,
+    rating: 4.9,
+    description: "Bajo contenido de fósforo y proteínas de alta digestibilidad para el soporte renal crónico.",
+  },
+  {
+    id: "vet-14",
+    name: "Pipeta Antiparasitaria Externa Spot-On para Felinos",
+    category: "Salud",
+    price: 45.00,
+    originalPrice: 55.00,
+    badge: "Fácil Aplicación",
+    stock: 40,
+    rating: 4.8,
+    description: "Protección mensual contra pulgas, garrapatas y larvas mediante aplicación tópica en la nuca.",
+  },
+  {
+    id: "vet-15",
+    name: "Cortauñas Ergonómico con Sensor de Seguridad",
+    category: "Higiene",
+    price: 26.00,
+    originalPrice: 34.00,
+    badge: "Corte Seguro",
+    stock: 35,
+    rating: 4.6,
+    description: "Cuchilla de acero inoxidable afilada con tope para evitar cortar la parte vascular de la uña.",
+  },
+  {
+    id: "vet-16",
+    name: "Juguete Interactivo Dispensador de Premios Kong",
+    category: "Accesorios",
+    price: 55.00,
+    originalPrice: 68.00,
+    badge: "Antiestrés",
+    stock: 26,
+    rating: 5.0,
+    description: "Caucho natural ultra resistente para rellenar con mantequilla de maní o galletas, estimula la mente.",
+  },
+];
+---
+
+<Layout
+  title="Demo Veterinaria & Pet Care — Citas Médicas & Pet Shop Paginado | Archity"
+  description="Demostración interactiva de clínica veterinaria: agendador de citas médicas en front-end, catálogo de pet shop con paginación funcional y pedidos a domicilio."
+>
+  <Header />
+
+  <main>
+    <!-- Banner de navegación de demos -->
+    <div class="border-b border-accent/20 bg-accent-soft/60 px-4 py-2 text-center text-xs font-medium text-accent">
+      <span class="font-bold">Demostración en Front-End:</span> Landing veterinaria con agendador de citas y pet shop paginado.
+      <a href="/demos/botica" class="ml-2 font-bold underline hover:text-accent-dark">
+        Ver Demo Botica &rarr;
+      </a>
+    </div>
+
+    <!-- Hero Veterinaria -->
+    <section class="border-b border-neutral-200/80 bg-gradient-to-b from-sky-50/70 via-white to-white py-16 sm:py-24">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-12 lg:grid-cols-12 lg:items-center">
+          <div class="lg:col-span-7">
+            <div class="flex items-center gap-2">
+              <span class="inline-flex h-2 w-2 rounded-full bg-sky-500 animate-pulse"></span>
+              <span class="text-xs font-bold uppercase tracking-wider text-sky-700">Hospital Veterinario &amp; Pet Care</span>
+            </div>
+
+            <h1 class="mt-4 font-display text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl">
+              Salud, Cuidado y Amor para <span class="text-sky-600">tu Mascota</span>
+            </h1>
+
+            <p class="mt-6 text-base leading-relaxed text-neutral-600 sm:text-lg">
+              Atención médica preventiva, emergencias las 24 horas, quirófano equipado, baño &amp; spa relajante y pet shop con despacho rápido a todo el país.
+            </p>
+
+            <div class="mt-8 flex flex-wrap items-center gap-3">
+              <a
+                href="#agendar-cita"
+                class="inline-flex items-center gap-2 rounded-lg bg-sky-600 px-6 py-3.5 text-sm font-bold text-white shadow-xs transition-all hover:bg-sky-700 active:scale-95"
+              >
+                Agendar Cita Médica
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </a>
+
+              <a
+                href="#pet-shop"
+                class="inline-flex items-center justify-center rounded-lg border border-neutral-300 bg-white px-5 py-3.5 text-sm font-semibold text-neutral-800 transition-colors hover:bg-neutral-50"
+              >
+                Explorar Pet Shop Paginado
+              </a>
+            </div>
+
+            <!-- Stats veterinaria -->
+            <div class="mt-10 grid grid-cols-3 gap-4 border-t border-neutral-200/80 pt-6 text-left">
+              <div>
+                <span class="block font-display text-2xl font-bold text-neutral-900">+12,500</span>
+                <span class="text-xs text-neutral-500">Mascotas atendidas</span>
+              </div>
+              <div>
+                <span class="block font-display text-2xl font-bold text-sky-600">24 / 7</span>
+                <span class="text-xs text-neutral-500">Urgencias veterinarias</span>
+              </div>
+              <div>
+                <span class="block font-display text-2xl font-bold text-neutral-900">4.9 ★</span>
+                <span class="text-xs text-neutral-500">Satisfacción de tutores</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pet Cart Flotante -->
+          <div class="lg:col-span-5">
+            <div class="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8 shadow-xl">
+              <div class="flex items-center justify-between border-b border-neutral-100 pb-4">
+                <div class="flex items-center gap-2.5">
+                  <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-100 text-sky-700 font-bold text-lg">
+                    🐾
+                  </span>
+                  <div>
+                    <h3 class="font-display text-base font-bold text-neutral-900">Carrito de Mascota</h3>
+                    <span class="text-xs text-neutral-500"><span id="vet-cart-count">0</span> productos para tu engreído</span>
+                  </div>
+                </div>
+                <span class="text-[10px] font-bold uppercase bg-sky-50 text-sky-700 px-2 py-1 rounded border border-sky-200">
+                  Pet Delivery
+                </span>
+              </div>
+
+              <!-- Lista de ítems -->
+              <div id="vet-cart-list" class="mt-4 space-y-3 min-h-[140px] max-h-[220px] overflow-y-auto pr-1">
+                <p id="vet-empty-msg" class="text-xs text-neutral-500 text-center py-10">
+                  Selecciona alimentos, snacks o antipulgas de la tienda para calcular tu pedido.
+                </p>
+              </div>
+
+              <div class="mt-4 border-t border-neutral-100 pt-4 space-y-2 text-xs text-neutral-600">
+                <div class="flex justify-between">
+                  <span>Subtotal</span>
+                  <span class="font-medium text-neutral-900">S/ <span id="vet-subtotal">0.00</span></span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Envío a Domicilio</span>
+                  <span id="vet-shipping" class="font-medium text-neutral-900">S/ 0.00</span>
+                </div>
+                <div class="flex justify-between text-sm font-bold text-neutral-900 border-t border-neutral-100 pt-2">
+                  <span>Total Pedido</span>
+                  <span class="text-sky-700">S/ <span id="vet-total">0.00</span></span>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                id="btn-whatsapp-vet"
+                disabled
+                class="mt-6 flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-600 py-3 text-xs font-bold text-white hover:bg-emerald-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors shadow-sm"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 24 24">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654z" />
+                </svg>
+                Pedir Productos por WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Agendador Interactivo de Citas Veterinarias (ECC Component) -->
+    <section id="agendar-cita" class="scroll-mt-16 py-16 sm:py-24 bg-white border-b border-neutral-200">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div class="rounded-2xl border border-neutral-200 bg-neutral-900 p-8 sm:p-12 text-white shadow-2xl">
+          <div class="text-center max-w-xl mx-auto">
+            <span class="text-xs font-bold uppercase tracking-wider text-sky-400">Reserva de Atención Veterinaria</span>
+            <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Agenda la Consulta o Spa de tu Mascota
+            </h2>
+            <p class="mt-2 text-xs text-neutral-300">
+              Selecciona el servicio y fecha deseada. Recibirás recordatorio automático en tu teléfono.
+            </p>
+          </div>
+
+          <form id="vet-appointment-form" class="mt-8 grid gap-4 sm:grid-cols-2 text-xs">
+            <div>
+              <label class="block font-bold text-neutral-300">Nombre de la Mascota</label>
+              <input type="text" required placeholder="Ej. Firulais / Luna / Thor" class="mt-1.5 w-full rounded-lg border border-neutral-700 bg-neutral-800 p-2.5 text-xs text-white focus:border-sky-400 focus:outline-none" />
+            </div>
+
+            <div>
+              <label class="block font-bold text-neutral-300">Especie</label>
+              <select class="mt-1.5 w-full rounded-lg border border-neutral-700 bg-neutral-800 p-2.5 text-xs text-white focus:border-sky-400 focus:outline-none">
+                <option>Perro (Canino)</option>
+                <option>Gato (Felino)</option>
+                <option>Conejo / Roedor</option>
+                <option>Ave / Exótico</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block font-bold text-neutral-300">Servicio Requerido</label>
+              <select class="mt-1.5 w-full rounded-lg border border-neutral-700 bg-neutral-800 p-2.5 text-xs text-white focus:border-sky-400 focus:outline-none">
+                <option>Consulta Médica General &amp; Chequeo</option>
+                <option>Vacunación &amp; Desparasitación</option>
+                <option>Baño Medicado, Corte &amp; Spa</option>
+                <option>Ecografía / Rayos X Diagnósticos</option>
+                <option>Cirugía Programada / Esterilización</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block font-bold text-neutral-300">Veterinario de Turno</label>
+              <select class="mt-1.5 w-full rounded-lg border border-neutral-700 bg-neutral-800 p-2.5 text-xs text-white focus:border-sky-400 focus:outline-none">
+                <option>Dr. Rodrigo Vargas (Medicina Interna)</option>
+                <option>Dra. Mariana Castro (Dermatología &amp; Felinos)</option>
+                <option>Dr. Javier Rivas (Cirugía &amp; Traumatología)</option>
+                <option>Cualquier especialista disponible</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block font-bold text-neutral-300">Fecha Deseada</label>
+              <input type="date" required class="mt-1.5 w-full rounded-lg border border-neutral-700 bg-neutral-800 p-2.5 text-xs text-white focus:border-sky-400 focus:outline-none" />
+            </div>
+
+            <div>
+              <label class="block font-bold text-neutral-300">Teléfono del Tutor (WhatsApp)</label>
+              <input type="tel" required placeholder="+51 940 123 456" class="mt-1.5 w-full rounded-lg border border-neutral-700 bg-neutral-800 p-2.5 text-xs text-white focus:border-sky-400 focus:outline-none" />
+            </div>
+
+            <div class="sm:col-span-2 pt-3">
+              <button
+                type="submit"
+                class="w-full rounded-lg bg-sky-500 py-3 font-bold text-neutral-950 hover:bg-sky-400 transition-colors shadow-md"
+              >
+                Confirmar Cita Veterinaria
+              </button>
+            </div>
+          </form>
+
+          <!-- Toast de Cita Confirmada -->
+          <div id="vet-success-box" class="hidden mt-6 rounded-xl bg-emerald-950/70 border border-emerald-500/50 p-4 text-emerald-300 text-xs">
+            <div class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-emerald-400" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <strong class="font-bold">¡Cita médica reservada correctamente!</strong>
+            </div>
+            <p class="mt-1 text-neutral-300">
+              Hemos registrado la consulta para tu mascota. Nuestro equipo veterinario te contactará para confirmar el horario exacto.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pet Shop con Paginación Funcional -->
+    <section id="pet-shop" class="scroll-mt-16 py-16 sm:py-24 bg-neutral-50/60 border-b border-neutral-200">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div class="max-w-xl">
+            <span class="text-xs font-bold uppercase tracking-wider text-sky-700">Pet Shop Oficial</span>
+            <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
+              Alimentos, Salud &amp; Accesorios
+            </h2>
+            <p class="mt-2 text-sm text-neutral-600">
+              Marcas premium recomendadas por veterinarios para perros y gatos de todas las edades.
+            </p>
+          </div>
+
+          <!-- Filtros de categoría -->
+          <div class="flex flex-wrap items-center gap-1.5" id="vet-category-bar">
+            <button type="button" data-cat="all" class="vet-cat-btn rounded-lg bg-neutral-900 px-3 py-1.5 text-xs font-semibold text-white transition-colors">
+              Todos ({petProducts.length})
+            </button>
+            <button type="button" data-cat="Alimentos" class="vet-cat-btn rounded-lg bg-white border border-neutral-300 px-3 py-1.5 text-xs font-semibold text-neutral-700 hover:bg-neutral-100 transition-colors">
+              Alimentos
+            </button>
+            <button type="button" data-cat="Salud" class="vet-cat-btn rounded-lg bg-white border border-neutral-300 px-3 py-1.5 text-xs font-semibold text-neutral-700 hover:bg-neutral-100 transition-colors">
+              Salud &amp; Farmacia
+            </button>
+            <button type="button" data-cat="Higiene" class="vet-cat-btn rounded-lg bg-white border border-neutral-300 px-3 py-1.5 text-xs font-semibold text-neutral-700 hover:bg-neutral-100 transition-colors">
+              Higiene &amp; Baño
+            </button>
+            <button type="button" data-cat="Snacks" class="vet-cat-btn rounded-lg bg-white border border-neutral-300 px-3 py-1.5 text-xs font-semibold text-neutral-700 hover:bg-neutral-100 transition-colors">
+              Snacks &amp; Premios
+            </button>
+            <button type="button" data-cat="Accesorios" class="vet-cat-btn rounded-lg bg-white border border-neutral-300 px-3 py-1.5 text-xs font-semibold text-neutral-700 hover:bg-neutral-100 transition-colors">
+              Accesorios
+            </button>
+          </div>
+        </div>
+
+        <!-- Buscador en vivo -->
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="relative w-full max-w-sm">
+            <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-neutral-400">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </span>
+            <input
+              type="text"
+              id="search-vet-input"
+              placeholder="Ej. Antipulgas, Alimento, Arnés, Kong..."
+              class="w-full rounded-lg border border-neutral-300 bg-white py-2 pl-9 pr-3 text-xs focus:border-sky-500 focus:outline-none"
+            />
+          </div>
+
+          <div class="text-xs text-neutral-500">
+            Mostrando <span id="vet-current-count">8</span> de <span id="vet-total-count">{petProducts.length}</span> productos
+          </div>
+        </div>
+
+        <!-- Grid de Productos (8 por página) -->
+        <div id="vet-grid" class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {petProducts.map((p) => (
+            <div
+              class="vet-card group flex flex-col justify-between rounded-2xl border border-neutral-200/90 bg-white p-5 shadow-2xs hover:border-sky-400 hover:shadow-lg transition-all duration-300"
+              data-category={p.category}
+              data-name={p.name.toLowerCase()}
+              data-desc={p.description.toLowerCase()}
+              data-id={p.id}
+            >
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-3">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700">{p.category}</span>
+                  <span class="rounded bg-sky-50 px-2 py-0.5 text-[10px] font-bold text-sky-700 border border-sky-200">
+                    {p.badge}
+                  </span>
+                </div>
+
+                <!-- Silueta producto mascota -->
+                <div class="flex h-32 w-full items-center justify-center rounded-xl bg-gradient-to-br from-sky-50/40 via-neutral-50 to-sky-50/20 border border-neutral-100 text-2xl font-display font-bold text-neutral-700 group-hover:text-sky-600 transition-colors">
+                  {p.name.substring(0, 2).toUpperCase()}
+                </div>
+
+                <h3 class="mt-4 font-display text-sm font-bold text-neutral-900 group-hover:text-sky-700 transition-colors line-clamp-2 min-h-[40px]">
+                  {p.name}
+                </h3>
+                <p class="mt-1.5 text-xs text-neutral-600 line-clamp-2 leading-relaxed">
+                  {p.description}
+                </p>
+
+                <div class="mt-3 flex items-center justify-between text-[10px] text-neutral-500">
+                  <span class="text-emerald-600 font-semibold">✓ {p.stock} en stock</span>
+                  <span class="text-amber-500 font-bold">★ {p.rating.toFixed(1)}</span>
+                </div>
+              </div>
+
+              <!-- Precio y botón agregar -->
+              <div class="mt-5 pt-3 border-t border-neutral-100 flex items-center justify-between">
+                <div>
+                  <span class="font-display text-lg font-bold text-neutral-900">S/ {p.price.toFixed(2)}</span>
+                  {p.originalPrice && (
+                    <span class="block text-[10px] text-neutral-400 line-through">
+                      S/ {p.originalPrice.toFixed(2)}
+                    </span>
+                  )}
+                </div>
+                <button
+                  type="button"
+                  class="btn-add-vet inline-flex items-center gap-1 rounded-lg bg-neutral-900 px-3 py-1.5 text-xs font-bold text-white hover:bg-sky-600 transition-colors active:scale-95"
+                  data-id={p.id}
+                  data-name={p.name}
+                  data-price={p.price}
+                >
+                  + Carrito
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Sin resultados -->
+        <div id="no-vet-msg" class="hidden flex-col items-center justify-center py-16 text-center">
+          <p class="font-display text-base font-bold text-neutral-900">No encontramos productos con ese término</p>
+          <p class="mt-1 text-xs text-neutral-500">Prueba con otra palabra o selecciona "Todos".</p>
+        </div>
+
+        <!-- Paginación Funcional (8 por página) -->
+        <div id="vet-pagination-wrapper" class="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-neutral-200 pt-6">
+          <span class="text-xs text-neutral-500">
+            Página <strong id="vet-page-num" class="text-neutral-900">1</strong> de <strong id="vet-max-pages" class="text-neutral-900">2</strong> (8 productos por página)
+          </span>
+          <div class="flex items-center gap-2">
+            <button
+              type="button"
+              id="vet-btn-prev"
+              disabled
+              class="rounded-lg border border-neutral-300 bg-white px-3 py-1.5 text-xs font-semibold text-neutral-700 hover:bg-neutral-50 disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              &larr; Anterior
+            </button>
+            <div id="vet-page-buttons" class="flex items-center gap-1"></div>
+            <button
+              type="button"
+              id="vet-btn-next"
+              class="rounded-lg border border-neutral-300 bg-white px-3 py-1.5 text-xs font-semibold text-neutral-700 hover:bg-neutral-50 disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              Siguiente &rarr;
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  interface VetItem {
+    id: string;
+    name: string;
+    price: number;
+    qty: number;
+  }
+
+  let vetCart: VetItem[] = [];
+
+  const vetCountEl = document.getElementById("vet-cart-count");
+  const vetListEl = document.getElementById("vet-cart-list");
+  const vetEmptyEl = document.getElementById("vet-empty-msg");
+  const vetSubtotalEl = document.getElementById("vet-subtotal");
+  const vetShippingEl = document.getElementById("vet-shipping");
+  const vetTotalEl = document.getElementById("vet-total");
+  const btnWhatsappVet = document.getElementById("btn-whatsapp-vet") as HTMLButtonElement | null;
+
+  function renderVetCart() {
+    const totalQty = vetCart.reduce((acc, i) => acc + i.qty, 0);
+    if (vetCountEl) vetCountEl.textContent = totalQty.toString();
+
+    if (vetCart.length === 0) {
+      if (vetEmptyEl) vetEmptyEl.classList.remove("hidden");
+      if (vetSubtotalEl) vetSubtotalEl.textContent = "0.00";
+      if (vetShippingEl) vetShippingEl.textContent = "0.00";
+      if (vetTotalEl) vetTotalEl.textContent = "0.00";
+      if (btnWhatsappVet) btnWhatsappVet.disabled = true;
+      if (vetListEl) {
+        vetListEl.innerHTML = '<p id="vet-empty-msg" class="text-xs text-neutral-500 text-center py-10">Selecciona alimentos, snacks o antipulgas de la tienda para calcular tu pedido.</p>';
+      }
+      return;
+    }
+
+    if (btnWhatsappVet) btnWhatsappVet.disabled = false;
+
+    const subtotal = vetCart.reduce((acc, i) => acc + (i.price * i.qty), 0);
+    const shipping = subtotal >= 100 ? 0 : 8.00;
+    const total = subtotal + shipping;
+
+    if (vetSubtotalEl) vetSubtotalEl.textContent = subtotal.toFixed(2);
+    if (vetShippingEl) vetShippingEl.textContent = shipping === 0 ? "¡Gratis!" : `S/ ${shipping.toFixed(2)}`;
+    if (vetTotalEl) vetTotalEl.textContent = total.toFixed(2);
+
+    if (vetListEl) {
+      vetListEl.innerHTML = vetCart.map(item => `
+        <div class="flex items-center justify-between text-xs py-1.5 border-b border-neutral-100">
+          <div class="min-w-0 flex-1 pr-2">
+            <span class="block truncate font-bold text-neutral-900">${item.name}</span>
+            <span class="text-neutral-500 text-[10px]">S/ ${item.price.toFixed(2)} c/u</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="font-bold text-sky-700">x${item.qty}</span>
+            <span class="font-mono text-neutral-900">S/ ${(item.price * item.qty).toFixed(2)}</span>
+            <button type="button" data-del-id="${item.id}" class="btn-del-vet text-neutral-400 hover:text-rose-500 ml-1">✕</button>
+          </div>
+        </div>
+      `).join("");
+
+      vetListEl.querySelectorAll(".btn-del-vet").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          const id = (e.currentTarget as HTMLElement).getAttribute("data-del-id");
+          vetCart = vetCart.filter(i => i.id !== id);
+          renderVetCart();
+        });
+      });
+    }
+  }
+
+  document.querySelectorAll(".btn-add-vet").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      const button = e.currentTarget as HTMLElement;
+      const id = button.getAttribute("data-id") || "";
+      const name = button.getAttribute("data-name") || "";
+      const price = parseFloat(button.getAttribute("data-price") || "0");
+
+      const existing = vetCart.find(i => i.id === id);
+      if (existing) {
+        existing.qty++;
+      } else {
+        vetCart.push({ id, name, price, qty: 1 });
+      }
+      renderVetCart();
+
+      const origText = button.innerHTML;
+      button.innerHTML = "<span>✓ En carrito</span>";
+      button.classList.add("bg-sky-600");
+      setTimeout(() => {
+        button.innerHTML = origText;
+        button.classList.remove("bg-sky-600");
+      }, 900);
+    });
+  });
+
+  btnWhatsappVet?.addEventListener("click", () => {
+    const total = vetTotalEl?.textContent || "0.00";
+    const items = vetCart.map(i => `• ${i.qty}x ${i.name} (S/ ${(i.price * i.qty).toFixed(2)})`).join("\n");
+    const msg = encodeURIComponent(`Hola Veterinaria Archity, deseo encargar estos productos para mi mascota a delivery:\n\n${items}\n\nTotal estimado: S/ ${total}\n\n¿Me confirman tiempo de entrega?`);
+    window.open(`https://wa.me/51940771896?text=${msg}`, "_blank");
+  });
+
+  // Paginación Funcional de Pet Shop
+  const vetCards = Array.from(document.querySelectorAll("#vet-grid > .vet-card")) as HTMLElement[];
+  const searchInput = document.getElementById("search-vet-input") as HTMLInputElement | null;
+  const catButtons = document.querySelectorAll(".vet-cat-btn");
+  const countCurrentEl = document.getElementById("vet-current-count");
+  const countTotalEl = document.getElementById("vet-total-count");
+  const pageNumEl = document.getElementById("vet-page-num");
+  const maxPagesEl = document.getElementById("vet-max-pages");
+  const noVetMsg = document.getElementById("no-vet-msg");
+  const paginationWrapper = document.getElementById("vet-pagination-wrapper");
+  const pageButtonsContainer = document.getElementById("vet-page-buttons");
+  const btnPrev = document.getElementById("vet-btn-prev") as HTMLButtonElement | null;
+  const btnNext = document.getElementById("vet-btn-next") as HTMLButtonElement | null;
+
+  const VET_PER_PAGE = 8;
+  let currentVetPage = 1;
+  let activeVetCat = "all";
+  let activeVetSearch = "";
+
+  function getFilteredVet(): HTMLElement[] {
+    return vetCards.filter(card => {
+      const cat = card.getAttribute("data-category") || "";
+      const name = card.getAttribute("data-name") || "";
+      const desc = card.getAttribute("data-desc") || "";
+
+      const matchesCat = activeVetCat === "all" || cat.toLowerCase() === activeVetCat.toLowerCase();
+      const matchesSearch = !activeVetSearch || name.includes(activeVetSearch) || desc.includes(activeVetSearch);
+
+      return matchesCat && matchesSearch;
+    });
+  }
+
+  function renderVetPagination() {
+    const filtered = getFilteredVet();
+    const total = filtered.length;
+    const maxPages = Math.ceil(total / VET_PER_PAGE) || 1;
+
+    if (currentVetPage > maxPages) currentVetPage = maxPages;
+    if (currentVetPage < 1) currentVetPage = 1;
+
+    vetCards.forEach(c => c.classList.add("hidden"));
+
+    const start = (currentVetPage - 1) * VET_PER_PAGE;
+    const pageItems = filtered.slice(start, start + VET_PER_PAGE);
+    pageItems.forEach(c => c.classList.remove("hidden"));
+
+    if (countCurrentEl) countCurrentEl.textContent = pageItems.length.toString();
+    if (countTotalEl) countTotalEl.textContent = total.toString();
+    if (pageNumEl) pageNumEl.textContent = currentVetPage.toString();
+    if (maxPagesEl) maxPagesEl.textContent = maxPages.toString();
+
+    if (total === 0) {
+      noVetMsg?.classList.remove("hidden");
+      noVetMsg?.classList.add("flex");
+      paginationWrapper?.classList.add("hidden");
+    } else {
+      noVetMsg?.classList.add("hidden");
+      noVetMsg?.classList.remove("flex");
+      paginationWrapper?.classList.remove("hidden");
+    }
+
+    if (btnPrev) btnPrev.disabled = currentVetPage <= 1;
+    if (btnNext) btnNext.disabled = currentVetPage >= maxPages;
+
+    if (pageButtonsContainer) {
+      pageButtonsContainer.innerHTML = "";
+      for (let i = 1; i <= maxPages; i++) {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.textContent = i.toString();
+        b.className = i === currentVetPage
+          ? "h-8 w-8 rounded-lg bg-neutral-900 text-xs font-bold text-white shadow-xs"
+          : "h-8 w-8 rounded-lg border border-neutral-300 bg-white text-xs font-semibold text-neutral-700 hover:bg-neutral-100";
+        b.addEventListener("click", () => {
+          currentVetPage = i;
+          renderVetPagination();
+          document.getElementById("pet-shop")?.scrollIntoView({ behavior: "smooth" });
+        });
+        pageButtonsContainer.appendChild(b);
+      }
+    }
+  }
+
+  catButtons.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      const cat = (e.currentTarget as HTMLElement).getAttribute("data-cat") || "all";
+      activeVetCat = cat;
+      currentVetPage = 1;
+
+      catButtons.forEach(b => {
+        b.className = "vet-cat-btn rounded-lg bg-white border border-neutral-300 px-3 py-1.5 text-xs font-semibold text-neutral-700 hover:bg-neutral-100 transition-colors";
+      });
+      (e.currentTarget as HTMLElement).className = "vet-cat-btn rounded-lg bg-neutral-900 px-3 py-1.5 text-xs font-semibold text-white transition-colors";
+
+      renderVetPagination();
+    });
+  });
+
+  searchInput?.addEventListener("input", () => {
+    activeVetSearch = searchInput.value.trim().toLowerCase();
+    currentVetPage = 1;
+    renderVetPagination();
+  });
+
+  btnPrev?.addEventListener("click", () => {
+    if (currentVetPage > 1) {
+      currentVetPage--;
+      renderVetPagination();
+      document.getElementById("pet-shop")?.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+
+  btnNext?.addEventListener("click", () => {
+    const max = Math.ceil(getFilteredVet().length / VET_PER_PAGE);
+    if (currentVetPage < max) {
+      currentVetPage++;
+      renderVetPagination();
+      document.getElementById("pet-shop")?.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+
+  // Cita médica
+  const vetForm = document.getElementById("vet-appointment-form") as HTMLFormElement | null;
+  const vetSuccessBox = document.getElementById("vet-success-box");
+  vetForm?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    vetSuccessBox?.classList.remove("hidden");
+    vetForm.reset();
+  });
+
+  // Inicializar
+  renderVetCart();
+  renderVetPagination();
+</script>

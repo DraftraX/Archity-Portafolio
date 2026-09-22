@@ -1,0 +1,822 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+const properties = [
+  {
+    id: "inm-1",
+    title: "Departamento de Estreno con Vista al Parque",
+    type: "Departamento",
+    operation: "Venta",
+    district: "Miraflores, Lima",
+    priceUSD: 185000,
+    pricePEN: 693750,
+    area: 95,
+    bedrooms: 3,
+    bathrooms: 2,
+    parking: 1,
+    badge: "Estreno / No Paga Alcabala",
+    rating: 4.9,
+    description: "Acabados en cuarzo y porcelanato, terraza con vista panorámica, edificio ecoamigable con certificación EDGE.",
+  },
+  {
+    id: "inm-2",
+    title: "Penthouse Dúplex con Terraza & Zona BBQ",
+    type: "Departamento",
+    operation: "Venta",
+    district: "San Isidro, Lima",
+    priceUSD: 340000,
+    pricePEN: 1275000,
+    area: 180,
+    bedrooms: 4,
+    bathrooms: 3,
+    parking: 2,
+    badge: "Zona Financiera",
+    rating: 5.0,
+    description: "Ascensor directo al departamento, amplia sala-comedor a doble altura, terraza privada con parrilla empotrada.",
+  },
+  {
+    id: "inm-3",
+    title: "Lote Urbano Residencial con Título SUNARP",
+    type: "Terrenos",
+    operation: "Venta",
+    district: "Tarapoto, San Martín",
+    priceUSD: 42000,
+    pricePEN: 157500,
+    area: 250,
+    bedrooms: 0,
+    bathrooms: 0,
+    parking: 0,
+    badge: "Lote Urbanizado",
+    rating: 4.8,
+    description: "Servicios completos de agua, luz y desagüe subterráneo. Listo para construir en condominio cerrado con pórtico.",
+  },
+  {
+    id: "inm-4",
+    title: "Casa Moderna de 2 Pisos con Jardín Interior",
+    type: "Casas",
+    operation: "Venta",
+    district: "Surco (Chacarilla), Lima",
+    priceUSD: 295000,
+    pricePEN: 1106250,
+    area: 220,
+    bedrooms: 4,
+    bathrooms: 4,
+    parking: 2,
+    badge: "Exclusiva",
+    rating: 4.9,
+    description: "Cocina estilo americano con isla central, sala de estar familiar, jardín posterior amplio y cuarto de servicio.",
+  },
+  {
+    id: "inm-5",
+    title: "Oficina Corporativa Prime en Edificio Empresarial",
+    type: "Oficinas",
+    operation: "Alquiler",
+    district: "San Isidro, Lima",
+    priceUSD: 1600,
+    pricePEN: 6000,
+    area: 80,
+    bedrooms: 0,
+    bathrooms: 2,
+    parking: 2,
+    badge: "Mensual",
+    rating: 4.7,
+    description: "Piso alto con vista a la ciudad, climatización centralizada, salas de directorio comunes y comedor para ejecutivos.",
+  },
+  {
+    id: "inm-6",
+    title: "Departamento Amoblado Estilo Boho a Pasos del Malecón",
+    type: "Departamento",
+    operation: "Alquiler",
+    district: "Barranco, Lima",
+    priceUSD: 950,
+    pricePEN: 3560,
+    area: 65,
+    bedrooms: 2,
+    bathrooms: 2,
+    parking: 1,
+    badge: "Totalmente Amoblado",
+    rating: 4.8,
+    description: "Decoración vanguardista, balcón exterior, smart TV, lavaseca y acceso a piscina común en azotea.",
+  },
+  {
+    id: "inm-7",
+    title: "Terreno Campestre Ideal para Casa de Campo",
+    type: "Terrenos",
+    operation: "Venta",
+    district: "Cieneguilla, Lima",
+    priceUSD: 78000,
+    pricePEN: 292500,
+    area: 600,
+    bedrooms: 0,
+    bathrooms: 0,
+    parking: 0,
+    badge: "Sol Todo el Año",
+    rating: 4.9,
+    description: "Clima cálido seco, vista al valle, cerco vivo perimetral y factibilidad para pozo de agua y paneles solares.",
+  },
+  {
+    id: "inm-8",
+    title: "Departamento Familiar Frente a Colegio Markham",
+    type: "Departamento",
+    operation: "Venta",
+    district: "Miraflores, Lima",
+    priceUSD: 215000,
+    pricePEN: 806250,
+    area: 110,
+    bedrooms: 3,
+    bathrooms: 2,
+    parking: 2,
+    badge: "Excelente Ubicación",
+    rating: 4.9,
+    description: "Distribución inteligente con iluminación natural en todos los ambientes, depósito independiente y seguridad 24h.",
+  },
+  {
+    id: "inm-9",
+    title: "Casa de Playa en Condominio Privado",
+    type: "Casas",
+    operation: "Alquiler",
+    district: "Asia, Cañete",
+    priceUSD: 2800,
+    pricePEN: 10500,
+    area: 280,
+    bedrooms: 5,
+    bathrooms: 5,
+    parking: 3,
+    badge: "Frente al Mar",
+    rating: 5.0,
+    description: "Piscina propia en terraza superior, vista directa a la rompiente, club house con canchas de tenis y restaurante.",
+  },
+  {
+    id: "inm-10",
+    title: "Local Comercial a Puerta de Calle en Av. Principal",
+    type: "Oficinas",
+    operation: "Alquiler",
+    district: "Surco, Lima",
+    priceUSD: 2200,
+    pricePEN: 8250,
+    area: 130,
+    bedrooms: 0,
+    bathrooms: 2,
+    parking: 2,
+    badge: "Alto Tránsito",
+    rating: 4.8,
+    description: "Frontis de 10 metros lineales con mampara de vidrio templado, pozo a tierra y zonificación comercial compatible.",
+  },
+  {
+    id: "inm-11",
+    title: "Lote para Desarrollo Inmobiliario / Multifamiliar",
+    type: "Terrenos",
+    operation: "Venta",
+    district: "Morales, San Martín",
+    priceUSD: 115000,
+    pricePEN: 431250,
+    area: 850,
+    bedrooms: 0,
+    bathrooms: 0,
+    parking: 0,
+    badge: "Parámetros R4",
+    rating: 4.8,
+    description: "Topografía plana en esquina, parámetros para 5 pisos, ideal para desarrollador de departamentos o clínica privada.",
+  },
+  {
+    id: "inm-12",
+    title: "Mini-Departamento Flat Pet-Friendly",
+    type: "Departamento",
+    operation: "Alquiler",
+    district: "Jesús María, Lima",
+    priceUSD: 650,
+    pricePEN: 2440,
+    area: 48,
+    bedrooms: 1,
+    bathrooms: 1,
+    parking: 1,
+    badge: "Pet Friendly",
+    rating: 4.7,
+    description: "Cerca a Campo de Marte y centros comerciales, edificio moderno con área de lavado de mascotas y coworking.",
+  },
+];
+---
+
+<Layout
+  title="Demo Portal Inmobiliario — Catálogo de Propiedades Paginado & Simulador Hipotecario | Archity"
+  description="Demostración interactiva de portal inmobiliario moderno: búsqueda avanzada, catálogo de propiedades con paginación funcional en front-end, simulador de crédito hipotecario y agenda de visitas."
+>
+  <Header />
+
+  <main>
+    <!-- Banner de navegación de demos -->
+    <div class="border-b border-accent/20 bg-accent-soft/60 px-4 py-2 text-center text-xs font-medium text-accent">
+      <span class="font-bold">Demostración en Front-End:</span> Portal inmobiliario residencial con catálogo paginado y simulador de cuotas.
+      <a href="/demos/veterinaria" class="ml-2 font-bold underline hover:text-accent-dark">
+        Ver Demo Veterinaria &rarr;
+      </a>
+    </div>
+
+    <!-- Hero Inmobiliario con Buscador Rápido -->
+    <section class="border-b border-neutral-200/80 bg-neutral-900 py-16 sm:py-24 text-white">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl text-left">
+          <div class="flex items-center gap-2">
+            <span class="inline-flex h-2 w-2 rounded-full bg-accent animate-pulse"></span>
+            <span class="text-xs font-bold uppercase tracking-wider text-accent">PropTech &amp; Bienes Raíces Perú</span>
+          </div>
+
+          <h1 class="mt-4 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+            Encuentra tu Próxima Propiedad <span class="text-accent">con Información Real</span>
+          </h1>
+
+          <p class="mt-4 text-sm sm:text-base leading-relaxed text-neutral-300">
+            Departamentos de estreno, casas residenciales, terrenos urbanizados y oficinas corporativas en las mejores zonas de Lima y provincias.
+          </p>
+        </div>
+
+        <!-- Buscador integrado en Hero -->
+        <div class="mt-8 rounded-2xl border border-neutral-800 bg-neutral-950 p-4 sm:p-6 shadow-2xl">
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 text-xs">
+            <div>
+              <label class="block font-bold text-neutral-400 mb-1">Operación</label>
+              <select id="hero-op-select" class="w-full rounded-lg border border-neutral-700 bg-neutral-800 p-2.5 text-xs text-white focus:border-accent focus:outline-none">
+                <option value="all">Todas (Venta y Alquiler)</option>
+                <option value="Venta">Solo Venta</option>
+                <option value="Alquiler">Solo Alquiler</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block font-bold text-neutral-400 mb-1">Tipo de Inmueble</label>
+              <select id="hero-type-select" class="w-full rounded-lg border border-neutral-700 bg-neutral-800 p-2.5 text-xs text-white focus:border-accent focus:outline-none">
+                <option value="all">Cualquier tipo</option>
+                <option value="Departamento">Departamentos</option>
+                <option value="Casas">Casas Residenciales</option>
+                <option value="Terrenos">Lotes &amp; Terrenos</option>
+                <option value="Oficinas">Oficinas Corporativas</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block font-bold text-neutral-400 mb-1">Distrito / Zona</label>
+              <input
+                type="text"
+                id="hero-district-input"
+                placeholder="Ej. Miraflores, San Isidro, Tarapoto..."
+                class="w-full rounded-lg border border-neutral-700 bg-neutral-800 p-2.5 text-xs text-white placeholder:text-neutral-500 focus:border-accent focus:outline-none"
+              />
+            </div>
+
+            <div class="flex items-end">
+              <button
+                type="button"
+                id="hero-search-btn"
+                class="w-full rounded-lg bg-accent py-2.5 font-bold text-white hover:bg-accent-dark transition-colors shadow-xs"
+              >
+                Buscar Inmuebles
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Badges de valor inmobiliario -->
+        <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs text-neutral-400 border-t border-neutral-800 pt-6">
+          <div>✓ Título de propiedad en SUNARP</div>
+          <div>✓ Asesoría tributaria predial</div>
+          <div>✓ Financiamiento con bancos</div>
+          <div>✓ Tours virtuales interactivos</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Catálogo de Propiedades con Paginación Funcional -->
+    <section id="catalogo-inmuebles" class="scroll-mt-16 py-16 sm:py-24 bg-neutral-50/60 border-b border-neutral-200">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div class="max-w-xl">
+            <span class="text-xs font-bold uppercase tracking-wider text-accent">Portafolio Disponible</span>
+            <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
+              Propiedades Destacadas
+            </h2>
+            <p class="mt-2 text-sm text-neutral-600">
+              Explora las propiedades mediante paginación fluida en cliente.
+            </p>
+          </div>
+
+          <!-- Filtros de pestañas -->
+          <div class="flex flex-wrap items-center gap-1.5" id="inm-type-bar">
+            <button type="button" data-filter="all" class="inm-filter-btn rounded-lg bg-neutral-900 px-3 py-1.5 text-xs font-semibold text-white transition-colors">
+              Todos ({properties.length})
+            </button>
+            <button type="button" data-filter="Departamento" class="inm-filter-btn rounded-lg bg-white border border-neutral-300 px-3 py-1.5 text-xs font-semibold text-neutral-700 hover:bg-neutral-100 transition-colors">
+              Departamentos
+            </button>
+            <button type="button" data-filter="Casas" class="inm-filter-btn rounded-lg bg-white border border-neutral-300 px-3 py-1.5 text-xs font-semibold text-neutral-700 hover:bg-neutral-100 transition-colors">
+              Casas
+            </button>
+            <button type="button" data-filter="Terrenos" class="inm-filter-btn rounded-lg bg-white border border-neutral-300 px-3 py-1.5 text-xs font-semibold text-neutral-700 hover:bg-neutral-100 transition-colors">
+              Terrenos
+            </button>
+            <button type="button" data-filter="Oficinas" class="inm-filter-btn rounded-lg bg-white border border-neutral-300 px-3 py-1.5 text-xs font-semibold text-neutral-700 hover:bg-neutral-100 transition-colors">
+              Oficinas
+            </button>
+          </div>
+        </div>
+
+        <div class="mt-6 flex items-center justify-between text-xs text-neutral-500">
+          <span>Mostrando <span id="inm-current-count">6</span> de <span id="inm-total-count">{properties.length}</span> inmuebles</span>
+          <span class="text-accent font-semibold">Precios en USD y Soles (T.C. 3.75)</span>
+        </div>
+
+        <!-- Grid de Propiedades (6 por página) -->
+        <div id="inm-grid" class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {properties.map((p) => (
+            <div
+              class="inm-card group flex flex-col justify-between rounded-2xl border border-neutral-200/90 bg-white overflow-hidden shadow-2xs hover:border-neutral-300 hover:shadow-xl transition-all duration-300"
+              data-type={p.type}
+              data-operation={p.operation}
+              data-district={p.district.toLowerCase()}
+              data-title={p.title.toLowerCase()}
+              data-id={p.id}
+            >
+              <div>
+                <!-- Imagen representativa -->
+                <div class="relative h-48 w-full bg-neutral-900 flex items-center justify-center text-white overflow-hidden">
+                  <div class="flex flex-col items-center">
+                    <span class="text-xs font-bold uppercase tracking-widest text-accent">{p.type}</span>
+                    <span class="mt-1 font-display text-2xl font-bold tracking-tight">{p.district.split(",")[0]}</span>
+                    <span class="text-[11px] text-neutral-400 mt-0.5">{p.area} m² área total</span>
+                  </div>
+
+                  <span class="absolute top-3 left-3 rounded-full bg-neutral-900/80 backdrop-blur px-2.5 py-1 text-[10px] font-bold text-white border border-neutral-700">
+                    {p.operation.toUpperCase()}
+                  </span>
+
+                  <span class="absolute top-3 right-3 rounded-full bg-accent px-2.5 py-1 text-[10px] font-bold text-white shadow-xs">
+                    {p.badge}
+                  </span>
+                </div>
+
+                <!-- Detalles del inmueble -->
+                <div class="p-6">
+                  <div class="flex items-center gap-1.5 text-xs text-neutral-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-accent" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                    </svg>
+                    <span>{p.district}</span>
+                  </div>
+
+                  <h3 class="mt-2 font-display text-base font-bold text-neutral-900 group-hover:text-accent transition-colors line-clamp-1">
+                    {p.title}
+                  </h3>
+
+                  <p class="mt-1.5 text-xs text-neutral-600 line-clamp-2 leading-relaxed">
+                    {p.description}
+                  </p>
+
+                  <!-- Características (m², dorms, baños) -->
+                  <div class="mt-4 grid grid-cols-3 gap-2 border-t border-b border-neutral-100 py-3 text-center text-xs">
+                    <div>
+                      <span class="block font-bold text-neutral-900">{p.area} m²</span>
+                      <span class="text-[10px] text-neutral-400">Área</span>
+                    </div>
+                    <div>
+                      <span class="block font-bold text-neutral-900">{p.bedrooms > 0 ? p.bedrooms : "—"}</span>
+                      <span class="text-[10px] text-neutral-400">Dormitorios</span>
+                    </div>
+                    <div>
+                      <span class="block font-bold text-neutral-900">{p.bathrooms > 0 ? p.bathrooms : "—"}</span>
+                      <span class="text-[10px] text-neutral-400">Baños</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Precio y botón agendar -->
+              <div class="p-6 pt-0">
+                <div class="flex items-baseline justify-between mb-3">
+                  <div>
+                    <span class="text-[10px] uppercase font-bold text-neutral-400">Precio {p.operation}</span>
+                    <div class="font-display text-xl font-bold text-neutral-900">
+                      US$ {p.priceUSD.toLocaleString()}
+                    </div>
+                    <span class="text-[11px] text-neutral-500 font-medium">S/ {p.pricePEN.toLocaleString()}</span>
+                  </div>
+                  <span class="text-amber-500 text-xs font-bold">★ {p.rating.toFixed(1)}</span>
+                </div>
+
+                <button
+                  type="button"
+                  class="btn-visit-prop w-full rounded-lg bg-neutral-900 py-2.5 text-xs font-bold text-white hover:bg-accent transition-colors active:scale-98 shadow-xs"
+                  data-id={p.id}
+                  data-title={p.title}
+                  data-price={p.priceUSD}
+                >
+                  Agendar Visita / Informes
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Sin resultados -->
+        <div id="no-inm-msg" class="hidden flex-col items-center justify-center py-16 text-center">
+          <p class="font-display text-base font-bold text-neutral-900">No encontramos inmuebles con ese criterio</p>
+          <p class="mt-1 text-xs text-neutral-500">Prueba cambiando el tipo de inmueble o el distrito buscado.</p>
+        </div>
+
+        <!-- Paginación Funcional (6 inmuebles por página) -->
+        <div id="inm-pagination-wrapper" class="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-neutral-200 pt-6">
+          <span class="text-xs text-neutral-500">
+            Página <strong id="inm-page-num" class="text-neutral-900">1</strong> de <strong id="inm-max-pages" class="text-neutral-900">2</strong> (6 propiedades por página)
+          </span>
+          <div class="flex items-center gap-2">
+            <button
+              type="button"
+              id="inm-btn-prev"
+              disabled
+              class="rounded-lg border border-neutral-300 bg-white px-3 py-1.5 text-xs font-semibold text-neutral-700 hover:bg-neutral-50 disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              &larr; Anterior
+            </button>
+            <div id="inm-page-buttons" class="flex items-center gap-1"></div>
+            <button
+              type="button"
+              id="inm-btn-next"
+              class="rounded-lg border border-neutral-300 bg-white px-3 py-1.5 text-xs font-semibold text-neutral-700 hover:bg-neutral-50 disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              Siguiente &rarr;
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Simulador Hipotecario Interactivo (ECC Component) -->
+    <section class="py-16 sm:py-24 bg-white border-b border-neutral-200">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div class="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-10 shadow-xl">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-neutral-100 pb-5">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-accent">Simulador Financiero</span>
+              <h2 class="mt-1 font-display text-2xl sm:text-3xl font-bold text-neutral-900">
+                Calculadora de Cuota Hipotecaria
+              </h2>
+              <p class="text-xs text-neutral-600 mt-0.5">
+                Calcula tu cuota mensual estimada para adquirir una propiedad en Perú.
+              </p>
+            </div>
+            <span class="rounded-full bg-accent-soft px-3 py-1 text-xs font-semibold text-accent border border-accent/20">
+              TEA Referencial 8.5%
+            </span>
+          </div>
+
+          <div class="mt-8 grid gap-8 lg:grid-cols-12 lg:items-center">
+            <!-- Sliders -->
+            <div class="space-y-5 lg:col-span-7 text-xs">
+              <div>
+                <div class="flex justify-between font-bold text-neutral-800">
+                  <span>Valor del Inmueble (USD):</span>
+                  <span class="text-accent font-display text-sm font-bold">US$ <span id="label-mortgage-price">180,000</span></span>
+                </div>
+                <input
+                  type="range"
+                  id="slider-mortgage-price"
+                  min="30000"
+                  max="500000"
+                  value="180000"
+                  step="5000"
+                  class="mt-2 h-2 w-full cursor-pointer appearance-none rounded-lg bg-neutral-200 accent-accent"
+                />
+              </div>
+
+              <div>
+                <div class="flex justify-between font-bold text-neutral-800">
+                  <span>Cuota Inicial (%):</span>
+                  <span class="text-accent font-display text-sm font-bold"><span id="label-mortgage-down">20</span>% (US$ <span id="label-mortgage-down-usd">36,000</span>)</span>
+                </div>
+                <input
+                  type="range"
+                  id="slider-mortgage-down"
+                  min="10"
+                  max="40"
+                  value="20"
+                  step="5"
+                  class="mt-2 h-2 w-full cursor-pointer appearance-none rounded-lg bg-neutral-200 accent-accent"
+                />
+              </div>
+
+              <div>
+                <div class="flex justify-between font-bold text-neutral-800">
+                  <span>Plazo del Crédito (Años):</span>
+                  <span class="text-accent font-display text-sm font-bold"><span id="label-mortgage-years">20</span> años (<span id="label-mortgage-months">240</span> cuotas)</span>
+                </div>
+                <input
+                  type="range"
+                  id="slider-mortgage-years"
+                  min="5"
+                  max="25"
+                  value="20"
+                  step="1"
+                  class="mt-2 h-2 w-full cursor-pointer appearance-none rounded-lg bg-neutral-200 accent-accent"
+                />
+              </div>
+            </div>
+
+            <!-- Resultado de Cuota -->
+            <div class="rounded-2xl bg-neutral-900 p-6 text-white lg:col-span-5 shadow-lg">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-accent">Cuota Mensual Estimada</span>
+              <div class="mt-2 flex items-baseline gap-1">
+                <span class="text-lg font-bold text-accent">US$</span>
+                <span id="mortgage-monthly-usd" class="font-display text-4xl font-extrabold text-white">1,250</span>
+              </div>
+              <span class="text-xs text-neutral-400 mt-1 block">
+                Equivalente aprox: <strong class="text-white">S/ <span id="mortgage-monthly-pen">4,688</span></strong> al mes
+              </span>
+
+              <div class="mt-6 border-t border-neutral-800 pt-4 space-y-1.5 text-xs text-neutral-400">
+                <div class="flex justify-between">
+                  <span>Monto Financiado:</span>
+                  <span class="text-white font-medium">US$ <span id="mortgage-financed">144,000</span></span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Tasa Anual Efectiva:</span>
+                  <span class="text-white font-medium">8.50% fija</span>
+                </div>
+              </div>
+
+              <a
+                href="#catalogo-inmuebles"
+                class="mt-6 flex w-full items-center justify-center rounded-lg bg-accent py-2.5 text-xs font-bold text-white hover:bg-accent-dark transition-colors shadow-xs"
+              >
+                Ver Propiedades Disponibles
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal de Visita a Inmueble -->
+    <div id="visit-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-900/60 backdrop-blur-xs hidden">
+      <div class="w-full max-w-md rounded-2xl bg-white p-6 sm:p-8 shadow-2xl border border-neutral-200">
+        <div class="flex items-center justify-between border-b border-neutral-100 pb-3">
+          <h3 class="font-display text-base font-bold text-neutral-900">Agendar Visita Inmobiliaria</h3>
+          <button id="visit-modal-close" class="text-neutral-400 hover:text-neutral-900">✕</button>
+        </div>
+
+        <form id="visit-form" class="mt-4 space-y-3 text-xs">
+          <div>
+            <label class="block font-bold text-neutral-700">Inmueble Seleccionado</label>
+            <input type="text" id="modal-prop-title" readonly class="mt-1 w-full rounded-lg border border-neutral-200 bg-neutral-50 p-2 font-bold text-neutral-800" />
+          </div>
+
+          <div>
+            <label class="block font-bold text-neutral-700">Tu Nombre Completo</label>
+            <input type="text" required placeholder="Ej. Roberto Benavides" class="mt-1 w-full rounded-lg border border-neutral-300 p-2 text-neutral-900 focus:border-accent focus:outline-none" />
+          </div>
+
+          <div>
+            <label class="block font-bold text-neutral-700">Teléfono / WhatsApp</label>
+            <input type="tel" required placeholder="+51 940 000 000" class="mt-1 w-full rounded-lg border border-neutral-300 p-2 text-neutral-900 focus:border-accent focus:outline-none" />
+          </div>
+
+          <div>
+            <label class="block font-bold text-neutral-700">Modalidad de Visita</label>
+            <select class="mt-1 w-full rounded-lg border border-neutral-300 p-2 text-neutral-900 focus:border-accent focus:outline-none">
+              <option>Visita Presencial en el Inmueble</option>
+              <option>Tour Virtual Guiado por Google Meet</option>
+              <option>Envío de Ficha Técnica &amp; Planos PDF</option>
+            </select>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full rounded-lg bg-accent py-2.5 font-bold text-white hover:bg-accent-dark transition-colors shadow-xs"
+          >
+            Confirmar Solicitud de Visita
+          </button>
+        </form>
+
+        <div id="visit-success-msg" class="hidden mt-4 rounded-lg bg-emerald-50 border border-emerald-200 p-3 text-emerald-800 text-xs text-center">
+          ✓ Solicitud confirmada. Un asesor te contactará en breve vía WhatsApp.
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  // Paginación y Filtrado del Catálogo Inmobiliario
+  const inmCards = Array.from(document.querySelectorAll("#inm-grid > .inm-card")) as HTMLElement[];
+  const typeButtons = document.querySelectorAll(".inm-filter-btn");
+  const countCurrentEl = document.getElementById("inm-current-count");
+  const countTotalEl = document.getElementById("inm-total-count");
+  const pageNumEl = document.getElementById("inm-page-num");
+  const maxPagesEl = document.getElementById("inm-max-pages");
+  const noInmMsg = document.getElementById("no-inm-msg");
+  const paginationWrapper = document.getElementById("inm-pagination-wrapper");
+  const pageButtonsContainer = document.getElementById("inm-page-buttons");
+  const btnPrev = document.getElementById("inm-btn-prev") as HTMLButtonElement | null;
+  const btnNext = document.getElementById("inm-btn-next") as HTMLButtonElement | null;
+
+  const heroOpSelect = document.getElementById("hero-op-select") as HTMLSelectElement | null;
+  const heroTypeSelect = document.getElementById("hero-type-select") as HTMLSelectElement | null;
+  const heroDistrictInput = document.getElementById("hero-district-input") as HTMLInputElement | null;
+  const heroSearchBtn = document.getElementById("hero-search-btn");
+
+  const INM_PER_PAGE = 6;
+  let currentInmPage = 1;
+  let activeInmType = "all";
+  let activeInmOp = "all";
+  let activeInmDistrict = "";
+
+  function getFilteredInm(): HTMLElement[] {
+    return inmCards.filter(card => {
+      const type = card.getAttribute("data-type") || "";
+      const op = card.getAttribute("data-operation") || "";
+      const district = card.getAttribute("data-district") || "";
+      const title = card.getAttribute("data-title") || "";
+
+      const matchesType = activeInmType === "all" || type.toLowerCase() === activeInmType.toLowerCase();
+      const matchesOp = activeInmOp === "all" || op.toLowerCase() === activeInmOp.toLowerCase();
+      const matchesDistrict = !activeInmDistrict || district.includes(activeInmDistrict) || title.includes(activeInmDistrict);
+
+      return matchesType && matchesOp && matchesDistrict;
+    });
+  }
+
+  function renderInmPagination() {
+    const filtered = getFilteredInm();
+    const total = filtered.length;
+    const maxPages = Math.ceil(total / INM_PER_PAGE) || 1;
+
+    if (currentInmPage > maxPages) currentInmPage = maxPages;
+    if (currentInmPage < 1) currentInmPage = 1;
+
+    inmCards.forEach(c => c.classList.add("hidden"));
+
+    const start = (currentInmPage - 1) * INM_PER_PAGE;
+    const pageItems = filtered.slice(start, start + INM_PER_PAGE);
+    pageItems.forEach(c => c.classList.remove("hidden"));
+
+    if (countCurrentEl) countCurrentEl.textContent = pageItems.length.toString();
+    if (countTotalEl) countTotalEl.textContent = total.toString();
+    if (pageNumEl) pageNumEl.textContent = currentInmPage.toString();
+    if (maxPagesEl) maxPagesEl.textContent = maxPages.toString();
+
+    if (total === 0) {
+      noInmMsg?.classList.remove("hidden");
+      noInmMsg?.classList.add("flex");
+      paginationWrapper?.classList.add("hidden");
+    } else {
+      noInmMsg?.classList.add("hidden");
+      noInmMsg?.classList.remove("flex");
+      paginationWrapper?.classList.remove("hidden");
+    }
+
+    if (btnPrev) btnPrev.disabled = currentInmPage <= 1;
+    if (btnNext) btnNext.disabled = currentInmPage >= maxPages;
+
+    if (pageButtonsContainer) {
+      pageButtonsContainer.innerHTML = "";
+      for (let i = 1; i <= maxPages; i++) {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.textContent = i.toString();
+        b.className = i === currentInmPage
+          ? "h-8 w-8 rounded-lg bg-neutral-900 text-xs font-bold text-white shadow-xs"
+          : "h-8 w-8 rounded-lg border border-neutral-300 bg-white text-xs font-semibold text-neutral-700 hover:bg-neutral-100";
+        b.addEventListener("click", () => {
+          currentInmPage = i;
+          renderInmPagination();
+          document.getElementById("catalogo-inmuebles")?.scrollIntoView({ behavior: "smooth" });
+        });
+        pageButtonsContainer.appendChild(b);
+      }
+    }
+  }
+
+  typeButtons.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      const type = (e.currentTarget as HTMLElement).getAttribute("data-filter") || "all";
+      activeInmType = type;
+      currentInmPage = 1;
+
+      typeButtons.forEach(b => {
+        b.className = "inm-filter-btn rounded-lg bg-white border border-neutral-300 px-3 py-1.5 text-xs font-semibold text-neutral-700 hover:bg-neutral-100 transition-colors";
+      });
+      (e.currentTarget as HTMLElement).className = "inm-filter-btn rounded-lg bg-neutral-900 px-3 py-1.5 text-xs font-semibold text-white transition-colors";
+
+      renderInmPagination();
+    });
+  });
+
+  heroSearchBtn?.addEventListener("click", () => {
+    activeInmOp = heroOpSelect?.value || "all";
+    activeInmType = heroTypeSelect?.value || "all";
+    activeInmDistrict = heroDistrictInput?.value.trim().toLowerCase() || "";
+    currentInmPage = 1;
+    renderInmPagination();
+    document.getElementById("catalogo-inmuebles")?.scrollIntoView({ behavior: "smooth" });
+  });
+
+  btnPrev?.addEventListener("click", () => {
+    if (currentInmPage > 1) {
+      currentInmPage--;
+      renderInmPagination();
+      document.getElementById("catalogo-inmuebles")?.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+
+  btnNext?.addEventListener("click", () => {
+    const max = Math.ceil(getFilteredInm().length / INM_PER_PAGE);
+    if (currentInmPage < max) {
+      currentInmPage++;
+      renderInmPagination();
+      document.getElementById("catalogo-inmuebles")?.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+
+  // Modal de Visita
+  const visitModal = document.getElementById("visit-modal");
+  const visitModalClose = document.getElementById("visit-modal-close");
+  const modalPropTitle = document.getElementById("modal-prop-title") as HTMLInputElement | null;
+  const visitForm = document.getElementById("visit-form") as HTMLFormElement | null;
+  const visitSuccessMsg = document.getElementById("visit-success-msg");
+
+  document.querySelectorAll(".btn-visit-prop").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      const title = (e.currentTarget as HTMLElement).getAttribute("data-title") || "Inmueble";
+      if (modalPropTitle) modalPropTitle.value = title;
+      visitSuccessMsg?.classList.add("hidden");
+      visitModal?.classList.remove("hidden");
+    });
+  });
+
+  visitModalClose?.addEventListener("click", () => {
+    visitModal?.classList.add("hidden");
+  });
+
+  visitForm?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    visitSuccessMsg?.classList.remove("hidden");
+    setTimeout(() => {
+      visitModal?.classList.add("hidden");
+      visitForm.reset();
+    }, 2000);
+  });
+
+  // Simulador Hipotecario
+  const sliderPrice = document.getElementById("slider-mortgage-price") as HTMLInputElement | null;
+  const sliderDown = document.getElementById("slider-mortgage-down") as HTMLInputElement | null;
+  const sliderYears = document.getElementById("slider-mortgage-years") as HTMLInputElement | null;
+
+  const labelPrice = document.getElementById("label-mortgage-price");
+  const labelDown = document.getElementById("label-mortgage-down");
+  const labelDownUSD = document.getElementById("label-mortgage-down-usd");
+  const labelYears = document.getElementById("label-mortgage-years");
+  const labelMonths = document.getElementById("label-mortgage-months");
+
+  const monthlyUSDEl = document.getElementById("mortgage-monthly-usd");
+  const monthlyPENEl = document.getElementById("mortgage-monthly-pen");
+  const financedEl = document.getElementById("mortgage-financed");
+
+  function calculateMortgage() {
+    const price = parseFloat(sliderPrice?.value || "180000");
+    const downPercent = parseFloat(sliderDown?.value || "20");
+    const years = parseFloat(sliderYears?.value || "20");
+
+    const downUSD = price * (downPercent / 100);
+    const loanAmount = price - downUSD;
+    const totalMonths = years * 12;
+
+    // Tasa mensual equivalente de TEA 8.5%
+    const annualRate = 0.085;
+    const monthlyRate = Math.pow(1 + annualRate, 1 / 12) - 1;
+
+    // Fórmula cuota francesa: C = P * [r(1+r)^n] / [(1+r)^n - 1]
+    const monthlyPayment = (loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, totalMonths))) / (Math.pow(1 + monthlyRate, totalMonths) - 1);
+    const monthlyPEN = monthlyPayment * 3.75;
+
+    if (labelPrice) labelPrice.textContent = price.toLocaleString();
+    if (labelDown) labelDown.textContent = downPercent.toString();
+    if (labelDownUSD) labelDownUSD.textContent = Math.round(downUSD).toLocaleString();
+    if (labelYears) labelYears.textContent = years.toString();
+    if (labelMonths) labelMonths.textContent = totalMonths.toString();
+
+    if (monthlyUSDEl) monthlyUSDEl.textContent = Math.round(monthlyPayment).toLocaleString();
+    if (monthlyPENEl) monthlyPENEl.textContent = Math.round(monthlyPEN).toLocaleString();
+    if (financedEl) financedEl.textContent = Math.round(loanAmount).toLocaleString();
+  }
+
+  sliderPrice?.addEventListener("input", calculateMortgage);
+  sliderDown?.addEventListener("input", calculateMortgage);
+  sliderYears?.addEventListener("input", calculateMortgage);
+
+  // Inicializar
+  renderInmPagination();
+  calculateMortgage();
+</script>

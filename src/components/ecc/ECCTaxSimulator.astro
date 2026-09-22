@@ -1,0 +1,286 @@
+---
+// Componente ECC: Simulador de Tributo Inmobiliario (Impuesto Predial & Arbitrios)
+// Diseñado para AltoPlanta (altoplanta.com)
+---
+
+<div class="rounded-2xl border border-neutral-200/90 bg-white p-6 sm:p-8 shadow-xl shadow-neutral-900/5">
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-neutral-100 pb-5">
+    <div>
+      <div class="flex items-center gap-2">
+        <span class="inline-flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="text-xs font-bold uppercase tracking-wider text-accent">Motor de Cálculo Fiscal</span>
+      </div>
+      <h3 class="mt-1 font-display text-2xl font-bold text-neutral-900">
+        Simulador de Liquidación Predial &amp; Arbitrios
+      </h3>
+      <p class="text-xs text-neutral-500 mt-0.5">
+        Algoritmo oficial con escala progresiva acumulativa (D. Leg. 776) y UIT actual (S/ 5,350)
+      </p>
+    </div>
+    <span class="inline-flex items-center gap-1 rounded-lg border border-accent/20 bg-accent-soft px-3 py-1.5 text-xs font-semibold text-accent">
+      AltoPlanta Tax Engine v3.4
+    </span>
+  </div>
+
+  <form id="tax-form" class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <!-- Valor de Autovalúo -->
+    <div>
+      <label for="autovaluo-input" class="block text-xs font-bold uppercase tracking-wider text-neutral-700">
+        Autovalúo Total del Predio (S/)
+      </label>
+      <div class="relative mt-2">
+        <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-sm font-semibold text-neutral-400">
+          S/
+        </span>
+        <input
+          type="number"
+          id="autovaluo-input"
+          name="autovaluo"
+          value="180000"
+          min="1000"
+          step="1000"
+          class="block w-full rounded-lg border border-neutral-300 bg-neutral-50/50 py-2.5 pl-9 pr-3 text-sm font-semibold text-neutral-900 focus:border-accent focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent/20"
+        />
+      </div>
+      <p class="mt-1 text-[11px] text-neutral-500">Terreno + Construcción arancelaria</p>
+    </div>
+
+    <!-- Uso del Inmueble -->
+    <div>
+      <label for="uso-select" class="block text-xs font-bold uppercase tracking-wider text-neutral-700">
+        Destino / Uso del Predio
+      </label>
+      <select
+        id="uso-select"
+        class="mt-2 block w-full rounded-lg border border-neutral-300 bg-neutral-50/50 py-2.5 px-3 text-sm font-semibold text-neutral-900 focus:border-accent focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent/20"
+      >
+        <option value="casa">Casa Habitación (Vivienda)</option>
+        <option value="comercio">Comercio / Oficinas</option>
+        <option value="industrial">Industrial / Almacén</option>
+        <option value="terreno">Terreno sin Construir (Sin edificar)</option>
+      </select>
+      <p class="mt-1 text-[11px] text-neutral-500">Afecta la tasa de arbitrios municipales</p>
+    </div>
+
+    <!-- Distrito / Jurisdicción -->
+    <div>
+      <label for="distrito-select" class="block text-xs font-bold uppercase tracking-wider text-neutral-700">
+        Distrito / Municipio
+      </label>
+      <select
+        id="distrito-select"
+        class="mt-2 block w-full rounded-lg border border-neutral-300 bg-neutral-50/50 py-2.5 px-3 text-sm font-semibold text-neutral-900 focus:border-accent focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent/20"
+      >
+        <option value="miraflores">Lima — Miraflores / San Isidro</option>
+        <option value="surco">Lima — Surco / La Molina</option>
+        <option value="lima_centro">Lima — Lima Cercado / Jesús María</option>
+        <option value="tarapoto" selected>San Martín — Tarapoto / Morales</option>
+        <option value="provincia">Otras Provincias & Regiones</option>
+      </select>
+      <p class="mt-1 text-[11px] text-neutral-500">Ordenanza municipal de arbitrios</p>
+    </div>
+  </form>
+
+  <!-- Panel de Resultados -->
+  <div class="mt-8 rounded-xl border border-neutral-200 bg-neutral-50/70 p-5">
+    <div class="grid gap-6 sm:grid-cols-3">
+      <!-- Impuesto Predial Anual -->
+      <div class="rounded-lg bg-white p-4 border border-neutral-200/80 shadow-2xs">
+        <span class="text-[11px] font-bold uppercase tracking-wider text-neutral-500">Impuesto Predial Anual</span>
+        <div class="mt-1 flex items-baseline gap-1">
+          <span class="text-xs font-bold text-neutral-500">S/</span>
+          <span id="predial-total" class="font-display text-3xl font-bold text-neutral-900">540.00</span>
+        </div>
+        <span id="predial-tramos-text" class="text-[11px] text-neutral-500 mt-1 block">
+          Tramo 1 (0.2%) + Tramo 2 (0.6%)
+        </span>
+      </div>
+
+      <!-- Arbitrios Municipales -->
+      <div class="rounded-lg bg-white p-4 border border-neutral-200/80 shadow-2xs">
+        <span class="text-[11px] font-bold uppercase tracking-wider text-neutral-500">Arbitrios Municipales Estimados</span>
+        <div class="mt-1 flex items-baseline gap-1">
+          <span class="text-xs font-bold text-neutral-500">S/</span>
+          <span id="arbitrios-total" class="font-display text-3xl font-bold text-accent">312.00</span>
+        </div>
+        <span class="text-[11px] text-neutral-500 mt-1 block">
+          Limpieza, Parques y Serenazgo
+        </span>
+      </div>
+
+      <!-- Total Liquidación Tributaria -->
+      <div class="rounded-lg bg-neutral-900 p-4 text-white shadow-md">
+        <span class="text-[11px] font-bold uppercase tracking-wider text-neutral-400">Total Tributo Anual</span>
+        <div class="mt-1 flex items-baseline gap-1">
+          <span class="text-xs font-bold text-accent">S/</span>
+          <span id="gran-total" class="font-display text-3xl font-bold text-white">852.00</span>
+        </div>
+        <div class="mt-1 flex items-center justify-between text-[11px] text-neutral-300">
+          <span>O 4 cuotas de:</span>
+          <span id="cuota-trimestral" class="font-bold text-accent">S/ 213.00</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Desglose de Escala Progresiva D.Leg 776 -->
+    <div class="mt-5 border-t border-neutral-200/80 pt-4">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-bold text-neutral-800">Desglose Técnico de Escala Tributaria:</span>
+        <span class="text-[11px] text-neutral-500">UIT 2026 = S/ 5,350.00</span>
+      </div>
+      <div class="mt-3 grid gap-2 sm:grid-cols-3 text-xs">
+        <div class="rounded-md border border-neutral-200 bg-white p-2.5">
+          <div class="flex justify-between font-medium text-neutral-700">
+            <span>Tramo 1 (Hasta 15 UIT)</span>
+            <span class="font-bold text-neutral-900">0.2%</span>
+          </div>
+          <span id="tramo1-val" class="text-[11px] text-neutral-500 mt-0.5 block">S/ 80,250 max (S/ 160.50)</span>
+        </div>
+        <div class="rounded-md border border-neutral-200 bg-white p-2.5">
+          <div class="flex justify-between font-medium text-neutral-700">
+            <span>Tramo 2 (15 a 60 UIT)</span>
+            <span class="font-bold text-neutral-900">0.6%</span>
+          </div>
+          <span id="tramo2-val" class="text-[11px] text-neutral-500 mt-0.5 block">Excedente al 0.6%</span>
+        </div>
+        <div class="rounded-md border border-neutral-200 bg-white p-2.5">
+          <div class="flex justify-between font-medium text-neutral-700">
+            <span>Tramo 3 (Más de 60 UIT)</span>
+            <span class="font-bold text-neutral-900">1.0%</span>
+          </div>
+          <span id="tramo3-val" class="text-[11px] text-neutral-500 mt-0.5 block">S/ 0.00</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Acciones del Simulador -->
+    <div class="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-neutral-200 pt-4">
+      <div class="flex items-center gap-2 text-xs text-neutral-600">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+        </svg>
+        <span>Emisión instantánea de Cuponera Digital en PDF disponible en AltoPlanta</span>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button
+          type="button"
+          id="btn-export-pdf"
+          class="inline-flex items-center gap-1.5 rounded-lg border border-neutral-300 bg-white px-3.5 py-2 text-xs font-semibold text-neutral-700 hover:bg-neutral-50 transition-colors shadow-2xs"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-rose-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          </svg>
+          Descargar Proforma Simulada
+        </button>
+
+        <a
+          href="https://altoplanta.com/"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-1.5 rounded-lg bg-accent px-4 py-2 text-xs font-semibold text-white hover:bg-accent-dark transition-colors shadow-xs"
+        >
+          Ir a altoplanta.com &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notificación toast simulada -->
+  <div id="tax-toast" class="hidden fixed bottom-6 right-6 z-50 rounded-xl bg-neutral-900 text-white px-4 py-3 shadow-xl flex items-center gap-3 text-xs border border-neutral-700">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-emerald-400" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+    </svg>
+    <span>Proforma tributaria simulada generada en PDF con éxito.</span>
+  </div>
+</div>
+
+<script>
+  const UIT = 5350; // UIT 2026 Perú
+  const autovaluoInput = document.getElementById("autovaluo-input") as HTMLInputElement | null;
+  const usoSelect = document.getElementById("uso-select") as HTMLSelectElement | null;
+  const distritoSelect = document.getElementById("distrito-select") as HTMLSelectElement | null;
+
+  const predialTotalEl = document.getElementById("predial-total");
+  const arbitriosTotalEl = document.getElementById("arbitrios-total");
+  const granTotalEl = document.getElementById("gran-total");
+  const cuotaTrimestralEl = document.getElementById("cuota-trimestral");
+  const tramo1ValEl = document.getElementById("tramo1-val");
+  const tramo2ValEl = document.getElementById("tramo2-val");
+  const tramo3ValEl = document.getElementById("tramo3-val");
+
+  function calcularTributos() {
+    const val = parseFloat(autovaluoInput?.value || "0") || 0;
+    const uso = usoSelect?.value || "casa";
+    const distrito = distritoSelect?.value || "tarapoto";
+
+    const t1Max = 15 * UIT;
+    const t2Max = 60 * UIT;
+
+    let impPredial = 0;
+    let t1Monto = 0;
+    let t2Monto = 0;
+    let t3Monto = 0;
+
+    if (val <= t1Max) {
+      t1Monto = val * 0.002;
+      impPredial = t1Monto;
+    } else if (val <= t2Max) {
+      t1Monto = t1Max * 0.002;
+      t2Monto = (val - t1Max) * 0.006;
+      impPredial = t1Monto + t2Monto;
+    } else {
+      t1Monto = t1Max * 0.002;
+      t2Monto = (t2Max - t1Max) * 0.006;
+      t3Monto = (val - t2Max) * 0.01;
+      impPredial = t1Monto + t2Monto + t3Monto;
+    }
+
+    const minPredial = 0.006 * UIT;
+    if (impPredial < minPredial && val > 0) {
+      impPredial = minPredial;
+    }
+
+    let factorDistrito = 1.0;
+    if (distrito === "miraflores") factorDistrito = 1.6;
+    else if (distrito === "surco") factorDistrito = 1.35;
+    else if (distrito === "lima_centro") factorDistrito = 1.15;
+    else if (distrito === "tarapoto") factorDistrito = 0.85;
+    else factorDistrito = 0.9;
+
+    let factorUso = 280;
+    if (uso === "comercio") factorUso = 520;
+    else if (uso === "industrial") factorUso = 780;
+    else if (uso === "terreno") factorUso = 160;
+
+    const arbitrios = factorUso * factorDistrito;
+    const total = impPredial + arbitrios;
+    const cuota = total / 4;
+
+    if (predialTotalEl) predialTotalEl.textContent = impPredial.toFixed(2);
+    if (arbitriosTotalEl) arbitriosTotalEl.textContent = arbitrios.toFixed(2);
+    if (granTotalEl) granTotalEl.textContent = total.toFixed(2);
+    if (cuotaTrimestralEl) cuotaTrimestralEl.textContent = `S/ ${cuota.toFixed(2)}`;
+
+    if (tramo1ValEl) tramo1ValEl.textContent = `Base: S/ ${Math.min(val, t1Max).toLocaleString()} -> S/ ${t1Monto.toFixed(2)}`;
+    if (tramo2ValEl) tramo2ValEl.textContent = `Base: S/ ${Math.max(0, Math.min(val - t1Max, t2Max - t1Max)).toLocaleString()} -> S/ ${t2Monto.toFixed(2)}`;
+    if (tramo3ValEl) tramo3ValEl.textContent = `Base: S/ ${Math.max(0, val - t2Max).toLocaleString()} -> S/ ${t3Monto.toFixed(2)}`;
+  }
+
+  autovaluoInput?.addEventListener("input", calcularTributos);
+  usoSelect?.addEventListener("change", calcularTributos);
+  distritoSelect?.addEventListener("change", calcularTributos);
+
+  calcularTributos();
+
+  const btnPdf = document.getElementById("btn-export-pdf");
+  const toast = document.getElementById("tax-toast");
+  btnPdf?.addEventListener("click", () => {
+    if (toast) {
+      toast.classList.remove("hidden");
+      setTimeout(() => {
+        toast.classList.add("hidden");
+      }, 3500);
+    }
+  });
+</script>

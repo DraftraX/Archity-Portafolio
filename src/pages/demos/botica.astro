@@ -1,0 +1,722 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+const medicines = [
+  {
+    id: "bot-1",
+    name: "Paracetamol 500mg (Caja 100 tabletas)",
+    category: "Medicamentos",
+    price: 18.50,
+    originalPrice: 24.00,
+    badge: "Genérico Esencial",
+    stock: 85,
+    rx: false,
+    activeSubstance: "Paracetamol",
+    description: "Analgésico y antipirético para el alivio del dolor moderado y estados febriles.",
+  },
+  {
+    id: "bot-2",
+    name: "Amoxicilina + Ácido Clavulánico 875/125mg",
+    category: "Medicamentos",
+    price: 45.00,
+    originalPrice: 58.00,
+    badge: "Bajo Receta",
+    stock: 24,
+    rx: true,
+    activeSubstance: "Amoxicilina / Clavulanato",
+    description: "Antibiótico bactericida de amplio espectro para infecciones respiratorias y dentales.",
+  },
+  {
+    id: "bot-3",
+    name: "Ibuprofeno 400mg Forte (Caja 20 cápsulas blandas)",
+    category: "Medicamentos",
+    price: 16.00,
+    originalPrice: 20.00,
+    badge: "Alivio Rápido",
+    stock: 60,
+    rx: false,
+    activeSubstance: "Ibuprofeno",
+    description: "Antiinflamatorio no esteroideo para dolores musculares, menstruales y articulares.",
+  },
+  {
+    id: "bot-4",
+    name: "Vitamina C 1000mg + Zinc (Tubo 20 tabletas efervescentes)",
+    category: "Vitaminas",
+    price: 28.00,
+    originalPrice: 35.00,
+    badge: "Defensas",
+    stock: 40,
+    rx: false,
+    activeSubstance: "Ácido Ascórbico + Zinc",
+    description: "Refuerza el sistema inmunológico frente a resfriados y cambios de estación.",
+  },
+  {
+    id: "bot-5",
+    name: "Protector Solar Dermatológico FPS 50+ 50ml",
+    category: "Cuidado Piel",
+    price: 72.00,
+    originalPrice: 89.00,
+    badge: "Dermo-Cuidado",
+    stock: 18,
+    rx: false,
+    activeSubstance: "Filtros UVA/UVB + Ácido Hialurónico",
+    description: "Textura toque seco antibrillo para piel sensible mixta a grasa.",
+  },
+  {
+    id: "bot-6",
+    name: "Fórmula Infantil Etapa 1 para Lactantes 800g",
+    category: "Bebés",
+    price: 84.00,
+    originalPrice: 96.00,
+    badge: "Nutrición Infantil",
+    stock: 15,
+    rx: false,
+    activeSubstance: "DHA, ARA y Probióticos",
+    description: "Alimento lácteo para recién nacidos con nutrientes esenciales de desarrollo.",
+  },
+  {
+    id: "bot-7",
+    name: "Alcohol Medicinal 70° Puro 1 Litro",
+    category: "Botiquín",
+    price: 12.00,
+    originalPrice: 15.00,
+    badge: "Básico Hogar",
+    stock: 90,
+    rx: false,
+    activeSubstance: "Etanol 70%",
+    description: "Antiséptico y desinfectante de uso externo para curación y desinfección de heridas.",
+  },
+  {
+    id: "bot-8",
+    name: "Omeprazol 20mg Gastroprotector (Caja 30 cápsulas)",
+    category: "Medicamentos",
+    price: 22.00,
+    originalPrice: 28.00,
+    badge: "Genérico",
+    stock: 55,
+    rx: false,
+    activeSubstance: "Omeprazol",
+    description: "Inhibidor de la bomba de protones para el tratamiento de acidez, reflujo y gastritis.",
+  },
+  {
+    id: "bot-9",
+    name: "Colágeno Hidrolizado Marino + Magnesio 500g",
+    category: "Vitaminas",
+    price: 65.00,
+    originalPrice: 82.00,
+    badge: "Articulaciones",
+    stock: 22,
+    rx: false,
+    activeSubstance: "Colágeno Marino + Citrato Magnesio",
+    description: "Regeneración de cartílagos, salud de la piel y elasticidad articular diaria.",
+  },
+  {
+    id: "bot-10",
+    name: "Toallitas Húmedas Hipoalergénicas para Bebé x100",
+    category: "Bebés",
+    price: 14.50,
+    originalPrice: 18.00,
+    badge: "Piel Delicada",
+    stock: 70,
+    rx: false,
+    activeSubstance: "Extracto de Manzanilla & Aloe",
+    description: "0% alcohol y parabenos, con textura extra suave para la limpieza diaria del bebé.",
+  },
+  {
+    id: "bot-11",
+    name: "Tensiómetro Digital de Brazo Automático",
+    category: "Botiquín",
+    price: 125.00,
+    originalPrice: 155.00,
+    badge: "Precisión Clínica",
+    stock: 8,
+    rx: false,
+    activeSubstance: "Monitor Presión Oscilométrico",
+    description: "Medición rápida de presión arterial sistólica, diastólica y detección de arritmias.",
+  },
+  {
+    id: "bot-12",
+    name: "Cetirizina 10mg Antialérgico (Caja 20 tabletas)",
+    category: "Medicamentos",
+    price: 15.00,
+    originalPrice: 19.00,
+    badge: "Rinitis & Alergias",
+    stock: 48,
+    rx: false,
+    activeSubstance: "Cetirizina Diclorhidrato",
+    description: "Alivio de síntomas de rinitis alérgica estacional, estornudos y picazón ocular.",
+  },
+  {
+    id: "bot-13",
+    name: "Crema Hidratante Cerámides Restauradora 450g",
+    category: "Cuidado Piel",
+    price: 88.00,
+    originalPrice: 105.00,
+    badge: "Dermatológica",
+    stock: 12,
+    rx: false,
+    activeSubstance: "3 Ceramidas Esenciales",
+    description: "Hidratación continua durante 24 horas y restauración de la barrera protectora cutánea.",
+  },
+  {
+    id: "bot-14",
+    name: "Oxímetro de Pulso Digital Portátil",
+    category: "Botiquín",
+    price: 48.00,
+    originalPrice: 65.00,
+    badge: "Monitoreo",
+    stock: 25,
+    rx: false,
+    activeSubstance: "Sensor SpO2 y Pulsaciones",
+    description: "Lectura instantánea de saturación de oxígeno en sangre y frecuencia cardíaca.",
+  },
+  {
+    id: "bot-15",
+    name: "Pack Pañales Etapa 3 x60 Unidades",
+    category: "Bebés",
+    price: 52.00,
+    originalPrice: 64.00,
+    badge: "Ultra Seco",
+    stock: 35,
+    rx: false,
+    activeSubstance: "Gel Absorbente Antifugas",
+    description: "Hasta 12 horas de absorción nocturna con bandas elásticas anatómicas.",
+  },
+  {
+    id: "bot-16",
+    name: "Complejo B con Neurotropas (Caja 30 cápsulas)",
+    category: "Vitaminas",
+    price: 32.00,
+    originalPrice: 40.00,
+    badge: "Energía & Mente",
+    stock: 38,
+    rx: false,
+    activeSubstance: "Vitaminas B1, B6 y B12",
+    description: "Apoyo al sistema nervioso, reducción de fatiga física y rendimiento mental.",
+  },
+];
+---
+
+<Layout
+  title="Demo Botica & Farmacia Digital — Catálogo Paginado & Pedidos WhatsApp | Archity"
+  description="Demostración interactiva de farmacia y botica en línea: catálogo con paginación funcional en front-end, indicador de receta médica, carrito de salud y envío a domicilio."
+>
+  <Header />
+
+  <main>
+    <!-- Banner de navegación de demos -->
+    <div class="border-b border-accent/20 bg-accent-soft/60 px-4 py-2 text-center text-xs font-medium text-accent">
+      <span class="font-bold">Demostración en Front-End:</span> Landing y catálogo farmacéutico con paginación y pedidos WhatsApp.
+      <a href="/demos/restaurante" class="ml-2 font-bold underline hover:text-accent-dark">
+        Ver Demo Restaurante &rarr;
+      </a>
+    </div>
+
+    <!-- Hero Botica / Farmacia -->
+    <section class="border-b border-neutral-200/80 bg-gradient-to-b from-emerald-50/60 via-white to-white py-16 sm:py-24">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-12 lg:grid-cols-12 lg:items-center">
+          <div class="lg:col-span-7">
+            <div class="flex items-center gap-2">
+              <span class="inline-flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Atención Farmacéutica 24/7 · Perú</span>
+            </div>
+
+            <h1 class="mt-4 font-display text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl">
+              Medicamentos, Salud y Cuidado <span class="text-emerald-600">en la Puerta de tu Hogar</span>
+            </h1>
+
+            <p class="mt-6 text-base leading-relaxed text-neutral-600 sm:text-lg">
+              Precios accesibles en genéricos y marcas de confianza. Despacho rápido en 45 minutos, validación de recetas médicas y asesoría personalizada por Químicos Farmacéuticos colegiados.
+            </p>
+
+            <div class="mt-8 flex flex-wrap items-center gap-3">
+              <a
+                href="#catalogo-botica"
+                class="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-6 py-3.5 text-sm font-bold text-white shadow-xs transition-all hover:bg-emerald-700 active:scale-95"
+              >
+                Ver Catálogo Paginado
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </a>
+
+              <a
+                href="https://wa.me/51940771896?text=Hola%20Botica,%20deseo%20consultar%20por%20un%20medicamento%20y%20enviar%20mi%20receta"
+                target="_blank"
+                rel="noopener"
+                class="inline-flex items-center justify-center gap-2 rounded-lg border border-neutral-300 bg-white px-5 py-3.5 text-sm font-semibold text-neutral-800 transition-colors hover:bg-neutral-50"
+              >
+                <span>Enviar Receta Médica</span>
+                <span class="text-emerald-600 font-bold">WhatsApp ↗</span>
+              </a>
+            </div>
+
+            <!-- Stats botica -->
+            <div class="mt-10 grid grid-cols-3 gap-4 border-t border-neutral-200/80 pt-6 text-left">
+              <div>
+                <span class="block font-display text-2xl font-bold text-neutral-900">45 min</span>
+                <span class="text-xs text-neutral-500">Entrega promedio a domicilio</span>
+              </div>
+              <div>
+                <span class="block font-display text-2xl font-bold text-emerald-600">100%</span>
+                <span class="text-xs text-neutral-500">Registro Sanitario DIGEMID</span>
+              </div>
+              <div>
+                <span class="block font-display text-2xl font-bold text-neutral-900">24 / 7</span>
+                <span class="text-xs text-neutral-500">Guardia permanente</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Carrito / Botiquín Flotante -->
+          <div class="lg:col-span-5">
+            <div class="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8 shadow-xl">
+              <div class="flex items-center justify-between border-b border-neutral-100 pb-4">
+                <div class="flex items-center gap-2.5">
+                  <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 font-bold">
+                    +
+                  </span>
+                  <div>
+                    <h3 class="font-display text-base font-bold text-neutral-900">Mi Botiquín de Compra</h3>
+                    <span class="text-xs text-neutral-500"><span id="pharma-items-count">0</span> productos agregados</span>
+                  </div>
+                </div>
+                <span class="text-[10px] font-bold uppercase bg-emerald-50 text-emerald-700 px-2 py-1 rounded border border-emerald-200">
+                  Despacho Rápido
+                </span>
+              </div>
+
+              <!-- Lista de ítems -->
+              <div id="pharma-cart-list" class="mt-4 space-y-3 min-h-[140px] max-h-[220px] overflow-y-auto pr-1">
+                <p id="pharma-empty-msg" class="text-xs text-neutral-500 text-center py-10">
+                  Selecciona medicamentos o insumos de la lista para calcular el total de tu receta.
+                </p>
+              </div>
+
+              <div class="mt-4 border-t border-neutral-100 pt-4 space-y-2 text-xs text-neutral-600">
+                <div class="flex justify-between">
+                  <span>Subtotal</span>
+                  <span class="font-medium text-neutral-900">S/ <span id="pharma-subtotal">0.00</span></span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Envío a Domicilio</span>
+                  <span id="pharma-shipping" class="font-medium text-neutral-900">S/ 0.00</span>
+                </div>
+                <div class="flex justify-between text-sm font-bold text-neutral-900 border-t border-neutral-100 pt-2">
+                  <span>Total a Pagar</span>
+                  <span class="text-emerald-700">S/ <span id="pharma-total">0.00</span></span>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                id="btn-whatsapp-pharma"
+                disabled
+                class="mt-6 flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-600 py-3 text-xs font-bold text-white hover:bg-emerald-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors shadow-sm"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 24 24">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654z" />
+                </svg>
+                Solicitar Entrega por WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Catálogo Farmacéutico con Paginación Funcional -->
+    <section id="catalogo-botica" class="scroll-mt-16 py-16 sm:py-24 bg-white border-b border-neutral-200">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div class="max-w-xl">
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Inventario en Línea</span>
+            <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
+              Medicamentos &amp; Bienestar
+            </h2>
+            <p class="mt-2 text-sm text-neutral-600">
+              Busca por nombre comercial o principio activo. Consulta existencias en tiempo real.
+            </p>
+          </div>
+
+          <!-- Filtros de categoría -->
+          <div class="flex flex-wrap items-center gap-1.5" id="pharma-category-bar">
+            <button type="button" data-cat="all" class="pharma-cat-btn rounded-lg bg-neutral-900 px-3 py-1.5 text-xs font-semibold text-white transition-colors">
+              Todos ({medicines.length})
+            </button>
+            <button type="button" data-cat="Medicamentos" class="pharma-cat-btn rounded-lg bg-neutral-100 px-3 py-1.5 text-xs font-semibold text-neutral-700 hover:bg-neutral-200 transition-colors">
+              Medicamentos
+            </button>
+            <button type="button" data-cat="Vitaminas" class="pharma-cat-btn rounded-lg bg-neutral-100 px-3 py-1.5 text-xs font-semibold text-neutral-700 hover:bg-neutral-200 transition-colors">
+              Vitaminas
+            </button>
+            <button type="button" data-cat="Cuidado Piel" class="pharma-cat-btn rounded-lg bg-neutral-100 px-3 py-1.5 text-xs font-semibold text-neutral-700 hover:bg-neutral-200 transition-colors">
+              Cuidado Piel
+            </button>
+            <button type="button" data-cat="Bebés" class="pharma-cat-btn rounded-lg bg-neutral-100 px-3 py-1.5 text-xs font-semibold text-neutral-700 hover:bg-neutral-200 transition-colors">
+              Bebés
+            </button>
+            <button type="button" data-cat="Botiquín" class="pharma-cat-btn rounded-lg bg-neutral-100 px-3 py-1.5 text-xs font-semibold text-neutral-700 hover:bg-neutral-200 transition-colors">
+              Botiquín
+            </button>
+          </div>
+        </div>
+
+        <!-- Buscador en vivo -->
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="relative w-full max-w-sm">
+            <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-neutral-400">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </span>
+            <input
+              type="text"
+              id="search-pharma-input"
+              placeholder="Ej. Paracetamol, Amoxicilina, Vitamina C..."
+              class="w-full rounded-lg border border-neutral-300 bg-neutral-50/60 py-2 pl-9 pr-3 text-xs focus:border-emerald-600 focus:bg-white focus:outline-none"
+            />
+          </div>
+
+          <div class="text-xs text-neutral-500">
+            Mostrando <span id="pharma-current-count">8</span> de <span id="pharma-total-count">{medicines.length}</span> ítems disponibles
+          </div>
+        </div>
+
+        <!-- Grid de Medicamentos (8 por página) -->
+        <div id="pharma-grid" class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {medicines.map((m) => (
+            <div
+              class="pharma-card group flex flex-col justify-between rounded-2xl border border-neutral-200/90 bg-white p-5 shadow-2xs hover:border-emerald-500 hover:shadow-lg transition-all duration-300"
+              data-category={m.category}
+              data-name={m.name.toLowerCase()}
+              data-substance={m.activeSubstance.toLowerCase()}
+              data-id={m.id}
+            >
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-3">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-700">{m.category}</span>
+                  {m.rx ? (
+                    <span class="rounded bg-rose-50 px-2 py-0.5 text-[10px] font-bold text-rose-700 border border-rose-200">
+                      Req. Receta (Rx)
+                    </span>
+                  ) : (
+                    <span class="rounded bg-emerald-50 px-2 py-0.5 text-[10px] font-bold text-emerald-700 border border-emerald-200">
+                      Venta Libre
+                    </span>
+                  )}
+                </div>
+
+                <!-- Silueta visual del fármaco -->
+                <div class="flex h-32 w-full items-center justify-center rounded-xl bg-gradient-to-br from-emerald-50/40 via-neutral-50 to-emerald-50/20 border border-neutral-100 text-2xl font-display font-bold text-neutral-700 group-hover:text-emerald-600 transition-colors">
+                  {m.name.substring(0, 2).toUpperCase()}
+                </div>
+
+                <h3 class="mt-4 font-display text-sm font-bold text-neutral-900 group-hover:text-emerald-700 transition-colors line-clamp-2 min-h-[40px]">
+                  {m.name}
+                </h3>
+                <p class="mt-1 text-[11px] font-semibold text-neutral-500 truncate">
+                  P.A.: {m.activeSubstance}
+                </p>
+                <p class="mt-1.5 text-xs text-neutral-600 line-clamp-2 leading-relaxed">
+                  {m.description}
+                </p>
+
+                <div class="mt-3 flex items-center justify-between text-[10px] text-neutral-500">
+                  <span class="text-emerald-600 font-semibold">✓ {m.stock} disponibles</span>
+                  <span class="bg-neutral-100 px-1.5 py-0.5 rounded">{m.badge}</span>
+                </div>
+              </div>
+
+              <!-- Precios y botón agregar -->
+              <div class="mt-5 pt-3 border-t border-neutral-100 flex items-center justify-between">
+                <div>
+                  <span class="font-display text-lg font-bold text-neutral-900">S/ {m.price.toFixed(2)}</span>
+                  {m.originalPrice && (
+                    <span class="block text-[10px] text-neutral-400 line-through">
+                      S/ {m.originalPrice.toFixed(2)}
+                    </span>
+                  )}
+                </div>
+                <button
+                  type="button"
+                  class="btn-add-pharma inline-flex items-center gap-1 rounded-lg bg-neutral-900 px-3 py-1.5 text-xs font-bold text-white hover:bg-emerald-600 transition-colors active:scale-95"
+                  data-id={m.id}
+                  data-name={m.name}
+                  data-price={m.price}
+                >
+                  + Botiquín
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Sin resultados -->
+        <div id="no-pharma-msg" class="hidden flex-col items-center justify-center py-16 text-center">
+          <p class="font-display text-base font-bold text-neutral-900">No encontramos ningún producto que coincida</p>
+          <p class="mt-1 text-xs text-neutral-500">Intenta buscando por principio activo como "Paracetamol" o selecciona otra categoría.</p>
+        </div>
+
+        <!-- Controles de Paginación Funcional (8 ítems por página) -->
+        <div id="pharma-pagination-wrapper" class="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-neutral-200 pt-6">
+          <span class="text-xs text-neutral-500">
+            Página <strong id="pharma-page-num" class="text-neutral-900">1</strong> de <strong id="pharma-max-pages" class="text-neutral-900">2</strong> (8 medicamentos por página)
+          </span>
+          <div class="flex items-center gap-2">
+            <button
+              type="button"
+              id="pharma-btn-prev"
+              disabled
+              class="rounded-lg border border-neutral-300 bg-white px-3 py-1.5 text-xs font-semibold text-neutral-700 hover:bg-neutral-50 disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              &larr; Anterior
+            </button>
+            <div id="pharma-page-buttons" class="flex items-center gap-1"></div>
+            <button
+              type="button"
+              id="pharma-btn-next"
+              class="rounded-lg border border-neutral-300 bg-white px-3 py-1.5 text-xs font-semibold text-neutral-700 hover:bg-neutral-50 disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              Siguiente &rarr;
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  interface PharmaItem {
+    id: string;
+    name: string;
+    price: number;
+    qty: number;
+  }
+
+  let pharmaCart: PharmaItem[] = [];
+
+  const pharmaCountEl = document.getElementById("pharma-items-count");
+  const pharmaListEl = document.getElementById("pharma-cart-list");
+  const pharmaEmptyEl = document.getElementById("pharma-empty-msg");
+  const pharmaSubtotalEl = document.getElementById("pharma-subtotal");
+  const pharmaShippingEl = document.getElementById("pharma-shipping");
+  const pharmaTotalEl = document.getElementById("pharma-total");
+  const btnWhatsappPharma = document.getElementById("btn-whatsapp-pharma") as HTMLButtonElement | null;
+
+  function renderPharmaCart() {
+    const totalQty = pharmaCart.reduce((acc, i) => acc + i.qty, 0);
+    if (pharmaCountEl) pharmaCountEl.textContent = totalQty.toString();
+
+    if (pharmaCart.length === 0) {
+      if (pharmaEmptyEl) pharmaEmptyEl.classList.remove("hidden");
+      if (pharmaSubtotalEl) pharmaSubtotalEl.textContent = "0.00";
+      if (pharmaShippingEl) pharmaShippingEl.textContent = "0.00";
+      if (pharmaTotalEl) pharmaTotalEl.textContent = "0.00";
+      if (btnWhatsappPharma) btnWhatsappPharma.disabled = true;
+      if (pharmaListEl) {
+        pharmaListEl.innerHTML = '<p id="pharma-empty-msg" class="text-xs text-neutral-500 text-center py-10">Selecciona medicamentos o insumos de la lista para calcular el total de tu receta.</p>';
+      }
+      return;
+    }
+
+    if (btnWhatsappPharma) btnWhatsappPharma.disabled = false;
+
+    const subtotal = pharmaCart.reduce((acc, i) => acc + (i.price * i.qty), 0);
+    const shipping = subtotal >= 60 ? 0 : 5.00;
+    const total = subtotal + shipping;
+
+    if (pharmaSubtotalEl) pharmaSubtotalEl.textContent = subtotal.toFixed(2);
+    if (pharmaShippingEl) pharmaShippingEl.textContent = shipping === 0 ? "¡Gratis!" : `S/ ${shipping.toFixed(2)}`;
+    if (pharmaTotalEl) pharmaTotalEl.textContent = total.toFixed(2);
+
+    if (pharmaListEl) {
+      pharmaListEl.innerHTML = pharmaCart.map(item => `
+        <div class="flex items-center justify-between text-xs py-1.5 border-b border-neutral-100">
+          <div class="min-w-0 flex-1 pr-2">
+            <span class="block truncate font-bold text-neutral-900">${item.name}</span>
+            <span class="text-neutral-500 text-[10px]">S/ ${item.price.toFixed(2)} c/u</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="font-bold text-emerald-700">x${item.qty}</span>
+            <span class="font-mono text-neutral-900">S/ ${(item.price * item.qty).toFixed(2)}</span>
+            <button type="button" data-del-id="${item.id}" class="btn-del-pharma text-neutral-400 hover:text-rose-500 ml-1">✕</button>
+          </div>
+        </div>
+      `).join("");
+
+      pharmaListEl.querySelectorAll(".btn-del-pharma").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          const id = (e.currentTarget as HTMLElement).getAttribute("data-del-id");
+          pharmaCart = pharmaCart.filter(i => i.id !== id);
+          renderPharmaCart();
+        });
+      });
+    }
+  }
+
+  document.querySelectorAll(".btn-add-pharma").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      const button = e.currentTarget as HTMLElement;
+      const id = button.getAttribute("data-id") || "";
+      const name = button.getAttribute("data-name") || "";
+      const price = parseFloat(button.getAttribute("data-price") || "0");
+
+      const existing = pharmaCart.find(i => i.id === id);
+      if (existing) {
+        existing.qty++;
+      } else {
+        pharmaCart.push({ id, name, price, qty: 1 });
+      }
+      renderPharmaCart();
+
+      const origText = button.innerHTML;
+      button.innerHTML = "<span>✓ Agregado</span>";
+      button.classList.add("bg-emerald-600");
+      setTimeout(() => {
+        button.innerHTML = origText;
+        button.classList.remove("bg-emerald-600");
+      }, 900);
+    });
+  });
+
+  btnWhatsappPharma?.addEventListener("click", () => {
+    const total = pharmaTotalEl?.textContent || "0.00";
+    const items = pharmaCart.map(i => `• ${i.qty}x ${i.name} (S/ ${(i.price * i.qty).toFixed(2)})`).join("\n");
+    const msg = encodeURIComponent(`Hola Botica Archity, deseo hacer este pedido de medicamentos a domicilio:\n\n${items}\n\nTotal estimado: S/ ${total}\n\nAdjunto foto de receta si es requerida. ¿Tienen disponibilidad inmediata?`);
+    window.open(`https://wa.me/51940771896?text=${msg}`, "_blank");
+  });
+
+  // Paginación Funcional de Botica
+  const pharmaCards = Array.from(document.querySelectorAll("#pharma-grid > .pharma-card")) as HTMLElement[];
+  const searchInput = document.getElementById("search-pharma-input") as HTMLInputElement | null;
+  const catButtons = document.querySelectorAll(".pharma-cat-btn");
+  const countCurrentEl = document.getElementById("pharma-current-count");
+  const countTotalEl = document.getElementById("pharma-total-count");
+  const pageNumEl = document.getElementById("pharma-page-num");
+  const maxPagesEl = document.getElementById("pharma-max-pages");
+  const noPharmaMsg = document.getElementById("no-pharma-msg");
+  const paginationWrapper = document.getElementById("pharma-pagination-wrapper");
+  const pageButtonsContainer = document.getElementById("pharma-page-buttons");
+  const btnPrev = document.getElementById("pharma-btn-prev") as HTMLButtonElement | null;
+  const btnNext = document.getElementById("pharma-btn-next") as HTMLButtonElement | null;
+
+  const PHARMA_PER_PAGE = 8;
+  let currentPharmaPage = 1;
+  let activePharmaCat = "all";
+  let activePharmaSearch = "";
+
+  function getFilteredPharma(): HTMLElement[] {
+    return pharmaCards.filter(card => {
+      const cat = card.getAttribute("data-category") || "";
+      const name = card.getAttribute("data-name") || "";
+      const substance = card.getAttribute("data-substance") || "";
+
+      const matchesCat = activePharmaCat === "all" || cat.toLowerCase() === activePharmaCat.toLowerCase();
+      const matchesSearch = !activePharmaSearch || name.includes(activePharmaSearch) || substance.includes(activePharmaSearch);
+
+      return matchesCat && matchesSearch;
+    });
+  }
+
+  function renderPharmaPagination() {
+    const filtered = getFilteredPharma();
+    const total = filtered.length;
+    const maxPages = Math.ceil(total / PHARMA_PER_PAGE) || 1;
+
+    if (currentPharmaPage > maxPages) currentPharmaPage = maxPages;
+    if (currentPharmaPage < 1) currentPharmaPage = 1;
+
+    pharmaCards.forEach(c => c.classList.add("hidden"));
+
+    const start = (currentPharmaPage - 1) * PHARMA_PER_PAGE;
+    const pageItems = filtered.slice(start, start + PHARMA_PER_PAGE);
+    pageItems.forEach(c => c.classList.remove("hidden"));
+
+    if (countCurrentEl) countCurrentEl.textContent = pageItems.length.toString();
+    if (countTotalEl) countTotalEl.textContent = total.toString();
+    if (pageNumEl) pageNumEl.textContent = currentPharmaPage.toString();
+    if (maxPagesEl) maxPagesEl.textContent = maxPages.toString();
+
+    if (total === 0) {
+      noPharmaMsg?.classList.remove("hidden");
+      noPharmaMsg?.classList.add("flex");
+      paginationWrapper?.classList.add("hidden");
+    } else {
+      noPharmaMsg?.classList.add("hidden");
+      noPharmaMsg?.classList.remove("flex");
+      paginationWrapper?.classList.remove("hidden");
+    }
+
+    if (btnPrev) btnPrev.disabled = currentPharmaPage <= 1;
+    if (btnNext) btnNext.disabled = currentPharmaPage >= maxPages;
+
+    if (pageButtonsContainer) {
+      pageButtonsContainer.innerHTML = "";
+      for (let i = 1; i <= maxPages; i++) {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.textContent = i.toString();
+        b.className = i === currentPharmaPage
+          ? "h-8 w-8 rounded-lg bg-neutral-900 text-xs font-bold text-white shadow-xs"
+          : "h-8 w-8 rounded-lg border border-neutral-300 bg-white text-xs font-semibold text-neutral-700 hover:bg-neutral-100";
+        b.addEventListener("click", () => {
+          currentPharmaPage = i;
+          renderPharmaPagination();
+          document.getElementById("catalogo-botica")?.scrollIntoView({ behavior: "smooth" });
+        });
+        pageButtonsContainer.appendChild(b);
+      }
+    }
+  }
+
+  catButtons.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      const cat = (e.currentTarget as HTMLElement).getAttribute("data-cat") || "all";
+      activePharmaCat = cat;
+      currentPharmaPage = 1;
+
+      catButtons.forEach(b => {
+        b.className = "pharma-cat-btn rounded-lg bg-neutral-100 px-3 py-1.5 text-xs font-semibold text-neutral-700 hover:bg-neutral-200 transition-colors";
+      });
+      (e.currentTarget as HTMLElement).className = "pharma-cat-btn rounded-lg bg-neutral-900 px-3 py-1.5 text-xs font-semibold text-white transition-colors";
+
+      renderPharmaPagination();
+    });
+  });
+
+  searchInput?.addEventListener("input", () => {
+    activePharmaSearch = searchInput.value.trim().toLowerCase();
+    currentPharmaPage = 1;
+    renderPharmaPagination();
+  });
+
+  btnPrev?.addEventListener("click", () => {
+    if (currentPharmaPage > 1) {
+      currentPharmaPage--;
+      renderPharmaPagination();
+      document.getElementById("catalogo-botica")?.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+
+  btnNext?.addEventListener("click", () => {
+    const max = Math.ceil(getFilteredPharma().length / PHARMA_PER_PAGE);
+    if (currentPharmaPage < max) {
+      currentPharmaPage++;
+      renderPharmaPagination();
+      document.getElementById("catalogo-botica")?.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+
+  // Inicializar
+  renderPharmaCart();
+  renderPharmaPagination();
+</script>

@@ -1,0 +1,204 @@
+---
+// Componente ECC: Calculadora Interactiva de Retorno de Inversión (ROI Empresarial)
+// Diseñado para Landing Page Corporativa B2B
+---
+
+<div class="rounded-2xl border border-neutral-200/90 bg-white p-6 sm:p-10 shadow-xl shadow-neutral-900/5">
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-neutral-100 pb-6">
+    <div>
+      <div class="flex items-center gap-2">
+        <span class="inline-flex h-2 w-2 rounded-full bg-accent animate-ping"></span>
+        <span class="text-xs font-bold uppercase tracking-wider text-accent">Análisis Financiero Interactivo</span>
+      </div>
+      <h3 class="mt-2 font-display text-2xl sm:text-3xl font-bold text-neutral-900">
+        Calcula el Retorno de Inversión (ROI) para tu Consorcio o Empresa
+      </h3>
+      <p class="mt-1 text-sm text-neutral-600">
+        Simula cuánto dinero y horas operativas recupera tu organización al digitalizar procesos manuales.
+      </p>
+    </div>
+    <span class="rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-800 border border-neutral-200">
+      Metodología Archity Enterprise
+    </span>
+  </div>
+
+  <div class="mt-8 grid gap-10 lg:grid-cols-12 lg:items-center">
+    <!-- Controles / Sliders -->
+    <div class="space-y-6 lg:col-span-7">
+      <!-- Control 1: Empleados -->
+      <div>
+        <div class="flex items-center justify-between text-sm">
+          <label for="slider-colaboradores" class="font-bold text-neutral-800">
+            1. Colaboradores con tareas administrativas / operativas:
+          </label>
+          <span class="font-display text-base font-bold text-accent">
+            <span id="label-colaboradores">25</span> personas
+          </span>
+        </div>
+        <input
+          type="range"
+          id="slider-colaboradores"
+          min="5"
+          max="250"
+          value="25"
+          step="5"
+          class="mt-3 h-2 w-full cursor-pointer appearance-none rounded-lg bg-neutral-200 accent-accent"
+        />
+        <div class="mt-1 flex justify-between text-[11px] text-neutral-400">
+          <span>5 personas (Pyme)</span>
+          <span>100 personas</span>
+          <span>250+ (Consorcio)</span>
+        </div>
+      </div>
+
+      <!-- Control 2: Horas manuales semanales -->
+      <div>
+        <div class="flex items-center justify-between text-sm">
+          <label for="slider-horas" class="font-bold text-neutral-800">
+            2. Horas semanales perdidas por persona en reportes manuales / Excel:
+          </label>
+          <span class="font-display text-base font-bold text-accent">
+            <span id="label-horas">10</span> hrs/semana
+          </span>
+        </div>
+        <input
+          type="range"
+          id="slider-horas"
+          min="2"
+          max="30"
+          value="10"
+          step="1"
+          class="mt-3 h-2 w-full cursor-pointer appearance-none rounded-lg bg-neutral-200 accent-accent"
+        />
+        <div class="mt-1 flex justify-between text-[11px] text-neutral-400">
+          <span>2 hrs (Mínimo)</span>
+          <span>15 hrs</span>
+          <span>30 hrs (Alta fricción operativa)</span>
+        </div>
+      </div>
+
+      <!-- Control 3: Costo promedio por hora -->
+      <div>
+        <div class="flex items-center justify-between text-sm">
+          <label for="slider-costo" class="font-bold text-neutral-800">
+            3. Costo promedio por hora hombre (S/):
+          </label>
+          <span class="font-display text-base font-bold text-accent">
+            S/ <span id="label-costo">35</span> / hora
+          </span>
+        </div>
+        <input
+          type="range"
+          id="slider-costo"
+          min="15"
+          max="150"
+          value="35"
+          step="5"
+          class="mt-3 h-2 w-full cursor-pointer appearance-none rounded-lg bg-neutral-200 accent-accent"
+        />
+        <div class="mt-1 flex justify-between text-[11px] text-neutral-400">
+          <span>S/ 15/hr</span>
+          <span>S/ 70/hr (Jefaturas)</span>
+          <span>S/ 150/hr (Gerencias)</span>
+        </div>
+      </div>
+
+      <div class="rounded-lg bg-neutral-50 p-4 border border-neutral-200/80 text-xs text-neutral-600">
+        <strong class="text-neutral-900">Nota del modelo:</strong> Estimado basado en 48 semanas laborales al año. La tasa estándar de reducción de tiempo no productivo mediante portales y ERPs a medida de Archity es del <strong>80%</strong>.
+      </div>
+    </div>
+
+    <!-- Tarjeta de Resultados ROI -->
+    <div class="rounded-2xl border border-neutral-200 bg-neutral-900 p-6 sm:p-8 text-white lg:col-span-5 shadow-xl">
+      <span class="text-[11px] font-bold uppercase tracking-widest text-accent">
+        Impacto Financiero Proyectado
+      </span>
+
+      <!-- Ahorro Anual -->
+      <div class="mt-4 border-b border-neutral-800 pb-5">
+        <span class="text-xs text-neutral-400">Ahorro anual neto proyectado para tu empresa:</span>
+        <div class="mt-2 flex items-baseline gap-1">
+          <span class="text-xl font-bold text-accent">S/</span>
+          <span id="roi-ahorro-anual" class="font-display text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+            336,000
+          </span>
+        </div>
+        <span class="mt-1 block text-xs text-emerald-400">
+          ✓ Equivalente a +80% de eficiencia operativa recuperada
+        </span>
+      </div>
+
+      <!-- Métricas Secundarias -->
+      <div class="mt-6 grid grid-cols-2 gap-4">
+        <div>
+          <span class="text-xs text-neutral-400">Horas recuperadas / año:</span>
+          <div class="mt-1 font-display text-xl font-bold text-white">
+            <span id="roi-horas-recuperadas">9,600</span> hrs
+          </div>
+        </div>
+        <div>
+          <span class="text-xs text-neutral-400">Retorno estimado:</span>
+          <div class="mt-1 font-display text-xl font-bold text-accent">
+            &lt; 3 meses
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-8 pt-4 border-t border-neutral-800">
+        <a
+          href="#agendar-demo"
+          class="flex w-full items-center justify-center gap-2 rounded-lg bg-accent px-5 py-3 text-center text-sm font-semibold text-white transition-all hover:bg-accent-dark hover:shadow-lg hover:shadow-accent/25"
+        >
+          Agendar Sesión Técnica B2B
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+        <p class="mt-2 text-center text-[11px] text-neutral-400">
+          Demostración personalizada para gerencia y directores
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const sliderColab = document.getElementById("slider-colaboradores") as HTMLInputElement | null;
+  const sliderHoras = document.getElementById("slider-horas") as HTMLInputElement | null;
+  const sliderCosto = document.getElementById("slider-costo") as HTMLInputElement | null;
+
+  const labelColab = document.getElementById("label-colaboradores");
+  const labelHoras = document.getElementById("label-horas");
+  const labelCosto = document.getElementById("label-costo");
+
+  const roiAhorro = document.getElementById("roi-ahorro-anual");
+  const roiHoras = document.getElementById("roi-horas-recuperadas");
+
+  function recalcularROI() {
+    const colab = parseInt(sliderColab?.value || "25", 10);
+    const horas = parseInt(sliderHoras?.value || "10", 10);
+    const costo = parseInt(sliderCosto?.value || "35", 10);
+
+    if (labelColab) labelColab.textContent = colab.toString();
+    if (labelHoras) labelHoras.textContent = horas.toString();
+    if (labelCosto) labelCosto.textContent = costo.toString();
+
+    // 48 semanas laborales
+    const totalHorasPerdidas = colab * horas * 48;
+    const gastoManualAnual = totalHorasPerdidas * costo;
+
+    // Ahorro con automatización del 80%
+    const horasRecuperadas = Math.round(totalHorasPerdidas * 0.8);
+    const ahorroAnual = Math.round(gastoManualAnual * 0.8);
+
+    if (roiAhorro) roiAhorro.textContent = ahorroAnual.toLocaleString();
+    if (roiHoras) roiHoras.textContent = horasRecuperadas.toLocaleString();
+  }
+
+  sliderColab?.addEventListener("input", recalcularROI);
+  sliderHoras?.addEventListener("input", recalcularROI);
+  sliderCosto?.addEventListener("input", recalcularROI);
+
+  recalcularROI();
+</script>

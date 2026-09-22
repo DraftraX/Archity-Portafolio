@@ -5,54 +5,62 @@ const solutions = [
   {
     category: "Comercio Electrónico",
     title: "Tiendas Virtuales & E-commerce",
-    badge: "Ventas 24/7",
-    description: "Desarrollamos tiendas online ultrarrápidas y optimizadas para vender: catálogos interactivos, carrito sin fricción, pasarelas de pago (Yape, Plin, Culqi, Stripe) y panel de control de pedidos e inventario.",
+    badge: "Demo en Vivo",
+    description: "Desarrollamos tiendas online ultrarrápidas y optimizadas para vender: catálogos interactivos, drawer de carrito sin fricción, pasarelas peruanas (Yape, Plin, Culqi) y pedidos automáticos formateados para WhatsApp.",
     highlights: [
-      "Integración de pagos peruanos e internacionales",
-      "Experiencia de compra optimizada para celulares",
-      "Alertas automáticas de pedidos a WhatsApp",
-      "Panel de administración simple e intuitivo",
+      "Catálogo reactivo y carrito deslizable en tiempo real",
+      "Integración de pagos peruanos (Yape, Plin) e internacionales",
+      "Generación y envío instantáneo de pedidos a WhatsApp",
+      "Soporte de cupones de descuento y cálculo de IGV",
     ],
-    tags: ["E-commerce", "Yape / Plin", "Culqi / Stripe", "Catálogo Rápido", "Stock"],
+    tags: ["E-commerce", "Yape / Plin", "Carrito Deslizable", "Cupones", "WhatsApp API"],
+    demoUrl: "/demos/ecommerce",
+    demoLabel: "Probar Demo de Tienda ↗",
   },
   {
     category: "Presencia Corporativa",
     title: "Landing Pages de Alta Conversión",
-    badge: "Captación de Clientes",
-    description: "Diseñamos páginas web profesionales y modernas para tu empresa con la estética limpia y angular de Archity. Enfocadas en transmitir credibilidad, indexar en Google y convertir visitantes en prospectos calificados.",
+    badge: "Demo B2B",
+    description: "Diseñamos páginas web profesionales para empresas y consorcios: estética minimalista y angular, velocidad de carga instantánea, calculadora interactiva de ROI corporativo y agendador de demostraciones.",
     highlights: [
-      "Diseño exclusivo y minimalista (sin plantillas lentas)",
-      "Velocidad de carga de 1 segundo (Astro + Tailwind)",
-      "Formularios inteligentes y enlace directo a WhatsApp",
-      "SEO técnico para destacar en los buscadores",
+      "Calculadora interactiva de retorno de inversión (ROI)",
+      "Carga en menos de 1 segundo (Astro + Tailwind CSS v4)",
+      "Agendador técnico B2B simulado para reuniones ejecutivas",
+      "Estructura orientada a directores y decisores de compra",
     ],
-    tags: ["Landing Page", "SEO Google", "Alta Velocidad", "Conversión", "Mobile First"],
+    tags: ["Landing B2B", "Calculadora ROI", "SEO Técnico", "Alta Velocidad", "Conversión"],
+    demoUrl: "/demos/landing-empresa",
+    demoLabel: "Ver Demo Corporativa B2B ↗",
   },
   {
     category: "Software Escalable",
-    title: "Plataformas SaaS & Marketplaces",
+    title: "Plataformas SaaS & Motores Fiscales",
     badge: "Referente: AltoPlanta",
-    description: "De la idea al producto en producción: arquitectura cloud multiusuario, suscripciones recurrentes, dashboards y funcionalidades avanzadas como tours virtuales 360° y generación de documentos PDF.",
+    description: "De la idea al producto en producción: arquitectura cloud multiusuario, cálculo automatizado de tributos inmobiliarios (Ley 776), generación masiva de cuponeras en PDF y cartografía catastral.",
     highlights: [
-      "Búsqueda geolocalizada y filtros en tiempo real",
-      "Generación instantánea de proformas en PDF",
-      "CRM de prospectos y trazabilidad de ventas",
-      "Infraestructura cloud para miles de usuarios",
+      "Motor de cálculo de Impuesto Predial y Arbitrios",
+      "Generación de cuponeras y estados de cuenta en PDF",
+      "Portal del contribuyente con consulta DNI/RUC",
+      "Infraestructura cloud PostgreSQL y PostGIS",
     ],
-    tags: ["PropTech", "SaaS Multi-tenant", "Tours 360°", "Proformas PDF", "CRM"],
+    tags: ["SaaS PropTech", "Tributo Inmobiliario", "Predial & Arbitrios", "Cuponeras PDF", "GIS"],
+    demoUrl: "/productos/altoplanta",
+    demoLabel: "Conocer SaaS AltoPlanta ↗",
   },
   {
     category: "Operaciones Complejas",
-    title: "ERPs & Sistemas a la Medida",
+    title: "ERPs para Consorcios Empresariales",
     badge: "Referente: Grupo Pineda",
-    description: "Digitalizamos procesos críticos que las soluciones enlatadas no pueden resolver: control de plantas de producción, telemetría de balanzas, gestión de maquinaria pesada, canteras y facturación B2B.",
+    description: "Digitalizamos operaciones multisectoriales: integración de plantas de concreto premezclado, telemetría de balanza electrónica en canteras, monitoreo de maquinaria pesada y facturación electrónica B2B.",
     highlights: [
-      "Control en tiempo real de plantas y canteras",
-      "Telemetría de balanza y pesaje de vehículos",
-      "Monitoreo de maquinaria pesada y combustible",
-      "Facturación electrónica masiva integrada",
+      "Control multi-razón social bajo un mismo sistema central",
+      "Telemetría en tiempo real de balanza y pesaje de carga",
+      "Dosificación automatizada de concreto premezclado",
+      "Trazabilidad de combustible, volquetes y obras civiles",
     ],
-    tags: ["ERP Industrial", "Control de Plantas", "Balanza", "Maquinaria", "Logística"],
+    tags: ["ERP Consorcio", "Plantas Concreto", "Balanza Camionera", "Minería & Canteras", "Logística"],
+    demoUrl: "/productos/grupo-pineda",
+    demoLabel: "Conocer ERP Grupo Pineda ↗",
   },
 ];
 ---
@@ -69,7 +77,7 @@ const solutions = [
         ¿Qué proyecto deseas desarrollar para tu empresa?
       </h2>
       <p class="mt-3 leading-relaxed text-neutral-600">
-        Desde tiendas virtuales para vender en todo el país hasta páginas corporativas de alto impacto y plataformas SaaS a gran escala.
+        Desde tiendas virtuales para vender en todo el país hasta páginas corporativas de alto impacto, plataformas SaaS y ERPs para consorcios empresariales.
       </p>
     </div>
 
@@ -109,12 +117,17 @@ const solutions = [
               ))}
             </ul>
 
-            <!-- Botón CTA hacia cotizador -->
-            <div class="mt-6 pt-4 border-t border-neutral-100 flex items-center justify-between">
-              <span class="text-xs text-neutral-400">Entrega rápida &amp; código a medida</span>
+            <!-- Botón CTA hacia demo y cotizador -->
+            <div class="mt-6 pt-4 border-t border-neutral-100 flex items-center justify-between gap-2">
+              <a
+                href={s.demoUrl}
+                class="inline-flex items-center gap-1.5 text-xs font-bold text-accent hover:text-accent-dark transition-colors"
+              >
+                {s.demoLabel}
+              </a>
               <a
                 href="#contacto"
-                class="inline-flex items-center gap-1.5 text-xs font-bold text-accent hover:text-accent-dark transition-colors"
+                class="text-xs font-medium text-neutral-500 hover:text-neutral-900 transition-colors"
               >
                 Cotizar este desarrollo &rarr;
               </a>
