@@ -1,110 +1,54 @@
 ---
-// Casos de éxito y proyectos reales desarrollados por Archity
+import { EXTERNAL_URLS } from "../constants/site";
+
 const cases = [
   {
-    name: "Grupo Pineda — ERP Consorcio Empresarial",
-    sector: "Industrial / Minería / Obras",
-    year: "2024 - 2026",
-    description: "ERP multiempresa para consorcio: integración de plantas de concreto MATEPCO, cantera chancadora ROCAFER, balanza y transporte pesado.",
-    metric: "780 TM",
-    metricLabel: "capacidad/día ROCAFER",
-    url: "/productos/grupo-pineda",
-    externalUrl: "https://grupopineda.pe/",
-  },
-  {
-    name: "AltoPlanta — SaaS de Tributo Inmobiliario",
-    sector: "Fiscalidad / PropTech / SaaS",
-    year: "2024 - 2026",
-    description: "Plataforma SaaS para liquidación automatizada de impuesto predial (D.L. 776), prorrateo de arbitrios municipales y emisión masiva de cuponeras en PDF.",
+    name: "AltoPlanta",
+    impact: "SaaS tributario operando en producción",
     metric: "100%",
-    metricLabel: "liquidación digital",
-    url: "/productos/altoplanta",
-    externalUrl: "https://altoplanta.com/",
+    metricLabel: "flujo digital",
+    detailUrl: "/productos/altoplanta",
+    liveUrl: EXTERNAL_URLS.altoplanta,
   },
   {
-    name: "MATEPCO — Plantas de Concreto Automatizado",
-    sector: "Construcción Vial / Consorcio Pineda",
-    year: "2024 - 2025",
-    description: "Automatización de dosificación y despacho de concreto premezclado en plantas de Tarapoto, Moyobamba y Chachapoyas.",
-    metric: "3 Sedes",
-    metricLabel: "plantas interconectadas",
-    url: "/productos/grupo-pineda",
-    externalUrl: "https://grupopineda.pe/",
+    name: "ERP Grupo Pineda",
+    impact: "Operación industrial con control centralizado",
+    metric: "3",
+    metricLabel: "sedes conectadas",
+    detailUrl: "/productos/grupo-pineda",
+    liveUrl: EXTERNAL_URLS.grupoPineda,
   },
   {
-    name: "Showcase Demos — E-Commerce & Landing B2B",
-    sector: "Comercio & Corporativo (ECC)",
-    year: "2026",
-    description: "Demos interactivas en front-end con catálogo reactivo, drawer de carrito deslizable, cupones, calculadora de ROI corporativo y agendador B2B.",
-    metric: "ECC",
-    metricLabel: "componentes interactivos",
-    url: "/demos/ecommerce",
-    externalUrl: "/demos/landing-empresa",
+    name: "Restobar System",
+    impact: "Frontend temporal sin backend con persistencia local",
+    metric: "0",
+    metricLabel: "dependencias servidor",
+    detailUrl: "/proyectos/restobar-system",
+    liveUrl: EXTERNAL_URLS.restobarVercel,
   },
 ];
 ---
 
-<section id="casos" class="scroll-mt-20 border-t border-neutral-200/70 bg-neutral-50/50 py-20 sm:py-28">
+<section id="casos" class="scroll-mt-20 border-t border-neutral-200/80 bg-neutral-50/50 py-20 sm:py-24">
   <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-
-    <div class="max-w-xl">
-      <p class="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
-        <span class="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
-        Casos de Éxito Reales
-      </p>
-      <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
-        Soluciones construidas junto a clientes e industrias reales
-      </h2>
-      <p class="mt-3 leading-relaxed text-neutral-600">
-        Cada proyecto que asumimos está diseñado para responder a requerimientos operativos estrictos y producir resultados cuantitativos.
-      </p>
+    <div class="max-w-2xl">
+      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Casos reales</p>
+      <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">Resultados visibles en proyectos reales</h2>
     </div>
 
-    <ul class="mt-12 divide-y divide-neutral-200/80">
-      {
-        cases.map((c) => (
-          <li>
-            <div
-              class="group -mx-4 flex flex-col gap-4 rounded-2xl p-5 transition-colors hover:bg-white hover:shadow-sm sm:flex-row sm:items-center sm:gap-6"
-            >
-              <!-- Icono o iniciales -->
-              <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl border border-neutral-200 bg-white font-display text-lg font-bold text-neutral-800 shadow-2xs group-hover:border-accent group-hover:text-accent transition-colors">
-                {c.name.slice(0, 2).toUpperCase()}
-              </div>
-
-              <!-- Info -->
-              <div class="min-w-0 flex-1">
-                <div class="flex flex-wrap items-center gap-2">
-                  <a href={c.url} class="font-display text-base font-bold text-neutral-900 transition-colors group-hover:text-accent sm:text-lg">
-                    {c.name}
-                  </a>
-                  <span class="rounded-md border border-neutral-200 bg-neutral-100 px-2 py-0.5 text-[11px] font-semibold text-neutral-600">
-                    {c.sector}
-                  </span>
-                  <span class="text-xs text-neutral-400">{c.year}</span>
-                </div>
-                <p class="mt-1 text-sm text-neutral-600 leading-relaxed">{c.description}</p>
-                <div class="mt-2 flex items-center gap-3 text-xs">
-                  <a href={c.url} class="font-semibold text-accent hover:underline">
-                    Ver caso completo &rarr;
-                  </a>
-                  {c.externalUrl && (
-                    <a href={c.externalUrl} target="_blank" rel="noopener" class="text-neutral-400 hover:text-neutral-700 transition-colors">
-                      Sitio en vivo ↗
-                    </a>
-                  )}
-                </div>
-              </div>
-
-              <!-- Métrica destacada -->
-              <div class="flex items-baseline gap-2 sm:flex-col sm:items-end sm:gap-0 pl-2 sm:pl-4 border-l border-neutral-100">
-                <span class="font-display text-2xl font-bold tracking-tight text-accent sm:text-3xl">{c.metric}</span>
-                <span class="text-xs font-medium text-neutral-500">{c.metricLabel}</span>
-              </div>
-            </div>
-          </li>
-        ))
-      }
+    <ul class="mt-10 grid gap-5 md:grid-cols-3">
+      {cases.map((item) => (
+        <li class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+          <h3 class="font-display text-xl font-bold text-neutral-900">{item.name}</h3>
+          <p class="mt-2 text-sm text-neutral-600">{item.impact}</p>
+          <p class="mt-5 font-display text-4xl font-bold text-accent">{item.metric}</p>
+          <p class="text-xs uppercase tracking-wide text-neutral-500">{item.metricLabel}</p>
+          <div class="mt-5 flex items-center justify-between">
+            <a href={item.detailUrl} class="text-sm font-semibold text-neutral-900 hover:text-accent">Caso</a>
+            <a href={item.liveUrl} target="_blank" rel="noopener" class="text-sm font-semibold text-accent hover:text-accent-dark">Live ↗</a>
+          </div>
+        </li>
+      ))}
     </ul>
   </div>
 </section>

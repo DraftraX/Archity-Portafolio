@@ -1,105 +1,34 @@
 ---
-// Sección principal: tono de empresa de software moderna en Perú (sin emojis)
-const badge = "Software Studio & Incubadora SaaS · Perú";
 const stats = [
-  "SaaS Tributario en Operación Real",
-  "ERP de Consorcios Industriales",
-  "Demos Front-End Interactivas",
-  "Arquitectura Cloud & Código Limpio",
+  { value: "02", label: "productos en operación" },
+  { value: "01", label: "frontend Restobar migrado" },
+  { value: "100%", label: "enfoque visual y responsive" },
 ];
 ---
 
-<section class="border-b border-neutral-200/70 bg-gradient-to-b from-neutral-50/60 via-white to-white">
-  <div class="mx-auto max-w-6xl px-4 py-20 text-center sm:px-6 sm:py-28 lg:px-8">
-
-    <span class="inline-flex items-center gap-2 rounded-full border border-neutral-200/90 bg-white px-4 py-1.5 text-xs font-medium text-neutral-700 shadow-xs backdrop-blur">
-      <span class="relative flex h-2 w-2">
-        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span>
-        <span class="relative inline-flex h-2 w-2 rounded-full bg-accent"></span>
-      </span>
-      {badge}
-    </span>
-
-    <h1 class="mx-auto mt-6 max-w-4xl font-display text-4xl font-bold leading-[1.12] tracking-tight text-neutral-900 sm:text-5xl md:text-6xl">
-      Ingeniería de software moderna para plataformas <span class="text-accent">SaaS</span> y sistemas de <span class="text-accent">Consorcio</span>
-    </h1>
-
-    <p class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-neutral-600 sm:text-lg">
-      En <strong>Archity</strong> desarrollamos tecnología de alta precisión: incubamos nuestro SaaS tributario inmobiliario <strong class="text-neutral-900">AltoPlanta</strong> (<a href="https://altoplanta.com/" target="_blank" rel="noopener" class="text-accent underline font-semibold">altoplanta.com</a>) y construimos sistemas integrales como el <strong class="text-neutral-900">ERP del Consorcio Grupo Pineda</strong> (<a href="https://grupopineda.pe/" target="_blank" rel="noopener" class="text-accent underline font-semibold">grupopineda.pe</a>).
-    </p>
-
-    <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-      <a
-        href="#productos"
-        class="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-neutral-900 px-6 py-3 text-sm font-semibold text-white shadow-xs transition-all hover:bg-neutral-800 sm:w-auto"
-      >
-        Explorar sistemas insignia
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12l-7.5 7.5M21 12H3" />
-        </svg>
-      </a>
-      <a
-        href="/demos/landing-empresa"
-        class="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white shadow-xs transition-all hover:bg-accent-dark hover:shadow-md hover:shadow-accent/20 sm:w-auto"
-      >
-        Ver Demos Interactivas &rarr;
-      </a>
-      <a
-        href="#contacto"
-        class="inline-flex w-full items-center justify-center rounded-lg border border-neutral-300 bg-white px-6 py-3 text-sm font-semibold text-neutral-800 shadow-xs transition-colors hover:border-neutral-400 hover:bg-neutral-50 sm:w-auto"
-      >
-        Cotizar proyecto a medida
-      </a>
+<section class="border-b border-neutral-200/70 bg-gradient-to-b from-neutral-50 via-white to-white">
+  <div class="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.3fr_1fr] lg:items-end lg:px-8 lg:py-24">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Portafolio de productos reales</p>
+      <h1 class="mt-4 font-display text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl">
+        Software visual, limpio y listo para producción.
+      </h1>
+      <p class="mt-4 max-w-xl text-base text-neutral-600 sm:text-lg">
+        Proyectos reales desplegables en Vercel, enlaces editables y una experiencia enfocada en resultados.
+      </p>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a href="#productos" class="inline-flex items-center justify-center rounded-lg bg-neutral-900 px-6 py-3 text-sm font-semibold text-white hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">Ver proyectos</a>
+        <a href="#contacto" class="inline-flex items-center justify-center rounded-lg border border-neutral-300 px-6 py-3 text-sm font-semibold text-neutral-800 hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">Contactar</a>
+      </div>
     </div>
 
-    <!-- Píldoras de acceso rápido a soluciones sin emojis -->
-    <div class="mt-8 flex flex-wrap items-center justify-center gap-2 text-xs">
-      <a
-        href="/productos/altoplanta"
-        class="inline-flex items-center gap-1.5 rounded-lg border border-neutral-200 bg-white px-3 py-1.5 font-medium text-neutral-700 hover:border-accent hover:text-accent transition-colors shadow-2xs"
-      >
-        <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
-        AltoPlanta (SaaS Tributario)
-      </a>
-      <a
-        href="/productos/grupo-pineda"
-        class="inline-flex items-center gap-1.5 rounded-lg border border-neutral-200 bg-white px-3 py-1.5 font-medium text-neutral-700 hover:border-accent hover:text-accent transition-colors shadow-2xs"
-      >
-        <span class="h-1.5 w-1.5 rounded-full bg-neutral-900"></span>
-        ERP Grupo Pineda (Consorcio)
-      </a>
-      <a
-        href="/demos/landing-empresa"
-        class="inline-flex items-center gap-1.5 rounded-lg border border-neutral-200 bg-white px-3 py-1.5 font-medium text-neutral-700 hover:border-accent hover:text-accent transition-colors shadow-2xs"
-      >
-        <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
-        Demo Landing B2B &amp; ROI
-      </a>
-      <a
-        href="/demos/ecommerce"
-        class="inline-flex items-center gap-1.5 rounded-lg border border-neutral-200 bg-white px-3 py-1.5 font-medium text-neutral-700 hover:border-accent hover:text-accent transition-colors shadow-2xs"
-      >
-        <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-        Demo E-Commerce con Carrito
-      </a>
-      <a
-        href="/demos/restaurante"
-        class="inline-flex items-center gap-1.5 rounded-lg border border-neutral-200 bg-white px-3 py-1.5 font-medium text-neutral-700 hover:border-accent hover:text-accent transition-colors shadow-2xs"
-      >
-        <span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span>
-        Demo Restaurante &amp; Reservas
-      </a>
+    <div class="grid gap-3 rounded-2xl border border-neutral-200/80 bg-white p-6 shadow-sm">
+      {stats.map((item) => (
+        <div class="rounded-xl border border-neutral-200/70 bg-neutral-50/70 p-4">
+          <p class="font-display text-3xl font-bold text-neutral-900">{item.value}</p>
+          <p class="text-xs uppercase tracking-wide text-neutral-500">{item.label}</p>
+        </div>
+      ))}
     </div>
-
-    <ul class="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-neutral-500">
-      {
-        stats.map((s) => (
-          <li class="flex items-center gap-2">
-            <span class="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
-            {s}
-          </li>
-        ))
-      }
-    </ul>
   </div>
 </section>
