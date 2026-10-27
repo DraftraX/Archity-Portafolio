@@ -139,6 +139,31 @@
   }
 }
 
+@keyframes ca-hero-pop {
+  0% {
+    opacity: 0;
+    transform: translateY(0.45em) scale(0.88);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-0.06em) scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes ca-float-slow {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-7px) rotate(2deg);
+  }
+}
+
 @keyframes ca-emoji-swap {
   0%,
   48% {
@@ -161,29 +186,70 @@
   animation: 9s linear infinite ca-spin;
 }
 
+.ca-float-slow {
+  animation: 4.5s ease-in-out infinite ca-float-slow;
+}
+
 .ca-blink {
   transform-origin: 50%;
   animation: 4.4s ease-in-out infinite ca-blink;
 }
 
+/* Splash introductorio letra por letra idéntico a Portfoliofy Crayon */
 .ca-splash {
-  animation: 0.45s 1.6s forwards ca-splash-out;
+  animation: 0.5s 2.25s forwards ca-splash-out;
 }
 
 .ca-splash-b1 {
-  animation: 10ms linear 0.85s forwards ca-splash-swap;
+  animation: 10ms linear 1.05s forwards ca-splash-swap;
 }
 
 .ca-splash-b2 {
   opacity: 0;
-  animation: 10ms linear 0.85s forwards ca-splash-in;
+  animation: 10ms linear 1.05s forwards ca-splash-in;
   transform: none;
 }
 
 .ca-splash-char {
   opacity: 0;
-  animation: 0.22s forwards ca-splash-in;
-  transform: translateY(0.3em);
+  animation: 0.24s cubic-bezier(0.22, 1, 0.36, 1) forwards ca-splash-in;
+  transform: translateY(0.35em);
+}
+
+/* Animación de entrada escalonada del Hero después del splash */
+.ca-hero-char {
+  display: inline-block;
+  opacity: 0;
+  animation: 0.48s cubic-bezier(0.22, 1, 0.36, 1) forwards ca-hero-pop;
+}
+
+.ca-hero-item {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards ca-splash-in;
+}
+
+/* Lente negro de inversión que sigue el cursor sobre textos */
+.ca-cursor-lens {
+  pointer-events: none;
+  position: absolute;
+  z-index: 35;
+  width: 15rem;
+  height: 15rem;
+  transform: translate(-50%, -50%) scale(0.35);
+  opacity: 0;
+  backdrop-filter: invert(1);
+  -webkit-backdrop-filter: invert(1);
+  transition:
+    opacity 0.22s ease-out,
+    transform 0.26s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: left, top, transform, opacity;
+}
+
+.ca-invert-zone:hover .ca-cursor-lens,
+.ca-invert-zone.is-hovered .ca-cursor-lens {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .ca-emoji-a {

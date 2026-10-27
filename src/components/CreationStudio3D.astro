@@ -1,0 +1,519 @@
+---
+// Componente de Videos en Vivo (<video> + <canvas> 60fps), Mascota 3D Archity y Mockups 3D Interactivos de Creación de Sistemas
+import ToolIcons from "./ToolIcons.astro";
+
+const stackTools = [
+  { id: "astro", label: "Astro 5 SSR", role: "Frontend Ultra-Rápido", bg: "var(--ca-yellow)" },
+  { id: "django", label: "Django 5 + DRF", role: "Core Backend & ERPs", bg: "var(--ca-mint)" },
+  { id: "react", label: "React 18", role: "Interfaces Interactivas", bg: "var(--ca-cyan)" },
+  { id: "nextjs", label: "Next.js", role: "Portales & Dashboards", bg: "var(--ca-yellow-soft)" },
+  { id: "typescript", label: "TypeScript", role: "Tipado Estricto", bg: "var(--ca-cyan)" },
+  { id: "python", label: "Python 3.12", role: "IA, OpenCV & FinTech", bg: "var(--ca-yellow)" },
+  { id: "postgresql", label: "PostgreSQL + PostGIS", role: "Base de Datos & GIS", bg: "var(--ca-mint)" },
+  { id: "threejs", label: "Three.js / WebGL", role: "Salones 3D & Tours 360°", bg: "var(--ca-pink-soft)" },
+  { id: "tailwind", label: "Tailwind CSS", role: "Design Systems", bg: "var(--ca-cyan)" },
+  { id: "docker", label: "Docker + Nginx", role: "Despliegue Cloud", bg: "var(--ca-yellow-soft)" },
+  { id: "redis", label: "Redis + Celery", role: "Colas Asíncronas", bg: "var(--ca-pink-soft)" },
+  { id: "googlemaps", label: "Google Maps + CAD", role: "Planos .DXF Georreferenciados", bg: "var(--ca-yellow)" },
+  { id: "sunat", label: "SUNAT UBL 2.1", role: "Firma XMLDSig RSA-SHA256", bg: "var(--ca-mint)" },
+  { id: "whatsapp", label: "WhatsApp Cloud API", role: "CRM Multi-Agente", bg: "var(--ca-green)" },
+  { id: "gemini", label: "Google Gemini AI", role: "Agentes IA 24/7", bg: "var(--ca-pink-soft)" },
+  { id: "nodejs", label: "Node.js + Express", role: "Microservicios & Tiempo Real", bg: "var(--ca-yellow-soft)" },
+];
+---
+
+<div class="mt-16 space-y-16">
+  <!-- ==================== TABLERO DE HERRAMIENTAS EN SVG (STICKER BOARD) ==================== -->
+  <div class="mx-auto max-w-5xl">
+    <div class="flex flex-col items-center text-center">
+      <span class="ca-mono inline-flex items-center gap-2 rounded-full border-2 border-[var(--ca-ink)] bg-[var(--ca-yellow)] px-4 py-1 text-xs font-bold uppercase tracking-widest text-[var(--ca-ink)] shadow-[2px_3px_0_var(--ca-ink)]">
+        <svg viewBox="0 0 24 24" fill="currentColor" class="h-3.5 w-3.5" aria-hidden="true">
+          <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"></path>
+        </svg>
+        Stack &amp; Herramientas en SVG
+      </span>
+      <h3 class="ca-display mt-4 text-4xl uppercase tracking-tight text-[var(--ca-ink)] sm:text-6xl">
+        TOOLS WE BUILD WITH
+      </h3>
+      <p class="ca-hand mt-1 text-2xl text-[var(--ca-ink)]/80 sm:text-3xl">
+        las tecnologías reales detrás de cada ERP, SaaS, visor 3D y motor SUNAT
+      </p>
+    </div>
+
+    <div class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-4 sm:gap-4">
+      {
+        stackTools.map((tool, idx) => {
+          const rotClass = idx % 3 === 0 ? "hover:-rotate-2" : idx % 3 === 1 ? "hover:rotate-2" : "hover:-rotate-1";
+          return (
+            <div
+              class={`group relative flex items-center gap-3 rounded-xl border-2 border-[var(--ca-ink)] bg-white p-3 shadow-[3px_4px_0_var(--ca-ink)] transition-all duration-200 hover:-translate-y-1 ${rotClass}`}
+            >
+              <span
+                class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-[var(--ca-ink)]/20 p-1.5 transition-transform duration-200 group-hover:scale-110"
+                style={`background-color:${tool.bg}`}
+              >
+                <ToolIcons name={tool.id} class="h-7 w-7" />
+              </span>
+              <div class="min-w-0 text-left">
+                <p class="truncate text-sm font-bold text-[var(--ca-ink)]">{tool.label}</p>
+                <p class="ca-mono truncate text-[10px] font-medium uppercase tracking-wider text-[var(--ca-ink)]/65">
+                  {tool.role}
+                </p>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+
+  <!-- ==================== SHOWCASE 3D: MASCOTA 3D + VIDEOS DE CREACIÓN DE SISTEMAS + MOCKUP 3D ==================== -->
+  <div class="mx-auto max-w-6xl">
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+      <!-- TARJETA 1: Personaje Animal 3D Archity (Cyber-Fox Software Architect) -->
+      <div
+        data-tilt-card
+        class="group relative flex flex-col justify-between overflow-hidden border-[3px] border-[var(--ca-ink)] bg-[#12131a] p-5 text-white shadow-[6px_8px_0_var(--ca-ink)] transition-transform duration-200"
+      >
+        <span aria-hidden="true" class="absolute -left-4 -top-2 z-20 h-5 w-20 -rotate-[14deg] bg-[var(--ca-yellow)]/85"></span>
+        <span aria-hidden="true" class="absolute -right-4 -top-2 z-20 h-5 w-20 rotate-[14deg] bg-[var(--ca-mint)]/85"></span>
+
+        <div class="flex items-center justify-between border-b border-white/15 pb-3">
+          <div class="flex items-center gap-2">
+            <span class="h-2.5 w-2.5 rounded-full bg-[#ff5f56]"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-[#27c93f]"></span>
+            <span class="ca-mono ml-1.5 text-xs font-bold uppercase tracking-wider text-amber-300">
+              ARCHITY 3D ARCHITECT
+            </span>
+          </div>
+          <span class="ca-mono rounded bg-amber-400/20 px-2 py-0.5 text-[10px] font-bold text-amber-300">
+            3D MASCOT
+          </span>
+        </div>
+
+        <div class="relative mt-4 aspect-[4/3] w-full overflow-hidden rounded-xl border-2 border-white/15 bg-black">
+          <img
+            src="/mascot/archity-mascot-3d-systems.jpg"
+            alt="Mascota 3D de Archity construyendo sistemas y arquitectura cloud"
+            class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            loading="lazy"
+          />
+          <!-- HUD flotante sobre el render 3D -->
+          <div class="pointer-events-none absolute inset-x-3 bottom-3 flex items-center justify-between rounded-lg border border-white/20 bg-black/75 px-3 py-2 backdrop-blur-md">
+            <div class="flex items-center gap-2">
+              <span class="h-2 w-2 animate-ping rounded-full bg-emerald-400"></span>
+              <span class="ca-mono text-[11px] font-bold text-emerald-300">&gt; ARCHITY_CORE: 8 PROD SYSTEMS</span>
+            </div>
+            <div class="flex items-center gap-1">
+              <ToolIcons name="astro" class="h-4 w-4" />
+              <ToolIcons name="django" class="h-4 w-4" />
+              <ToolIcons name="threejs" class="h-4 w-4" />
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <h4 class="text-lg font-bold text-white">Arquitecto 3D Archity</h4>
+          <p class="mt-1 text-xs leading-relaxed text-white/75">
+            Nuestro personaje oficial ensamblando bloques modulares de ERPs, cartografía GIS, pasarelas FinTech y servidores Cloud.
+          </p>
+        </div>
+      </div>
+
+      <!-- TARJETA 2: VIDEO EN VIVO (<video autoplay loop muted playsinline>) DE PROGRAMACIÓN Y CREACIÓN DE SISTEMAS -->
+      <div
+        data-tilt-card
+        class="group relative flex flex-col justify-between overflow-hidden border-[3px] border-[var(--ca-ink)] bg-[#12131a] p-5 text-white shadow-[6px_8px_0_var(--ca-ink)] transition-transform duration-200"
+      >
+        <span aria-hidden="true" class="absolute -left-4 -top-2 z-20 h-5 w-20 -rotate-[14deg] bg-[var(--ca-pink-soft)]/85"></span>
+        <span aria-hidden="true" class="absolute -right-4 -top-2 z-20 h-5 w-20 rotate-[14deg] bg-[var(--ca-cyan)]/85"></span>
+
+        <div class="flex items-center justify-between border-b border-white/15 pb-3">
+          <div class="flex items-center gap-2">
+            <span class="h-2.5 w-2.5 rounded-full bg-[#ff5f56]"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-[#27c93f]"></span>
+            <span class="ca-mono ml-1.5 text-xs font-bold uppercase tracking-wider text-sky-300">
+              LIVE CODE &amp; SYSTEM VIDEO
+            </span>
+          </div>
+          <span class="ca-mono inline-flex items-center gap-1 rounded bg-emerald-400/20 px-2 py-0.5 text-[10px] font-bold text-emerald-300">
+            <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            60 FPS VIDEO
+          </span>
+        </div>
+
+        <div class="relative mt-4 aspect-[4/3] w-full overflow-hidden rounded-xl border-2 border-white/15 bg-[#0b0e17]">
+          <!-- Video real alimentado a 60fps desde el motor Canvas de programación de sistemas -->
+          <video
+            id="ca-code-video"
+            autoplay
+            loop
+            muted
+            playsinline
+            class="h-full w-full object-cover"
+          ></video>
+          <canvas
+            id="ca-code-canvas"
+            width="640"
+            height="480"
+            class="pointer-events-none absolute inset-0 h-full w-full object-cover"
+          ></canvas>
+        </div>
+
+        <div class="mt-4">
+          <h4 class="text-lg font-bold text-white">Creación de Sistemas en Vivo</h4>
+          <p class="mt-1 text-xs leading-relaxed text-white/75">
+            Simulación en tiempo real del flujo de ingeniería de Archity: compilación de módulos Django/Astro, firmas XML SUNAT y despliegue continuo.
+          </p>
+        </div>
+      </div>
+
+      <!-- TARJETA 3: MOCKUP 3D INTERACTIVO (MOTOR ISOMÉTRICO 3D WEBGL / CANVAS) -->
+      <div
+        data-tilt-card
+        class="group relative flex flex-col justify-between overflow-hidden border-[3px] border-[var(--ca-ink)] bg-[#12131a] p-5 text-white shadow-[6px_8px_0_var(--ca-ink)] transition-transform duration-200"
+      >
+        <span aria-hidden="true" class="absolute -left-4 -top-2 z-20 h-5 w-20 -rotate-[14deg] bg-[var(--ca-mint)]/85"></span>
+        <span aria-hidden="true" class="absolute -right-4 -top-2 z-20 h-5 w-20 rotate-[14deg] bg-[var(--ca-yellow)]/85"></span>
+
+        <div class="flex items-center justify-between border-b border-white/15 pb-3">
+          <div class="flex items-center gap-2">
+            <span class="h-2.5 w-2.5 rounded-full bg-[#ff5f56]"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-[#27c93f]"></span>
+            <span class="ca-mono ml-1.5 text-xs font-bold uppercase tracking-wider text-pink-300">
+              3D INTERACTIVE MOCKUP
+            </span>
+          </div>
+          <span class="ca-mono rounded bg-pink-400/20 px-2 py-0.5 text-[10px] font-bold text-pink-300">
+            MUEVE EL CURSOR
+          </span>
+        </div>
+
+        <div class="relative mt-4 aspect-[4/3] w-full overflow-hidden rounded-xl border-2 border-white/15 bg-[#0b0e17]">
+          <video
+            id="ca-3d-video"
+            autoplay
+            loop
+            muted
+            playsinline
+            class="h-full w-full object-cover"
+          ></video>
+          <canvas
+            id="ca-3d-canvas"
+            width="640"
+            height="480"
+            class="absolute inset-0 h-full w-full cursor-grab object-cover active:cursor-grabbing"
+          ></canvas>
+        </div>
+
+        <div class="mt-4">
+          <h4 class="text-lg font-bold text-white">Mockup 3D de Arquitectura</h4>
+          <p class="mt-1 text-xs leading-relaxed text-white/75">
+            Pila tridimensional interactiva (Base de datos PostGIS, API ERP/FinTech, Motor 3D Three.js y UI React) que responde a tu cursor.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 1. Motor de Video #1: Live Code & System Creation Stream (60fps Canvas -> <video>)
+  const codeCanvas = document.getElementById("ca-code-canvas") as HTMLCanvasElement | null;
+  const codeVideo = document.getElementById("ca-code-video") as HTMLVideoElement | null;
+
+  if (codeCanvas) {
+    const ctx = codeCanvas.getContext("2d");
+    if (ctx && codeVideo && typeof codeCanvas.captureStream === "function") {
+      try {
+        const stream = codeCanvas.captureStream(30);
+        codeVideo.srcObject = stream;
+        codeVideo.play().catch(() => {});
+      } catch (_) {}
+    }
+
+    const codeSnippets = [
+      { cmd: "archity deploy --prod altoplanta.com", mod: "GIS DXF + Google Maps 3D", color: "#38bdf8", status: "LIVE 200 OK" },
+      { cmd: "matepco sync --plants 3 --rocafer 780tm", mod: "ERP Consorcio Grupo Pineda", color: "#f7c948", status: "SYNCED" },
+      { cmd: "flamingo render --lots 133 --tour 360", mod: "Showroom Dron + OpenCV", color: "#ff4d8d", status: "0ms CROSSFADE" },
+      { cmd: "vinkula agent --whatsapp --gemini-24-7", mod: "CRM Multi-Tenant + IA", color: "#a78bfa", status: "ACTIVE" },
+      { cmd: "sencillo webhook --mercadopago --kardex", mod: "FinTech Letras & Cobranza", color: "#34d399", status: "VERIFIED" },
+      { cmd: "sunat sign --ubl 2.1 --rsa-sha256", mod: "Archity Billing Electrónico", color: "#60a5fa", status: "CDR ACEPTADO" },
+    ];
+
+    let frame = 0;
+    const renderCodeVideo = () => {
+      if (!ctx) return;
+      frame++;
+      const w = codeCanvas.width;
+      const h = codeCanvas.height;
+
+      // Fondo oscuro de IDE
+      ctx.fillStyle = "#0b0f19";
+      ctx.fillRect(0, 0, w, h);
+
+      // Cuadrícula cibernética en perspectiva
+      ctx.strokeStyle = "rgba(56, 189, 248, 0.08)";
+      ctx.lineWidth = 1;
+      const offset = (frame * 0.6) % 32;
+      for (let x = 0; x < w; x += 32) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, h);
+        ctx.stroke();
+      }
+      for (let y = offset; y < h; y += 32) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(w, y);
+        ctx.stroke();
+      }
+
+      // Ventana de código izquierda
+      ctx.fillStyle = "rgba(17, 24, 39, 0.92)";
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.14)";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.roundRect(24, 24, 370, h - 48, 12);
+      ctx.fill();
+      ctx.stroke();
+
+      // Cabecera IDE
+      ctx.fillStyle = "#f7c948";
+      ctx.font = "bold 13px monospace";
+      ctx.fillText("⚡ archity-engine.ts — LIVE COMPILER", 42, 52);
+
+      // Líneas de código animadas
+      const activeIdx = Math.floor(frame / 90) % codeSnippets.length;
+      for (let i = 0; i < codeSnippets.length; i++) {
+        const item = codeSnippets[i];
+        const y = 92 + i * 56;
+        const isCurrent = i === activeIdx;
+
+        ctx.fillStyle = isCurrent ? "rgba(56, 189, 248, 0.14)" : "rgba(255,255,255,0.03)";
+        ctx.beginPath();
+        ctx.roundRect(36, y - 20, 346, 46, 8);
+        ctx.fill();
+
+        ctx.fillStyle = item.color;
+        ctx.font = "bold 12px monospace";
+        const typedLen = isCurrent ? Math.min(item.cmd.length, Math.floor((frame % 90) * 0.8)) : item.cmd.length;
+        ctx.fillText(`$ ${item.cmd.slice(0, typedLen)}`, 46, y - 2);
+
+        ctx.fillStyle = "rgba(255,255,255,0.65)";
+        ctx.font = "11px sans-serif";
+        ctx.fillText(item.mod, 48, y + 16);
+
+        ctx.fillStyle = "#10b981";
+        ctx.font = "bold 10px monospace";
+        ctx.fillText(item.status, 290, y + 16);
+      }
+
+      // Panel derecho: Nodos de sistema conectados en vivo
+      const cx = 510;
+      const cy = h / 2;
+      const radius = 78;
+
+      // Círculo central Archity Core
+      ctx.save();
+      ctx.translate(cx, cy);
+      for (let i = 0; i < 6; i++) {
+        const angle = (i * Math.PI) / 3 + frame * 0.015;
+        const nx = Math.cos(angle) * radius;
+        const ny = Math.sin(angle) * radius;
+
+        // Línea de datos con pulso
+        ctx.strokeStyle = codeSnippets[i].color;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(nx, ny);
+        ctx.stroke();
+
+        // Paquete de datos viajando
+        const pulse = ((frame * 0.03 + i * 0.2) % 1);
+        ctx.fillStyle = "#ffffff";
+        ctx.beginPath();
+        ctx.arc(nx * pulse, ny * pulse, 3.5, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Nodo satélite
+        ctx.fillStyle = "#111827";
+        ctx.strokeStyle = codeSnippets[i].color;
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.arc(nx, ny, 18, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 9px monospace";
+        ctx.textAlign = "center";
+        ctx.fillText(`0${i + 1}`, nx, ny + 3);
+      }
+
+      // Nodo central con la 'A' de Archity
+      ctx.fillStyle = "#f7c948";
+      ctx.beginPath();
+      ctx.arc(0, 0, 26, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = "#191510";
+      ctx.font = "bold 20px sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText("A", 0, 7);
+      ctx.restore();
+
+      requestAnimationFrame(renderCodeVideo);
+    };
+
+    requestAnimationFrame(renderCodeVideo);
+  }
+
+  // 2. Motor de Video #2: Mockup 3D Isométrico Interactivo (60fps 3D Canvas -> <video>)
+  const canvas3d = document.getElementById("ca-3d-canvas") as HTMLCanvasElement | null;
+  const video3d = document.getElementById("ca-3d-video") as HTMLVideoElement | null;
+
+  if (canvas3d) {
+    const ctx3 = canvas3d.getContext("2d");
+    if (ctx3 && video3d && typeof canvas3d.captureStream === "function") {
+      try {
+        const stream3 = canvas3d.captureStream(30);
+        video3d.srcObject = stream3;
+        video3d.play().catch(() => {});
+      } catch (_) {}
+    }
+
+    let t = 0;
+    let mouseX = 0;
+    let mouseY = 0;
+
+    canvas3d.addEventListener("mousemove", (e) => {
+      const rect = canvas3d.getBoundingClientRect();
+      mouseX = ((e.clientX - rect.left) / rect.width - 0.5) * 1.4;
+      mouseY = ((e.clientY - rect.top) / rect.height - 0.5) * 1.4;
+    });
+
+    canvas3d.addEventListener("mouseleave", () => {
+      mouseX = 0;
+      mouseY = 0;
+    });
+
+    const layers = [
+      { label: "UI · ASTRO 5 + REACT 18 + 360°", colorTop: "#f7c948", colorSide: "#d9a326", z: -95 },
+      { label: "3D ENGINE · THREE.JS & GOOGLE MAPS DXF", colorTop: "#ff4d8d", colorSide: "#c82863", z: -32 },
+      { label: "CORE API · DJANGO 5 + SUNAT UBL 2.1", colorTop: "#2b57d6", colorSide: "#1d3d9e", z: 32 },
+      { label: "DATA · POSTGRESQL + REDIS + DOCKER", colorTop: "#16b06a", colorSide: "#0f7a49", z: 95 },
+    ];
+
+    const drawIsoSlab = (
+      cx: number,
+      cy: number,
+      size: number,
+      thickness: number,
+      rot: number,
+      colorTop: string,
+      colorSide: string,
+      label: string
+    ) => {
+      if (!ctx3) return;
+      const pts: { x: number; y: number }[] = [];
+      for (let i = 0; i < 4; i++) {
+        const a = rot + (i * Math.PI) / 2 + Math.PI / 4;
+        pts.push({
+          x: cx + Math.cos(a) * size,
+          y: cy + Math.sin(a) * size * 0.52,
+        });
+      }
+
+      // Caras laterales para dar volumen 3D real
+      ctx3.fillStyle = colorSide;
+      ctx3.beginPath();
+      ctx3.moveTo(pts[0].x, pts[0].y);
+      ctx3.lineTo(pts[1].x, pts[1].y);
+      ctx3.lineTo(pts[1].x, pts[1].y + thickness);
+      ctx3.lineTo(pts[0].x, pts[0].y + thickness);
+      ctx3.closePath();
+      ctx3.fill();
+
+      ctx3.beginPath();
+      ctx3.moveTo(pts[1].x, pts[1].y);
+      ctx3.lineTo(pts[2].x, pts[2].y);
+      ctx3.lineTo(pts[2].x, pts[2].y + thickness);
+      ctx3.lineTo(pts[1].x, pts[1].y + thickness);
+      ctx3.closePath();
+      ctx3.fill();
+
+      ctx3.beginPath();
+      ctx3.moveTo(pts[2].x, pts[2].y);
+      ctx3.lineTo(pts[3].x, pts[3].y);
+      ctx3.lineTo(pts[3].x, pts[3].y + thickness);
+      ctx3.lineTo(pts[2].x, pts[2].y + thickness);
+      ctx3.closePath();
+      ctx3.fill();
+
+      // Cara superior
+      ctx3.fillStyle = colorTop;
+      ctx3.strokeStyle = "#ffffff";
+      ctx3.lineWidth = 2;
+      ctx3.beginPath();
+      ctx3.moveTo(pts[0].x, pts[0].y);
+      ctx3.lineTo(pts[1].x, pts[1].y);
+      ctx3.lineTo(pts[2].x, pts[2].y);
+      ctx3.lineTo(pts[3].x, pts[3].y);
+      ctx3.closePath();
+      ctx3.fill();
+      ctx3.stroke();
+
+      // Etiqueta técnica sobre la capa 3D
+      ctx3.fillStyle = "#191510";
+      ctx3.font = "bold 11px monospace";
+      ctx3.textAlign = "center";
+      ctx3.fillText(label, cx, cy + 4);
+    };
+
+    const render3D = () => {
+      if (!ctx3) return;
+      t += 0.02;
+      const w = canvas3d.width;
+      const h = canvas3d.height;
+
+      ctx3.fillStyle = "#0b0f19";
+      ctx3.fillRect(0, 0, w, h);
+
+      // Halo de fondo
+      const grad = ctx3.createRadialGradient(w / 2, h / 2, 10, w / 2, h / 2, 240);
+      grad.addColorStop(0, "rgba(43, 87, 214, 0.32)");
+      grad.addColorStop(1, "rgba(11, 15, 25, 0)");
+      ctx3.fillStyle = grad;
+      ctx3.fillRect(0, 0, w, h);
+
+      const baseRot = t * 0.45 + mouseX * 1.2;
+      const spread = 1 + Math.sin(t * 1.4) * 0.12 + mouseY * 0.25;
+
+      // Dibujar de abajo hacia arriba para orden Z correcto
+      for (let i = layers.length - 1; i >= 0; i--) {
+        const layer = layers[i];
+        const cx = w / 2 + mouseX * (40 - i * 15);
+        const cy = h / 2 + layer.z * spread;
+        drawIsoSlab(cx, cy, 138, 22, baseRot, layer.colorTop, layer.colorSide, layer.label);
+      }
+
+      // Partículas de telemetría subiendo entre las capas 3D
+      for (let p = 0; p < 12; p++) {
+        const py = ((h - ((t * 60 + p * 40) % h)));
+        const px = w / 2 + Math.sin(t + p) * 140;
+        ctx3.fillStyle = p % 2 === 0 ? "#f7c948" : "#38bdf8";
+        ctx3.beginPath();
+        ctx3.arc(px, py, 2.5, 0, Math.PI * 2);
+        ctx3.fill();
+      }
+
+      requestAnimationFrame(render3D);
+    };
+
+    requestAnimationFrame(render3D);
+  }
+</script>
