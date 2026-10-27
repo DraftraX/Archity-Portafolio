@@ -1,66 +1,69 @@
 ---
-// Sección de soluciones a construir por Archity: E-commerce, Landing Pages, SaaS y ERPs
-// Paleta estricta: Azul (#1a5cff), Negro (#09090b) y Blanco (#ffffff)
+// Sección de arquitectura y verticales reales construidas por Archity
 const solutions = [
   {
-    category: "Comercio Electrónico",
-    title: "Tiendas Virtuales & E-commerce",
-    badge: "Demo en Vivo",
-    description: "Desarrollamos tiendas online ultrarrápidas y optimizadas para vender: catálogos interactivos, drawer de carrito sin fricción, pasarelas peruanas (Yape, Plin, Culqi) y pedidos automáticos formateados para WhatsApp.",
+    category: "Ecosistema SaaS PropTech & FinTech",
+    title: "Cartografía Interactiva, CRM Multicanal & Recaudación",
+    badge: "AltoPlanta · Vinkula · Sencillo",
+    logo: "/logos/altoplanta-symbol.svg",
+    description: "Desarrollamos el ecosistema SaaS inmobiliario más completo del Perú: desde la digitalización de planos CAD .DXF sobre Google Maps y portales White-Label (AltoPlanta), hasta CRM con bandeja WhatsApp e IA (Vinkula) y cobranza automatizada de letras (Sencillo).",
     highlights: [
-      "Catálogo reactivo y carrito deslizable en tiempo real",
-      "Integración de pagos peruanos (Yape, Plin) e internacionales",
-      "Generación y envío instantáneo de pedidos a WhatsApp",
-      "Soporte de cupones de descuento y cálculo de IGV",
+      "Visor cartográfico con vuelos de cámara van Wijk y recorridos 360°",
+      "CRM inspirado en Twenty con bandeja WhatsApp Cloud API y Agente IA Gemini",
+      "Cronogramas de amortización (Francés / 0% TEA) con cálculo diario de mora",
+      "Split de pagos automático y conciliación vía Webhooks de Mercado Pago",
     ],
-    tags: ["E-commerce", "Yape / Plin", "Carrito Deslizable", "Cupones", "WhatsApp API"],
-    demoUrl: "/demos/ecommerce",
-    demoLabel: "Probar Demo de Tienda ↗",
-  },
-  {
-    category: "Presencia Corporativa",
-    title: "Landing Pages de Alta Conversión",
-    badge: "Demo B2B",
-    description: "Diseñamos páginas web profesionales para empresas y consorcios: estética minimalista y angular, velocidad de carga instantánea, calculadora interactiva de ROI corporativo y agendador de demostraciones.",
-    highlights: [
-      "Calculadora interactiva de retorno de inversión (ROI)",
-      "Carga en menos de 1 segundo (Astro + Tailwind CSS v4)",
-      "Agendador técnico B2B simulado para reuniones ejecutivas",
-      "Estructura orientada a directores y decisores de compra",
-    ],
-    tags: ["Landing B2B", "Calculadora ROI", "SEO Técnico", "Alta Velocidad", "Conversión"],
-    demoUrl: "/demos/landing-empresa",
-    demoLabel: "Ver Demo Corporativa B2B ↗",
-  },
-  {
-    category: "Software Escalable",
-    title: "Plataformas SaaS & Motores Fiscales",
-    badge: "Referente: AltoPlanta",
-    description: "De la idea al producto en producción: arquitectura cloud multiusuario, cálculo automatizado de tributos inmobiliarios (Ley 776), generación masiva de cuponeras en PDF y cartografía catastral.",
-    highlights: [
-      "Motor de cálculo de Impuesto Predial y Arbitrios",
-      "Generación de cuponeras y estados de cuenta en PDF",
-      "Portal del contribuyente con consulta DNI/RUC",
-      "Infraestructura cloud PostgreSQL y PostGIS",
-    ],
-    tags: ["SaaS PropTech", "Tributo Inmobiliario", "Predial & Arbitrios", "Cuponeras PDF", "GIS"],
+    tags: ["Astro 5", "Django 5", "Google Maps JS API", "WhatsApp Cloud API", "Gemini AI", "Mercado Pago"],
     demoUrl: "/productos/altoplanta",
-    demoLabel: "Conocer SaaS AltoPlanta ↗",
+    demoLabel: "Explorar Ecosistema AltoPlanta ↗",
   },
   {
-    category: "Operaciones Complejas",
-    title: "ERPs para Consorcios Empresariales",
-    badge: "Referente: Grupo Pineda",
-    description: "Digitalizamos operaciones multisectoriales: integración de plantas de concreto premezclado, telemetría de balanza electrónica en canteras, monitoreo de maquinaria pesada y facturación electrónica B2B.",
+    category: "Operaciones Industriales & Consorcios",
+    title: "ERPs Multi-Empresa & Telemetría de Planta",
+    badge: "ERP Grupo Pineda",
+    logo: "/logos/grupo-pineda-mark.svg",
+    description: "Digitalizamos operaciones industriales de alta exigencia en la Amazonía peruana: plantas automatizadas de concreto premezclado MATEPCO (3 sedes), cantera chancadora ROCAFER (780 TM/día), maquinaria pesada SERVIPIPA y distribuidora PRINCOR.",
     highlights: [
-      "Control multi-razón social bajo un mismo sistema central",
-      "Telemetría en tiempo real de balanza y pesaje de carga",
-      "Dosificación automatizada de concreto premezclado",
-      "Trazabilidad de combustible, volquetes y obras civiles",
+      "Control multi-razón social centralizado con seguridad RBAC y JWT",
+      "Telemetría de balanza camionera y cubicaje en cantera Picota (780 TM/día)",
+      "Dosificación automatizada de concreto f'c 210–350 kg/cm² y despacho de mixers",
+      "Aplicación Android nativa con Device Owner Lock para terminales de campo",
     ],
-    tags: ["ERP Consorcio", "Plantas Concreto", "Balanza Camionera", "Minería & Canteras", "Logística"],
+    tags: ["Django REST", "PostgreSQL", "Astro", "Android Device Owner", "Docker", "Telemetría"],
     demoUrl: "/productos/grupo-pineda",
-    demoLabel: "Conocer ERP Grupo Pineda ↗",
+    demoLabel: "Explorar ERP Grupo Pineda ↗",
+  },
+  {
+    category: "Facturación Electrónica & FinTech API",
+    title: "Microservicio Emisor SUNAT UBL 2.1 Multi-Tenant",
+    badge: "Archity Billing Service",
+    logo: "/logos/billing-mark.svg",
+    description: "Motor de facturación electrónica multi-empresa con aislamiento por X-API-Key, firma digital XMLDSig (RSA-SHA256) con certificados .pfx cifrados en AES-256 Fernet, envío SOAP directo a SUNAT/OSE y consola Front-End interactiva.",
+    highlights: [
+      "Emisión de Facturas (01), Boletas (03), Notas de Crédito (07) y Débito (08)",
+      "Resúmenes Diarios (RC) y Comunicaciones de Baja (RA) asíncronos con Celery",
+      "Correlativos atómicos con bloqueo pesimista PostgreSQL (select_for_update)",
+      "Generación de PDF A4/Ticket con QR reglamentario y SDKs en Python, Node y PHP",
+    ],
+    tags: ["SUNAT UBL 2.1", "XMLDSig RSA-SHA256", "Django 5 + DRF", "Celery & Redis", "ReportLab PDF"],
+    demoUrl: "/productos/billing-service",
+    demoLabel: "Abrir Consola Facturador SUNAT ↗",
+  },
+  {
+    category: "Experiencias 3D WebGL, Showrooms & Salud",
+    title: "Showrooms Inmobiliarios 360°, Restobar 3D & Salud Regional",
+    badge: "Flamingo · RestoManager 3D · BankBlood",
+    logo: "/logos/flamingo-logo.png",
+    description: "Construimos experiencias visuales e institucionales de alto impacto: el showroom aéreo con dron e inventario SVG de 133 lotes para Inmobiliaria Flamingo, el sistema gastronómico 3D en Three.js (RestoManager 3D) y el portal del Banco de Sangre Tipo II de Loreto.",
+    highlights: [
+      "Transiciones de video de dron 0ms crossfade y calibrador OpenCV (Flamingo)",
+      "Plano de salón interactivo en 3D con Three.js y stock atómico SQLite (RestoManager)",
+      "Rutas de evacuación animadas CatmullRom y exportación de planos a PDF",
+      "Portal clínico de 15 servicios de hemoterapia y aféresis en Iquitos (BankBlood)",
+    ],
+    tags: ["Three.js / R3F", "GSAP ScrollTrigger", "OpenCV Homography", "SQLite Atomic", "Salud Tipo II"],
+    demoUrl: "/productos/proyect-flamingo",
+    demoLabel: "Explorar Showroom Flamingo 360° ↗",
   },
 ];
 ---
@@ -71,13 +74,13 @@ const solutions = [
     <div class="max-w-2xl">
       <p class="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
         <span class="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
-        Soluciones que Construimos
+        Ingeniería &amp; Verticales de Especialidad
       </p>
       <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
-        ¿Qué proyecto deseas desarrollar para tu empresa?
+        Arquitectura probada en nuestros propios sistemas
       </h2>
       <p class="mt-3 leading-relaxed text-neutral-600">
-        Desde tiendas virtuales para vender en todo el país hasta páginas corporativas de alto impacto, plataformas SaaS y ERPs para consorcios empresariales.
+        Cada línea de negocio en Archity está respaldada por software real en producción con sus respectivas marcas, logotipos oficiales y despliegues verificables.
       </p>
     </div>
 
@@ -86,8 +89,13 @@ const solutions = [
         solutions.map((s) => (
           <div class="group relative flex flex-col rounded-2xl border border-neutral-200/90 bg-white p-8 transition duration-300 hover:-translate-y-1 hover:border-neutral-300 hover:shadow-xl hover:shadow-neutral-900/5">
             
-            <div class="flex items-center justify-between gap-2 mb-3">
-              <span class="text-[11px] font-bold uppercase tracking-wider text-accent">{s.category}</span>
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <div class="flex items-center gap-2.5">
+                <div class="flex h-9 w-9 items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 p-1.5">
+                  <img src={s.logo} alt={s.badge} class="h-full w-full object-contain" />
+                </div>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-accent">{s.category}</span>
+              </div>
               <span class="rounded-full bg-accent-soft px-2.5 py-1 text-[11px] font-semibold text-accent border border-accent/20">
                 {s.badge}
               </span>
@@ -117,7 +125,7 @@ const solutions = [
               ))}
             </ul>
 
-            <!-- Botón CTA hacia demo y cotizador -->
+            <!-- Botón CTA hacia proyecto y cotizador -->
             <div class="mt-6 pt-4 border-t border-neutral-100 flex items-center justify-between gap-2">
               <a
                 href={s.demoUrl}
@@ -129,180 +137,13 @@ const solutions = [
                 href="#contacto"
                 class="text-xs font-medium text-neutral-500 hover:text-neutral-900 transition-colors"
               >
-                Cotizar este desarrollo &rarr;
+                Cotizar solución similar &rarr;
               </a>
             </div>
 
           </div>
         ))
       }
-    </div>
-
-    <!-- Vitrina de Demos Funcionales en Front-End -->
-    <div class="mt-20 rounded-3xl border border-neutral-200/90 bg-white p-8 sm:p-10 shadow-sm">
-      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-        <div>
-          <span class="text-xs font-bold uppercase tracking-wider text-accent">Demos Interactivas Independientes</span>
-          <h3 class="mt-1 font-display text-2xl font-bold text-neutral-900 sm:text-3xl">
-            Explora las 6 Demos Desarrolladas en Front-End
-          </h3>
-          <p class="mt-1 text-xs text-neutral-500">
-            Páginas independientes con su propio Header comercial, Footer de negocio, fotografías reales en alta definición, paginación reactiva y cero emojis.
-          </p>
-        </div>
-      </div>
-
-      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <!-- Demo 1: Restaurante -->
-        <a
-          href="/demos/restaurante"
-          class="group flex flex-col justify-between rounded-2xl border border-neutral-200 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-amber-400 hover:shadow-lg bg-neutral-50/50 hover:bg-white"
-        >
-          <div>
-            <div class="flex items-center justify-between">
-              <span class="rounded-md bg-amber-100 px-2 py-0.5 text-[10px] font-bold text-amber-800">
-                Gastronomía
-              </span>
-              <span class="text-[10px] text-neutral-400 font-semibold">16 Platos HD</span>
-            </div>
-            <h4 class="mt-3 font-display text-base font-bold text-neutral-900 group-hover:text-amber-600 transition-colors">
-              Restaurante &amp; Asador Criollo
-            </h4>
-            <p class="mt-1.5 text-xs text-neutral-600 leading-relaxed">
-              Carta gastronómica digital con paginación funcional, reserva de mesas online y comanda de delivery formateada a WhatsApp.
-            </p>
-          </div>
-          <div class="mt-4 flex items-center justify-between border-t border-neutral-100 pt-3 text-xs font-bold text-amber-700">
-            <span>Ver Demo Restaurante</span>
-            <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
-          </div>
-        </a>
-
-        <!-- Demo 2: E-Commerce -->
-        <a
-          href="/demos/ecommerce"
-          class="group flex flex-col justify-between rounded-2xl border border-neutral-200 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-lg bg-neutral-50/50 hover:bg-white"
-        >
-          <div>
-            <div class="flex items-center justify-between">
-              <span class="rounded-md bg-accent-soft px-2 py-0.5 text-[10px] font-bold text-accent">
-                Hardware &amp; SaaS
-              </span>
-              <span class="text-[10px] text-neutral-400 font-semibold">16 Productos</span>
-            </div>
-            <h4 class="mt-3 font-display text-base font-bold text-neutral-900 group-hover:text-accent transition-colors">
-              E-Commerce &amp; Tienda Virtual
-            </h4>
-            <p class="mt-1.5 text-xs text-neutral-600 leading-relaxed">
-              Catálogo con paginación de 8 ítems, drawer de carrito deslizable, cupones de descuento (ARCHITY10) y pasarela simulada.
-            </p>
-          </div>
-          <div class="mt-4 flex items-center justify-between border-t border-neutral-100 pt-3 text-xs font-bold text-accent">
-            <span>Ver Demo E-Commerce</span>
-            <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
-          </div>
-        </a>
-
-        <!-- Demo 3: Botica & Farmacia -->
-        <a
-          href="/demos/botica"
-          class="group flex flex-col justify-between rounded-2xl border border-neutral-200 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500 hover:shadow-lg bg-neutral-50/50 hover:bg-white"
-        >
-          <div>
-            <div class="flex items-center justify-between">
-              <span class="rounded-md bg-emerald-100 px-2 py-0.5 text-[10px] font-bold text-emerald-800">
-                Salud &amp; Farmacia
-              </span>
-              <span class="text-[10px] text-neutral-400 font-semibold">16 Fármacos</span>
-            </div>
-            <h4 class="mt-3 font-display text-base font-bold text-neutral-900 group-hover:text-emerald-600 transition-colors">
-              Botica &amp; Cuidado Personal
-            </h4>
-            <p class="mt-1.5 text-xs text-neutral-600 leading-relaxed">
-              Catálogo de medicamentos y botiquín, validador de recetas médicas Rx con químico farmacéutico y despacho express 24h.
-            </p>
-          </div>
-          <div class="mt-4 flex items-center justify-between border-t border-neutral-100 pt-3 text-xs font-bold text-emerald-700">
-            <span>Ver Demo Botica</span>
-            <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
-          </div>
-        </a>
-
-        <!-- Demo 4: Veterinaria & Pet Shop -->
-        <a
-          href="/demos/veterinaria"
-          class="group flex flex-col justify-between rounded-2xl border border-neutral-200 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-sky-500 hover:shadow-lg bg-neutral-50/50 hover:bg-white"
-        >
-          <div>
-            <div class="flex items-center justify-between">
-              <span class="rounded-md bg-sky-100 px-2 py-0.5 text-[10px] font-bold text-sky-800">
-                Medicina Veterinaria
-              </span>
-              <span class="text-[10px] text-neutral-400 font-semibold">16 Artículos Pet</span>
-            </div>
-            <h4 class="mt-3 font-display text-base font-bold text-neutral-900 group-hover:text-sky-600 transition-colors">
-              Clínica Veterinaria &amp; Pet Shop
-            </h4>
-            <p class="mt-1.5 text-xs text-neutral-600 leading-relaxed">
-              Agendamiento de consultas y cirugías online, atención de emergencias 24/7 y pet shop paginado con carrito WhatsApp.
-            </p>
-          </div>
-          <div class="mt-4 flex items-center justify-between border-t border-neutral-100 pt-3 text-xs font-bold text-sky-700">
-            <span>Ver Demo Veterinaria</span>
-            <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
-          </div>
-        </a>
-
-        <!-- Demo 5: Portal Inmobiliario -->
-        <a
-          href="/demos/inmobiliaria"
-          class="group flex flex-col justify-between rounded-2xl border border-neutral-200 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-600 hover:shadow-lg bg-neutral-50/50 hover:bg-white"
-        >
-          <div>
-            <div class="flex items-center justify-between">
-              <span class="rounded-md bg-emerald-100 px-2 py-0.5 text-[10px] font-bold text-emerald-800">
-                PropTech &amp; Real Estate
-              </span>
-              <span class="text-[10px] text-neutral-400 font-semibold">12 Inmuebles</span>
-            </div>
-            <h4 class="mt-3 font-display text-base font-bold text-neutral-900 group-hover:text-emerald-600 transition-colors">
-              Portal Inmobiliario &amp; Desarrollos
-            </h4>
-            <p class="mt-1.5 text-xs text-neutral-600 leading-relaxed">
-              Buscador por tipo y operación (venta/alquiler), simulador de cuotas de crédito hipotecario y agenda de visitas in situ.
-            </p>
-          </div>
-          <div class="mt-4 flex items-center justify-between border-t border-neutral-100 pt-3 text-xs font-bold text-emerald-700">
-            <span>Ver Demo Inmobiliaria</span>
-            <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
-          </div>
-        </a>
-
-        <!-- Demo 6: Landing Corporativa B2B -->
-        <a
-          href="/demos/landing-empresa"
-          class="group flex flex-col justify-between rounded-2xl border border-neutral-200 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-neutral-900 hover:shadow-lg bg-neutral-50/50 hover:bg-white"
-        >
-          <div>
-            <div class="flex items-center justify-between">
-              <span class="rounded-md bg-neutral-200 px-2 py-0.5 text-[10px] font-bold text-neutral-800">
-                Consorcios &amp; B2B
-              </span>
-              <span class="text-[10px] text-neutral-400 font-semibold">Calculadora ROI</span>
-            </div>
-            <h4 class="mt-3 font-display text-base font-bold text-neutral-900 group-hover:text-neutral-700 transition-colors">
-              Landing Page Corporativa B2B
-            </h4>
-            <p class="mt-1.5 text-xs text-neutral-600 leading-relaxed">
-              Solución para directores y empresas: cálculo en tiempo real de horas ahorradas y retorno de inversión en software.
-            </p>
-          </div>
-          <div class="mt-4 flex items-center justify-between border-t border-neutral-100 pt-3 text-xs font-bold text-neutral-900">
-            <span>Ver Demo Corporativa</span>
-            <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
-          </div>
-        </a>
-      </div>
     </div>
 
   </div>

@@ -1,5 +1,4 @@
 ---
-// Contenedor global: head, fuentes y estilos
 import "../styles/global.css";
 
 interface Props {
@@ -8,13 +7,13 @@ interface Props {
 }
 
 const {
-  title = "Archity — Software a la medida & SaaS",
-  description = "Hub de productos y portafolio de Archity. Descubre nuestros sistemas SaaS, proyectos a medida y casos de éxito.",
+  title = "Archity — Software Studio & Sistemas en Producción Real",
+  description = "Portafolio de Archity: AltoPlanta, Vinkula CRM, Sencillo, ERP Grupo Pineda, Inmobiliaria Flamingo, Banco de Sangre Loreto, RestoManager 3D y Facturación Electrónica SUNAT UBL 2.1.",
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es" class="scroll-smooth">
+<html lang="es" class="scroll-smooth h-full antialiased">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -26,15 +25,19 @@ const {
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
 
-    <!-- Fuentes -->
+    <!-- Fuentes oficiales del diseño Crayon / creative-artsy: Handjet, Just Me Again Down Here, DM Mono e Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Handjet:wght,ELGR,ELSH@700..900,1,7&family=Inter:wght@400;500;600;700&family=Just+Me+Again+Down+Here&display=swap"
       rel="stylesheet"
     />
   </head>
-  <body class="bg-white font-sans text-neutral-900 antialiased">
-    <slot />
+  <body class="ca-cutting-mat min-h-full flex flex-col py-0 sm:py-6 md:py-10 px-0 sm:px-4 md:px-8">
+    <!-- Hoja real de cuaderno centrada sobre la mesa de corte cuadriculada -->
+    <div class="t-creative-artsy ca-paper-sheet relative mx-auto w-full max-w-[1320px] min-h-screen overflow-x-clip bg-[var(--ca-surface)] text-[var(--ca-ink)] antialiased">
+      <div aria-hidden="true" class="ca-grain pointer-events-none fixed inset-0 z-[1] mix-blend-multiply"></div>
+      <slot />
+    </div>
   </body>
 </html>

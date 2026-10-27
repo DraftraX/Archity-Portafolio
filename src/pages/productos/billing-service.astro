@@ -1,0 +1,800 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+---
+
+<Layout
+  title="Archity Billing Service — Consola Front-End & Motor de Facturación Electrónica SUNAT (UBL 2.1) | Archity"
+  description="Consola Front-End interactiva y arquitectura del microservicio multi-tenant de Facturación Electrónica SUNAT UBL 2.1 desarrollado por Archity: Facturas, Boletas, Notas de Crédito/Débito, firma XMLDSig RSA-SHA256, CDR SOAP, PDF QR y SDKs."
+>
+  <Header />
+
+  <main class="ca-grid">
+    <!-- Hero del Microservicio + Consola Front-End SUNAT UBL 2.1 -->
+    <section class="border-b border-[var(--ca-ink)]/15 py-14 sm:py-20">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+
+        <!-- Breadcrumbs -->
+        <nav class="flex items-center gap-2 text-xs font-medium text-neutral-500 mb-6" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-neutral-900 transition-colors">Inicio</a>
+          <span>/</span>
+          <a href="/#productos" class="hover:text-neutral-900 transition-colors">Productos</a>
+          <span>/</span>
+          <span class="text-neutral-900">Archity Billing Service (SUNAT UBL 2.1)</span>
+        </nav>
+
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+          <div class="max-w-3xl">
+            <!-- Logo oficial de Archity Billing Service -->
+            <div class="mb-5 inline-flex items-center gap-3 rounded-2xl border border-neutral-200 bg-white px-4 py-2.5 shadow-2xs">
+              <img src="/logos/billing-logo.svg" alt="Archity Billing Service Logo Oficial" class="h-9 w-auto object-contain" />
+              <span class="h-5 w-px bg-neutral-200"></span>
+              <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700">
+                <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                Front-End Emisor + API Multi-Tenant
+              </span>
+            </div>
+
+            <h1 class="font-display text-3xl font-bold tracking-tight text-neutral-900 sm:text-5xl">
+              Archity Billing Service — Consola SUNAT UBL 2.1
+            </h1>
+            <p class="mt-3 text-base leading-relaxed text-neutral-600 sm:text-lg">
+              Microservicio multi-tenant de <strong>Facturación Electrónica SUNAT (Perú)</strong> desarrollado en <strong>Django 5 + DRF + Celery + Redis + PostgreSQL</strong> (<a href="https://github.com/DraftraX/billing-service" target="_blank" rel="noopener" class="text-accent underline font-semibold">github.com/DraftraX/billing-service</a>), ahora equipado con su <strong>Consola Front-End Interactiva de Emisión Electrónica</strong>: emite <strong>Facturas (01)</strong>, <strong>Boletas (03)</strong>, <strong>Notas de Crédito (07)</strong> y <strong>Notas de Débito (08)</strong>, firma digitalmente el XML <code>UBL 2.1</code> con <code>XMLDSig (RSA-SHA256)</code>, simula el despacho SOAP <code>sendBill</code> con recepción de <strong>CDR SUNAT</strong> y genera la representación impresa A4 con código QR reglamentario.
+            </p>
+          </div>
+
+          <div class="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
+            <a
+              href="#consola-emisor"
+              class="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-accent-dark transition-all"
+            >
+              Emitir Comprobante Ahora
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </a>
+            <a
+              href="https://github.com/DraftraX/billing-service"
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center justify-center gap-2 rounded-xl border border-neutral-300 bg-white px-6 py-3 text-sm font-semibold text-neutral-800 hover:bg-neutral-50 transition-colors"
+            >
+              Repositorio Backend &amp; SDKs ↗
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONSOLA FRONT-END INTERACTIVA DEL MICROSERVICIO BILLING-SERVICE -->
+    <section id="consola-emisor" class="scroll-mt-16 py-12 sm:py-16 bg-neutral-100/70 border-b border-neutral-200/90">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+
+        <!-- Barra de Estado Multi-Tenant del Emisor -->
+        <div class="mb-6 rounded-2xl border border-neutral-200 bg-neutral-900 text-white p-4 shadow-sm flex flex-wrap items-center justify-between gap-4 text-xs">
+          <div class="flex flex-wrap items-center gap-3">
+            <img src="/logos/billing-mark.svg" alt="Billing" class="h-7 w-7" />
+            <div>
+              <span class="text-[10px] font-mono uppercase tracking-wider text-neutral-400 block">Tenant Emisor Activo (X-API-Key)</span>
+              <select id="bs-tenant" class="mt-0.5 rounded bg-neutral-800 border border-neutral-700 px-2.5 py-1 text-xs font-bold text-white focus:outline-none">
+                <option value="20608941201|ARCHITY TECHNOLOGIES S.A.C.|AV. JAVIER PRADO ESTE 4200 - LIMA">RUC 20608941201 · ARCHITY TECHNOLOGIES S.A.C.</option>
+                <option value="20542189014|CONSORCIO GRUPO PINEDA S.A.C.|JR. SAN MARTÍN 840 - TARAPOTO">RUC 20542189014 · CONSORCIO GRUPO PINEDA S.A.C.</option>
+                <option value="20610492817|ALTOPLANTA PROPTECH PERÚ S.A.C.|AV. LARCO 1150 - MIRAFLORES">RUC 20610492817 · ALTOPLANTA PROPTECH PERÚ S.A.C.</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-3">
+            <div class="rounded-lg border border-neutral-800 bg-neutral-950 px-3 py-1.5">
+              <span class="text-[10px] text-neutral-400 block">Certificado Digital (.PFX)</span>
+              <span class="font-mono text-[11px] font-bold text-emerald-400">AES-256 Fernet · Vigente</span>
+            </div>
+            <div class="rounded-lg border border-neutral-800 bg-neutral-950 px-3 py-1.5">
+              <span class="text-[10px] text-neutral-400 block">Entorno SOAP SUNAT</span>
+              <span class="font-mono text-[11px] font-bold text-sky-400">UBL 2.1 · Catálogo 01/51</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grid Principal de la Consola: Izquierda (Formulario Emisor) | Derecha (Visor PDF / XML UBL 2.1 / CDR SOAP / API JSON) -->
+        <div class="grid gap-8 lg:grid-cols-[1.15fr_1fr] items-start">
+
+          <!-- COLUMNA IZQUIERDA: FORMULARIO DE EMISIÓN DE COMPROBANTE ELECTRÓNICO -->
+          <div class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs space-y-5">
+            <div class="flex items-center justify-between border-b border-neutral-100 pb-4">
+              <div>
+                <span class="text-[11px] font-mono font-bold text-accent uppercase">POST /api/v1/facturacion/emitir/</span>
+                <h2 class="font-display text-xl font-bold text-neutral-900">Emisor de Comprobantes Electrónicos</h2>
+              </div>
+              <span class="rounded-md bg-neutral-100 px-2.5 py-1 font-mono text-xs font-bold text-neutral-800" id="bs-correlative-badge">
+                F001-00000142
+              </span>
+            </div>
+
+            <!-- 1. Tipo de Comprobante, Serie, Moneda y Forma de Pago -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+              <div class="col-span-2">
+                <label for="bs-doc-type" class="block font-semibold text-neutral-700 mb-1">Tipo Comprobante (Cat. 01)</label>
+                <select id="bs-doc-type" class="w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 font-semibold text-neutral-900">
+                  <option value="01" selected>01 — Factura Electrónica</option>
+                  <option value="03">03 — Boleta de Venta Electrónica</option>
+                  <option value="07">07 — Nota de Crédito Electrónica</option>
+                  <option value="08">08 — Nota de Débito Electrónica</option>
+                </select>
+              </div>
+              <div>
+                <label for="bs-serie" class="block font-semibold text-neutral-700 mb-1">Serie Atómica</label>
+                <input id="bs-serie" type="text" value="F001" readonly class="w-full rounded-lg border border-neutral-200 bg-neutral-100 px-3 py-2 font-mono font-bold text-neutral-800" />
+              </div>
+              <div>
+                <label for="bs-currency" class="block font-semibold text-neutral-700 mb-1">Moneda (ISO)</label>
+                <select id="bs-currency" class="w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 font-semibold text-neutral-900">
+                  <option value="PEN" selected>PEN (S/)</option>
+                  <option value="USD">USD ($)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- 2. Datos del Cliente / Receptor -->
+            <div class="rounded-xl border border-neutral-200 bg-neutral-50/60 p-4 space-y-3 text-xs">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-neutral-800 uppercase tracking-wider text-[11px]">Receptor del Comprobante</span>
+                <button id="bs-preset-client" type="button" class="text-[11px] font-semibold text-accent hover:underline">
+                  Autocompletar RUC Corporativo
+                </button>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div>
+                  <label for="bs-client-doc-type" class="block text-neutral-600 font-medium mb-1">Tipo Doc. (Cat. 06)</label>
+                  <select id="bs-client-doc-type" class="w-full rounded-lg border border-neutral-300 bg-white px-2.5 py-1.5 font-semibold text-neutral-900">
+                    <option value="6" selected>6 — RUC (11 dígitos)</option>
+                    <option value="1">1 — DNI (8 dígitos)</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="bs-client-doc-num" class="block text-neutral-600 font-medium mb-1">N° Documento</label>
+                  <input id="bs-client-doc-num" type="text" value="20538910421" class="w-full rounded-lg border border-neutral-300 bg-white px-2.5 py-1.5 font-mono font-bold text-neutral-900" />
+                </div>
+                <div>
+                  <label for="bs-payment-term" class="block text-neutral-600 font-medium mb-1">Condición de Pago</label>
+                  <select id="bs-payment-term" class="w-full rounded-lg border border-neutral-300 bg-white px-2.5 py-1.5 font-semibold text-neutral-900">
+                    <option value="Contado" selected>Contado</option>
+                    <option value="Credito">Crédito 30 días</option>
+                  </select>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label for="bs-client-name" class="block text-neutral-600 font-medium mb-1">Razón Social / Nombre Completo</label>
+                  <input id="bs-client-name" type="text" value="INMOBILIARIA & CONSTRUCTORA DEL ORIENTE S.A.C." class="w-full rounded-lg border border-neutral-300 bg-white px-2.5 py-1.5 font-semibold text-neutral-900" />
+                </div>
+                <div>
+                  <label for="bs-client-address" class="block text-neutral-600 font-medium mb-1">Dirección Fiscal</label>
+                  <input id="bs-client-address" type="text" value="AV. LA MARINA 1450 - SAN MIGUEL, LIMA" class="w-full rounded-lg border border-neutral-300 bg-white px-2.5 py-1.5 text-neutral-800" />
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Detalle de Ítems (Catálogo 07 Afectación IGV) -->
+            <div class="space-y-3">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-neutral-800 uppercase tracking-wider text-[11px]">Detalle de Ítems / Servicios</span>
+                <button
+                  id="bs-add-item"
+                  type="button"
+                  class="inline-flex items-center gap-1 rounded-lg bg-accent-soft border border-accent/20 px-2.5 py-1 text-[11px] font-bold text-accent hover:bg-accent hover:text-white transition-colors"
+                >
+                  + Agregar Ítem
+                </button>
+              </div>
+
+              <div id="bs-items-container" class="space-y-2.5">
+              </div>
+            </div>
+
+            <!-- 4. Resumen de Totales Tributarios y Botón de Firma XMLDSig -->
+            <div class="rounded-xl border border-neutral-200 bg-neutral-900 text-white p-4 space-y-2 text-xs">
+              <div class="grid grid-cols-3 gap-2 pb-2 border-b border-neutral-800">
+                <div>
+                  <span class="text-[10px] text-neutral-400 block">Op. Gravada (10)</span>
+                  <strong id="bs-sum-gravada" class="font-mono font-bold text-white">S/ 2,500.00</strong>
+                </div>
+                <div>
+                  <span class="text-[10px] text-neutral-400 block">Op. Exonerada (20)</span>
+                  <strong id="bs-sum-exonerada" class="font-mono font-bold text-white">S/ 0.00</strong>
+                </div>
+                <div>
+                  <span class="text-[10px] text-neutral-400 block">IGV 18%</span>
+                  <strong id="bs-sum-igv" class="font-mono font-bold text-sky-400">S/ 450.00</strong>
+                </div>
+              </div>
+              <div class="flex items-center justify-between pt-1">
+                <div>
+                  <span class="text-[10px] text-neutral-400 block uppercase">Importe Total en Letras (monto_a_letras)</span>
+                  <span id="bs-amount-words" class="font-mono text-[11px] text-emerald-400 font-semibold">
+                    SON: DOS MIL NOVECIENTOS CINCUENTA CON 00/100 SOLES
+                  </span>
+                </div>
+                <div class="text-right">
+                  <span class="text-[10px] text-neutral-400 block">TOTAL COMPROBANTE</span>
+                  <strong id="bs-sum-total" class="font-display text-2xl font-bold text-white">S/ 2,950.00</strong>
+                </div>
+              </div>
+            </div>
+
+            <button
+              id="bs-btn-emit"
+              type="button"
+              class="w-full rounded-xl bg-accent py-3.5 px-5 text-sm font-bold text-white shadow-sm hover:bg-accent-dark transition-all flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+              </svg>
+              <span>Firmar XML UBL 2.1 (RSA-SHA256) y Enviar a SUNAT</span>
+            </button>
+          </div>
+
+          <!-- COLUMNA DERECHA: VISOR MULTICAPA (REPRESENTACIÓN IMPRESA PDF / XML UBL 2.1 / CDR SUNAT / PAYLOAD API) -->
+          <div class="rounded-2xl border border-neutral-200 bg-white shadow-xs overflow-hidden">
+            <!-- Pestañas del Visor -->
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-neutral-200 bg-neutral-50 px-4 py-3">
+              <div class="inline-flex rounded-xl border border-neutral-200 bg-white p-1 text-xs">
+                <button type="button" data-tab="pdf" class="bs-view-tab rounded-lg bg-neutral-900 px-3 py-1.5 font-semibold text-white">
+                  Representación PDF + QR
+                </button>
+                <button type="button" data-tab="xml" class="bs-view-tab rounded-lg px-3 py-1.5 font-semibold text-neutral-600 hover:text-neutral-900">
+                  XML UBL 2.1 Firmado
+                </button>
+                <button type="button" data-tab="cdr" class="bs-view-tab rounded-lg px-3 py-1.5 font-semibold text-neutral-600 hover:text-neutral-900">
+                  Respuesta CDR &amp; Webhook
+                </button>
+              </div>
+              <span id="bs-cdr-pill" class="rounded-full bg-emerald-100 border border-emerald-200 px-2.5 py-0.5 text-[10px] font-bold text-emerald-800">
+                ESTADO: ACEPTADO POR SUNAT (CÓD. 0)
+              </span>
+            </div>
+
+            <!-- TAB 1: Representación Impresa PDF A4 con QR Reglamentario -->
+            <div id="bs-panel-pdf" class="p-6 space-y-5 text-xs">
+              <div class="rounded-xl border border-neutral-300 bg-white p-5 shadow-2xs space-y-4">
+                <!-- Cabecera de Factura Peruana con RUC Enmarcado -->
+                <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 border-b border-neutral-200 pb-4">
+                  <div>
+                    <div class="flex items-center gap-2 mb-1.5">
+                      <img src="/logos/billing-mark.svg" alt="Emisor" class="h-6 w-6" />
+                      <strong id="pdf-emisor-name" class="font-display text-sm font-bold text-neutral-900">ARCHITY TECHNOLOGIES S.A.C.</strong>
+                    </div>
+                    <p id="pdf-emisor-address" class="text-[11px] text-neutral-500">AV. JAVIER PRADO ESTE 4200 - LIMA</p>
+                    <p class="text-[10px] text-neutral-400 mt-0.5">Autorizado mediante Resolución de Intendencia SUNAT</p>
+                  </div>
+
+                  <!-- Recuadro RUC Reglamentario SUNAT -->
+                  <div class="rounded-xl border-2 border-neutral-900 px-4 py-2.5 text-center shrink-0 bg-neutral-50">
+                    <span id="pdf-emisor-ruc" class="block font-mono text-xs font-bold text-neutral-900">R.U.C. 20608941201</span>
+                    <strong id="pdf-doc-title" class="block font-display text-xs font-extrabold uppercase tracking-wider text-accent my-0.5">
+                      FACTURA ELECTRÓNICA
+                    </strong>
+                    <span id="pdf-doc-number" class="block font-mono text-xs font-bold text-neutral-900">F001-00000142</span>
+                  </div>
+                </div>
+
+                <!-- Datos del Receptor en el PDF -->
+                <div class="grid grid-cols-2 gap-2 rounded-lg bg-neutral-50 p-3 border border-neutral-200/80 text-[11px]">
+                  <div>
+                    <span class="text-neutral-400 block">Cliente / Razón Social:</span>
+                    <strong id="pdf-client-name" class="text-neutral-900 font-semibold">INMOBILIARIA &amp; CONSTRUCTORA DEL ORIENTE S.A.C.</strong>
+                  </div>
+                  <div>
+                    <span class="text-neutral-400 block">Documento / Condición:</span>
+                    <strong id="pdf-client-doc" class="font-mono text-neutral-900 font-semibold">RUC: 20538910421 · Contado</strong>
+                  </div>
+                  <div class="col-span-2">
+                    <span class="text-neutral-400 block">Dirección:</span>
+                    <span id="pdf-client-address" class="text-neutral-700">AV. LA MARINA 1450 - SAN MIGUEL, LIMA</span>
+                  </div>
+                </div>
+
+                <!-- Tabla de Ítems en el PDF -->
+                <div class="overflow-x-auto">
+                  <table class="w-full text-left border-collapse text-[11px]">
+                    <thead>
+                      <tr class="border-b border-neutral-300 text-neutral-500 uppercase text-[10px]">
+                        <th class="py-1.5">Cant.</th>
+                        <th class="py-1.5">Descripción</th>
+                        <th class="py-1.5 text-right">V. Unit</th>
+                        <th class="py-1.5 text-right">IGV</th>
+                        <th class="py-1.5 text-right">Importe</th>
+                      </tr>
+                    </thead>
+                    <tbody id="pdf-items-tbody" class="divide-y divide-neutral-100 font-mono">
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Pie de Comprobante: QR Reglamentario + Hash Resumen + Totales -->
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-neutral-200 pt-4">
+                  <div class="flex items-center gap-3">
+                    <!-- Código QR Vectorial Dinámico -->
+                    <div class="h-20 w-20 shrink-0 rounded-lg border border-neutral-300 p-1.5 bg-white flex items-center justify-center">
+                      <svg viewBox="0 0 100 100" class="h-full w-full fill-neutral-900">
+                        <rect x="5" y="5" width="28" height="28" rx="2" fill="none" stroke="currentColor" stroke-width="6" />
+                        <rect x="13" y="13" width="12" height="12" />
+                        <rect x="67" y="5" width="28" height="28" rx="2" fill="none" stroke="currentColor" stroke-width="6" />
+                        <rect x="75" y="13" width="12" height="12" />
+                        <rect x="5" y="67" width="28" height="28" rx="2" fill="none" stroke="currentColor" stroke-width="6" />
+                        <rect x="13" y="75" width="12" height="12" />
+                        <rect x="42" y="10" width="8" height="8" />
+                        <rect x="42" y="26" width="8" height="16" />
+                        <rect x="54" y="18" width="8" height="8" />
+                        <rect x="10" y="42" width="16" height="8" />
+                        <rect x="34" y="46" width="16" height="16" />
+                        <rect x="58" y="42" width="8" height="24" />
+                        <rect x="74" y="46" width="18" height="8" />
+                        <rect x="42" y="70" width="12" height="8" />
+                        <rect x="62" y="74" width="16" height="18" />
+                        <rect x="84" y="68" width="10" height="26" />
+                      </svg>
+                    </div>
+                    <div class="text-[10px] space-y-1">
+                      <span class="font-bold text-neutral-800 block">Representación Impresa de Comprobante Electrónico</span>
+                      <span class="font-mono text-neutral-500 block">DigestValue (RSA-SHA256): <strong id="pdf-hash" class="text-neutral-900">x8Kp2Lm9Qv7Tz4Nw1Yr5Hc3Jd0B=</strong></span>
+                      <span id="pdf-qr-string" class="font-mono text-[9px] text-neutral-400 block break-all">
+                        20608941201|01|F001|00000142|450.00|2950.00|2026-10-27|6|20538910421|
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="w-full sm:w-44 space-y-1 text-right font-mono text-[11px]">
+                    <div class="flex justify-between text-neutral-500">
+                      <span>Op. Gravada:</span>
+                      <span id="pdf-gravada">S/ 2,500.00</span>
+                    </div>
+                    <div class="flex justify-between text-neutral-500">
+                      <span>IGV (18%):</span>
+                      <span id="pdf-igv">S/ 450.00</span>
+                    </div>
+                    <div class="flex justify-between border-t border-neutral-200 pt-1 text-sm font-bold text-neutral-900">
+                      <span>TOTAL:</span>
+                      <span id="pdf-total">S/ 2,950.00</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 2: XML UBL 2.1 Firmado (Estándar OASIS + XMLDSig) -->
+            <div id="bs-panel-xml" class="hidden p-5 bg-neutral-950 text-neutral-200">
+              <div class="flex items-center justify-between text-[11px] font-mono text-neutral-400 mb-2 pb-2 border-b border-neutral-800">
+                <span>Estándar OASIS UBL 2.1 · CustomizationID 2.0 · XMLDSig RSA-SHA256</span>
+                <span class="text-emerald-400">UTF-8 Validado</span>
+              </div>
+              <pre id="bs-xml-code" class="overflow-x-auto text-[11px] font-mono leading-relaxed text-emerald-300 max-h-96"></pre>
+            </div>
+
+            <!-- TAB 3: Respuesta CDR SUNAT + Webhook HMAC-SHA256 -->
+            <div id="bs-panel-cdr" class="hidden p-5 bg-neutral-950 text-neutral-200 space-y-4">
+              <div>
+                <span class="text-[11px] font-mono font-bold text-sky-400 block mb-1">1. Respuesta Síncrona SOAP sendBill (CDR SUNAT):</span>
+                <pre id="bs-cdr-code" class="overflow-x-auto rounded-xl border border-neutral-800 bg-neutral-900 p-3.5 text-[11px] font-mono text-neutral-200"></pre>
+              </div>
+              <div>
+                <span class="text-[11px] font-mono font-bold text-amber-400 block mb-1">2. Notificación Webhook Asíncrona (X-Archity-Signature HMAC-SHA256):</span>
+                <pre id="bs-webhook-code" class="overflow-x-auto rounded-xl border border-neutral-800 bg-neutral-900 p-3.5 text-[11px] font-mono text-neutral-300"></pre>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SDKs Oficiales (Python, Node.js/TypeScript, PHP) & Arquitectura Multi-Tenant -->
+    <section class="py-20 bg-white border-b border-neutral-200/80">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent">SDKs Oficiales &amp; Integración Multi-Sistema</p>
+          <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
+            Un solo motor de facturación para todos tus sistemas
+          </h2>
+          <p class="mt-3 text-sm text-neutral-600">
+            El repositorio incluye clientes SDK listos para integrar cualquier ERP, SaaS o tienda virtual en minutos mediante autenticación por cabecera <code>X-API-Key</code>.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-6 lg:grid-cols-3 text-xs">
+          <!-- SDK Python -->
+          <div class="rounded-2xl border border-neutral-200 bg-neutral-950 text-white p-5">
+            <div class="flex items-center justify-between pb-3 mb-3 border-b border-neutral-800">
+              <span class="font-mono font-bold text-emerald-400">sdk/python/archity_billing_client.py</span>
+              <span class="rounded bg-neutral-800 px-2 py-0.5 text-[10px] font-mono">Python 3.12</span>
+            </div>
+            <pre class="overflow-x-auto font-mono text-[11px] text-neutral-300 leading-relaxed">{`from archity_billing_client import ArchityBillingClient
+
+client = ArchityBillingClient(
+    base_url="https://billing.archity.pe",
+    api_key="ak_live_9f8a7b6c5d4e"
+)
+
+res = client.emitir_factura(
+    serie="F001",
+    cliente={"tipo_doc": "6", "num_doc": "20538910421",
+             "razon_social": "CONSORCIO ORIENTE SAC"},
+    items=[{"codigo": "SRV-01", "descripcion": "Licencia SaaS",
+            "cantidad": 1, "valor_unitario": 2500.00}]
+)`}</pre>
+          </div>
+
+          <!-- SDK Node / TypeScript -->
+          <div class="rounded-2xl border border-neutral-200 bg-neutral-950 text-white p-5">
+            <div class="flex items-center justify-between pb-3 mb-3 border-b border-neutral-800">
+              <span class="font-mono font-bold text-sky-400">sdk/node/archityBillingClient.ts</span>
+              <span class="rounded bg-neutral-800 px-2 py-0.5 text-[10px] font-mono">TypeScript / Node</span>
+            </div>
+            <pre class="overflow-x-auto font-mono text-[11px] text-neutral-300 leading-relaxed">{`import { ArchityBillingClient } from "./archityBillingClient";
+
+const billing = new ArchityBillingClient({
+  baseUrl: "https://billing.archity.pe",
+  apiKey: process.env.ARCHITY_API_KEY!,
+});
+
+const cdr = await billing.emitirComprobante({
+  tipo_comprobante: "01",
+  serie: "F001",
+  moneda: "PEN",
+  cliente: { num_doc: "20538910421", ... },
+  items: [{ descripcion: "Módulo ERP", ... }]
+});`}</pre>
+          </div>
+
+          <!-- SDK PHP -->
+          <div class="rounded-2xl border border-neutral-200 bg-neutral-950 text-white p-5">
+            <div class="flex items-center justify-between pb-3 mb-3 border-b border-neutral-800">
+              <span class="font-mono font-bold text-violet-400">sdk/php/ArchityBillingClient.php</span>
+              <span class="rounded bg-neutral-800 px-2 py-0.5 text-[10px] font-mono">PHP 8.2+</span>
+            </div>
+            <pre class="overflow-x-auto font-mono text-[11px] text-neutral-300 leading-relaxed">{`<?php
+$client = new ArchityBillingClient(
+    'https://billing.archity.pe',
+    'ak_live_9f8a7b6c5d4e'
+);
+
+$respuesta = $client->emitirComprobante([
+    'tipo_comprobante' => '03',
+    'serie' => 'B001',
+    'cliente' => ['tipo_doc' => '1', 'num_doc' => '45892104'],
+    'items' => [['descripcion' => 'Suscripción', ...]]
+]);`}</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  interface InvoiceItem {
+    code: string;
+    desc: string;
+    qty: number;
+    unitValue: number;
+    taxType: "10" | "20" | "30";
+  }
+
+  const initialItems: InvoiceItem[] = [
+    { code: "SAAS-001", desc: "Licencia Anual Plataforma SaaS Multi-Tenant & Soporte Cloud", qty: 1, unitValue: 2000, taxType: "10" },
+    { code: "INT-002", desc: "Integración API Facturación Electrónica SUNAT UBL 2.1", qty: 1, unitValue: 500, taxType: "10" },
+  ];
+
+  let items: InvoiceItem[] = [...initialItems];
+  let correlativeNumber = 142;
+
+  const tenantSel = document.getElementById("bs-tenant") as HTMLSelectElement | null;
+  const docTypeSel = document.getElementById("bs-doc-type") as HTMLSelectElement | null;
+  const serieInput = document.getElementById("bs-serie") as HTMLInputElement | null;
+  const currencySel = document.getElementById("bs-currency") as HTMLSelectElement | null;
+  const clientDocType = document.getElementById("bs-client-doc-type") as HTMLSelectElement | null;
+  const clientDocNum = document.getElementById("bs-client-doc-num") as HTMLInputElement | null;
+  const clientName = document.getElementById("bs-client-name") as HTMLInputElement | null;
+  const clientAddr = document.getElementById("bs-client-address") as HTMLInputElement | null;
+  const paymentTerm = document.getElementById("bs-payment-term") as HTMLSelectElement | null;
+  const itemsContainer = document.getElementById("bs-items-container");
+
+  function numberToWordsSpanish(amount: number, currencyCode: string): string {
+    const integerPart = Math.floor(amount);
+    const cents = Math.round((amount - integerPart) * 100);
+    const currencyName = currencyCode === "USD" ? "DÓLARES AMERICANOS" : "SOLES";
+    return `SON: ${integerPart.toLocaleString("es-PE")} CON ${String(cents).padStart(2, "0")}/100 ${currencyName}`;
+  }
+
+  function renderItemsEditor() {
+    if (!itemsContainer) return;
+    itemsContainer.innerHTML = items
+      .map(
+        (it, idx) => `
+      <div class="grid grid-cols-12 gap-2 items-center rounded-xl border border-neutral-200 bg-neutral-50/70 p-2.5 text-xs">
+        <div class="col-span-5">
+          <input data-idx="${idx}" data-field="desc" type="text" value="${it.desc}" class="bs-item-input w-full rounded border border-neutral-300 bg-white px-2 py-1 font-medium text-neutral-900" />
+        </div>
+        <div class="col-span-2">
+          <input data-idx="${idx}" data-field="qty" type="number" min="1" value="${it.qty}" class="bs-item-input w-full rounded border border-neutral-300 bg-white px-2 py-1 font-mono font-bold text-neutral-900" />
+        </div>
+        <div class="col-span-2">
+          <input data-idx="${idx}" data-field="unitValue" type="number" min="1" step="10" value="${it.unitValue}" class="bs-item-input w-full rounded border border-neutral-300 bg-white px-2 py-1 font-mono font-bold text-neutral-900" />
+        </div>
+        <div class="col-span-2">
+          <select data-idx="${idx}" data-field="taxType" class="bs-item-input w-full rounded border border-neutral-300 bg-white px-1.5 py-1 text-[11px] font-semibold text-neutral-800">
+            <option value="10" ${it.taxType === "10" ? "selected" : ""}>10 Grav.</option>
+            <option value="20" ${it.taxType === "20" ? "selected" : ""}>20 Exon.</option>
+          </select>
+        </div>
+        <div class="col-span-1 text-right">
+          <button type="button" data-remove="${idx}" class="bs-remove-item text-neutral-400 hover:text-red-600 font-bold px-1" title="Eliminar">×</button>
+        </div>
+      </div>
+    `
+      )
+      .join("");
+
+    document.querySelectorAll(".bs-item-input").forEach((inp) => {
+      inp.addEventListener("input", (e) => {
+        const target = e.target as HTMLInputElement;
+        const idx = Number(target.getAttribute("data-idx"));
+        const field = target.getAttribute("data-field") as keyof InvoiceItem;
+        if (field === "qty" || field === "unitValue") {
+          (items[idx] as any)[field] = Math.max(0, Number(target.value));
+        } else {
+          (items[idx] as any)[field] = target.value;
+        }
+        recalculateAll();
+      });
+    });
+
+    document.querySelectorAll(".bs-remove-item").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        if (items.length <= 1) return;
+        const idx = Number(btn.getAttribute("data-remove"));
+        items.splice(idx, 1);
+        renderItemsEditor();
+        recalculateAll();
+      });
+    });
+  }
+
+  function recalculateAll() {
+    const [emisorRuc, emisorRazon, emisorDir] = (tenantSel?.value || "20608941201|ARCHITY TECHNOLOGIES S.A.C.|AV. JAVIER PRADO ESTE 4200 - LIMA").split("|");
+    const docType = docTypeSel?.value || "01";
+    const seriePrefix = docType === "03" ? "B001" : docType === "07" ? "FC01" : docType === "08" ? "FD01" : "F001";
+    if (serieInput) serieInput.value = seriePrefix;
+
+    const curr = currencySel?.value || "PEN";
+    const sym = curr === "USD" ? "$ " : "S/ ";
+    const fullNumber = `${seriePrefix}-${String(correlativeNumber).padStart(8, "0")}`;
+
+    const badgeEl = document.getElementById("bs-correlative-badge");
+    if (badgeEl) badgeEl.textContent = fullNumber;
+
+    let gravada = 0;
+    let exonerada = 0;
+    let igvTotal = 0;
+
+    let pdfRowsHtml = "";
+    items.forEach((it) => {
+      const lineSub = it.qty * it.unitValue;
+      const lineIgv = it.taxType === "10" ? lineSub * 0.18 : 0;
+      const lineTotal = lineSub + lineIgv;
+      if (it.taxType === "10") {
+        gravada += lineSub;
+        igvTotal += lineIgv;
+      } else {
+        exonerada += lineSub;
+      }
+      pdfRowsHtml += `
+        <tr>
+          <td class="py-1.5 font-bold">${it.qty} NIU</td>
+          <td class="py-1.5 font-sans text-neutral-800">${it.desc}</td>
+          <td class="py-1.5 text-right">${sym}${it.unitValue.toFixed(2)}</td>
+          <td class="py-1.5 text-right">${sym}${lineIgv.toFixed(2)}</td>
+          <td class="py-1.5 text-right font-bold text-neutral-900">${sym}${lineTotal.toFixed(2)}</td>
+        </tr>
+      `;
+    });
+
+    const grandTotal = gravada + exonerada + igvTotal;
+    const fmt = (n: number) => sym + n.toLocaleString("es-PE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    const sumGrav = document.getElementById("bs-sum-gravada");
+    const sumExon = document.getElementById("bs-sum-exonerada");
+    const sumIgv = document.getElementById("bs-sum-igv");
+    const sumTot = document.getElementById("bs-sum-total");
+    const wordsEl = document.getElementById("bs-amount-words");
+
+    if (sumGrav) sumGrav.textContent = fmt(gravada);
+    if (sumExon) sumExon.textContent = fmt(exonerada);
+    if (sumIgv) sumIgv.textContent = fmt(igvTotal);
+    if (sumTot) sumTot.textContent = fmt(grandTotal);
+    if (wordsEl) wordsEl.textContent = numberToWordsSpanish(grandTotal, curr);
+
+    // Actualizar Vista Previa PDF
+    const docTitles: Record<string, string> = {
+      "01": "FACTURA ELECTRÓNICA",
+      "03": "BOLETA DE VENTA ELECTRÓNICA",
+      "07": "NOTA DE CRÉDITO ELECTRÓNICA",
+      "08": "NOTA DE DÉBITO ELECTRÓNICA",
+    };
+
+    const setTxt = (id: string, val: string) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = val;
+    };
+
+    setTxt("pdf-emisor-name", emisorRazon);
+    setTxt("pdf-emisor-address", emisorDir);
+    setTxt("pdf-emisor-ruc", `R.U.C. ${emisorRuc}`);
+    setTxt("pdf-doc-title", docTitles[docType] || "FACTURA ELECTRÓNICA");
+    setTxt("pdf-doc-number", fullNumber);
+    setTxt("pdf-client-name", clientName?.value || "");
+    setTxt("pdf-client-doc", `${clientDocType?.value === "6" ? "RUC" : "DNI"}: ${clientDocNum?.value || ""} · ${paymentTerm?.value || "Contado"}`);
+    setTxt("pdf-client-address", clientAddr?.value || "");
+    setTxt("pdf-gravada", fmt(gravada));
+    setTxt("pdf-igv", fmt(igvTotal));
+    setTxt("pdf-total", fmt(grandTotal));
+
+    const pdfTbody = document.getElementById("pdf-items-tbody");
+    if (pdfTbody) pdfTbody.innerHTML = pdfRowsHtml;
+
+    const hashSample = btoa(`${emisorRuc}-${fullNumber}-${grandTotal.toFixed(2)}`).slice(0, 28) + "=";
+    setTxt("pdf-hash", hashSample);
+    setTxt(
+      "pdf-qr-string",
+      `${emisorRuc}|${docType}|${seriePrefix}|${String(correlativeNumber).padStart(8, "0")}|${igvTotal.toFixed(2)}|${grandTotal.toFixed(2)}|2026-10-27|${clientDocType?.value || "6"}|${clientDocNum?.value || ""}|${hashSample}|`
+    );
+
+    // Actualizar XML UBL 2.1
+    const xmlEl = document.getElementById("bs-xml-code");
+    if (xmlEl) {
+      xmlEl.textContent = `<?xml version="1.0" encoding="UTF-8"?>
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+         xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+         xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+         xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+  <cbc:UBLVersionID>2.1</cbc:UBLVersionID>
+  <cbc:CustomizationID>2.0</cbc:CustomizationID>
+  <cbc:ID>${fullNumber}</cbc:ID>
+  <cbc:IssueDate>2026-10-27</cbc:IssueDate>
+  <cbc:InvoiceTypeCode listID="0101">${docType}</cbc:InvoiceTypeCode>
+  <cbc:Note languageLocaleID="1000">${numberToWordsSpanish(grandTotal, curr)}</cbc:Note>
+  <cbc:DocumentCurrencyCode>${curr}</cbc:DocumentCurrencyCode>
+  <cac:Signature>
+    <cbc:ID>SignArchityBilling</cbc:ID>
+    <ds:SignedInfo>
+      <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+      <ds:DigestValue>${hashSample}</ds:DigestValue>
+    </ds:SignedInfo>
+  </cac:Signature>
+  <cac:AccountingSupplierParty>
+    <cac:Party>
+      <cac:PartyIdentification><cbc:ID schemeID="6">${emisorRuc}</cbc:ID></cac:PartyIdentification>
+      <cac:PartyLegalEntity><cbc:RegistrationName>${emisorRazon}</cbc:RegistrationName></cac:PartyLegalEntity>
+    </cac:Party>
+  </cac:AccountingSupplierParty>
+  <cac:AccountingCustomerParty>
+    <cac:Party>
+      <cac:PartyIdentification><cbc:ID schemeID="${clientDocType?.value || "6"}">${clientDocNum?.value || ""}</cbc:ID></cac:PartyIdentification>
+      <cac:PartyLegalEntity><cbc:RegistrationName>${clientName?.value || ""}</cbc:RegistrationName></cac:PartyLegalEntity>
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+  <cac:TaxTotal>
+    <cbc:TaxAmount currencyID="${curr}">${igvTotal.toFixed(2)}</cbc:TaxAmount>
+  </cac:TaxTotal>
+  <cac:LegalMonetaryTotal>
+    <cbc:LineExtensionAmount currencyID="${curr}">${(gravada + exonerada).toFixed(2)}</cbc:LineExtensionAmount>
+    <cbc:PayableAmount currencyID="${curr}">${grandTotal.toFixed(2)}</cbc:PayableAmount>
+  </cac:LegalMonetaryTotal>
+</Invoice>`;
+    }
+
+    // Actualizar CDR & Webhook JSON
+    const cdrEl = document.getElementById("bs-cdr-code");
+    if (cdrEl) {
+      cdrEl.textContent = JSON.stringify(
+        {
+          success: true,
+          comprobante_id: `cmp_${correlativeNumber}`,
+          numero_completo: fullNumber,
+          estado_sunat: "ACEPTADO",
+          codigo_respuesta_sunat: "0",
+          mensaje_sunat: `La ${docTitles[docType]} numero ${fullNumber}, ha sido aceptada`,
+          xml_hash: hashSample,
+          archivos: {
+            xml_url: `/media/xml/${emisorRuc}-${docType}-${fullNumber}.xml`,
+            cdr_url: `/media/cdr/R-${emisorRuc}-${docType}-${fullNumber}.zip`,
+            pdf_url: `/media/pdf/${emisorRuc}-${docType}-${fullNumber}.pdf`,
+          },
+        },
+        null,
+        2
+      );
+    }
+
+    const webhookEl = document.getElementById("bs-webhook-code");
+    if (webhookEl) {
+      webhookEl.textContent = JSON.stringify(
+        {
+          event: "comprobante.aceptado",
+          tenant_ruc: emisorRuc,
+          numero_completo: fullNumber,
+          total: grandTotal.toFixed(2),
+          moneda: curr,
+          hmac_header: "X-Archity-Signature: sha256=9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c",
+        },
+        null,
+        2
+      );
+    }
+  }
+
+  document.getElementById("bs-add-item")?.addEventListener("click", () => {
+    items.push({
+      code: `ITM-00${items.length + 1}`,
+      desc: "Servicio de Consultoría & Desarrollo de Software",
+      qty: 1,
+      unitValue: 850,
+      taxType: "10",
+    });
+    renderItemsEditor();
+    recalculateAll();
+  });
+
+  document.getElementById("bs-preset-client")?.addEventListener("click", () => {
+    if (clientDocType) clientDocType.value = "6";
+    if (clientDocNum) clientDocNum.value = "20601928374";
+    if (clientName) clientName.value = "CORPORACIÓN INDUSTRIAL AMAZÓNICA S.A.C.";
+    if (clientAddr) clientAddr.value = "CARRETERA FERNANDO BELAÚNDE TERRY KM 4.5 - TARAPOTO";
+    recalculateAll();
+  });
+
+  document.getElementById("bs-btn-emit")?.addEventListener("click", () => {
+    correlativeNumber++;
+    recalculateAll();
+    const pill = document.getElementById("bs-cdr-pill");
+    if (pill) {
+      pill.textContent = `EMITIDO Y FIRMADO: #00000${correlativeNumber} (CDR CÓD. 0)`;
+      pill.className = "rounded-full bg-emerald-600 px-3 py-0.5 text-[10px] font-bold text-white transition-all";
+      setTimeout(() => {
+        pill.className = "rounded-full bg-emerald-100 border border-emerald-200 px-2.5 py-0.5 text-[10px] font-bold text-emerald-800 transition-all";
+      }, 1800);
+    }
+  });
+
+  // Tabs del visor derecho
+  const viewTabs = document.querySelectorAll(".bs-view-tab");
+  const panelPdf = document.getElementById("bs-panel-pdf");
+  const panelXml = document.getElementById("bs-panel-xml");
+  const panelCdr = document.getElementById("bs-panel-cdr");
+
+  viewTabs.forEach((t) => {
+    t.addEventListener("click", () => {
+      viewTabs.forEach((b) => {
+        b.className = "bs-view-tab rounded-lg px-3 py-1.5 font-semibold text-neutral-600 hover:text-neutral-900";
+      });
+      t.className = "bs-view-tab rounded-lg bg-neutral-900 px-3 py-1.5 font-semibold text-white";
+      const target = t.getAttribute("data-tab");
+      panelPdf?.classList.toggle("hidden", target !== "pdf");
+      panelXml?.classList.toggle("hidden", target !== "xml");
+      panelCdr?.classList.toggle("hidden", target !== "cdr");
+    });
+  });
+
+  [tenantSel, docTypeSel, currencySel, clientDocType, clientDocNum, clientName, clientAddr, paymentTerm].forEach((el) => {
+    el?.addEventListener("input", recalculateAll);
+    el?.addEventListener("change", recalculateAll);
+  });
+
+  renderItemsEditor();
+  recalculateAll();
+</script>

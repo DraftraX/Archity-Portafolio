@@ -1,11 +1,22 @@
 ---
-// Sección principal: tono de empresa de software moderna en Perú (sin emojis)
+// Sección principal con acceso directo a los 8 proyectos reales y sus logos oficiales (sin emojis)
 const badge = "Software Studio & Incubadora SaaS · Perú";
 const stats = [
-  "SaaS Tributario en Operación Real",
-  "ERP de Consorcios Industriales",
-  "Demos Front-End Interactivas",
-  "Arquitectura Cloud & Código Limpio",
+  "Ecosistema PropTech & FinTech (AltoPlanta, Vinkula, Sencillo)",
+  "ERP de Consorcio Industrial (Grupo Pineda)",
+  "Showrooms 360° & Plataformas 3D WebGL",
+  "Microservicio Facturación SUNAT UBL 2.1",
+];
+
+const quickPills = [
+  { label: "AltoPlanta SaaS", href: "/productos/altoplanta", logo: "/logos/altoplanta-symbol.svg" },
+  { label: "Vinkula CRM + IA", href: "/productos/vinkula", logo: "/logos/vinkula-mark.svg" },
+  { label: "Sencillo FinTech", href: "/productos/sencillo", logo: "/logos/sencillo-mark.svg" },
+  { label: "ERP Grupo Pineda", href: "/productos/grupo-pineda", logo: "/logos/grupo-pineda-mark.svg" },
+  { label: "Inmobiliaria Flamingo", href: "/productos/proyect-flamingo", logo: "/logos/flamingo-logo.png" },
+  { label: "Banco de Sangre Loreto", href: "/productos/bank-blood", logo: "/logos/bankblood-logo.png" },
+  { label: "RestoManager 3D", href: "/productos/restorant-system", logo: "/logos/restory-logo.png" },
+  { label: "Archity Billing SUNAT", href: "/productos/billing-service", logo: "/logos/billing-mark.svg" },
 ];
 ---
 
@@ -21,11 +32,11 @@ const stats = [
     </span>
 
     <h1 class="mx-auto mt-6 max-w-4xl font-display text-4xl font-bold leading-[1.12] tracking-tight text-neutral-900 sm:text-5xl md:text-6xl">
-      Ingeniería de software moderna para plataformas <span class="text-accent">SaaS</span> y sistemas de <span class="text-accent">Consorcio</span>
+      Ingeniería de software real para plataformas <span class="text-accent">SaaS</span>, <span class="text-accent">ERPs</span> y sistemas críticos
     </h1>
 
-    <p class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-neutral-600 sm:text-lg">
-      En <strong>Archity</strong> desarrollamos tecnología de alta precisión: incubamos nuestro SaaS tributario inmobiliario <strong class="text-neutral-900">AltoPlanta</strong> (<a href="https://altoplanta.com/" target="_blank" rel="noopener" class="text-accent underline font-semibold">altoplanta.com</a>) y construimos sistemas integrales como el <strong class="text-neutral-900">ERP del Consorcio Grupo Pineda</strong> (<a href="https://grupopineda.pe/" target="_blank" rel="noopener" class="text-accent underline font-semibold">grupopineda.pe</a>).
+    <p class="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-neutral-600 sm:text-lg">
+      En <strong>Archity</strong> construimos y operamos sistemas en producción real: desde nuestra suite PropTech <strong class="text-neutral-900">AltoPlanta</strong> (<a href="https://altoplanta.com/" target="_blank" rel="noopener" class="text-accent underline font-semibold">altoplanta.com</a>), <strong class="text-neutral-900">Vinkula CRM</strong> y <strong class="text-neutral-900">Sencillo</strong>, hasta el <strong class="text-neutral-900">ERP del Consorcio Grupo Pineda</strong> (<a href="https://grupopineda.pe/" target="_blank" rel="noopener" class="text-accent underline font-semibold">grupopineda.pe</a>), el showroom 360° de <strong class="text-neutral-900">Inmobiliaria Flamingo</strong>, el portal del <strong class="text-neutral-900">Banco de Sangre Loreto</strong>, <strong class="text-neutral-900">RestoManager 3D</strong> y nuestro motor de <strong class="text-neutral-900">Facturación Electrónica SUNAT UBL 2.1</strong>.
     </p>
 
     <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -33,16 +44,16 @@ const stats = [
         href="#productos"
         class="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-neutral-900 px-6 py-3 text-sm font-semibold text-white shadow-xs transition-all hover:bg-neutral-800 sm:w-auto"
       >
-        Explorar sistemas insignia
+        Explorar los 8 proyectos reales
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12l-7.5 7.5M21 12H3" />
         </svg>
       </a>
       <a
-        href="/demos/landing-empresa"
+        href="/productos/billing-service"
         class="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white shadow-xs transition-all hover:bg-accent-dark hover:shadow-md hover:shadow-accent/20 sm:w-auto"
       >
-        Ver Demos Interactivas &rarr;
+        Probar Consola Facturador SUNAT UBL 2.1 &rarr;
       </a>
       <a
         href="#contacto"
@@ -52,43 +63,17 @@ const stats = [
       </a>
     </div>
 
-    <!-- Píldoras de acceso rápido a soluciones sin emojis -->
-    <div class="mt-8 flex flex-wrap items-center justify-center gap-2 text-xs">
-      <a
-        href="/productos/altoplanta"
-        class="inline-flex items-center gap-1.5 rounded-lg border border-neutral-200 bg-white px-3 py-1.5 font-medium text-neutral-700 hover:border-accent hover:text-accent transition-colors shadow-2xs"
-      >
-        <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
-        AltoPlanta (SaaS Tributario)
-      </a>
-      <a
-        href="/productos/grupo-pineda"
-        class="inline-flex items-center gap-1.5 rounded-lg border border-neutral-200 bg-white px-3 py-1.5 font-medium text-neutral-700 hover:border-accent hover:text-accent transition-colors shadow-2xs"
-      >
-        <span class="h-1.5 w-1.5 rounded-full bg-neutral-900"></span>
-        ERP Grupo Pineda (Consorcio)
-      </a>
-      <a
-        href="/demos/landing-empresa"
-        class="inline-flex items-center gap-1.5 rounded-lg border border-neutral-200 bg-white px-3 py-1.5 font-medium text-neutral-700 hover:border-accent hover:text-accent transition-colors shadow-2xs"
-      >
-        <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
-        Demo Landing B2B &amp; ROI
-      </a>
-      <a
-        href="/demos/ecommerce"
-        class="inline-flex items-center gap-1.5 rounded-lg border border-neutral-200 bg-white px-3 py-1.5 font-medium text-neutral-700 hover:border-accent hover:text-accent transition-colors shadow-2xs"
-      >
-        <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-        Demo E-Commerce con Carrito
-      </a>
-      <a
-        href="/demos/restaurante"
-        class="inline-flex items-center gap-1.5 rounded-lg border border-neutral-200 bg-white px-3 py-1.5 font-medium text-neutral-700 hover:border-accent hover:text-accent transition-colors shadow-2xs"
-      >
-        <span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span>
-        Demo Restaurante &amp; Reservas
-      </a>
+    <!-- Píldoras de acceso rápido a los 8 sistemas reales con sus logos oficiales -->
+    <div class="mt-9 flex flex-wrap items-center justify-center gap-2 text-xs">
+      {quickPills.map((pill) => (
+        <a
+          href={pill.href}
+          class="inline-flex items-center gap-2 rounded-xl border border-neutral-200 bg-white px-3.5 py-2 font-semibold text-neutral-700 hover:border-accent hover:text-accent transition-all shadow-2xs hover:-translate-y-0.5"
+        >
+          <img src={pill.logo} alt={pill.label} class="h-4 w-4 object-contain shrink-0" />
+          <span>{pill.label}</span>
+        </a>
+      ))}
     </div>
 
     <ul class="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-neutral-500">

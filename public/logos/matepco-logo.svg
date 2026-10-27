@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 115 111" width="100%" height="100%">
+  <!-- MATEPCO S.A.C. - Isotipo Oficial Vectorial Premium -->
+  <defs>
+    <!-- Gradiente Ámbar / Oro MATEPCO -->
+    <linearGradient id="matepco-amber" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="35%" stop-color="#f59e0b" />
+      <stop offset="70%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+
+    <!-- Gradiente Charcoal / Grafito Metal MATEPCO -->
+    <linearGradient id="matepco-charcoal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a313d" />
+      <stop offset="45%" stop-color="#1e2430" />
+      <stop offset="100%" stop-color="#10141b" />
+    </linearGradient>
+  </defs>
+
+  <g id="matepco-logo-mark">
+    <!-- 1. Pieza Superior Izquierda (Charcoal) -->
+    <path id="matepco-piece-topleft"
+          d="M 8 5 
+             L 22 5 
+             L 55 38 
+             L 23 70 
+             L 5 52 
+             L 5 8 
+             Z"
+          fill="url(#matepco-charcoal)" />
+
+    <!-- 2. Columna Derecha (Pilar Charcoal) -->
+    <path id="matepco-piece-rightpillar"
+          d="M 107 24 
+             L 107 105 
+             L 75 105 
+             L 75 56 
+             Z"
+          fill="url(#matepco-charcoal)" />
+
+    <!-- 3. Cinta Diagonal Dinámica 'M' (Ámbar / Oro) -->
+    <path id="matepco-piece-ribbon"
+          d="M 90 5 
+             L 107 5 
+             L 107 21 
+             L 24 105 
+             L 6 105 
+             L 6 55 
+             L 22 71 
+             Z"
+          fill="url(#matepco-amber)" />
+  </g>
+</svg>

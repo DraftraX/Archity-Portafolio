@@ -1,0 +1,233 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+const initialTables = [
+  { id: "M-01", name: "Mesa 01 (Ventana)", seats: 4, zone: "Salón Principal", status: "Disponible" },
+  { id: "M-02", name: "Mesa 02 (Central)", seats: 4, zone: "Salón Principal", status: "Ocupada" },
+  { id: "M-03", name: "Mesa 03 (VIP Booth)", seats: 6, zone: "Zona Cava", status: "Reservada" },
+  { id: "M-04", name: "Mesa 04 (Terraza)", seats: 2, zone: "Terraza Roble", status: "Disponible" },
+  { id: "M-05", name: "Mesa 05 (Imperial)", seats: 8, zone: "Salón Principal", status: "Disponible" },
+  { id: "M-06", name: "Mesa 06 (Barra)", seats: 2, zone: "Barra Coctelería", status: "Ocupada" },
+];
+---
+
+<Layout
+  title="RestoManager 3D (RESTORY) — Sistema de Restobar con Plano 3D Three.js | Archity"
+  description="Sistema full-stack de restobar desarrollado por Archity (restorant_system): diseñador de salón interactivo en 3D con Three.js, rutas de evacuación CatmullRom, carta digital con video y descuento atómico de stock en SQLite."
+>
+  <Header />
+
+  <main class="ca-grid">
+    <!-- Hero de RestoManager 3D con su logo oficial -->
+    <section class="border-b border-[var(--ca-ink)]/15 py-16 sm:py-24">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+
+        <!-- Breadcrumbs -->
+        <nav class="flex items-center gap-2 text-xs font-medium text-neutral-500 mb-8" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-neutral-900 transition-colors">Inicio</a>
+          <span>/</span>
+          <a href="/#productos" class="hover:text-neutral-900 transition-colors">Productos</a>
+          <span>/</span>
+          <span class="text-neutral-900">RestoManager 3D</span>
+        </nav>
+
+        <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
+          <div>
+            <!-- Logo oficial de RestoManager 3D / RESTORY -->
+            <div class="mb-6 inline-flex items-center gap-3 rounded-2xl border border-neutral-200 bg-white px-4 py-2.5 shadow-2xs">
+              <img src="/logos/restory-logo.png" alt="RestoManager 3D RESTORY Logo Oficial" class="h-10 w-auto object-contain rounded-lg" />
+              <span class="h-5 w-px bg-neutral-200"></span>
+              <div>
+                <span class="block text-xs font-bold text-neutral-900">RESTORY · RESTOMANAGER 3D</span>
+                <span class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-amber-700">
+                  <span class="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse" />
+                  Three.js WebGL + Express SQLite
+                </span>
+              </div>
+            </div>
+
+            <h1 class="font-display text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl">
+              RestoManager 3D
+            </h1>
+            <p class="text-lg font-medium text-accent mt-1">
+              Sistema Operativo de Restobar con Plano de Salón 3D WebGL, Carta en Video &amp; Stock Atómico
+            </p>
+
+            <p class="mt-4 text-base leading-relaxed text-neutral-600 sm:text-lg">
+              Desarrollado por <strong>Archity</strong> (<a href="https://github.com/DraftraX/restorant_system" target="_blank" rel="noopener" class="text-accent underline font-semibold">github.com/DraftraX/restorant_system</a>), <strong>RestoManager 3D (RESTORY)</strong> une una arquitectura full-stack en <strong>Astro 5 SSR + React 18 + Three.js (React Three Fiber)</strong> con un backend transaccional en <strong>Express + SQLite3</strong>: permite diseñar y operar el salón del restaurante en <strong>3D real (12m × 10m)</strong>, visualizar rutas de evacuación animadas <code>CatmullRom</code>, presentar cada plato con video HD bilingüe (<code>PEN</code>/<code>USD</code>) y descontar insumos de receta con <code>ROLLBACK</code> atómico automático.
+            </p>
+
+            <div class="mt-8 flex flex-wrap items-center gap-3">
+              <a
+                href="#simulador-3d"
+                class="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white shadow-xs transition-all hover:bg-accent-dark hover:shadow-md hover:shadow-accent/20"
+              >
+                Probar Simulador de Salón 3D
+              </a>
+              <a
+                href="https://github.com/DraftraX/restorant_system"
+                target="_blank"
+                rel="noopener"
+                class="inline-flex items-center gap-2 rounded-lg border border-neutral-300 bg-white px-5 py-3 text-sm font-semibold text-neutral-700 transition-colors hover:bg-neutral-50"
+              >
+                Ver Código en GitHub ↗
+              </a>
+            </div>
+
+            <div class="mt-10 grid grid-cols-3 gap-4 border-t border-neutral-200/80 pt-6 text-left">
+              <div>
+                <span class="block font-display text-2xl font-bold text-neutral-900">12m × 10m</span>
+                <span class="text-xs text-neutral-500">Escena 3D Three.js</span>
+              </div>
+              <div>
+                <span class="block font-display text-2xl font-bold text-accent">ACID</span>
+                <span class="text-xs text-neutral-500">Descuento Atómico Recetas</span>
+              </div>
+              <div>
+                <span class="block font-display text-2xl font-bold text-neutral-900">PDF + Rutas</span>
+                <span class="text-xs text-neutral-500">Evacuación CatmullRom</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Simulador Interactivo del Plano de Salón 3D & Rutas de Evacuación -->
+          <div id="simulador-3d" class="rounded-2xl border border-neutral-200 bg-neutral-950 text-white p-6 shadow-xl">
+            <div class="flex items-center justify-between border-b border-neutral-800 pb-4 mb-4">
+              <div class="flex items-center gap-2.5">
+                <img src="/logos/restory-logo.png" alt="RESTORY" class="h-6 w-6 rounded object-contain" />
+                <div>
+                  <h3 class="font-display text-sm font-bold text-white">FloorPlanner3D · Salón Roble 12m × 10m</h3>
+                  <p class="text-[11px] text-neutral-400">Haz clic en cualquier mesa para alternar su estado en tiempo real</p>
+                </div>
+              </div>
+              <button
+                id="rm-toggle-evac"
+                type="button"
+                class="rounded-lg border border-emerald-500/40 bg-emerald-500/10 px-2.5 py-1 text-[11px] font-semibold text-emerald-400 hover:bg-emerald-500/20 transition-colors"
+              >
+                Ruta Evacuación: ON
+              </button>
+            </div>
+
+            <!-- Grid interactivo de mesas -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-4">
+              {initialTables.map((t) => (
+                <button
+                  type="button"
+                  data-status={t.status}
+                  data-seats={t.seats}
+                  class="rm-table-btn text-left rounded-xl border border-neutral-800 bg-neutral-900 p-3.5 hover:border-neutral-600 transition-all"
+                >
+                  <div class="flex items-center justify-between text-[10px] font-mono">
+                    <span class="text-neutral-400">{t.id}</span>
+                    <span class="rm-badge rounded px-1.5 py-0.5 font-bold bg-emerald-500/20 text-emerald-300">
+                      {t.status}
+                    </span>
+                  </div>
+                  <strong class="mt-1.5 block text-xs font-bold text-white">{t.name}</strong>
+                  <span class="mt-0.5 block text-[11px] text-neutral-400">{t.seats} sillas · {t.zone}</span>
+                </button>
+              ))}
+            </div>
+
+            <!-- Barra de ruta de evacuación CatmullRom -->
+            <div id="rm-evac-banner" class="rounded-xl border border-emerald-500/30 bg-emerald-950/30 p-3 text-xs flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="h-2 w-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <span class="text-emerald-200 font-medium">Spline CatmullRom3D activa hacia Salida de Emergencia Norte</span>
+              </div>
+              <span class="font-mono text-[11px] text-emerald-400">INDECI OK</span>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-neutral-800 flex items-center justify-between text-xs text-neutral-400">
+              <span>Capacidad Total: <strong class="text-white">26 comensales</strong></span>
+              <span id="rm-free-count" class="text-emerald-400 font-semibold">Mesas Disponibles: 3 / 6</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Arquitectura Técnica de RestoManager 3D -->
+    <section class="py-20 bg-white">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 md:grid-cols-3">
+          <div class="rounded-2xl border border-neutral-200 p-7 bg-neutral-50/50">
+            <span class="text-xs font-mono font-bold text-accent">01 · THREE.JS &amp; R3F</span>
+            <h3 class="mt-2 font-display text-xl font-bold text-neutral-900">Motor 3D Perspectiva / Ortográfico</h3>
+            <p class="mt-2 text-sm text-neutral-600 leading-relaxed">
+              Interpolación suave de cámara (`lerp`), arrastrar y soltar de mobiliario (mesas, barras, plantas, muros divisores), cálculo de aforo en vivo y exportación de planos técnicos a PDF con `html2canvas` y `jsPDF`.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-neutral-200 p-7 bg-neutral-50/50">
+            <span class="text-xs font-mono font-bold text-neutral-900">02 · TRANSACCIONES SQLITE ACID</span>
+            <h3 class="mt-2 font-display text-xl font-bold text-neutral-900">Descuento Atómico por Receta</h3>
+            <p class="mt-2 text-sm text-neutral-600 leading-relaxed">
+              Cada plato está vinculado a su matriz de ingredientes en gramos/mililitros. Al confirmar una comanda, el backend verifica y descuenta el stock dentro de una transacción con `ROLLBACK` automático si falta algún insumo.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-neutral-200 p-7 bg-neutral-50/50">
+            <span class="text-xs font-mono font-bold text-accent">03 · PANEL KANBAN JWT</span>
+            <h3 class="mt-2 font-display text-xl font-bold text-neutral-900">Comandas en Vivo &amp; Carta Bilingüe</h3>
+            <p class="mt-2 text-sm text-neutral-600 leading-relaxed">
+              Carta digital interactiva con video demostrativo por plato, cambio instantáneo de idioma (`ES`/`EN`) y divisa (`PEN`/`USD`), y tablero administrativo Kanban protegido con JWT y Bcrypt.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  const statusCycle = ["Disponible", "Ocupada", "Reservada"];
+  const tableBtns = document.querySelectorAll(".rm-table-btn");
+  const freeCountEl = document.getElementById("rm-free-count");
+  const evacBtn = document.getElementById("rm-toggle-evac");
+  const evacBanner = document.getElementById("rm-evac-banner");
+
+  function styleBadge(badge: Element | null, status: string) {
+    if (!badge) return;
+    badge.textContent = status;
+    if (status === "Disponible") {
+      badge.className = "rm-badge rounded px-1.5 py-0.5 font-bold bg-emerald-500/20 text-emerald-300";
+    } else if (status === "Ocupada") {
+      badge.className = "rm-badge rounded px-1.5 py-0.5 font-bold bg-rose-500/20 text-rose-300";
+    } else {
+      badge.className = "rm-badge rounded px-1.5 py-0.5 font-bold bg-amber-500/20 text-amber-300";
+    }
+  }
+
+  function updateSummary() {
+    let free = 0;
+    tableBtns.forEach((btn) => {
+      const s = btn.getAttribute("data-status") || "Disponible";
+      if (s === "Disponible") free++;
+      styleBadge(btn.querySelector(".rm-badge"), s);
+    });
+    if (freeCountEl) freeCountEl.textContent = `Mesas Disponibles: ${free} / ${tableBtns.length}`;
+  }
+
+  tableBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const current = btn.getAttribute("data-status") || "Disponible";
+      const next = statusCycle[(statusCycle.indexOf(current) + 1) % statusCycle.length];
+      btn.setAttribute("data-status", next);
+      updateSummary();
+    });
+  });
+
+  let evacOn = true;
+  evacBtn?.addEventListener("click", () => {
+    evacOn = !evacOn;
+    evacBanner?.classList.toggle("hidden", !evacOn);
+    evacBtn.textContent = evacOn ? "Ruta Evacuación: ON" : "Ruta Evacuación: OFF";
+  });
+
+  updateSummary();
+</script>

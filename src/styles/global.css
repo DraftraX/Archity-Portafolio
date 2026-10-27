@@ -2,23 +2,236 @@
 @import "tailwindcss";
 
 @theme {
-  /* Tipografías: Space Grotesk (títulos, combina con la marca angular) + Figtree (texto) */
-  --font-sans: "Figtree", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: "Space Grotesk", "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Handjet", "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-hand: "Just Me Again Down Here", "Segoe Print", "Bradley Hand", cursive;
+  --font-mono: "DM Mono", ui-monospace, "SFMono-Regular", "Menlo", monospace;
 
-  /* Azul eléctrico estilo Kimi */
-  --color-accent: #1a5cff;
-  --color-accent-dark: #0b46e0;
+  --color-accent: #2b57d6;
+  --color-accent-dark: #1e42b0;
   --color-accent-soft: #edf2ff;
 }
 
-/* Detalles globales sutiles */
-::selection {
-  background-color: var(--color-accent);
-  color: #ffffff;
+/* Variables y sistema de diseño exacto de Portfoliofy Crayon (creative-artsy) */
+:root,
+.t-creative-artsy {
+  --ca-surface: #fdfdfb;
+  --ca-ink: #191510;
+  --ca-gray: #857b69;
+  --ca-chrome: #ece3d1;
+  --ca-tick: #c0b49d;
+  --ca-grid-line: #1915100f;
+  --ca-grid-dot: #19151024;
+  --ca-blue: #2b57d6;
+  --ca-cyan: #b7c6ef;
+  --ca-yellow: #f7c948;
+  --ca-yellow-soft: #f3e2ad;
+  --ca-tan: #f3e2ad;
+  --ca-magenta: #ff4d8d;
+  --ca-pink: #ff4d8d;
+  --ca-green: #16b06a;
+  --ca-mint: #a9dfc6;
+  --ca-pink-soft: #ffc6da;
+  --ca-purple: #a9dfc6;
+  --ca-orange: #ff6a35;
+  --ca-brown: #5c3a2e;
+  --ca-star: #f7c948;
+  font-family: "Inter", system-ui, sans-serif;
 }
 
-/* Estilo suave de scroll */
+/* Fondo exterior tipo mesa de corte (cutting mat) como en la captura de referencia */
+.ca-cutting-mat {
+  background-color: #8f9196;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.28) 1.5px, transparent 1.5px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.28) 1.5px, transparent 1.5px);
+  background-size: 52px 52px;
+  background-attachment: fixed;
+}
+
+/* Hoja de papel rayada real (notebook paper sheet) */
+.ca-paper-sheet {
+  background-color: var(--ca-surface);
+  box-shadow:
+    0 24px 70px rgba(15, 13, 10, 0.42),
+    0 0 0 1px rgba(25, 21, 16, 0.12);
+}
+
+.t-creative-artsy .ca-grid,
+.ca-grid {
+  background-color: var(--ca-surface);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 33px,
+    var(--ca-grid-dot) 33px,
+    var(--ca-grid-dot) 34px
+  );
+}
+
+.t-creative-artsy .ca-doodle-box,
+.ca-doodle-box {
+  border-radius: 255px 15px 225px / 15px 225px 15px 255px;
+}
+
+.t-creative-artsy .ca-display,
+.ca-display {
+  font-family: "Handjet", "Arial Black", sans-serif;
+  font-variation-settings: "ELGR" 1, "ELSH" 7;
+  font-weight: 800;
+}
+
+.t-creative-artsy .ca-hand,
+.ca-hand {
+  font-family: "Just Me Again Down Here", "Comic Sans MS", "Bradley Hand", "Segoe Print", cursive;
+}
+
+.t-creative-artsy .ca-mono,
+.ca-mono {
+  font-family: "DM Mono", ui-monospace, "SFMono-Regular", "Menlo", monospace;
+}
+
+@keyframes ca-wobble {
+  0%,
+  to {
+    transform: rotate(6deg);
+  }
+  50% {
+    transform: rotate(-5deg);
+  }
+}
+
+@keyframes ca-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ca-blink {
+  0%,
+  91%,
+  to {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(0.12);
+  }
+}
+
+@keyframes ca-splash-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes ca-splash-swap {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes ca-splash-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ca-emoji-swap {
+  0%,
+  48% {
+    opacity: 1;
+  }
+  52%,
+  98% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.ca-wobble {
+  animation: 2.8s ease-in-out infinite ca-wobble;
+}
+
+.ca-spin-slow {
+  animation: 9s linear infinite ca-spin;
+}
+
+.ca-blink {
+  transform-origin: 50%;
+  animation: 4.4s ease-in-out infinite ca-blink;
+}
+
+.ca-splash {
+  animation: 0.45s 1.6s forwards ca-splash-out;
+}
+
+.ca-splash-b1 {
+  animation: 10ms linear 0.85s forwards ca-splash-swap;
+}
+
+.ca-splash-b2 {
+  opacity: 0;
+  animation: 10ms linear 0.85s forwards ca-splash-in;
+  transform: none;
+}
+
+.ca-splash-char {
+  opacity: 0;
+  animation: 0.22s forwards ca-splash-in;
+  transform: translateY(0.3em);
+}
+
+.ca-emoji-a {
+  animation: 4.4s ease-in-out infinite ca-emoji-swap;
+}
+
+.ca-emoji-b {
+  opacity: 0;
+  animation: 4.4s ease-in-out -2.2s infinite ca-emoji-swap;
+}
+
+.ca-tape-strip {
+  opacity: 0.88;
+  filter: drop-shadow(0 1.5px 1px #19151038);
+}
+
+.ca-tape-strip::before {
+  content: "";
+  background: linear-gradient(110deg, #ffffff6b 0%, #fff0 34%, #ffffff2e 60%, #fff0 86%);
+  position: absolute;
+  inset: 0;
+}
+
+.ca-tape {
+  position: relative;
+}
+
+.ca-tape::after {
+  content: "";
+  border-top: 0 solid transparent;
+  border-bottom: 15px solid #19151038;
+  border-left: 15px solid transparent;
+  border-right: 0 solid transparent;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.ca-grain {
+  opacity: 0.09;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='cn'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23cn)'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background-color: var(--ca-yellow);
+  color: var(--ca-ink);
+}
+
 html {
   scroll-behavior: smooth;
 }

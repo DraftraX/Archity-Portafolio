@@ -2,20 +2,26 @@
 import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
-import ECCTaxSimulator from "../../components/ecc/ECCTaxSimulator.astro";
+
+const sampleLots = [
+  { id: "MZ-A-01", block: "Manzana A", lot: "Lote 01 (Esquina)", area: 160, front: "10.00m x 16.00m", price: 68800, initial: 6880, status: "Disponible", has360: true },
+  { id: "MZ-A-02", block: "Manzana A", lot: "Lote 02 (Parque)", area: 140, front: "8.75m x 16.00m", price: 58800, initial: 5880, status: "Disponible", has360: true },
+  { id: "MZ-B-04", block: "Manzana B", lot: "Lote 04 (Av. Principal)", area: 200, front: "10.00m x 20.00m", price: 89000, initial: 8900, status: "Separado", has360: true },
+  { id: "MZ-C-09", block: "Manzana C", lot: "Lote 09 (Interior)", area: 120, front: "8.00m x 15.00m", price: 46800, initial: 4680, status: "Vendido", has360: false },
+];
 ---
 
 <Layout
-  title="AltoPlanta — SaaS de Tributo Inmobiliario & Fiscalización Catastral en Perú | Archity"
-  description="Plataforma SaaS líder para la determinación, liquidación y gestión del tributo inmobiliario: impuesto predial, arbitrios municipales, alcabala, emisión de cuponeras PDF y fiscalización catastral."
+  title="AltoPlanta — Plataforma SaaS PropTech, Cartografía CAD & Tours 360° | Archity"
+  description="Plataforma SaaS PropTech líder en Perú desarrollada por Archity: digitalización de planos CAD (.DXF) sobre Google Maps, tours virtuales 360°, portales White-Label y pagos con Mercado Pago Marketplace."
 >
   <Header />
 
-  <main>
-    <!-- Hero del Producto SaaS Tributario -->
-    <section class="border-b border-neutral-200/70 bg-gradient-to-b from-neutral-50/70 via-white to-white py-16 sm:py-24">
+  <main class="ca-grid">
+    <!-- Hero del Producto SaaS PropTech AltoPlanta -->
+    <section class="border-b border-[var(--ca-ink)]/15 py-16 sm:py-24">
       <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        
+
         <!-- Breadcrumbs -->
         <nav class="flex items-center gap-2 text-xs font-medium text-neutral-500 mb-8" aria-label="Breadcrumb">
           <a href="/" class="hover:text-neutral-900 transition-colors">Inicio</a>
@@ -27,26 +33,39 @@ import ECCTaxSimulator from "../../components/ecc/ECCTaxSimulator.astro";
 
         <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
           <div>
-            <div class="flex flex-wrap items-center gap-2">
-              <span class="inline-flex items-center gap-1.5 rounded-full bg-accent-soft border border-accent/20 px-3 py-1 text-xs font-semibold text-accent">
-                <span class="h-2 w-2 rounded-full bg-accent animate-pulse" />
-                SaaS Operativo en Vivo
-              </span>
-              <span class="rounded-full bg-neutral-100 border border-neutral-200 px-3 py-1 text-xs font-semibold text-neutral-800">
-                Tributo Inmobiliario &amp; Catastro
+            <!-- Logo oficial de AltoPlanta -->
+            <div class="mb-6 inline-flex items-center gap-3 rounded-2xl border border-neutral-200 bg-white px-4 py-2.5 shadow-2xs">
+              <img src="/logos/altoplanta-logo.svg" alt="AltoPlanta Logo Oficial" class="h-8 w-auto object-contain" />
+              <span class="h-4 w-px bg-neutral-200"></span>
+              <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700">
+                <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                SaaS en Producción
               </span>
             </div>
 
-            <h1 class="mt-4 font-display text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl">
+            <h1 class="font-display text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl">
               AltoPlanta
             </h1>
             <p class="text-lg font-medium text-accent mt-1">
-              SaaS para la Gestión y Fiscalización del Tributo Inmobiliario en Perú
+              Plataforma SaaS PropTech, Cartografía CAD (.DXF) &amp; Tours Virtuales 360°
             </p>
 
             <p class="mt-4 text-base leading-relaxed text-neutral-600 sm:text-lg">
-              Diseñada y construida por <strong>Archity</strong>, <strong>AltoPlanta</strong> (<a href="https://altoplanta.com/" target="_blank" rel="noopener" class="text-accent underline font-semibold">altoplanta.com</a>) es la plataforma tecnológica especializada en automatizar la determinación, liquidación, emisión de cuponeras y fiscalización del tributo inmobiliario: <strong>Impuesto Predial (D. Leg. 776)</strong>, <strong>Arbitrios Municipales</strong>, <strong>Impuesto de Alcabala</strong> y cartografía catastral para municipalidades, consorcios y gestores inmobiliarios.
+              Diseñada y operada por <strong>Archity</strong>, <strong>AltoPlanta</strong> (<a href="https://altoplanta.com/" target="_blank" rel="noopener" class="text-accent underline font-semibold">altoplanta.com</a>) es el ecosistema tecnológico inmobiliario que digitaliza lotizaciones y desarrollos urbanos: transforma planos de ingeniería <strong>AutoCAD (.DXF)</strong> en mapas interactivos georreferenciados sobre <strong>Google Maps JS API</strong>, integra <strong>recorridos virtuales 360°</strong> con hotspots, despliega <strong>portales White-Label</strong> para cada inmobiliaria y automatiza separaciones online con <strong>Mercado Pago Marketplace</strong>.
             </p>
+
+            <!-- Ecosistema conectado -->
+            <div class="mt-6 flex flex-wrap items-center gap-2 text-xs">
+              <span class="text-neutral-400 font-semibold uppercase tracking-wider">Suite conectada:</span>
+              <a href="/productos/vinkula" class="inline-flex items-center gap-1.5 rounded-lg border border-neutral-200 bg-neutral-50 px-2.5 py-1 font-semibold text-neutral-700 hover:border-accent hover:text-accent">
+                <img src="/logos/vinkula-mark.svg" alt="Vinkula" class="h-3.5 w-3.5" />
+                Vinkula CRM
+              </a>
+              <a href="/productos/sencillo" class="inline-flex items-center gap-1.5 rounded-lg border border-neutral-200 bg-neutral-50 px-2.5 py-1 font-semibold text-neutral-700 hover:border-accent hover:text-accent">
+                <img src="/logos/sencillo-mark.svg" alt="Sencillo" class="h-3.5 w-3.5" />
+                Sencillo FinTech
+              </a>
+            </div>
 
             <!-- Acciones -->
             <div class="mt-8 flex flex-wrap items-center gap-3">
@@ -56,110 +75,118 @@ import ECCTaxSimulator from "../../components/ecc/ECCTaxSimulator.astro";
                 rel="noopener"
                 class="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white shadow-xs transition-all hover:bg-accent-dark hover:shadow-md hover:shadow-accent/20"
               >
-                Abrir altoplanta.com
+                Visitar altoplanta.com
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                 </svg>
               </a>
 
               <a
-                href="#simulador-tributario"
+                href="#visor-cad"
                 class="inline-flex items-center justify-center rounded-lg border border-neutral-300 bg-white px-5 py-3 text-sm font-semibold text-neutral-700 transition-colors hover:bg-neutral-50"
               >
-                Probar Simulador de Impuestos
+                Probar Visor Cartográfico CAD
               </a>
             </div>
 
-            <!-- Stats reales del sistema tributario -->
+            <!-- Stats reales del sistema PropTech -->
             <div class="mt-10 grid grid-cols-3 gap-4 border-t border-neutral-200/80 pt-6 text-left">
               <div>
-                <span class="block font-display text-2xl font-bold text-neutral-900">D.L. 776</span>
-                <span class="text-xs text-neutral-500">Normativa Tributaria Perú</span>
+                <span class="block font-display text-2xl font-bold text-neutral-900">CAD .DXF</span>
+                <span class="text-xs text-neutral-500">Georreferenciación GCP</span>
               </div>
               <div>
-                <span class="block font-display text-2xl font-bold text-accent">100%</span>
-                <span class="text-xs text-neutral-500">Liquidación Automatizada</span>
+                <span class="block font-display text-2xl font-bold text-accent">8 Temas</span>
+                <span class="text-xs text-neutral-500">Portales White-Label</span>
               </div>
               <div>
-                <span class="block font-display text-2xl font-bold text-neutral-900">PDF</span>
-                <span class="text-xs text-neutral-500">Cuponeras &amp; Cartas Masivas</span>
+                <span class="block font-display text-2xl font-bold text-neutral-900">360° + GPS</span>
+                <span class="text-xs text-neutral-500">WebGL &amp; App Android</span>
               </div>
             </div>
           </div>
 
-          <!-- Mockup visual representativo de AltoPlanta Tributario -->
+          <!-- Mockup visual representativo de AltoPlanta PropTech -->
           <div class="relative">
-            <div class="overflow-hidden rounded-2xl border border-neutral-200/90 bg-white shadow-xl shadow-neutral-900/5">
-              <!-- Barra superior simulada -->
-              <div class="flex items-center justify-between border-b border-neutral-100 bg-neutral-50/80 px-4 py-3">
-                <div class="flex items-center gap-2">
-                  <span class="h-2.5 w-2.5 rounded-full bg-neutral-300"></span>
-                  <span class="h-2.5 w-2.5 rounded-full bg-neutral-300"></span>
-                  <span class="h-2.5 w-2.5 rounded-full bg-neutral-300"></span>
+            <div class="overflow-hidden rounded-2xl border border-neutral-200/90 bg-neutral-950 text-white shadow-xl">
+              <!-- Barra superior -->
+              <div class="flex items-center justify-between border-b border-neutral-800 bg-neutral-900 px-4 py-3">
+                <div class="flex items-center gap-2.5">
+                  <img src="/logos/altoplanta-symbol.svg" alt="AltoPlanta" class="h-5 w-5" />
+                  <span class="text-xs font-mono font-semibold text-neutral-200">altoplanta.com · GIS &amp; CAD Engine</span>
                 </div>
-                <div class="flex items-center gap-1.5 rounded-md bg-white border border-neutral-200/80 px-3 py-1 text-xs text-neutral-600 font-mono">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-neutral-400" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
-                  </svg>
-                  https://altoplanta.com
-                </div>
-                <span class="text-[10px] font-semibold text-accent bg-accent-soft px-2 py-0.5 rounded border border-accent/20">En vivo</span>
+                <span class="text-[10px] font-semibold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/30">Google Maps JS + DXF</span>
               </div>
 
-              <!-- Interfaz simulada del SaaS -->
-              <div class="p-6 space-y-6">
-                <!-- Tarjeta de Determinación Tributaria -->
-                <div class="rounded-xl border border-neutral-200 bg-neutral-50/70 p-4">
-                  <div class="flex items-center justify-between mb-2 text-xs">
-                    <span class="font-bold text-neutral-900">Módulo de Fiscalización Predial</span>
-                    <span class="text-accent font-semibold">UIT 2026: S/ 5,350</span>
+              <!-- Mapa / Plano Lotizado Simulado -->
+              <div class="p-6 space-y-5">
+                <div class="relative rounded-xl border border-neutral-800 bg-neutral-900/90 p-4 overflow-hidden">
+                  <div class="flex items-center justify-between text-xs mb-3">
+                    <span class="font-semibold text-neutral-300">Capas Vectoriales: Manzanas, Lotes, Cotas &amp; Vías</span>
+                    <span class="font-mono text-[11px] text-emerald-400">UTM WGS84 · 60 FPS</span>
                   </div>
-                  <div class="grid grid-cols-3 gap-2 text-xs">
-                    <div class="rounded-lg bg-white border border-neutral-200 p-2 text-neutral-700">
-                      <span class="block text-[10px] text-neutral-400">Predios Fiscalizados</span>
-                      <strong class="font-bold text-neutral-900">4,280</strong>
-                    </div>
-                    <div class="rounded-lg bg-white border border-neutral-200 p-2 text-neutral-700">
-                      <span class="block text-[10px] text-neutral-400">Autovalúo Total</span>
-                      <strong class="font-bold text-accent">S/ 482.4M</strong>
-                    </div>
-                    <div class="rounded-lg bg-white border border-neutral-200 p-2 text-neutral-700">
-                      <span class="block text-[10px] text-neutral-400">Recaudación Estimada</span>
-                      <strong class="font-bold text-emerald-600">S/ 3.84M</strong>
-                    </div>
-                  </div>
+
+                  <!-- SVG de Lotización Georreferenciada -->
+                  <svg viewBox="0 0 420 190" class="w-full h-44 rounded-lg bg-[#0d1520] border border-neutral-800 p-2">
+                    <!-- Cuadrícula topográfica -->
+                    <g stroke="#1e293b" stroke-width="0.8">
+                      <line x1="0" y1="40" x2="420" y2="40" />
+                      <line x1="0" y1="95" x2="420" y2="95" />
+                      <line x1="0" y1="150" x2="420" y2="150" />
+                      <line x1="90" y1="0" x2="90" y2="190" />
+                      <line x1="210" y1="0" x2="210" y2="190" />
+                      <line x1="330" y1="0" x2="330" y2="190" />
+                    </g>
+                    <!-- Vía principal -->
+                    <rect x="10" y="82" width="400" height="24" fill="#1e293b" />
+                    <line x1="15" y1="94" x2="405" y2="94" stroke="#475569" stroke-dasharray="6,6" stroke-width="1.2" />
+
+                    <!-- Manzana A (Superior) -->
+                    <rect x="20" y="18" width="75" height="54" rx="3" fill="#10b981" fill-opacity="0.25" stroke="#10b981" stroke-width="1.5" />
+                    <text x="57" y="44" text-anchor="middle" fill="#ecfdf5" font-size="9" font-family="monospace" font-weight="bold">A-01 · 160m²</text>
+                    <text x="57" y="56" text-anchor="middle" fill="#6ee7b7" font-size="8" font-family="monospace">DISPONIBLE</text>
+
+                    <rect x="103" y="18" width="75" height="54" rx="3" fill="#10b981" fill-opacity="0.25" stroke="#10b981" stroke-width="1.5" />
+                    <text x="140" y="44" text-anchor="middle" fill="#ecfdf5" font-size="9" font-family="monospace" font-weight="bold">A-02 · 140m²</text>
+                    <text x="140" y="56" text-anchor="middle" fill="#6ee7b7" font-size="8" font-family="monospace">360° ACTIVO</text>
+
+                    <rect x="186" y="18" width="75" height="54" rx="3" fill="#f59e0b" fill-opacity="0.25" stroke="#f59e0b" stroke-width="1.5" />
+                    <text x="223" y="44" text-anchor="middle" fill="#fef3c7" font-size="9" font-family="monospace" font-weight="bold">B-04 · 200m²</text>
+                    <text x="223" y="56" text-anchor="middle" fill="#fcd34d" font-size="8" font-family="monospace">SEPARADO</text>
+
+                    <rect x="269" y="18" width="130" height="54" rx="3" fill="#06b6d4" fill-opacity="0.18" stroke="#06b6d4" stroke-width="1.5" />
+                    <text x="334" y="44" text-anchor="middle" fill="#cffafe" font-size="9" font-family="monospace" font-weight="bold">PARQUE CENTRAL</text>
+                    <text x="334" y="56" text-anchor="middle" fill="#67e8f9" font-size="8" font-family="monospace">ÁREA RECREATIVA</text>
+
+                    <!-- Manzana C (Inferior) -->
+                    <rect x="20" y="116" width="90" height="54" rx="3" fill="#ef4444" fill-opacity="0.22" stroke="#ef4444" stroke-width="1.5" />
+                    <text x="65" y="142" text-anchor="middle" fill="#fee2e2" font-size="9" font-family="monospace" font-weight="bold">C-09 · 120m²</text>
+                    <text x="65" y="154" text-anchor="middle" fill="#fca5a5" font-size="8" font-family="monospace">VENDIDO</text>
+
+                    <rect x="118" y="116" width="90" height="54" rx="3" fill="#10b981" fill-opacity="0.25" stroke="#10b981" stroke-width="1.5" />
+                    <text x="163" y="142" text-anchor="middle" fill="#ecfdf5" font-size="9" font-family="monospace" font-weight="bold">C-10 · 150m²</text>
+                    <text x="163" y="154" text-anchor="middle" fill="#6ee7b7" font-size="8" font-family="monospace">DISPONIBLE</text>
+
+                    <rect x="216" y="116" width="183" height="54" rx="3" fill="#3b82f6" fill-opacity="0.2" stroke="#3b82f6" stroke-width="1.5" />
+                    <text x="307" y="142" text-anchor="middle" fill="#dbeafe" font-size="9" font-family="monospace" font-weight="bold">PORTAL WHITE-LABEL + MERCADO PAGO</text>
+                    <text x="307" y="154" text-anchor="middle" fill="#93c5fd" font-size="8" font-family="monospace">RESERVA ONLINE INSTANTÁNEA</text>
+                  </svg>
                 </div>
 
-                <!-- Preview de Cuponera Digital -->
-                <div class="rounded-xl border border-neutral-200 overflow-hidden bg-white">
-                  <div class="bg-neutral-900 px-4 py-2.5 text-white flex items-center justify-between text-xs">
-                    <div class="flex items-center gap-2">
-                      <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
-                      <span class="font-mono font-bold">HOJA RESUMEN (HR) &amp; PREDIO URBANO (PU)</span>
-                    </div>
-                    <span class="text-[10px] text-neutral-400">Cálculo Escalonado Ley 776</span>
+                <!-- Indicadores inferiores del motor -->
+                <div class="grid grid-cols-3 gap-2.5 text-xs">
+                  <div class="rounded-xl border border-neutral-800 bg-neutral-900 p-3">
+                    <span class="block text-[10px] text-neutral-400">Vuelos de Cámara</span>
+                    <strong class="font-bold text-white">van Wijk &amp; Nuij</strong>
                   </div>
-                  <div class="p-4 flex items-center justify-between text-xs">
-                    <div>
-                      <strong class="block text-neutral-900 font-semibold text-sm">Predio Urbano: Av. San Martín 450</strong>
-                      <span class="text-neutral-500">Uso: Comercial | Área de Terreno: 480.00 m²</span>
-                    </div>
-                    <a
-                      href="#simulador-tributario"
-                      class="rounded-md bg-accent-soft text-accent px-2.5 py-1.5 font-bold border border-accent/20 hover:bg-accent hover:text-white transition-colors"
-                    >
-                      Calcular S/
-                    </a>
+                  <div class="rounded-xl border border-neutral-800 bg-neutral-900 p-3">
+                    <span class="block text-[10px] text-neutral-400">Split Pagos</span>
+                    <strong class="font-bold text-emerald-400">Mercado Pago OAuth2</strong>
                   </div>
-                </div>
-
-                <!-- Mini estatus catastral -->
-                <div class="flex items-center justify-between rounded-lg border border-neutral-200 bg-neutral-50/80 p-3 text-xs">
-                  <div class="flex items-center gap-2.5">
-                    <span class="h-2 w-2 rounded-full bg-accent"></span>
-                    <span class="font-medium text-neutral-700">Detección de Omisos Catastrales: 184 predios regularizados</span>
+                  <div class="rounded-xl border border-neutral-800 bg-neutral-900 p-3">
+                    <span class="block text-[10px] text-neutral-400">App de Campo</span>
+                    <strong class="font-bold text-white">Android GPS Real-Time</strong>
                   </div>
-                  <span class="text-neutral-400 text-[11px]">Cruce con SUNARP &amp; Satélite</span>
                 </div>
               </div>
             </div>
@@ -169,147 +196,217 @@ import ECCTaxSimulator from "../../components/ecc/ECCTaxSimulator.astro";
       </div>
     </section>
 
-    <!-- Componente ECC: Simulador Interactivo de Impuesto Predial y Arbitrios -->
-    <section id="simulador-tributario" class="scroll-mt-20 py-16 sm:py-24 bg-neutral-50/50 border-b border-neutral-200/80">
+    <!-- Simulador Interactivo de Exploración de Lotes & Cotización AltoPlanta -->
+    <section id="visor-cad" class="scroll-mt-20 py-16 sm:py-24 bg-neutral-50/60 border-b border-neutral-200/80">
       <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div class="max-w-2xl mb-10">
-          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Demostración Interactiva en Vivo</p>
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Demostración Interactiva del Motor PropTech</p>
           <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
-            Prueba el Algoritmo Tributario de AltoPlanta
+            Explorador de Lotes CAD &amp; Separación Online
           </h2>
           <p class="mt-3 text-neutral-600 text-sm">
-            Ingresa un valor de autovalúo y selecciona el destino del inmueble. El simulador computa tramo por tramo la escala progresiva acumulativa del Impuesto Predial peruano y estima los arbitrios municipales.
+            Selecciona un lote del plano digitalizado para inspeccionar sus linderos, metraje, estado en tiempo real y simular el plan de financiamiento conectado con <strong>Vinkula CRM</strong> y <strong>Sencillo</strong>.
           </p>
         </div>
 
-        <ECCTaxSimulator />
+        <div class="grid gap-8 lg:grid-cols-[1.2fr_1fr]">
+          <!-- Tabla/Selector de Lotes CAD -->
+          <div class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs">
+            <div class="flex items-center justify-between pb-4 mb-4 border-b border-neutral-100">
+              <div>
+                <h3 class="font-display text-lg font-bold text-neutral-900">Plano Vectorial DXF — Etapa I</h3>
+                <p class="text-xs text-neutral-500">Haz clic sobre cualquier unidad catastral para inspeccionar su ficha</p>
+              </div>
+              <span class="rounded-full bg-emerald-50 border border-emerald-200 px-2.5 py-1 text-[11px] font-semibold text-emerald-700">
+                Sincronización Real-Time
+              </span>
+            </div>
+
+            <div class="space-y-3" id="ap-lot-list">
+              {sampleLots.map((l, idx) => (
+                <button
+                  type="button"
+                  data-lot={JSON.stringify(l)}
+                  class={`ap-lot-btn w-full text-left rounded-xl border p-4 transition-all flex items-center justify-between gap-4 ${idx === 0 ? "border-accent bg-accent-soft/40 shadow-2xs" : "border-neutral-200 bg-white hover:border-neutral-300"}`}
+                >
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <span class="font-mono text-xs font-bold text-neutral-900">{l.id}</span>
+                      <span class="text-sm font-bold text-neutral-800">{l.block} · {l.lot}</span>
+                      {l.has360 && (
+                        <span class="rounded bg-neutral-900 px-1.5 py-0.5 text-[10px] font-semibold text-white">Tour 360°</span>
+                      )}
+                    </div>
+                    <p class="mt-1 text-xs text-neutral-500">
+                      Área: <strong>{l.area} m²</strong> · Linderos: {l.front}
+                    </p>
+                  </div>
+                  <div class="text-right shrink-0">
+                    <span class="block font-display text-base font-bold text-neutral-900">S/ {l.price.toLocaleString("es-PE")}</span>
+                    <span class={`inline-block mt-0.5 rounded px-2 py-0.5 text-[10px] font-bold ${
+                      l.status === "Disponible"
+                        ? "bg-emerald-100 text-emerald-800"
+                        : l.status === "Separado"
+                        ? "bg-amber-100 text-amber-800"
+                        : "bg-red-100 text-red-800"
+                    }`}>
+                      {l.status}
+                    </span>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <!-- Panel de Ficha Técnica y Simulador de Cuotas -->
+          <div class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between border-b border-neutral-100 pb-4">
+                <div>
+                  <span class="text-[11px] font-mono uppercase tracking-wider text-accent font-bold" id="ap-detail-id">MZ-A-01</span>
+                  <h3 class="font-display text-xl font-bold text-neutral-900" id="ap-detail-title">Manzana A · Lote 01 (Esquina)</h3>
+                </div>
+                <span id="ap-detail-status" class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800">
+                  Disponible
+                </span>
+              </div>
+
+              <div class="mt-5 grid grid-cols-2 gap-3 text-xs">
+                <div class="rounded-xl bg-neutral-50 p-3 border border-neutral-200/70">
+                  <span class="text-neutral-400 block">Área Total CAD</span>
+                  <strong class="font-display text-base font-bold text-neutral-900" id="ap-detail-area">160 m²</strong>
+                </div>
+                <div class="rounded-xl bg-neutral-50 p-3 border border-neutral-200/70">
+                  <span class="text-neutral-400 block">Dimensiones</span>
+                  <strong class="font-display text-base font-bold text-neutral-900" id="ap-detail-front">10.00m x 16.00m</strong>
+                </div>
+                <div class="rounded-xl bg-neutral-50 p-3 border border-neutral-200/70">
+                  <span class="text-neutral-400 block">Precio Lista Contado</span>
+                  <strong class="font-display text-base font-bold text-accent" id="ap-detail-price">S/ 68,800</strong>
+                </div>
+                <div class="rounded-xl bg-neutral-50 p-3 border border-neutral-200/70">
+                  <span class="text-neutral-400 block">Inicial Mínima (10%)</span>
+                  <strong class="font-display text-base font-bold text-neutral-900" id="ap-detail-initial">S/ 6,880</strong>
+                </div>
+              </div>
+
+              <!-- Control de Plazo de Financiamiento -->
+              <div class="mt-5 rounded-xl border border-neutral-200 bg-neutral-50/70 p-4">
+                <div class="flex items-center justify-between text-xs mb-2">
+                  <label for="ap-months" class="font-semibold text-neutral-700">Plazo de Financiamiento Directo:</label>
+                  <span class="font-bold text-accent" id="ap-months-label">36 cuotas mensuales</span>
+                </div>
+                <input
+                  id="ap-months"
+                  type="range"
+                  min="12"
+                  max="72"
+                  step="12"
+                  value="36"
+                  class="w-full accent-accent cursor-pointer"
+                />
+                <div class="mt-3 flex items-center justify-between border-t border-neutral-200/80 pt-3">
+                  <span class="text-xs text-neutral-600">Cuota mensual estimada (Sencillo):</span>
+                  <strong class="font-display text-xl font-bold text-neutral-900" id="ap-monthly-payment">S/ 1,720.00 / mes</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-neutral-100 flex flex-col sm:flex-row gap-2.5">
+              <a
+                href="https://altoplanta.com/"
+                target="_blank"
+                rel="noopener"
+                class="flex-1 inline-flex items-center justify-center gap-2 rounded-lg bg-neutral-900 px-4 py-2.5 text-xs font-semibold text-white hover:bg-neutral-800 transition-colors"
+              >
+                Probar en altoplanta.com ↗
+              </a>
+              <a
+                href="/productos/sencillo"
+                class="flex-1 inline-flex items-center justify-center gap-2 rounded-lg border border-neutral-300 bg-white px-4 py-2.5 text-xs font-semibold text-neutral-800 hover:bg-neutral-50 transition-colors"
+              >
+                Ver motor de cuotas Sencillo &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Funcionalidades Principales del SaaS -->
-    <section id="caracteristicas" class="py-20 bg-white border-b border-neutral-200/80">
+    <!-- Módulos de Ingeniería de AltoPlanta -->
+    <section class="py-20 bg-white border-b border-neutral-200/80">
       <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        
         <div class="max-w-2xl text-center mx-auto">
-          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Arquitectura &amp; Funcionalidades</p>
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Arquitectura &amp; Módulos Reales</p>
           <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
-            Módulos Clave del SaaS AltoPlanta
+            Ingeniería detrás de AltoPlanta
           </h2>
           <p class="mt-3 text-neutral-600">
-            Diseñado para cumplir rigurosamente con la Ley de Tributación Municipal y modernizar la gestión catastral en el Perú.
+            Stack construido en Astro 5, Django 5 REST Framework, PostgreSQL y Google Maps JavaScript API.
           </p>
         </div>
 
         <div class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          <!-- 1. Motor de Impuesto Predial -->
           <div class="rounded-2xl border border-neutral-200/80 p-8 bg-neutral-50/50 hover:bg-white hover:shadow-lg transition duration-300">
-            <div class="h-10 w-10 rounded-xl bg-accent text-white flex items-center justify-center font-bold mb-5 shadow-xs">
-              01
-            </div>
-            <h3 class="font-display text-xl font-bold text-neutral-900">Motor de Impuesto Predial (D.L. 776)</h3>
+            <div class="h-10 w-10 rounded-xl bg-accent text-white flex items-center justify-center font-bold mb-5 shadow-xs">01</div>
+            <h3 class="font-display text-xl font-bold text-neutral-900">Cartografía Interactiva &amp; Vuelos van Wijk</h3>
             <p class="mt-3 text-sm leading-relaxed text-neutral-600">
-              Aplica automáticamente la escala progresiva acumulativa legal: hasta 15 UIT (0.2%), de 15 a 60 UIT (0.6%) y más de 60 UIT (1.0%), con actualización anual de la UIT nacional.
+              Visor sobre Google Maps JS API con interpolación hiperbólica de cámara (algoritmo de van Wijk &amp; Nuij a 60 FPS), clustering dinámico y marcadores enriquecidos con precios en tiempo real.
             </p>
-            <ul class="mt-4 space-y-1.5 text-xs text-neutral-500">
-              <li>• Cálculo de autovalúo arancelario de terreno y construcción</li>
-              <li>• Regla de mínimo legal de 0.6% de 1 UIT</li>
-              <li>• Desglose en 4 cuotas trimestrales de vencimiento</li>
-            </ul>
           </div>
 
-          <!-- 2. Arbitrios Municipales -->
           <div class="rounded-2xl border border-neutral-200/80 p-8 bg-neutral-50/50 hover:bg-white hover:shadow-lg transition duration-300">
-            <div class="h-10 w-10 rounded-xl bg-neutral-900 text-white flex items-center justify-center font-bold mb-5 shadow-xs">
-              02
-            </div>
-            <h3 class="font-display text-xl font-bold text-neutral-900">Prorrateo &amp; Liquidación de Arbitrios</h3>
+            <div class="h-10 w-10 rounded-xl bg-neutral-900 text-white flex items-center justify-center font-bold mb-5 shadow-xs">02</div>
+            <h3 class="font-display text-xl font-bold text-neutral-900">Digitalización Automática CAD (.DXF)</h3>
             <p class="mt-3 text-sm leading-relaxed text-neutral-600">
-              Parametrización por ordenanzas distritales de los servicios esenciales: Barrido de Calles, Recolección de Residuos Sólidos, Parques y Jardines Públicos y Serenazgo Municipal.
+              Procesador de archivos AutoCAD (.DXF) que extrae polígonos de lotes, manzanas, vías, parques y cotas perimetrales, georreferenciándolos mediante puntos de control terrestre (GCP) o coordenadas UTM.
             </p>
-            <ul class="mt-4 space-y-1.5 text-xs text-neutral-500">
-              <li>• Diferenciación por uso (casa habitación, comercio, industria)</li>
-              <li>• Tasas por frontis lineal y metraje techado</li>
-              <li>• Incentivos por pronto pago y beneficios al adulto mayor</li>
-            </ul>
           </div>
 
-          <!-- 3. Impuesto de Alcabala -->
           <div class="rounded-2xl border border-neutral-200/80 p-8 bg-neutral-50/50 hover:bg-white hover:shadow-lg transition duration-300">
-            <div class="h-10 w-10 rounded-xl bg-accent text-white flex items-center justify-center font-bold mb-5 shadow-xs">
-              03
-            </div>
-            <h3 class="font-display text-xl font-bold text-neutral-900">Impuesto de Alcabala &amp; Tasaciones</h3>
+            <div class="h-10 w-10 rounded-xl bg-accent text-white flex items-center justify-center font-bold mb-5 shadow-xs">03</div>
+            <h3 class="font-display text-xl font-bold text-neutral-900">Tours Virtuales 360° Equirectangulares</h3>
             <p class="mt-3 text-sm leading-relaxed text-neutral-600">
-              Cálculo instantáneo para transferencias notariales de propiedad. Aplica la inafectación legal de las primeras 10 UIT y liquida la tasa del 3% sobre el mayor valor entre venta y autovalúo.
+              Visor inmersivo WebGL integrado en cada proyecto y lote con soporte para múltiples escenas, hotspots de navegación, brújula interactiva y captura automática de miniaturas.
             </p>
-            <ul class="mt-4 space-y-1.5 text-xs text-neutral-500">
-              <li>• Validación de constancia de no adeudo previa</li>
-              <li>• Generación de proformas para minutas notariales</li>
-              <li>• Trazabilidad histórica de compraventas de predios</li>
-            </ul>
           </div>
 
-          <!-- 4. Cartografía y Catastro -->
           <div class="rounded-2xl border border-neutral-200/80 p-8 bg-neutral-50/50 hover:bg-white hover:shadow-lg transition duration-300">
-            <div class="h-10 w-10 rounded-xl bg-neutral-900 text-white flex items-center justify-center font-bold mb-5 shadow-xs">
-              04
-            </div>
-            <h3 class="font-display text-xl font-bold text-neutral-900">Catastro Urbano &amp; Fiscalización</h3>
+            <div class="h-10 w-10 rounded-xl bg-neutral-900 text-white flex items-center justify-center font-bold mb-5 shadow-xs">04</div>
+            <h3 class="font-display text-xl font-bold text-neutral-900">Portales White-Label (8 Temas)</h3>
             <p class="mt-3 text-sm leading-relaxed text-neutral-600">
-              Mapeo georreferenciado de predios, identificación de ampliaciones no declaradas mediante imágenes satelitales y regularización catastral de contribuyentes omisos y subvaluadores.
+              Cada inmobiliaria cuenta con su propio portal web personalizable (`altoplanta.com/e/empresa`) con 8 temas de diseño (* Luxury Gold, Cyber Mode, Brutalist Arch, Forest Zen*, etc.) y su propio inventario.
             </p>
-            <ul class="mt-4 space-y-1.5 text-xs text-neutral-500">
-              <li>• Georreferenciación de manzanas y lotizaciones</li>
-              <li>• Detección de cambios de uso (residencial a comercial)</li>
-              <li>• Sincronización con fichas catastrales municipales</li>
-            </ul>
           </div>
 
-          <!-- 5. Emisión Masiva de Cuponeras PDF -->
           <div class="rounded-2xl border border-neutral-200/80 p-8 bg-neutral-50/50 hover:bg-white hover:shadow-lg transition duration-300">
-            <div class="h-10 w-10 rounded-xl bg-accent text-white flex items-center justify-center font-bold mb-5 shadow-xs">
-              05
-            </div>
-            <h3 class="font-display text-xl font-bold text-neutral-900">Cuponeras Digitales &amp; Estados de Cuenta</h3>
+            <div class="h-10 w-10 rounded-xl bg-accent text-white flex items-center justify-center font-bold mb-5 shadow-xs">05</div>
+            <h3 class="font-display text-xl font-bold text-neutral-900">Mercado Pago Marketplace (Split OAuth2)</h3>
             <p class="mt-3 text-sm leading-relaxed text-neutral-600">
-              Generación de miles de cuponeras mecanizadas en PDF en cuestión de segundos: Hoja Resumen (HR), Predio Urbano (PU) y recibos de pago con códigos QR y barras para recaudación bancaria.
+              Integración nativa con Mercado Pago Marketplace para el cobro de reservas de lotes en línea con dispersión automática de fondos a la cuenta de la desarrolladora inmobiliaria.
             </p>
-            <ul class="mt-4 space-y-1.5 text-xs text-neutral-500">
-              <li>• Formato oficial estándar homologado por MEF</li>
-              <li>• Código QR para pago exprés desde celular</li>
-              <li>• Envío masivo por correo electrónico y WhatsApp</li>
-            </ul>
           </div>
 
-          <!-- 6. Arquitectura Cloud Archity -->
           <div class="rounded-2xl border border-neutral-200/80 p-8 bg-neutral-50/50 hover:bg-white hover:shadow-lg transition duration-300">
-            <div class="h-10 w-10 rounded-xl bg-neutral-900 text-white flex items-center justify-center font-bold mb-5 shadow-xs">
-              06
-            </div>
-            <h3 class="font-display text-xl font-bold text-neutral-900">Infraestructura Segura &amp; PostgreSQL</h3>
+            <div class="h-10 w-10 rounded-xl bg-neutral-900 text-white flex items-center justify-center font-bold mb-5 shadow-xs">06</div>
+            <h3 class="font-display text-xl font-bold text-neutral-900">App Android con GPS Satelital en Vivo</h3>
             <p class="mt-3 text-sm leading-relaxed text-neutral-600">
-              Arquitectura multi-inquilino en la nube desarrollada con Astro y base de datos relacional PostgreSQL con soporte GIS (PostGIS) para geometrías de predios y consultas de alta concurrencia.
+              Aplicación móvil nativa Android que superpone la ubicación GPS física del asesor y del comprador directamente sobre el plano lotizado durante las visitas en campo.
             </p>
-            <ul class="mt-4 space-y-1.5 text-xs text-neutral-500">
-              <li>• Soporte GIS para geometrías de parcelas</li>
-              <li>• Encriptación SSL y copias de seguridad continuas</li>
-              <li>• API REST para integración con tesorería y bancos</li>
-            </ul>
           </div>
         </div>
-
       </div>
     </section>
 
-    <!-- Banner CTA final -->
+    <!-- CTA Final -->
     <section class="border-t border-neutral-200/70 bg-neutral-900 text-white py-16">
       <div class="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-        <span class="text-xs font-bold uppercase tracking-widest text-accent">Plataforma Operativa en Línea</span>
+        <span class="text-xs font-bold uppercase tracking-widest text-accent">Ecosistema PropTech en Producción</span>
         <h2 class="mt-2 font-display text-3xl font-bold tracking-tight sm:text-4xl">
-          Conoce AltoPlanta en Producción Real
+          Explora AltoPlanta en Vivo
         </h2>
         <p class="mt-4 text-neutral-400 max-w-xl mx-auto text-sm sm:text-base">
-          Accede directamente al dominio oficial de AltoPlanta o contáctanos en Archity si necesitas implementar un motor tributario, catastral o SaaS a medida.
+          Visita la plataforma en producción o conoce los otros dos motores de la suite: <strong>Vinkula CRM</strong> y <strong>Sencillo FinTech</strong>.
         </p>
         <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
           <a
@@ -318,22 +415,19 @@ import ECCTaxSimulator from "../../components/ecc/ECCTaxSimulator.astro";
             rel="noopener"
             class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white hover:bg-accent-dark transition-colors shadow-xs"
           >
-            Visitar altoplanta.com
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
+            Abrir altoplanta.com ↗
           </a>
           <a
-            href="/demos/landing-empresa"
+            href="/productos/vinkula"
             class="w-full sm:w-auto inline-flex items-center justify-center rounded-lg border border-neutral-700 bg-neutral-800 px-6 py-3 text-sm font-semibold text-white hover:bg-neutral-700 transition-colors"
           >
-            Ver Demo de Landing Corporativa B2B
+            Conocer Vinkula CRM &rarr;
           </a>
           <a
-            href="/#contacto"
+            href="/productos/sencillo"
             class="w-full sm:w-auto inline-flex items-center justify-center rounded-lg border border-neutral-700 bg-neutral-800 px-6 py-3 text-sm font-semibold text-white hover:bg-neutral-700 transition-colors"
           >
-            Cotizar Sistema con Archity
+            Conocer Sencillo FinTech &rarr;
           </a>
         </div>
       </div>
@@ -342,3 +436,73 @@ import ECCTaxSimulator from "../../components/ecc/ECCTaxSimulator.astro";
 
   <Footer />
 </Layout>
+
+<script>
+  const buttons = document.querySelectorAll(".ap-lot-btn");
+  const idEl = document.getElementById("ap-detail-id");
+  const titleEl = document.getElementById("ap-detail-title");
+  const statusEl = document.getElementById("ap-detail-status");
+  const areaEl = document.getElementById("ap-detail-area");
+  const frontEl = document.getElementById("ap-detail-front");
+  const priceEl = document.getElementById("ap-detail-price");
+  const initialEl = document.getElementById("ap-detail-initial");
+  const monthsInput = document.getElementById("ap-months") as HTMLInputElement | null;
+  const monthsLabel = document.getElementById("ap-months-label");
+  const monthlyPayment = document.getElementById("ap-monthly-payment");
+
+  let currentLot = {
+    id: "MZ-A-01",
+    block: "Manzana A",
+    lot: "Lote 01 (Esquina)",
+    area: 160,
+    front: "10.00m x 16.00m",
+    price: 68800,
+    initial: 6880,
+    status: "Disponible",
+  };
+
+  function updateCalculation() {
+    const months = Number(monthsInput?.value || 36);
+    if (monthsLabel) monthsLabel.textContent = `${months} cuotas mensuales`;
+    const financed = currentLot.price - currentLot.initial;
+    const quota = financed / months;
+    if (monthlyPayment) {
+      monthlyPayment.textContent = `S/ ${quota.toLocaleString("es-PE", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} / mes`;
+    }
+  }
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      buttons.forEach((b) => {
+        b.classList.remove("border-accent", "bg-accent-soft/40", "shadow-2xs");
+        b.classList.add("border-neutral-200", "bg-white");
+      });
+      btn.classList.remove("border-neutral-200", "bg-white");
+      btn.classList.add("border-accent", "bg-accent-soft/40", "shadow-2xs");
+
+      const data = btn.getAttribute("data-lot");
+      if (data) {
+        currentLot = JSON.parse(data);
+        if (idEl) idEl.textContent = currentLot.id;
+        if (titleEl) titleEl.textContent = `${currentLot.block} · ${currentLot.lot}`;
+        if (areaEl) areaEl.textContent = `${currentLot.area} m²`;
+        if (frontEl) frontEl.textContent = currentLot.front;
+        if (priceEl) priceEl.textContent = `S/ ${currentLot.price.toLocaleString("es-PE")}`;
+        if (initialEl) initialEl.textContent = `S/ ${currentLot.initial.toLocaleString("es-PE")}`;
+        if (statusEl) {
+          statusEl.textContent = currentLot.status;
+          statusEl.className = `rounded-full px-3 py-1 text-xs font-bold ${
+            currentLot.status === "Disponible"
+              ? "bg-emerald-100 text-emerald-800"
+              : currentLot.status === "Separado"
+              ? "bg-amber-100 text-amber-800"
+              : "bg-red-100 text-red-800"
+          }`;
+        }
+        updateCalculation();
+      }
+    });
+  });
+
+  monthsInput?.addEventListener("input", updateCalculation);
+</script>

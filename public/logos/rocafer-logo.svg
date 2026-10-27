@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1050" width="100%" height="100%">
+  <!-- ROCAFER S.A.C. - Isotipo Oficial Vectorial Premium con Sombra Inferior 3D -->
+  <defs>
+    <!-- Gradiente Faceta Superior Izquierda (Gris Acero Ligeramente Claro) -->
+    <linearGradient id="rocafer-facet-left" x1="30%" y1="0%" x2="70%" y2="100%">
+      <stop offset="0%" stop-color="#8e9196" />
+      <stop offset="40%" stop-color="#787a7f" />
+      <stop offset="75%" stop-color="#5a5d62" />
+      <stop offset="100%" stop-color="#3b3d42" />
+    </linearGradient>
+
+    <!-- Gradiente Faceta Superior Derecha (Carbón Grafito Profundo) -->
+    <linearGradient id="rocafer-facet-right" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#4a4c52" />
+      <stop offset="35%" stop-color="#2e3035" />
+      <stop offset="70%" stop-color="#18191c" />
+      <stop offset="100%" stop-color="#0c0c0e" />
+    </linearGradient>
+
+    <!-- Gradiente Swoosh Azul/Púrpura -->
+    <linearGradient id="rocafer-blue-swoosh" x1="0%" y1="20%" x2="100%" y2="80%">
+      <stop offset="0%" stop-color="#00b0ff" />
+      <stop offset="20%" stop-color="#008cee" />
+      <stop offset="45%" stop-color="#0062cc" />
+      <stop offset="75%" stop-color="#2b228f" />
+      <stop offset="100%" stop-color="#4e1780" />
+    </linearGradient>
+
+    <!-- Gradiente Faceta Inferior (Obsidiana) -->
+    <linearGradient id="rocafer-facet-bottom" x1="25%" y1="0%" x2="75%" y2="100%">
+      <stop offset="0%" stop-color="#5a5a5c" />
+      <stop offset="30%" stop-color="#38393c" />
+      <stop offset="70%" stop-color="#1c1d1f" />
+      <stop offset="100%" stop-color="#0b0c0d" />
+    </linearGradient>
+
+    <!-- Sombra Inferior Radial 3D ("Sombrita debajo") -->
+    <radialGradient id="rocafer-ambient-shadow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0f172a" stop-opacity="0.45" />
+      <stop offset="35%" stop-color="#0f172a" stop-opacity="0.25" />
+      <stop offset="70%" stop-color="#0f172a" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Filtros de Desenfoque Gaussiano -->
+    <filter id="rocafer-shadow-blur" x="-30%" y="-50%" width="160%" height="200%">
+      <feGaussianBlur stdDeviation="15" />
+    </filter>
+
+    <filter id="rocafer-contact-blur" x="-30%" y="-50%" width="160%" height="200%">
+      <feGaussianBlur stdDeviation="5" />
+    </filter>
+  </defs>
+
+  <!-- SOMBRA INFERIOR 3D ("Sombrita debajo") -->
+  <g id="rocafer-sombrita-debajo">
+    <!-- Sombra difusa de ambiente -->
+    <ellipse cx="519" cy="980" rx="270" ry="28" fill="url(#rocafer-ambient-shadow)" filter="url(#rocafer-shadow-blur)" />
+    <!-- Sombra nítida de contacto con el suelo -->
+    <ellipse cx="519" cy="954" rx="85" ry="8" fill="#000000" opacity="0.48" filter="url(#rocafer-contact-blur)" />
+  </g>
+
+  <!-- BASE BLANCA DEL DIAMANTE (Franjas divisorias nítidas para fondos claros y oscuros) -->
+  <path id="rocafer-diamond-base" 
+        d="M 564 64 
+           L 892 485 
+           L 519 942 
+           L 155 492 
+           Z" 
+        fill="#ffffff" />
+
+  <!-- PIEZAS VECTORIALES PRINCIPALES -->
+  <g id="rocafer-mark">
+    <!-- 1. Faceta Superior Izquierda -->
+    <path id="rocafer-facet-top-left"
+          d="M 564 64 
+             L 512 347 
+             C 430 335, 290 365, 204 428 
+             L 155 492 
+             Z"
+          fill="url(#rocafer-facet-left)" />
+
+    <!-- 2. Faceta Superior Derecha -->
+    <path id="rocafer-facet-top-right"
+          d="M 564 64 
+             L 892 485 
+             L 884 505 
+             L 784 631 
+             L 784 538 
+             C 680 370, 560 350, 512 347 
+             Z"
+          fill="url(#rocafer-facet-right)" />
+
+    <!-- 3. Faceta Inferior (Obsidiana) -->
+    <path id="rocafer-facet-bottom-piece"
+          d="M 155 492 
+             C 210 525, 410 522, 611 845 
+             L 519 942 
+             Z"
+          fill="url(#rocafer-facet-bottom)" />
+
+    <!-- 4. Swoosh Curvo Azul / Púrpura (Carretera Dinámica) -->
+    <path id="rocafer-swoosh"
+          d="M 156 490 
+             C 342.6 316.4, 669.2 399.3, 784 631 
+             C 746.3 686.0, 702.4 741.6, 660 792 
+             C 590.6 570.1, 373.7 436.8, 156 495 
+             Z"
+          fill="url(#rocafer-blue-swoosh)" />
+  </g>
+</svg>

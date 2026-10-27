@@ -5,16 +5,16 @@ import Footer from "../../components/Footer.astro";
 ---
 
 <Layout
-  title="ERP Grupo Pineda — Infraestructura, Concreto & Minería | Sistema por Archity"
-  description="Caso de éxito y arquitectura del ERP a medida para Grupo Pineda: control de plantas de concreto MATEPCO, planta chancadora ROCAFER (780 TM/día) y flota pesada en la Amazonía peruana."
+  title="ERP Grupo Pineda — Infraestructura, Concreto MATEPCO & Cantera ROCAFER | Archity"
+  description="Caso de éxito y arquitectura del ERP a medida para Grupo Pineda: control de plantas de concreto MATEPCO, planta chancadora ROCAFER (780 TM/día), SERVIPIPA y PRINCOR en el nororiente peruano."
 >
   <Header />
 
-  <main>
-    <!-- Hero del Caso / ERP -->
-    <section class="border-b border-neutral-200/70 bg-gradient-to-b from-neutral-50/70 via-white to-white py-16 sm:py-24">
+  <main class="ca-grid">
+    <!-- Hero del Caso / ERP Grupo Pineda con su logo oficial y logos de unidades -->
+    <section class="border-b border-[var(--ca-ink)]/15 py-16 sm:py-24">
       <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        
+
         <!-- Breadcrumbs -->
         <nav class="flex items-center gap-2 text-xs font-medium text-neutral-500 mb-8" aria-label="Breadcrumb">
           <a href="/" class="hover:text-neutral-900 transition-colors">Inicio</a>
@@ -26,17 +26,17 @@ import Footer from "../../components/Footer.astro";
 
         <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
           <div>
-            <div class="flex items-center gap-2">
-              <span class="inline-flex items-center gap-1.5 rounded-full bg-accent-soft border border-accent/20 px-3 py-1 text-xs font-semibold text-accent">
+            <!-- Logo oficial de Grupo Pineda -->
+            <div class="mb-6 inline-flex items-center gap-3 rounded-2xl border border-neutral-200 bg-white px-4 py-2.5 shadow-2xs">
+              <img src="/logos/grupo-pineda-logo.svg" alt="Grupo Pineda Logo Oficial" class="h-9 w-auto object-contain" />
+              <span class="h-4 w-px bg-neutral-200"></span>
+              <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-accent">
                 <span class="h-2 w-2 rounded-full bg-accent animate-pulse" />
-                Operación en tiempo real
-              </span>
-              <span class="rounded-full bg-neutral-100 border border-neutral-200 px-3 py-1 text-xs font-semibold text-neutral-800">
-                Consorcio Empresarial
+                ERP Consorcio en Vivo
               </span>
             </div>
 
-            <h1 class="mt-4 font-display text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl">
+            <h1 class="font-display text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl">
               ERP Grupo Pineda
             </h1>
             <p class="text-lg font-medium text-accent mt-1">
@@ -44,8 +44,20 @@ import Footer from "../../components/Footer.astro";
             </p>
 
             <p class="mt-4 text-base leading-relaxed text-neutral-600 sm:text-lg">
-              Sistema empresarial a medida desarrollado por <strong>Archity</strong> para el consorcio <strong>Grupo Pineda</strong> (<a href="https://grupopineda.pe/" target="_blank" rel="noopener" class="text-accent underline font-semibold">grupopineda.pe</a>), líder en infraestructura, plantas automatizadas de concreto premezclado y minería no metálica en el nororiente peruano.
+              Sistema empresarial multi-compañía desarrollado por <strong>Archity</strong> para el consorcio <strong>Grupo Pineda</strong> (<a href="https://grupopineda.pe/" target="_blank" rel="noopener" class="text-accent underline font-semibold">grupopineda.pe</a>), líder en infraestructura vial, plantas automatizadas de concreto premezclado (<strong>MATEPCO</strong>), minería no metálica (<strong>ROCAFER</strong> — 780 TM/día), maquinaria pesada (<strong>SERVIPIPA</strong>) y distribución mayorista (<strong>PRINCOR</strong>) en San Martín y Amazonas.
             </p>
+
+            <!-- Logos de Unidades de Negocio -->
+            <div class="mt-6 flex flex-wrap items-center gap-3">
+              <div class="flex items-center gap-2 rounded-xl border border-neutral-200 bg-white px-3 py-1.5 shadow-2xs">
+                <img src="/logos/matepco-logo.svg" alt="MATEPCO" class="h-6 w-auto object-contain" />
+                <span class="text-[11px] font-semibold text-neutral-600">Concreto Premezclado</span>
+              </div>
+              <div class="flex items-center gap-2 rounded-xl border border-neutral-200 bg-white px-3 py-1.5 shadow-2xs">
+                <img src="/logos/rocafer-logo.svg" alt="ROCAFER" class="h-6 w-auto object-contain" />
+                <span class="text-[11px] font-semibold text-neutral-600">Cantera 780 TM/Día</span>
+              </div>
+            </div>
 
             <!-- Acciones -->
             <div class="mt-8 flex flex-wrap items-center gap-3">
@@ -65,7 +77,7 @@ import Footer from "../../components/Footer.astro";
                 href="#modulos"
                 class="inline-flex items-center justify-center rounded-lg border border-neutral-300 bg-white px-5 py-3 text-sm font-semibold text-neutral-700 transition-colors hover:bg-neutral-50"
               >
-                Ver módulos del ERP
+                Explorar Arquitectura del ERP
               </a>
             </div>
 
@@ -80,7 +92,7 @@ import Footer from "../../components/Footer.astro";
                 <span class="text-xs text-neutral-500">Plantas MATEPCO</span>
               </div>
               <div>
-                <span class="block font-display text-2xl font-bold text-neutral-900">100%</span>
+                <span class="block font-display text-2xl font-bold text-neutral-900">4 Empresas</span>
                 <span class="text-xs text-neutral-500">Integración Vertical</span>
               </div>
             </div>
@@ -91,11 +103,11 @@ import Footer from "../../components/Footer.astro";
             <div class="overflow-hidden rounded-2xl border border-neutral-200/90 bg-white shadow-xl shadow-neutral-900/5">
               <!-- Barra superior simulada -->
               <div class="flex items-center justify-between border-b border-neutral-100 bg-neutral-900 px-4 py-3 text-white">
-                <div class="flex items-center gap-2">
-                  <span class="h-2.5 w-2.5 rounded-full bg-accent"></span>
+                <div class="flex items-center gap-2.5">
+                  <img src="/logos/grupo-pineda-mark.svg" alt="GP" class="h-5 w-5 rounded" />
                   <span class="text-xs font-mono tracking-wider font-semibold">ERP GRUPO PINEDA · CONTROL INDUSTRIAL</span>
                 </div>
-                <span class="text-[11px] text-neutral-400 font-mono">v4.2 PROD</span>
+                <span class="text-[11px] text-emerald-400 font-mono">PROD · grupopineda.pe</span>
               </div>
 
               <!-- Interfaz simulada del ERP -->
@@ -123,30 +135,30 @@ import Footer from "../../components/Footer.astro";
                 <div class="rounded-xl border border-neutral-200 bg-white p-4 shadow-xs">
                   <div class="flex items-center justify-between text-xs mb-2">
                     <span class="font-bold text-neutral-800">Telemetría de Balanza &amp; Despachos</span>
-                    <span class="font-mono text-neutral-400 text-[11px]">Cantera Picota</span>
+                    <span class="font-mono text-neutral-400 text-[11px]">Cantera Picota &amp; Mixers</span>
                   </div>
                   <div class="space-y-2 text-xs">
-                    <div class="flex items-center justify-between p-2 rounded-lg bg-neutral-50 border border-neutral-100">
+                    <div class="flex items-center justify-between p-2.5 rounded-lg bg-neutral-50 border border-neutral-100">
                       <div>
-                        <strong class="text-neutral-900 font-semibold">Volquete V-104 (Piedra Chancada 3/4)</strong>
-                        <span class="block text-[11px] text-neutral-500">Destino: Tramo Vial Moyobamba</span>
+                        <strong class="text-neutral-900 font-semibold">Volquete V-104 (Piedra Chancada 3/4")</strong>
+                        <span class="block text-[11px] text-neutral-500">ROCAFER Picota &rarr; Tramo Vial Moyobamba</span>
                       </div>
                       <span class="font-mono font-bold text-neutral-900">32.4 TM</span>
                     </div>
-                    <div class="flex items-center justify-between p-2 rounded-lg bg-neutral-50 border border-neutral-100">
+                    <div class="flex items-center justify-between p-2.5 rounded-lg bg-neutral-50 border border-neutral-100">
                       <div>
                         <strong class="text-neutral-900 font-semibold">Mixer M-08 (Concreto f'c 280 kg/cm²)</strong>
-                        <span class="block text-[11px] text-neutral-500">Despacho MATEPCO Tarapoto</span>
+                        <span class="block text-[11px] text-neutral-500">Despacho Automatizado MATEPCO Tarapoto</span>
                       </div>
-                      <span class="font-mono font-bold text-neutral-900">8.0 m³</span>
+                      <span class="font-mono font-bold text-accent">8.0 m³</span>
                     </div>
                   </div>
                 </div>
 
-                <!-- Indicador de integración vertical -->
+                <!-- Indicador de seguridad Android Device Owner -->
                 <div class="flex items-center justify-between rounded-lg border border-neutral-200 bg-white p-3 text-xs">
-                  <span class="text-neutral-600 font-medium">Cadena de valor: MATEPCO · ROCAFER · SERVIPIPA · PRINCOR</span>
-                  <span class="text-accent font-bold">100% Sincronizado</span>
+                  <span class="text-neutral-600 font-medium">Terminales Android en Planta (Device Owner Kiosk APK)</span>
+                  <span class="text-emerald-700 font-bold">Sincronizado</span>
                 </div>
               </div>
             </div>
@@ -159,51 +171,63 @@ import Footer from "../../components/Footer.astro";
     <!-- Módulos del Sistema ERP -->
     <section id="modulos" class="py-20 bg-white">
       <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        
+
         <div class="max-w-2xl text-center mx-auto">
-          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Alcance Operativo</p>
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Alcance Operativo Multi-Empresa</p>
           <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
-            Módulos del ERP Industrial
+            Las 4 Unidades Integradas en el ERP
           </h2>
           <p class="mt-3 text-neutral-600">
-            Digitalización de extremo a extremo para las operaciones de infraestructura y minería más exigentes del nororiente peruano.
+            Backend construido con Django REST Framework, PostgreSQL, Docker, Nginx y aplicación móvil corporativa Android con bloqueo Device Owner.
           </p>
         </div>
 
         <div class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <!-- 01 Concreto Automatizado -->
           <div class="rounded-2xl border border-neutral-200/80 p-6 bg-neutral-50/50 hover:bg-white hover:shadow-lg transition duration-300">
-            <span class="text-xs font-bold font-mono text-accent">01 · CONCRETO</span>
-            <h3 class="mt-2 font-display text-lg font-bold text-neutral-900">Plantas MATEPCO</h3>
+            <div class="mb-4 h-10 flex items-center">
+              <img src="/logos/matepco-logo.svg" alt="MATEPCO" class="h-8 w-auto object-contain" />
+            </div>
+            <span class="text-xs font-bold font-mono text-accent">01 · CONCRETO PREMEZCLADO</span>
+            <h3 class="mt-1 font-display text-lg font-bold text-neutral-900">Plantas MATEPCO</h3>
             <p class="mt-2 text-xs leading-relaxed text-neutral-600">
-              Control de plantas dosificadoras automatizadas en Tarapoto, Moyobamba y Chachapoyas. Monitoreo de recetas, control de slump, aditivos y remisión digital de camiones mixer.
+              Control de plantas dosificadoras automatizadas en Tarapoto, Moyobamba y Chachapoyas. Monitoreo de diseños de mezcla (f'c 175 a 350 kg/cm²), control de slump, aditivos y despacho de camiones mixer.
             </p>
           </div>
 
           <!-- 02 Minería y Agregados -->
           <div class="rounded-2xl border border-neutral-200/80 p-6 bg-neutral-50/50 hover:bg-white hover:shadow-lg transition duration-300">
-            <span class="text-xs font-bold font-mono text-neutral-900">02 · CANTERAS</span>
-            <h3 class="mt-2 font-display text-lg font-bold text-neutral-900">Planta ROCAFER (780 TM/D)</h3>
+            <div class="mb-4 h-10 flex items-center">
+              <img src="/logos/rocafer-logo.svg" alt="ROCAFER" class="h-8 w-auto object-contain" />
+            </div>
+            <span class="text-xs font-bold font-mono text-neutral-900">02 · CANTERA &amp; AGREGADOS</span>
+            <h3 class="mt-1 font-display text-lg font-bold text-neutral-900">ROCAFER (780 TM/Día)</h3>
             <p class="mt-2 text-xs leading-relaxed text-neutral-600">
-              Gestión de extracción minera no metálica en cantera Picota, trituración de piedra caliza, granulometría, control de balanza y stock de áridos en tiempo real.
+              Gestión de extracción minera no metálica en cantera Picota, trituración primaria y secundaria de piedra caliza, granulometría certificada, tickets de balanza electrónica y stock de áridos.
             </p>
           </div>
 
           <!-- 03 Flota y Maquinaria -->
           <div class="rounded-2xl border border-neutral-200/80 p-6 bg-neutral-50/50 hover:bg-white hover:shadow-lg transition duration-300">
-            <span class="text-xs font-bold font-mono text-accent">03 · LOGÍSTICA</span>
-            <h3 class="mt-2 font-display text-lg font-bold text-neutral-900">Maquinaria Pesada &amp; Obras</h3>
+            <div class="mb-4 h-10 flex items-center">
+              <img src="/logos/grupo-pineda-mark.svg" alt="SERVIPIPA" class="h-8 w-8 object-contain rounded" />
+            </div>
+            <span class="text-xs font-bold font-mono text-accent">03 · MAQUINARIA PESADA</span>
+            <h3 class="mt-1 font-display text-lg font-bold text-neutral-900">SERVIPIPA &amp; Flota</h3>
             <p class="mt-2 text-xs leading-relaxed text-neutral-600">
-              Gestión de flota pesada (SERVIPIPA), orugas, excavadoras y volquetes: mantenimiento preventivo, control estricto de combustible y soporte a obras públicas.
+              Gestión de línea amarilla, excavadoras, cargadores frontales, cisternas y volquetes: partes diarios de horómetro, mantenimiento preventivo, control de galones de combustible y valorizaciones.
             </p>
           </div>
 
           <!-- 04 Comercial B2B -->
           <div class="rounded-2xl border border-neutral-200/80 p-6 bg-neutral-50/50 hover:bg-white hover:shadow-lg transition duration-300">
-            <span class="text-xs font-bold font-mono text-neutral-900">04 · COMERCIAL</span>
-            <h3 class="mt-2 font-display text-lg font-bold text-neutral-900">Ferretería &amp; Insumos</h3>
+            <div class="mb-4 h-10 flex items-center">
+              <img src="/logos/grupo-pineda-mark.svg" alt="PRINCOR" class="h-8 w-8 object-contain rounded" />
+            </div>
+            <span class="text-xs font-bold font-mono text-neutral-900">04 · COMERCIAL &amp; ACERO</span>
+            <h3 class="mt-1 font-display text-lg font-bold text-neutral-900">Distribuidora PRINCOR</h3>
             <p class="mt-2 text-xs leading-relaxed text-neutral-600">
-              Red mayorista de materiales de construcción, acero y cemento (PRINCOR). Cotizaciones corporativas, facturación electrónica y liquidaciones con el Estado.
+              Abastecimiento mayorista de materiales de construcción, fierro corrugado y cemento. Cotizaciones B2B, órdenes de compra, kardex multi-almacén y facturación electrónica integrada.
             </p>
           </div>
         </div>
@@ -215,10 +239,10 @@ import Footer from "../../components/Footer.astro";
     <section class="border-t border-neutral-200/70 bg-neutral-900 text-white py-16">
       <div class="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
         <h2 class="font-display text-3xl font-bold tracking-tight sm:text-4xl">
-          ¿Tu empresa necesita un ERP a la medida?
+          ¿Tu consorcio necesita un ERP industrial a la medida?
         </h2>
         <p class="mt-4 text-neutral-400 max-w-xl mx-auto text-sm sm:text-base">
-          En Archity construimos sistemas empresariales que resuelven los cuellos de botella más complejos de tu operación con tecnología de última generación.
+          En Archity diseñamos y desplegamos plataformas empresariales conectadas a tus plantas, balanzas, almacenes y facturación SUNAT.
         </p>
         <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
           <a
@@ -227,22 +251,19 @@ import Footer from "../../components/Footer.astro";
             rel="noopener"
             class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white hover:bg-accent-dark transition-colors shadow-xs"
           >
-            Visitar grupopineda.pe
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
+            Visitar grupopineda.pe ↗
           </a>
           <a
-            href="/demos/landing-empresa"
+            href="/productos/billing-service"
             class="w-full sm:w-auto inline-flex items-center justify-center rounded-lg border border-neutral-700 bg-neutral-800 px-6 py-3 text-sm font-semibold text-white hover:bg-neutral-700 transition-colors"
           >
-            Ver Demo Landing B2B &amp; ROI
+            Ver Facturador SUNAT UBL 2.1 &rarr;
           </a>
           <a
             href="/#contacto"
             class="w-full sm:w-auto inline-flex items-center justify-center rounded-lg border border-neutral-700 bg-neutral-800 px-6 py-3 text-sm font-semibold text-white hover:bg-neutral-700 transition-colors"
           >
-            Cotizar ERP para mi negocio
+            Cotizar ERP con Archity
           </a>
         </div>
       </div>

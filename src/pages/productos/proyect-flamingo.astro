@@ -1,0 +1,268 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+const houseModels = [
+  { name: "Modelo Coral", area: "95 m² construidos", bedrooms: "3 Dormitorios · 2 Baños", features: "Sala-comedor de doble altura, terraza jardín y estacionamiento.", price: "$ 68,500" },
+  { name: "Modelo Brisa", area: "120 m² construidos", bedrooms: "3 Dormitorios · 3 Baños", features: "Cocina isla abierta, área de parrilla techada y balcón panorámico.", price: "$ 84,000" },
+  { name: "Modelo Arena", area: "145 m² construidos", bedrooms: "4 Dormitorios · 3.5 Baños", features: "Estudio en primer nivel, walk-in closet principal y jardín interior.", price: "$ 98,500" },
+  { name: "Flamingo Imperial", area: "190 m² construidos", bedrooms: "4 Dormitorios · 4.5 Baños + Piscina", features: "Residencia insignia en esquina con piscina privada, solárium y domótica.", price: "$ 135,000" },
+];
+---
+
+<Layout
+  title="Inmobiliaria Flamingo — Proyecto Residencial Flamingo (Showroom 360° & Dron) | Archity"
+  description="Showroom inmobiliario interactivo desarrollado por Archity para Inmobiliaria Flamingo: transiciones de video aéreo con dron 0ms crossfade, plano SVG de 133 lotes (Mz K–R), modo Día/Noche y 4 modelos de casa con tour 360°."
+>
+  <Header />
+
+  <main class="ca-grid">
+    <!-- Hero de Inmobiliaria Flamingo con el logo oficial proporcionado -->
+    <section class="border-b border-[var(--ca-ink)]/15 py-16 sm:py-24">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+
+        <!-- Breadcrumbs -->
+        <nav class="flex items-center gap-2 text-xs font-medium text-neutral-500 mb-8" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-neutral-900 transition-colors">Inicio</a>
+          <span>/</span>
+          <a href="/#productos" class="hover:text-neutral-900 transition-colors">Productos</a>
+          <span>/</span>
+          <span class="text-neutral-900">Inmobiliaria Flamingo</span>
+        </nav>
+
+        <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
+          <div>
+            <!-- Logo oficial de Inmobiliaria Flamingo -->
+            <div class="mb-6 inline-flex items-center gap-3 rounded-2xl border border-neutral-200 bg-white px-4 py-2.5 shadow-2xs">
+              <img src="/logos/flamingo-logo.png" alt="Inmobiliaria Flamingo Logo Oficial" class="h-11 w-auto object-contain" />
+              <span class="h-5 w-px bg-neutral-200"></span>
+              <div>
+                <span class="block text-xs font-bold text-neutral-900">INMOBILIARIA FLAMINGO</span>
+                <span class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-pink-600">
+                  <span class="h-1.5 w-1.5 rounded-full bg-pink-500 animate-pulse" />
+                  Showroom 360° Desplegado
+                </span>
+              </div>
+            </div>
+
+            <h1 class="font-display text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl">
+              Proyecto Residencial Flamingo
+            </h1>
+            <p class="text-lg font-medium text-accent mt-1">
+              Showroom Inmobiliario Aéreo con Dron, Masterplan SVG (133 Lotes) &amp; Tours 360°
+            </p>
+
+            <p class="mt-4 text-base leading-relaxed text-neutral-600 sm:text-lg">
+              Desarrollado por <strong>Archity</strong> para <strong>Inmobiliaria Flamingo</strong> (<a href="https://proyect-flamingo.vercel.app/" target="_blank" rel="noopener" class="text-accent underline font-semibold">proyect-flamingo.vercel.app</a>), este showroom web de lujo combina secuencias de vuelo de dron multicapa con <strong>transición instantánea 0ms crossfade</strong>, un masterplan vectorial interactivo de <strong>133 lotes distribuidos en 8 manzanas (Mz K a Mz R)</strong>, conmutador de iluminación <strong>Día / Noche</strong>, 4 modelos arquitectónicos con <strong>recorridos virtuales 360°</strong> y un calibrador homográfico con <strong>OpenCV</strong>.
+            </p>
+
+            <!-- Acciones -->
+            <div class="mt-8 flex flex-wrap items-center gap-3">
+              <a
+                href="https://proyect-flamingo.vercel.app/"
+                target="_blank"
+                rel="noopener"
+                class="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white shadow-xs transition-all hover:bg-accent-dark hover:shadow-md hover:shadow-accent/20"
+              >
+                Abrir Showroom en Vivo
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                </svg>
+              </a>
+
+              <a
+                href="https://github.com/DraftraX/PROYECT-FLAMINGO"
+                target="_blank"
+                rel="noopener"
+                class="inline-flex items-center gap-2 rounded-lg border border-neutral-300 bg-white px-5 py-3 text-sm font-semibold text-neutral-700 transition-colors hover:bg-neutral-50"
+              >
+                Repositorio GitHub ↗
+              </a>
+            </div>
+
+            <!-- Stats reales del proyecto -->
+            <div class="mt-10 grid grid-cols-3 gap-4 border-t border-neutral-200/80 pt-6 text-left">
+              <div>
+                <span class="block font-display text-2xl font-bold text-neutral-900">133 Lotes</span>
+                <span class="text-xs text-neutral-500">8 Manzanas (Mz K – Mz R)</span>
+              </div>
+              <div>
+                <span class="block font-display text-2xl font-bold text-accent">4 Modelos</span>
+                <span class="text-xs text-neutral-500">Casas con Tour 360°</span>
+              </div>
+              <div>
+                <span class="block font-display text-2xl font-bold text-neutral-900">0ms</span>
+                <span class="text-xs text-neutral-500">Crossfade Video Dron</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Simulador Interactivo del Masterplan Aéreo (Día/Noche + Manzanas K-R) -->
+          <div class="relative">
+            <div id="fl-stage" class="overflow-hidden rounded-2xl border border-neutral-200/90 bg-neutral-950 text-white shadow-xl transition-colors duration-500">
+              <div class="flex items-center justify-between border-b border-neutral-800 bg-neutral-900 px-4 py-3">
+                <div class="flex items-center gap-2.5">
+                  <img src="/logos/flamingo-logo.png" alt="Flamingo" class="h-6 w-6 object-contain rounded bg-white p-0.5" />
+                  <span class="text-xs font-mono font-semibold">RESIDENCIAL FLAMINGO · MASTERPLAN SVG</span>
+                </div>
+                <div class="inline-flex rounded-lg border border-neutral-700 bg-neutral-800 p-0.5 text-[11px]">
+                  <button id="fl-btn-day" type="button" class="rounded-md bg-amber-400 px-2.5 py-1 font-bold text-neutral-950 transition-all">
+                    Vista Día
+                  </button>
+                  <button id="fl-btn-night" type="button" class="rounded-md px-2.5 py-1 font-semibold text-neutral-300 hover:text-white transition-all">
+                    Vista Noche
+                  </button>
+                </div>
+              </div>
+
+              <div class="p-6 space-y-4">
+                <!-- Visor SVG de las 8 Manzanas (Mz K a Mz R) -->
+                <div id="fl-canvas" class="relative rounded-xl border border-emerald-500/30 bg-gradient-to-br from-[#132a1f] via-[#0f231b] to-[#091510] p-4 transition-all duration-500">
+                  <div class="flex items-center justify-between text-xs mb-2">
+                    <span id="fl-lighting-badge" class="font-semibold text-amber-300">Iluminación Diurna · Dron 120m ASL</span>
+                    <span class="font-mono text-[11px] text-neutral-300">Homografía OpenCV Activa</span>
+                  </div>
+
+                  <svg viewBox="0 0 420 185" class="w-full h-44">
+                    <!-- Bloques Mz K a Mz R interactivos -->
+                    <g class="cursor-pointer">
+                      <rect x="15" y="15" width="85" height="65" rx="6" fill="#10b981" fill-opacity="0.3" stroke="#10b981" stroke-width="1.6" />
+                      <text x="57" y="45" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">MZ K</text>
+                      <text x="57" y="60" text-anchor="middle" fill="#6ee7b7" font-size="8" font-family="monospace">18 Lotes · Disp.</text>
+                    </g>
+                    <g class="cursor-pointer">
+                      <rect x="115" y="15" width="85" height="65" rx="6" fill="#10b981" fill-opacity="0.3" stroke="#10b981" stroke-width="1.6" />
+                      <text x="157" y="45" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">MZ L</text>
+                      <text x="157" y="60" text-anchor="middle" fill="#6ee7b7" font-size="8" font-family="monospace">16 Lotes · Disp.</text>
+                    </g>
+                    <g class="cursor-pointer">
+                      <rect x="215" y="15" width="85" height="65" rx="6" fill="#f59e0b" fill-opacity="0.3" stroke="#f59e0b" stroke-width="1.6" />
+                      <text x="257" y="45" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">MZ M</text>
+                      <text x="257" y="60" text-anchor="middle" fill="#fcd34d" font-size="8" font-family="monospace">17 Lotes · Últimos</text>
+                    </g>
+                    <g class="cursor-pointer">
+                      <rect x="315" y="15" width="90" height="65" rx="6" fill="#ec4899" fill-opacity="0.3" stroke="#ec4899" stroke-width="1.6" />
+                      <text x="360" y="45" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">MZ N (Club)</text>
+                      <text x="360" y="60" text-anchor="middle" fill="#fbcfe8" font-size="8" font-family="monospace">15 Lotes · VIP</text>
+                    </g>
+
+                    <!-- Fila inferior Mz O a Mz R -->
+                    <g class="cursor-pointer">
+                      <rect x="15" y="102" width="85" height="65" rx="6" fill="#10b981" fill-opacity="0.3" stroke="#10b981" stroke-width="1.6" />
+                      <text x="57" y="132" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">MZ O</text>
+                      <text x="57" y="147" text-anchor="middle" fill="#6ee7b7" font-size="8" font-family="monospace">18 Lotes · Disp.</text>
+                    </g>
+                    <g class="cursor-pointer">
+                      <rect x="115" y="102" width="85" height="65" rx="6" fill="#10b981" fill-opacity="0.3" stroke="#10b981" stroke-width="1.6" />
+                      <text x="157" y="132" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">MZ P</text>
+                      <text x="157" y="147" text-anchor="middle" fill="#6ee7b7" font-size="8" font-family="monospace">16 Lotes · Disp.</text>
+                    </g>
+                    <g class="cursor-pointer">
+                      <rect x="215" y="102" width="85" height="65" rx="6" fill="#f59e0b" fill-opacity="0.3" stroke="#f59e0b" stroke-width="1.6" />
+                      <text x="257" y="132" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">MZ Q</text>
+                      <text x="257" y="147" text-anchor="middle" fill="#fcd34d" font-size="8" font-family="monospace">17 Lotes · Parque</text>
+                    </g>
+                    <g class="cursor-pointer">
+                      <rect x="315" y="102" width="90" height="65" rx="6" fill="#10b981" fill-opacity="0.3" stroke="#10b981" stroke-width="1.6" />
+                      <text x="360" y="132" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">MZ R</text>
+                      <text x="360" y="147" text-anchor="middle" fill="#6ee7b7" font-size="8" font-family="monospace">16 Lotes · Pórtico</text>
+                    </g>
+                  </svg>
+                </div>
+
+                <!-- Leyenda de estados de lote -->
+                <div class="flex items-center justify-between text-xs px-1">
+                  <div class="flex items-center gap-4">
+                    <span class="inline-flex items-center gap-1.5 text-emerald-400 font-medium">
+                      <span class="h-2.5 w-2.5 rounded-full bg-emerald-400"></span> Disponible (94)
+                    </span>
+                    <span class="inline-flex items-center gap-1.5 text-amber-400 font-medium">
+                      <span class="h-2.5 w-2.5 rounded-full bg-amber-400"></span> Separado (21)
+                    </span>
+                    <span class="inline-flex items-center gap-1.5 text-rose-400 font-medium">
+                      <span class="h-2.5 w-2.5 rounded-full bg-rose-400"></span> Vendido (18)
+                    </span>
+                  </div>
+                  <span class="text-neutral-400 font-mono">Total: 133 Lotes</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Los 4 Modelos Arquitectónicos de Residencial Flamingo -->
+    <section class="py-20 bg-white border-b border-neutral-200/80">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Tipologías de Vivienda &amp; Recorridos 360°</p>
+          <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
+            Los 4 Modelos de Casa de Inmobiliaria Flamingo
+          </h2>
+          <p class="mt-3 text-neutral-600 text-sm">
+            Cada modelo en el showroom incluye visor equirectangular 360° interactivo, distribución arquitectónica y cotizador directo por WhatsApp.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {houseModels.map((m) => (
+            <div class="rounded-2xl border border-neutral-200 p-6 bg-neutral-50/50 hover:bg-white hover:shadow-lg transition duration-300 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="rounded-md bg-accent-soft px-2 py-0.5 text-[10px] font-bold text-accent border border-accent/20">Tour 360°</span>
+                  <span class="font-mono text-xs font-bold text-neutral-500">{m.area}</span>
+                </div>
+                <h3 class="mt-3 font-display text-xl font-bold text-neutral-900">{m.name}</h3>
+                <p class="mt-1 text-xs font-semibold text-neutral-700">{m.bedrooms}</p>
+                <p class="mt-2 text-xs text-neutral-600 leading-relaxed">{m.features}</p>
+              </div>
+              <div class="mt-5 pt-4 border-t border-neutral-200/70 flex items-center justify-between">
+                <span class="font-display text-lg font-bold text-neutral-900">{m.price}</span>
+                <a
+                  href="https://proyect-flamingo.vercel.app/"
+                  target="_blank"
+                  rel="noopener"
+                  class="text-xs font-bold text-accent hover:underline"
+                >
+                  Ver en 360° ↗
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  const btnDay = document.getElementById("fl-btn-day");
+  const btnNight = document.getElementById("fl-btn-night");
+  const canvas = document.getElementById("fl-canvas");
+  const badge = document.getElementById("fl-lighting-badge");
+
+  btnDay?.addEventListener("click", () => {
+    btnDay.className = "rounded-md bg-amber-400 px-2.5 py-1 font-bold text-neutral-950 transition-all";
+    if (btnNight) btnNight.className = "rounded-md px-2.5 py-1 font-semibold text-neutral-300 hover:text-white transition-all";
+    if (canvas) canvas.className = "relative rounded-xl border border-emerald-500/30 bg-gradient-to-br from-[#132a1f] via-[#0f231b] to-[#091510] p-4 transition-all duration-500";
+    if (badge) {
+      badge.textContent = "Iluminación Diurna · Dron 120m ASL";
+      badge.className = "font-semibold text-amber-300";
+    }
+  });
+
+  btnNight?.addEventListener("click", () => {
+    btnNight.className = "rounded-md bg-indigo-500 px-2.5 py-1 font-bold text-white transition-all";
+    if (btnDay) btnDay.className = "rounded-md px-2.5 py-1 font-semibold text-neutral-300 hover:text-white transition-all";
+    if (canvas) canvas.className = "relative rounded-xl border border-indigo-500/40 bg-gradient-to-br from-[#090d1f] via-[#060914] to-[#03050a] p-4 transition-all duration-500";
+    if (badge) {
+      badge.textContent = "Modo Nocturno · Alumbrado Perimetral LED";
+      badge.className = "font-semibold text-indigo-300";
+    }
+  });
+</script>

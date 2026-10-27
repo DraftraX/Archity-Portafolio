@@ -1,0 +1,288 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+const leads = [
+  { id: "LD-409", name: "Carlos Mendoza Ríos", phone: "+51 942 810 334", project: "Residencial Los Pinos · Mz A Lote 02", stage: "Visita Agendada", score: "94% IA", channel: "WhatsApp Cloud API", budget: "S/ 58,800" },
+  { id: "LD-410", name: "Dra. Elena Vargas Soto", phone: "+51 987 412 900", project: "Mirador del Valle · Mz C Lote 10", stage: "En Negociación", score: "89% IA", channel: "WhatsApp + Bot Gemini", budget: "S/ 72,500" },
+  { id: "LD-411", name: "Inversiones San Martín SAC", phone: "+51 961 204 118", project: "2 Lotes Comerciales Av. Principal", stage: "Reserva Pagada", score: "98% IA", channel: "Portal AltoPlanta", budget: "S/ 168,000" },
+  { id: "LD-412", name: "Jorge Luis Paredes", phone: "+51 914 550 721", project: "Residencial Los Pinos · Mz B Lote 04", stage: "Calificando IA", score: "76% IA", channel: "WhatsApp Cloud API", budget: "S/ 64,000" },
+];
+---
+
+<Layout
+  title="Vinkula CRM — Suite CRM Inmobiliaria Multicanal & Agente IA | Archity"
+  description="Suite CRM multi-tenant desarrollada por Archity (vinkula.altoplanta.com): interfaz reactiva tipo Spreadsheet inspirada en Twenty CRM, embudo Kanban, bandeja WhatsApp Cloud API y Agente IA 24/7 con Google Gemini."
+>
+  <Header />
+
+  <main class="ca-grid">
+    <!-- Hero de Vinkula CRM con su logo oficial -->
+    <section class="border-b border-[var(--ca-ink)]/15 py-16 sm:py-24">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+
+        <!-- Breadcrumbs -->
+        <nav class="flex items-center gap-2 text-xs font-medium text-neutral-500 mb-8" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-neutral-900 transition-colors">Inicio</a>
+          <span>/</span>
+          <a href="/#productos" class="hover:text-neutral-900 transition-colors">Productos</a>
+          <span>/</span>
+          <span class="text-neutral-900">Vinkula CRM</span>
+        </nav>
+
+        <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
+          <div>
+            <!-- Logo oficial de Vinkula -->
+            <div class="mb-6 inline-flex items-center gap-3 rounded-2xl border border-neutral-200 bg-white px-4 py-2.5 shadow-2xs">
+              <img src="/logos/vinkula-logo.svg" alt="Vinkula CRM Logo Oficial" class="h-8 w-auto object-contain" />
+              <span class="h-4 w-px bg-neutral-200"></span>
+              <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-violet-700">
+                <span class="h-2 w-2 rounded-full bg-violet-600 animate-pulse" />
+                CRM + WhatsApp IA
+              </span>
+            </div>
+
+            <h1 class="font-display text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl">
+              Vinkula CRM
+            </h1>
+            <p class="text-lg font-medium text-accent mt-1">
+              Suite CRM Inmobiliaria Multicanal, Bandeja WhatsApp Cloud API &amp; Chatbot IA 24/7
+            </p>
+
+            <p class="mt-4 text-base leading-relaxed text-neutral-600 sm:text-lg">
+              Desarrollada por <strong>Archity</strong> como plataforma independiente multi-tenant (<a href="https://vinkula.altoplanta.com/" target="_blank" rel="noopener" class="text-accent underline font-semibold">vinkula.altoplanta.com</a>), <strong>Vinkula CRM</strong> centraliza toda la fuerza de ventas inmobiliaria: combina una interfaz de alta densidad inspirada en <strong>Twenty CRM</strong> (Data Grid tipo hoja de cálculo y tableros Kanban) con una <strong>bandeja compartida multi-agente de WhatsApp Cloud API</strong> y un <strong>Agente de Inteligencia Artificial (Google Gemini)</strong> que califica prospectos, envía planos y agenda visitas en campo 24/7.
+            </p>
+
+            <div class="mt-8 flex flex-wrap items-center gap-3">
+              <a
+                href="https://vinkula.altoplanta.com/"
+                target="_blank"
+                rel="noopener"
+                class="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white shadow-xs transition-all hover:bg-accent-dark hover:shadow-md hover:shadow-accent/20"
+              >
+                Abrir vinkula.altoplanta.com
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                </svg>
+              </a>
+              <a
+                href="#workspace-crm"
+                class="inline-flex items-center justify-center rounded-lg border border-neutral-300 bg-white px-5 py-3 text-sm font-semibold text-neutral-700 transition-colors hover:bg-neutral-50"
+              >
+                Interactuar con Vista CRM
+              </a>
+            </div>
+
+            <div class="mt-10 grid grid-cols-3 gap-4 border-t border-neutral-200/80 pt-6 text-left">
+              <div>
+                <span class="block font-display text-2xl font-bold text-neutral-900">Twenty UI</span>
+                <span class="text-xs text-neutral-500">Data Grid + Kanban</span>
+              </div>
+              <div>
+                <span class="block font-display text-2xl font-bold text-accent">WhatsApp</span>
+                <span class="text-xs text-neutral-500">Meta Cloud API Oficial</span>
+              </div>
+              <div>
+                <span class="block font-display text-2xl font-bold text-neutral-900">Gemini IA</span>
+                <span class="text-xs text-neutral-500">Calificación 24/7</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mockup de Bandeja Compartida WhatsApp + Agente IA Gemini -->
+          <div class="relative">
+            <div class="overflow-hidden rounded-2xl border border-neutral-200/90 bg-white shadow-xl shadow-neutral-900/5">
+              <div class="flex items-center justify-between border-b border-neutral-100 bg-neutral-900 px-4 py-3 text-white">
+                <div class="flex items-center gap-2.5">
+                  <img src="/logos/vinkula-mark.svg" alt="Vinkula" class="h-5 w-5" />
+                  <span class="text-xs font-mono font-semibold">vinkula.altoplanta.com · Inbox &amp; AI Copilot</span>
+                </div>
+                <span class="rounded bg-violet-500/20 border border-violet-400/30 px-2 py-0.5 text-[10px] font-semibold text-violet-300">
+                  Agente IA Activo
+                </span>
+              </div>
+
+              <div class="p-5 space-y-4 bg-neutral-50/60">
+                <!-- Conversación WhatsApp simulada -->
+                <div class="space-y-2.5 text-xs">
+                  <div class="max-w-[85%] rounded-2xl rounded-tl-xs border border-neutral-200 bg-white p-3 text-neutral-700 shadow-2xs">
+                    <span class="block text-[10px] font-bold text-neutral-400 mb-0.5">Prospecto · +51 942 810 334 (WhatsApp)</span>
+                    Hola, vi el plano de Residencial Los Pinos en AltoPlanta. ¿Sigue disponible el Lote 02 frente a parque y cuál es la inicial?
+                  </div>
+
+                  <div class="ml-auto max-w-[88%] rounded-2xl rounded-tr-xs bg-neutral-900 p-3 text-white shadow-2xs">
+                    <div class="flex items-center justify-between text-[10px] text-violet-300 font-semibold mb-1">
+                      <span>Vinkula AI Agent (Google Gemini)</span>
+                      <span>Respuesta en 1.2s</span>
+                    </div>
+                    ¡Hola Carlos! Sí, el <strong>Lote 02 de la Manzana A (140 m² frente a parque)</strong> está <strong>Disponible</strong>. Su valor al contado es de <strong>S/ 58,800</strong> y puedes separarlo hoy con una inicial de <strong>S/ 5,880</strong> financiando el saldo hasta en 36 cuotas. ¿Te agendo una visita guiada para este sábado a las 10:00 AM?
+                  </div>
+
+                  <div class="max-w-[80%] rounded-2xl rounded-tl-xs border border-neutral-200 bg-white p-3 text-neutral-700 shadow-2xs">
+                    Excelente, sí por favor, el sábado a las 10:00 AM.
+                  </div>
+                </div>
+
+                <!-- Evento automático disparado en el CRM -->
+                <div class="rounded-xl border border-violet-200 bg-violet-50/70 p-3 text-xs flex items-center justify-between">
+                  <div>
+                    <strong class="text-violet-950 block">Acción Automática Ejecutada por Vinkula IA</strong>
+                    <span class="text-violet-700 text-[11px]">Lead movido a "Visita Agendada" · Lote A-02 vinculado · Asesor notificado</span>
+                  </div>
+                  <span class="rounded-md bg-white px-2 py-1 font-mono text-[10px] font-bold text-violet-700 border border-violet-200">
+                    SCORE 94%
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Workspace Interactivo: Vista Spreadsheet (Twenty Style) vs Embudo Kanban -->
+    <section id="workspace-crm" class="scroll-mt-20 py-16 sm:py-24 bg-neutral-50/50 border-b border-neutral-200/80">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Interfaz Inspirada en Twenty CRM</p>
+            <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-neutral-900">
+              Pipeline Comercial Inmobiliario en Tiempo Real
+            </h2>
+          </div>
+          <div class="inline-flex rounded-xl border border-neutral-200 bg-white p-1 shadow-2xs">
+            <button id="vk-tab-grid" type="button" class="rounded-lg bg-neutral-900 px-3.5 py-1.5 text-xs font-semibold text-white transition-colors">
+              Vista Spreadsheet (Grid)
+            </button>
+            <button id="vk-tab-kanban" type="button" class="rounded-lg px-3.5 py-1.5 text-xs font-semibold text-neutral-600 hover:text-neutral-900 transition-colors">
+              Vista Embudo Kanban
+            </button>
+          </div>
+        </div>
+
+        <!-- Vista 1: Spreadsheet Data Grid -->
+        <div id="vk-view-grid" class="overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-xs">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="border-b border-neutral-200 bg-neutral-50 text-[11px] font-bold uppercase tracking-wider text-neutral-500">
+                  <th class="py-3.5 px-4">Código</th>
+                  <th class="py-3.5 px-4">Prospecto / Cliente</th>
+                  <th class="py-3.5 px-4">Unidad de Interés (AltoPlanta)</th>
+                  <th class="py-3.5 px-4">Etapa del Embudo</th>
+                  <th class="py-3.5 px-4">Canal Origen</th>
+                  <th class="py-3.5 px-4">Score IA</th>
+                  <th class="py-3.5 px-4 text-right">Valor Estimado</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-neutral-100">
+                {leads.map((lead) => (
+                  <tr class="hover:bg-neutral-50/80 transition-colors">
+                    <td class="py-3.5 px-4 font-mono font-bold text-neutral-500">{lead.id}</td>
+                    <td class="py-3.5 px-4">
+                      <strong class="block font-semibold text-neutral-900">{lead.name}</strong>
+                      <span class="text-[11px] text-neutral-400">{lead.phone}</span>
+                    </td>
+                    <td class="py-3.5 px-4 font-medium text-neutral-700">{lead.project}</td>
+                    <td class="py-3.5 px-4">
+                      <span class="inline-flex rounded-md bg-accent-soft border border-accent/20 px-2 py-0.5 text-[11px] font-semibold text-accent">
+                        {lead.stage}
+                      </span>
+                    </td>
+                    <td class="py-3.5 px-4 text-neutral-600">{lead.channel}</td>
+                    <td class="py-3.5 px-4 font-mono font-bold text-emerald-700">{lead.score}</td>
+                    <td class="py-3.5 px-4 text-right font-display font-bold text-neutral-900">{lead.budget}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Vista 2: Tablero Kanban -->
+        <div id="vk-view-kanban" class="hidden grid gap-4 md:grid-cols-4">
+          {["Calificando IA", "Visita Agendada", "En Negociación", "Reserva Pagada"].map((stage) => (
+            <div class="rounded-2xl border border-neutral-200 bg-white p-4 shadow-2xs">
+              <div class="flex items-center justify-between pb-3 mb-3 border-b border-neutral-100">
+                <span class="text-xs font-bold text-neutral-900">{stage}</span>
+                <span class="rounded-full bg-neutral-100 px-2 py-0.5 text-[10px] font-bold text-neutral-600">
+                  {leads.filter((l) => l.stage === stage).length}
+                </span>
+              </div>
+              <div class="space-y-3">
+                {leads.filter((l) => l.stage === stage).map((l) => (
+                  <div class="rounded-xl border border-neutral-200 bg-neutral-50/70 p-3">
+                    <div class="flex items-center justify-between text-[10px] font-mono text-neutral-400">
+                      <span>{l.id}</span>
+                      <span class="text-emerald-700 font-bold">{l.score}</span>
+                    </div>
+                    <strong class="mt-1 block text-xs font-bold text-neutral-900">{l.name}</strong>
+                    <p class="mt-1 text-[11px] text-neutral-600">{l.project}</p>
+                    <div class="mt-2 pt-2 border-t border-neutral-200/60 flex items-center justify-between text-[11px]">
+                      <span class="text-neutral-400">Presupuesto</span>
+                      <strong class="font-bold text-accent">{l.budget}</strong>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Módulos Principales de Vinkula CRM -->
+    <section class="py-20 bg-white">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 md:grid-cols-3">
+          <div class="rounded-2xl border border-neutral-200/80 p-7 bg-neutral-50/50">
+            <span class="text-xs font-bold font-mono text-accent">01 · MULTI-TENANT SUBDOMAINS</span>
+            <h3 class="mt-2 font-display text-xl font-bold text-neutral-900">Workspaces por Inmobiliaria</h3>
+            <p class="mt-2 text-sm text-neutral-600 leading-relaxed">
+              Cada organización opera en su propio subdominio seguro (`empresa.vinkula.altoplanta.com`) con roles granulares para gerentes comerciales, supervisores y asesores de ventas.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-neutral-200/80 p-7 bg-neutral-50/50">
+            <span class="text-xs font-bold font-mono text-neutral-900">02 · WHATSAPP CLOUD API</span>
+            <h3 class="mt-2 font-display text-xl font-bold text-neutral-900">Bandeja Multi-Agente Oficial</h3>
+            <p class="mt-2 text-sm text-neutral-600 leading-relaxed">
+              Conexión directa con Meta WhatsApp Cloud API: asignación automática de conversaciones, plantillas HSM aprobadas, envío de brochures PDF y trazabilidad completa por lote.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-neutral-200/80 p-7 bg-neutral-50/50">
+            <span class="text-xs font-bold font-mono text-accent">03 · SINCRONIZACIÓN NATIVA</span>
+            <h3 class="mt-2 font-display text-xl font-bold text-neutral-900">Conectado a AltoPlanta &amp; Sencillo</h3>
+            <p class="mt-2 text-sm text-neutral-600 leading-relaxed">
+              Cuando un prospecto reserva un lote en el mapa de AltoPlanta, Vinkula actualiza el embudo automáticamente y transfiere el expediente a Sencillo para emitir el contrato y cronograma.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  const tabGrid = document.getElementById("vk-tab-grid");
+  const tabKanban = document.getElementById("vk-tab-kanban");
+  const viewGrid = document.getElementById("vk-view-grid");
+  const viewKanban = document.getElementById("vk-view-kanban");
+
+  tabGrid?.addEventListener("click", () => {
+    viewGrid?.classList.remove("hidden");
+    viewKanban?.classList.add("hidden");
+    tabGrid.className = "rounded-lg bg-neutral-900 px-3.5 py-1.5 text-xs font-semibold text-white transition-colors";
+    if (tabKanban) tabKanban.className = "rounded-lg px-3.5 py-1.5 text-xs font-semibold text-neutral-600 hover:text-neutral-900 transition-colors";
+  });
+
+  tabKanban?.addEventListener("click", () => {
+    viewKanban?.classList.remove("hidden");
+    viewGrid?.classList.add("hidden");
+    tabKanban.className = "rounded-lg bg-neutral-900 px-3.5 py-1.5 text-xs font-semibold text-white transition-colors";
+    if (tabGrid) tabGrid.className = "rounded-lg px-3.5 py-1.5 text-xs font-semibold text-neutral-600 hover:text-neutral-900 transition-colors";
+  });
+</script>

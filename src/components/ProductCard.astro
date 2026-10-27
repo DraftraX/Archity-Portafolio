@@ -1,15 +1,20 @@
 ---
-// Tarjeta individual de producto con paleta estricta: Azul, Negro y Blanco
 import TechBadge from "./TechBadge.astro";
-interface Product {
+
+export interface Product {
   name: string;
   category: string;
   description: string;
   tags: string[];
-  image?: string;
+  logo: string;
+  logoMark?: string;
+  logoBg?: string;
+  logoClass?: string;
   badge?: string;
-  status: string;   // "En producción" | "Beta" | "En desarrollo"
+  status: string;
   demoUrl: string;
+  demoLabel?: string;
+  repoUrl?: string;
   landingUrl?: string;
   features?: string[];
 }
@@ -21,68 +26,69 @@ interface Props {
 const { product } = Astro.props;
 
 const statusDot: Record<string, string> = {
-  "En producción": "bg-accent",
-  "Beta": "bg-neutral-900",
-  "En desarrollo": "bg-neutral-400",
+  "En producción": "bg-emerald-500",
+  "Desplegado en Vercel": "bg-accent",
+  "En desarrollo": "bg-amber-500",
+  "SUNAT Beta / Front Activo": "bg-accent",
 };
 ---
 
 <article class="group flex flex-col overflow-hidden rounded-2xl border border-neutral-200/80 bg-white transition duration-300 hover:-translate-y-1 hover:border-neutral-300 hover:shadow-xl hover:shadow-neutral-900/5">
 
-  <!-- Header visual de la tarjeta -->
-  <div class="relative aspect-[16/9] overflow-hidden border-b border-neutral-100 bg-neutral-50">
-    {
-      product.image ? (
-        <img
-          src={product.image}
-          alt={`Captura de referencia de ${product.name}`}
-          width="800"
-          height="450"
-          loading="lazy"
-          class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
-        />
-      ) : (
-        <div class="relative flex h-full w-full flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-neutral-50 via-neutral-100/50 to-neutral-100">
-          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-white border border-neutral-200 shadow-xs text-neutral-800 font-display font-bold text-xl mb-2 group-hover:border-accent group-hover:text-accent transition-colors">
-            {product.name.slice(0, 2).toUpperCase()}
-          </div>
-          <span class="text-xs font-semibold text-neutral-500">{product.category}</span>
-          <span class="text-[11px] text-neutral-400 mt-0.5">Sistema en producción real</span>
-        </div>
-      )
-    }
+  <!-- Header visual con el Logo Oficial del Proyecto -->
+  <div class={`relative aspect-[16/9] overflow-hidden border-b border-neutral-100 flex flex-col items-center justify-center p-8 transition-colors ${product.logoBg ?? "bg-gradient-to-br from-neutral-50 via-white to-neutral-100/80"}`}>
+    <!-- Patrón sutil arquitectónico de fondo -->
+    <div class="pointer-events-none absolute inset-0 opacity-[0.04]" style="background-image: radial-gradient(#09090b 1px, transparent 1px); background-size: 16px 16px;"></div>
 
-    <!-- Badges superiores (azul, negro y blanco) -->
-    <div class="absolute left-3 top-3 flex items-center gap-1.5">
-      <span class="inline-flex items-center gap-1.5 rounded-full bg-white/95 px-2.5 py-1 text-[11px] font-medium text-neutral-700 shadow-xs backdrop-blur">
+    <a href={product.landingUrl ?? product.demoUrl} class="relative z-10 flex flex-col items-center justify-center w-full h-full focus:outline-hidden" aria-label={`Ver detalles de ${product.name}`}>
+      <img
+        src={product.logo}
+        alt={`Logo oficial de ${product.name}`}
+        loading="lazy"
+        class={`max-h-24 w-auto max-w-[220px] object-contain transition duration-500 group-hover:scale-105 ${product.logoClass ?? ""}`}
+      />
+    </a>
+
+    <!-- Badges superiores de estado -->
+    <div class="absolute left-3.5 top-3.5 z-20 flex flex-wrap items-center gap-1.5">
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-white/95 px-2.5 py-1 text-[11px] font-semibold text-neutral-800 shadow-xs backdrop-blur border border-neutral-200/60">
         <span class={`h-1.5 w-1.5 rounded-full ${statusDot[product.status] ?? "bg-accent"}`} aria-hidden="true" />
         {product.status}
       </span>
       {product.badge && (
-        <span class="rounded-full bg-accent-soft px-2.5 py-1 text-[11px] font-semibold text-accent border border-accent/20">
+        <span class="rounded-full bg-accent-soft px-2.5 py-1 text-[11px] font-semibold text-accent border border-accent/20 backdrop-blur">
           {product.badge}
         </span>
       )}
     </div>
   </div>
 
-  <!-- Contenido -->
+  <!-- Contenido de la tarjeta -->
   <div class="flex grow flex-col p-6">
-    <div class="flex items-baseline justify-between gap-2">
-      <div>
-        <span class="text-[11px] font-bold uppercase tracking-wider text-accent">{product.category}</span>
-        <h3 class="font-display text-xl font-bold text-neutral-900 mt-0.5">{product.name}</h3>
+    <div class="flex items-center gap-3">
+      <img
+        src={product.logoMark ?? product.logo}
+        alt=""
+        class="h-9 w-9 shrink-0 rounded-lg border border-neutral-200/80 bg-white p-1 object-contain shadow-2xs"
+      />
+      <div class="min-w-0">
+        <span class="block text-[11px] font-bold uppercase tracking-wider text-accent truncate">{product.category}</span>
+        <h3 class="font-display text-xl font-bold text-neutral-900 truncate">
+          <a href={product.landingUrl ?? product.demoUrl} class="hover:text-accent transition-colors">
+            {product.name}
+          </a>
+        </h3>
       </div>
     </div>
 
-    <p class="mt-2.5 text-sm leading-relaxed text-neutral-600">{product.description}</p>
+    <p class="mt-3 text-sm leading-relaxed text-neutral-600">{product.description}</p>
 
-    <!-- Lista de características con iconos azul eléctrico -->
+    <!-- Lista de características reales -->
     {product.features && product.features.length > 0 && (
-      <ul class="my-3 space-y-1.5 border-t border-b border-neutral-100 py-3 text-xs text-neutral-600">
+      <ul class="my-3.5 space-y-1.5 border-t border-b border-neutral-100 py-3 text-xs text-neutral-600">
         {product.features.map((f) => (
-          <li class="flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-accent shrink-0" viewBox="0 0 20 20" fill="currentColor">
+          <li class="flex items-start gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-accent shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
             </svg>
             <span>{f}</span>
@@ -91,8 +97,8 @@ const statusDot: Record<string, string> = {
       </ul>
     )}
 
-    <!-- Tags con SVGs oficiales -->
-    <ul class="mt-2 flex flex-wrap gap-1.5" aria-label="Tecnologías utilizadas">
+    <!-- Tags tecnológicos -->
+    <ul class="mt-auto pt-1 flex flex-wrap gap-1.5" aria-label="Tecnologías utilizadas">
       {
         product.tags.map((t) => (
           <li>
@@ -103,26 +109,42 @@ const statusDot: Record<string, string> = {
     </ul>
 
     <!-- Botones de acción -->
-    <div class="mt-6 flex flex-wrap items-center justify-between gap-2 border-t border-neutral-100 pt-4">
-      {product.landingUrl && (
-        <a
-          href={product.landingUrl}
-          class="inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-semibold text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 transition-colors"
-        >
-          Ver landing dedicada
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-3.5 w-3.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-          </svg>
-        </a>
-      )}
+    <div class="mt-5 flex flex-wrap items-center justify-between gap-2 border-t border-neutral-100 pt-4">
+      <div class="flex items-center gap-2">
+        {product.landingUrl && (
+          <a
+            href={product.landingUrl}
+            class="inline-flex items-center gap-1 rounded-lg px-3 py-2 text-xs font-semibold text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 transition-colors border border-neutral-200/80"
+          >
+            Ficha técnica
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-3.5 w-3.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+          </a>
+        )}
+        {product.repoUrl && (
+          <a
+            href={product.repoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1 rounded-lg px-2.5 py-2 text-xs font-medium text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 transition-colors"
+            title="Ver repositorio en GitHub"
+          >
+            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+            </svg>
+            <span>GitHub</span>
+          </a>
+        )}
+      </div>
 
       <a
         href={product.demoUrl}
-        target="_blank"
-        rel="noopener"
-        class="inline-flex items-center gap-1.5 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white shadow-xs transition-colors hover:bg-accent-dark ml-auto"
+        target={product.demoUrl.startsWith("http") ? "_blank" : undefined}
+        rel={product.demoUrl.startsWith("http") ? "noopener noreferrer" : undefined}
+        class="inline-flex items-center gap-1.5 rounded-lg bg-accent px-4 py-2 text-xs font-semibold text-white shadow-xs transition-colors hover:bg-accent-dark ml-auto"
       >
-        Visitar sitio oficial
+        {product.demoLabel ?? "Visitar sitio oficial"}
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-3.5 w-3.5" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5 19.5 4.5m0 0H8.25m11.25 0v11.25" />
         </svg>

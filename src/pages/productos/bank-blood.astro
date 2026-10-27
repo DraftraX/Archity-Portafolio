@@ -1,0 +1,204 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+const clinicalServices = [
+  { step: "01", name: "Admisión y Registro", desc: "Identificación del donante voluntario en el sistema regional y apertura de ficha clínica." },
+  { step: "02", name: "Triaje de Signos Vitales", desc: "Evaluación de peso, talla, presión arterial, frecuencia cardíaca y temperatura." },
+  { step: "03", name: "Pre-chequeo Hematológico", desc: "Determinación rápida de hemoglobina, hematocrito y tipificación preliminar." },
+  { step: "04", name: "Entrevista Médica y Psicológica", desc: "Evaluación confidencial de antecedentes clínicos para garantizar seguridad transfusional." },
+  { step: "05", name: "Extracción de Sangre Total", desc: "Flebotomía estéril en sillones ergonómicos bajo monitoreo especializado (450 ml)." },
+  { step: "06", name: "Donación por Aféresis", desc: "Separación celular automatizada para obtención selectiva de plaquetas o plasma." },
+  { step: "07", name: "Tamizaje Serológico", desc: "Pruebas de quimioluminiscencia para VIH, Hepatitis B/C, Chagas, Sífilis y HTLV I-II." },
+  { step: "08", name: "Inmunohematología", desc: "Tipificación ABO/Rh globular e inversa, pruebas cruzadas y rastreo de anticuerpos." },
+  { step: "09", name: "Fraccionamiento y Envío a Hemored", desc: "Separación en paquete globular, plasma fresco congelado y crioprecipitado para hospitales de Loreto." },
+];
+---
+
+<Layout
+  title="Centro Hemodador Regional de Loreto — Banco de Sangre Tipo II (BankBlood) | Archity"
+  description="Portal clínico e institucional desarrollado por Archity para el Centro Hemodador Regional de Loreto — Banco de Sangre Tipo II en Iquitos: 15 servicios de hemoterapia, aféresis, inmunohematología y campañas de donación."
+>
+  <Header />
+
+  <main class="ca-grid">
+    <!-- Hero del Banco de Sangre Loreto con su logo oficial -->
+    <section class="border-b border-[var(--ca-ink)]/15 py-16 sm:py-24">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+
+        <!-- Breadcrumbs -->
+        <nav class="flex items-center gap-2 text-xs font-medium text-neutral-500 mb-8" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-neutral-900 transition-colors">Inicio</a>
+          <span>/</span>
+          <a href="/#productos" class="hover:text-neutral-900 transition-colors">Productos</a>
+          <span>/</span>
+          <span class="text-neutral-900">Banco de Sangre Loreto</span>
+        </nav>
+
+        <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
+          <div>
+            <!-- Logo oficial del Centro Hemodador Regional de Loreto -->
+            <div class="mb-6 inline-flex items-center gap-3 rounded-2xl border border-neutral-200 bg-white px-4 py-2.5 shadow-2xs">
+              <img src="/logos/bankblood-logo.png" alt="Banco de Sangre Loreto Logo Oficial" class="h-10 w-auto object-contain" />
+              <span class="h-5 w-px bg-neutral-200"></span>
+              <div>
+                <span class="block text-xs font-bold text-neutral-900">CENTRO HEMODADOR REGIONAL DE LORETO</span>
+                <span class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-red-600">
+                  <span class="h-1.5 w-1.5 rounded-full bg-red-600 animate-pulse" />
+                  Banco de Sangre Tipo II · Iquitos
+                </span>
+              </div>
+            </div>
+
+            <h1 class="font-display text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl">
+              Banco de Sangre Tipo II — Loreto
+            </h1>
+            <p class="text-lg font-medium text-accent mt-1">
+              Plataforma Institucional de Hemoterapia, Medicina Transfusional &amp; Campañas de Donación
+            </p>
+
+            <p class="mt-4 text-base leading-relaxed text-neutral-600 sm:text-lg">
+              Desarrollada por <strong>Archity</strong> (<a href="https://bank-blood-lake.vercel.app/" target="_blank" rel="noopener" class="text-accent underline font-semibold">bank-blood-lake.vercel.app</a>), esta plataforma digitaliza la presencia y orientación clínica del <strong>Centro Hemodador Regional de Loreto (Banco de Sangre Tipo II)</strong> en Iquitos (Psje. Los Rosales S/N, San Juan Bautista), articulando los <strong>15 servicios del circuito hemoterapéutico</strong>, la programación de campañas regionales, extracciones domiciliarias y la red hospitalaria (Hemored).
+            </p>
+
+            <div class="mt-8 flex flex-wrap items-center gap-3">
+              <a
+                href="https://bank-blood-lake.vercel.app/"
+                target="_blank"
+                rel="noopener"
+                class="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white shadow-xs transition-all hover:bg-accent-dark hover:shadow-md hover:shadow-accent/20"
+              >
+                Visitar Portal en Vivo
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                </svg>
+              </a>
+
+              <a
+                href="https://github.com/DraftraX/BankBlood"
+                target="_blank"
+                rel="noopener"
+                class="inline-flex items-center gap-2 rounded-lg border border-neutral-300 bg-white px-5 py-3 text-sm font-semibold text-neutral-700 transition-colors hover:bg-neutral-50"
+              >
+                Repositorio GitHub ↗
+              </a>
+            </div>
+
+            <div class="mt-10 grid grid-cols-3 gap-4 border-t border-neutral-200/80 pt-6 text-left">
+              <div>
+                <span class="block font-display text-2xl font-bold text-neutral-900">15 Áreas</span>
+                <span class="text-xs text-neutral-500">Circuito Clínico Completo</span>
+              </div>
+              <div>
+                <span class="block font-display text-2xl font-bold text-accent">Tipo II</span>
+                <span class="text-xs text-neutral-500">Categoría PRONAHEBAS</span>
+              </div>
+              <div>
+                <span class="block font-display text-2xl font-bold text-neutral-900">Hemored</span>
+                <span class="text-xs text-neutral-500">Abastecimiento Regional</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Simulador Interactivo de Compatibilidad Sanguínea ABO/Rh -->
+          <div class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-xl shadow-neutral-900/5">
+            <div class="flex items-center justify-between border-b border-neutral-100 pb-4 mb-5">
+              <div class="flex items-center gap-2.5">
+                <img src="/logos/bankblood-logo.png" alt="BankBlood" class="h-7 w-7 object-contain" />
+                <div>
+                  <h3 class="font-display text-base font-bold text-neutral-900">Módulo de Compatibilidad Sanguínea</h3>
+                  <p class="text-[11px] text-neutral-500">Selecciona un grupo ABO/Rh para verificar donación y recepción</p>
+                </div>
+              </div>
+              <span class="rounded-full bg-red-50 border border-red-200 px-2.5 py-1 text-[10px] font-bold text-red-700">
+                Inmunohematología
+              </span>
+            </div>
+
+            <div class="grid grid-cols-4 gap-2 mb-5">
+              {["O-", "O+", "A-", "A+", "B-", "B+", "AB-", "AB+"].map((group, idx) => (
+                <button
+                  type="button"
+                  data-group={group}
+                  class={`bb-group-btn rounded-xl border py-2.5 font-display text-sm font-bold transition-all ${
+                    idx === 1
+                      ? "border-red-600 bg-red-600 text-white shadow-xs"
+                      : "border-neutral-200 bg-neutral-50 text-neutral-800 hover:border-red-300"
+                  }`}
+                >
+                  {group}
+                </button>
+              ))}
+            </div>
+
+            <div class="space-y-3 text-xs">
+              <div class="rounded-xl border border-neutral-200 bg-neutral-50 p-3.5">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-neutral-400 block">Puede Donar Glóbulos Rojos a:</span>
+                <strong id="bb-can-donate" class="mt-1 block font-display text-base font-bold text-neutral-900">O+, A+, B+, AB+</strong>
+              </div>
+              <div class="rounded-xl border border-neutral-200 bg-neutral-50 p-3.5">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-neutral-400 block">Puede Recibir Glóbulos Rojos de:</span>
+                <strong id="bb-can-receive" class="mt-1 block font-display text-base font-bold text-accent">O+, O-</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Circuito Clínico del Centro Hemodador -->
+    <section class="py-20 bg-white">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent">Arquitectura de Información Médica</p>
+          <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
+            Etapas del Circuito de Hemoterapia Digitalizado
+          </h2>
+        </div>
+
+        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {clinicalServices.map((s) => (
+            <div class="rounded-2xl border border-neutral-200/80 p-6 bg-neutral-50/50 hover:bg-white hover:shadow-md transition">
+              <span class="text-xs font-mono font-bold text-red-600">ETAPA {s.step}</span>
+              <h3 class="mt-1.5 font-display text-lg font-bold text-neutral-900">{s.name}</h3>
+              <p class="mt-2 text-xs leading-relaxed text-neutral-600">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  const compatibility: Record<string, { donate: string; receive: string }> = {
+    "O-": { donate: "Todos los grupos (Donante Universal: O-, O+, A-, A+, B-, B+, AB-, AB+)", receive: "Únicamente O-" },
+    "O+": { donate: "O+, A+, B+, AB+", receive: "O+, O-" },
+    "A-": { donate: "A-, A+, AB-, AB+", receive: "A-, O-" },
+    "A+": { donate: "A+, AB+", receive: "A+, A-, O+, O-" },
+    "B-": { donate: "B-, B+, AB-, AB+", receive: "B-, O-" },
+    "B+": { donate: "B+, AB+", receive: "B+, B-, O+, O-" },
+    "AB-": { donate: "AB-, AB+", receive: "AB-, A-, B-, O-" },
+    "AB+": { donate: "Únicamente AB+", receive: "Todos los grupos (Receptor Universal)" },
+  };
+
+  const btns = document.querySelectorAll(".bb-group-btn");
+  const donateEl = document.getElementById("bb-can-donate");
+  const receiveEl = document.getElementById("bb-can-receive");
+
+  btns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      btns.forEach((b) => {
+        b.className = "bb-group-btn rounded-xl border border-neutral-200 bg-neutral-50 py-2.5 font-display text-sm font-bold text-neutral-800 hover:border-red-300 transition-all";
+      });
+      btn.className = "bb-group-btn rounded-xl border border-red-600 bg-red-600 py-2.5 font-display text-sm font-bold text-white shadow-xs transition-all";
+      const g = btn.getAttribute("data-group") || "O+";
+      if (donateEl && compatibility[g]) donateEl.textContent = compatibility[g].donate;
+      if (receiveEl && compatibility[g]) receiveEl.textContent = compatibility[g].receive;
+    });
+  });
+</script>

@@ -1,92 +1,174 @@
 ---
-// Contenedor del grid de productos reales de Archity y Demos Interactivas
-import ProductCard from "./ProductCard.astro";
+// Contenedor del grid de productos y proyectos reales desarrollados por Archity
+import ProductCard, { type Product } from "./ProductCard.astro";
 
-const products = [
+const products: Product[] = [
   {
     name: "AltoPlanta",
-    category: "SaaS de Tributo Inmobiliario & Catastro",
+    category: "PropTech SaaS & Cartografía CAD/360°",
     badge: "SaaS Propio Archity",
-    description: "Plataforma digital en Perú para la determinación, emisión, fiscalización y liquidación del Impuesto Predial (D. Leg. 776), Arbitrios Municipales y Alcabala a nivel nacional.",
+    description: "Ecosistema PropTech líder en Perú para la digitalización cartográfica de proyectos y lotizaciones urbanas: planos CAD interactivos (DXF/GCP), recorridos virtuales 360°, portales White-Label y app móvil con GPS satelital.",
     features: [
-      "Liquidación automática de Impuesto Predial por tramos acumulativos de UIT",
-      "Prorrateo y cálculo de Arbitrios Municipales por ordenanzas distritales",
-      "Emisión masiva de Cuponeras Digitales (HR y PU) y estados de cuenta en PDF",
-      "Mapeo catastral urbano para fiscalización y detección de predios subvaluados",
+      "Explorador cartográfico Google Maps JS API con vuelos cinemáticos van Wijk",
+      "Digitalización de planos CAD (.DXF) georreferenciados por manzana y lote",
+      "Estudio de Tours Virtuales 360° equirrectangulares con hotspots interactivos",
+      "Portales inmobiliarios White-Label con 8 identidades y pasarela Mercado Pago",
     ],
-    tags: ["Tributo Inmobiliario", "Predial & Arbitrios", "Alcabala", "Cuponeras PDF", "PostGIS / Cloud"],
-    image: "",
+    tags: ["Astro", "Django", "TypeScript", "PostgreSQL", "Tours 360°", "Docker"],
+    logo: "/logos/altoplanta-logo.svg",
+    logoMark: "/logos/altoplanta-symbol.svg",
+    logoBg: "bg-gradient-to-br from-orange-50/70 via-white to-amber-50/40",
     status: "En producción",
     demoUrl: "https://altoplanta.com/",
+    demoLabel: "Visitar altoplanta.com",
     landingUrl: "/productos/altoplanta",
   },
   {
-    name: "ERP Grupo Pineda",
-    category: "ERP Consorcio Empresarial",
-    badge: "Consorcio Empresarial",
-    description: "Sistema ERP integral multiempresa a medida para el consorcio líder de infraestructura, minería no metálica y plantas automatizadas de concreto en la Amazonía peruana.",
+    name: "Vinkula CRM",
+    category: "CRM Multi-Tenant & IA Conversacional",
+    badge: "Microservicio SaaS",
+    description: "Suite CRM multi-tenant independiente (vinkula.altoplanta.com) con grilla de datos tipo hoja de cálculo, embudo Kanban comercial y Chatbot con IA (Gemini) 24/7 en WhatsApp Cloud API.",
     features: [
-      "Gestión multiempresa: Plantas MATEPCO, Minería ROCAFER y Obras Civiles",
-      "Telemetría en tiempo real de Balanza Electrónica camionera y pesaje en canteras",
-      "Monitoreo de Plantas de Concreto en Tarapoto, Moyobamba y Chachapoyas",
-      "Control de flota pesada, abastecimiento de combustible y guías electrónicas",
+      "Chatbot con IA (Gemini) 24/7 en WhatsApp: calificación de leads y agenda de visitas",
+      "Embudo Kanban interactivo con proyección de ingresos (forecasting) y cierres",
+      "Spreadsheet Data Grid reactivo con cálculo de agregaciones en tiempo real",
+      "Bandeja colaborativa multi-agente y subdominios dinámicos por empresa",
     ],
-    tags: ["ERP Industrial", "Consorcio Empresarial", "Minería & Concreto", "Telemetría Balanzas", "SQL"],
-    image: "",
+    tags: ["Astro", "React", "TypeScript", "Django", "PostgreSQL"],
+    logo: "/logos/vinkula-logo.svg",
+    logoMark: "/logos/vinkula-mark.svg",
+    logoBg: "bg-gradient-to-br from-orange-50/60 via-white to-neutral-50",
+    status: "En producción",
+    demoUrl: "https://vinkula.altoplanta.com/",
+    demoLabel: "Abrir Vinkula CRM",
+    landingUrl: "/productos/vinkula",
+  },
+  {
+    name: "Sencillo",
+    category: "FinTech & Cobranza Inmobiliaria",
+    badge: "Microservicio FinTech",
+    description: "Plataforma de automatización integral de ventas a plazos y cobranzas (sencillo.altoplanta.com): cronogramas bajo método francés, kardex digital auditable y recaudación en piloto automático con Mercado Pago.",
+    features: [
+      "Cronogramas de amortización inteligentes (Método Francés o 0% TEA/TNA) y mora diaria",
+      "Cobro online por cuota con Mercado Pago y conciliación automática vía Webhooks",
+      "Generación automática de contratos vinculando comprador, lote y estado de cuenta",
+      "Kardex digital auditable, emisión de recibos en PDF y recordatorios por WhatsApp",
+    ],
+    tags: ["Astro", "Python", "Django", "PostgreSQL", "PDF"],
+    logo: "/logos/sencillo-logo.svg",
+    logoMark: "/logos/sencillo-mark.svg",
+    logoBg: "bg-gradient-to-br from-amber-50/70 via-white to-yellow-50/40",
+    status: "En producción",
+    demoUrl: "https://sencillo.altoplanta.com/",
+    demoLabel: "Abrir Sencillo",
+    landingUrl: "/productos/sencillo",
+  },
+  {
+    name: "ERP Grupo Pineda",
+    category: "ERP Consorcio Industrial & Minería",
+    badge: "Consorcio Empresarial",
+    description: "Sistema ERP integral multiempresa desarrollado a medida para el consorcio líder en infraestructura, plantas de concreto premezclado MATEPCO y minería no metálica ROCAFER en el nororiente peruano.",
+    features: [
+      "Gestión multiempresa integrada: Concretera MATEPCO, Cantera ROCAFER (780 TM/día) y PRINCOR",
+      "Control vehicular y pesaje de balanza en m³ y TM con Guías de Remisión Electrónicas",
+      "Almacén, inventarios y trazabilidad por Kardex en Tarapoto, Moyobamba, Chachapoyas y Picota",
+      "Seguridad por roles, auditoría estricta y app Android con modo Device Owner",
+    ],
+    tags: ["Astro", "Django", "Python", "PostgreSQL", "Docker", "Tailwind"],
+    logo: "/logos/grupo-pineda-logo.svg",
+    logoMark: "/logos/grupo-pineda-mark.svg",
+    logoBg: "bg-gradient-to-br from-slate-50 via-white to-blue-50/40",
     status: "En producción",
     demoUrl: "https://grupopineda.pe/",
+    demoLabel: "Visitar grupopineda.pe",
     landingUrl: "/productos/grupo-pineda",
   },
-];
-
-const interactiveDemos = [
   {
-    title: "Empresas B2B & ROI",
-    category: "Corporativo B2B",
-    badge: "Calculadora ROI",
-    description: "Captación de clientes corporativos con calculadora interactiva de retorno de inversión, agenda de demos y planes a medida.",
-    url: "/demos/landing-empresa",
-    tags: ["Calculadora ROI", "Agendador B2B", "Enterprise"],
+    name: "Inmobiliaria Flamingo",
+    category: "Showroom Virtual 360° & Masterplan",
+    badge: "Proyecto Residencial",
+    description: "Showroom Virtual Interactivo y portal escénico para Proyecto Residencial Flamingo: arquitectura multicapa de video de dron (0ms crossfade), masterplan vectorial SVG de 133 lotes y comparador Día/Noche.",
+    features: [
+      "Overlay vectorial SVG milimétrico de 133 lotes en 8 manzanas (Mz K a Mz R) en tiempo real",
+      "Scrollytelling cinemático con GSAP ScrollTrigger y conmutador interactivo Día/Noche",
+      "Explorador de 4 modelos de residencia (Coral, Brisa, Arena, Flamingo Imperial) y Tour 360°",
+      "Calibrador visual en vivo de polígonos SVG con homografía de 40° y bordes OpenCV",
+    ],
+    tags: ["Astro", "React", "Tailwind", "TypeScript", "Tours 360°"],
+    logo: "/logos/flamingo-logo.png",
+    logoMark: "/logos/flamingo-logo.png",
+    logoBg: "bg-[#e3daf7]",
+    logoClass: "max-h-32 rounded-xl",
+    status: "En desarrollo",
+    demoUrl: "https://proyect-flamingo.vercel.app/",
+    demoLabel: "Ver Showroom en Vivo",
+    repoUrl: "https://github.com/DraftraX/PROYECT-FLAMINGO",
+    landingUrl: "/productos/proyect-flamingo",
   },
   {
-    title: "Tienda E-Commerce",
-    category: "Comercio Digital",
-    badge: "Paginación & Carrito",
-    description: "Catálogo con paginación funcional, drawer de carrito deslizable, cupones de descuento y checkout simulado con Yape.",
-    url: "/demos/ecommerce",
-    tags: ["Paginación Front", "Drawer Carrito", "Cupones"],
+    name: "Banco de Sangre Loreto",
+    category: "Portal Institucional & Hemoterapia",
+    badge: "Salud Pública · Tipo II",
+    description: "Plataforma web oficial del Centro Hemodador Regional de Loreto (Banco de Sangre Tipo II) en Iquitos: difusión de campañas regionales, triaje y procesos clínicos de hemoterapia y captación de donantes voluntarios.",
+    features: [
+      "Módulos clínicos completos: Admisión, Triaje, Pre-tamizaje, Extracción, Tamizaje e Inmunohematología",
+      "Gestión de Envíos Hemored, Donación por Aféresis y Extracciones Domiciliarias",
+      "Red de sedes interconectadas: Hospital Regional, Hospital Iquitos y Clínica San Juan",
+      "Arquitectura modular de fragmentos dinámicos, noticias regionales y redes sincronizadas",
+    ],
+    tags: ["JavaScript", "HTML5 / CSS3", "Bootstrap 5", "Thymeleaf"],
+    logo: "/logos/bankblood-logo.png",
+    logoMark: "/logos/bankblood-logo.png",
+    logoBg: "bg-gradient-to-br from-rose-50/70 via-white to-red-50/40",
+    logoClass: "max-h-28",
+    status: "Desplegado en Vercel",
+    demoUrl: "https://bank-blood-lake.vercel.app/",
+    demoLabel: "Ver Portal en Vivo",
+    repoUrl: "https://github.com/DraftraX/BankBlood",
+    landingUrl: "/productos/bank-blood",
   },
   {
-    title: "Restaurante & Brasas",
-    category: "Gastronomía",
-    badge: "Carta Paginada",
-    description: "Menú digital con paginación por categorías, comanda de delivery en tiempo real y reserva de mesas interactiva.",
-    url: "/demos/restaurante",
-    tags: ["Menú Paginado", "Reserva Mesas", "Delivery WhatsApp"],
+    name: "RestoManager 3D · RESTORY",
+    category: "Sistema Operativo de Restobar & 3D",
+    badge: "Motor 3D Three.js",
+    description: "Sistema integral de gestión para restobares con Planificador de Planta 3D interactivo (React Three Fiber + Three.js), menú digital con video HD por plato, deducción atómica de inventario por receta y Kanban de comandas.",
+    features: [
+      "Planificador de Salón 3D (12m x 10m) con Drag-and-Drop, estados de mesa en vivo y rutas de evacuación",
+      "Menú digital interactivo con reproductor de video HTML5 por platillo y selector PEN / USD",
+      "Deducción atómica de stock de ingredientes por receta en transacciones SQLite con ROLLBACK",
+      "Panel Admin JWT con Kanban de órdenes en vivo, facturación PDF y control de repartidores",
+    ],
+    tags: ["Astro", "React", "Node.js", "TypeScript", "Docker", "Tailwind"],
+    logo: "/logos/restory-logo.png",
+    logoMark: "/logos/restory-logo.png",
+    logoBg: "bg-[#7A1C1C]",
+    logoClass: "max-h-28 rounded-lg",
+    status: "En producción",
+    demoUrl: "/productos/restorant-system#simulador-3d",
+    demoLabel: "Explorar Sistema 3D",
+    repoUrl: "https://github.com/DraftraX/restorant_system",
+    landingUrl: "/productos/restorant-system",
   },
   {
-    title: "Botica & Farmacia",
-    category: "Salud & Farmacia",
-    badge: "Buscador Paginado",
-    description: "Catálogo farmacéutico con paginación funcional, búsqueda por principio activo, control de recetas y pedido express.",
-    url: "/demos/botica",
-    tags: ["Paginación", "Receta Médica", "Despacho 45min"],
-  },
-  {
-    title: "Clínica Veterinaria",
-    category: "Pet Care & Salud",
-    badge: "Citas & Pet Shop",
-    description: "Agendador interactivo de consultas médicas/grooming para mascotas y tienda pet shop con paginación funcional.",
-    url: "/demos/veterinaria",
-    tags: ["Citas Mascotas", "Pet Shop Paginado", "Urgencias"],
-  },
-  {
-    title: "Portal Inmobiliario",
-    category: "PropTech & Vivienda",
-    badge: "Simulador Cuotas",
-    description: "Búsqueda avanzada de inmuebles con paginación funcional, filtros por distrito/precio y simulador de crédito hipotecario.",
-    url: "/demos/inmobiliaria",
-    tags: ["Inmuebles Paginados", "Crédito Hipotecario", "Visitas"],
+    name: "Archity Billing Service",
+    category: "Facturación Electrónica SUNAT · UBL 2.1",
+    badge: "Microservicio & Consola Front",
+    description: "Motor y consola front-end multi-tenant de facturación electrónica directa con SUNAT (SOAP) y OSE: emisión de Facturas (01), Boletas (03), Notas de Crédito/Débito, firma XMLDSig RSA-SHA256, CDR oficial y PDF con QR.",
+    features: [
+      "Emisión UBL 2.1 (Facturas, Boletas, Notas Crédito/Débito) y UBL 2.0 (Resumen Diario RC y Bajas RA)",
+      "Firma digital criptográfica XMLDSig (RSA-SHA256) con certificados .pfx encriptados en AES-256 Fernet",
+      "Consola Front-End interactiva de emisión en vivo, visor XML UBL 2.1 y generador PDF A4/Ticket con QR",
+      "Webhooks firmados con HMAC-SHA256 (X-Archity-Signature) y SDKs nativos para Python, Node.js/TS y PHP",
+    ],
+    tags: ["Django", "Python", "PostgreSQL", "Redis", "Docker", "TypeScript", "PDF"],
+    logo: "/logos/billing-logo.svg",
+    logoMark: "/logos/billing-mark.svg",
+    logoBg: "bg-gradient-to-br from-blue-50/80 via-white to-indigo-50/40",
+    status: "SUNAT Beta / Front Activo",
+    demoUrl: "/productos/billing-service#emisor-sunat",
+    demoLabel: "Probar Emisor SUNAT",
+    repoUrl: "https://github.com/DraftraX/billing-service",
+    landingUrl: "/productos/billing-service",
   },
 ];
 ---
@@ -95,89 +177,43 @@ const interactiveDemos = [
   <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
 
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
-      <div class="max-w-xl">
+      <div class="max-w-2xl">
         <p class="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
           <span class="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
-          Sistemas en Producción Real
+          Portafolio Oficial · 100% Proyectos Reales
         </p>
         <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
-          Nuestros Productos &amp; Desarrollos Insignia
+          Nuestros Productos, Microservicios &amp; Desarrollos Reales
         </h2>
         <p class="mt-3 leading-relaxed text-neutral-600">
-          En Archity construimos software que opera en industrias reales: desde plataformas SaaS de tributo inmobiliario hasta ERPs de consorcios a gran escala.
+          Ecosistemas SaaS propios y sistemas empresariales desarrollados por <strong>Archity</strong>: desde plataformas PropTech con cartografía CAD/360°, CRM con IA y motores FinTech hasta ERPs industriales, portales de salud, sistemas restobar 3D y facturación electrónica SUNAT.
         </p>
       </div>
 
-      <!-- Banner rápido de contacto para nuevos proyectos -->
+      <!-- Cinta de logotipos oficiales -->
       <div class="rounded-xl border border-neutral-200/80 bg-neutral-50/80 p-4 text-xs text-neutral-600 max-w-xs">
-        <strong class="block text-neutral-900 font-semibold mb-1">¿Tienes un proyecto en mente?</strong>
-        Podemos construir tu próximo SaaS o digitalizar las operaciones de tu consorcio.
-        <a href="#contacto" class="text-accent font-semibold hover:underline block mt-1">Iniciar conversación &rarr;</a>
+        <strong class="block text-neutral-900 font-semibold mb-1">8 Sistemas con Identidad Propia</strong>
+        Cada proyecto cuenta con arquitectura dedicada, repositorio verificable y despliegue real.
+        <a href="#contacto" class="text-accent font-semibold hover:underline block mt-1">Cotizar un sistema a medida &rarr;</a>
       </div>
     </div>
 
-    <!-- Grid de productos insignia -->
+    <!-- Barra rápida de acceso por logo -->
+    <div class="mt-8 flex flex-wrap items-center gap-2.5 rounded-2xl border border-neutral-200/80 bg-neutral-50/60 p-3">
+      {products.map((p) => (
+        <a
+          href={p.landingUrl}
+          class="inline-flex items-center gap-2 rounded-xl border border-neutral-200/90 bg-white px-3 py-1.5 text-xs font-semibold text-neutral-800 shadow-2xs transition hover:border-accent hover:text-accent"
+        >
+          <img src={p.logoMark ?? p.logo} alt="" class="h-4 w-4 object-contain rounded-xs" />
+          <span>{p.name}</span>
+        </a>
+      ))}
+    </div>
+
+    <!-- Grid de los 8 proyectos reales -->
     <div class="mt-10 grid gap-8 md:grid-cols-2">
       {products.map((p) => <ProductCard product={p} />)}
-    </div>
-
-    <!-- Demos Interactivas en Front-End -->
-    <div class="mt-16 rounded-2xl border border-neutral-200/90 bg-gradient-to-br from-neutral-50 via-white to-neutral-50/80 p-8 sm:p-10">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-neutral-200/80 pb-6">
-        <div>
-          <span class="text-xs font-bold uppercase tracking-wider text-accent">Laboratorio de Interfaces</span>
-          <h3 class="mt-1 font-display text-2xl font-bold text-neutral-900">
-            6 Demos Completas en Front-End con Paginación Funcional
-          </h3>
-          <p class="text-xs text-neutral-600 mt-1">
-            Explora ejemplos interactivos reales listos para probar la fluidez, reactividad y experiencia de usuario que entregamos.
-          </p>
-        </div>
-        <div class="flex items-center gap-2">
-          <span class="rounded-full bg-accent-soft px-3 py-1 text-xs font-semibold text-accent border border-accent/20">
-            Arquitectura ECC
-          </span>
-        </div>
-      </div>
-
-      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {interactiveDemos.map((d) => (
-          <div class="group relative flex flex-col justify-between rounded-xl border border-neutral-200 bg-white p-6 transition duration-300 hover:border-accent hover:shadow-lg hover:shadow-accent/5">
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-2">
-                <span class="text-[11px] font-bold uppercase tracking-wider text-accent">{d.category}</span>
-                <span class="rounded-full bg-neutral-100 px-2.5 py-0.5 text-[10px] font-semibold text-neutral-700">
-                  {d.badge}
-                </span>
-              </div>
-              <h4 class="font-display text-lg font-bold text-neutral-900 group-hover:text-accent transition-colors">
-                {d.title}
-              </h4>
-              <p class="mt-2 text-xs text-neutral-600 leading-relaxed line-clamp-3">
-                {d.description}
-              </p>
-
-              <div class="mt-4 flex flex-wrap gap-1.5">
-                {d.tags.map((t) => (
-                  <span class="rounded bg-neutral-50 px-2 py-0.5 text-[10px] font-medium text-neutral-600 border border-neutral-200/60">
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div class="mt-6 pt-4 border-t border-neutral-100 flex items-center justify-between">
-              <span class="text-[11px] font-semibold text-neutral-400">100% Front-End</span>
-              <a
-                href={d.url}
-                class="inline-flex items-center gap-1 text-xs font-bold text-accent group-hover:text-accent-dark transition-colors"
-              >
-                Abrir Demo &rarr;
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
     </div>
 
   </div>
