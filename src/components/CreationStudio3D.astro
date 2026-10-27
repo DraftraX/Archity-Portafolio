@@ -3,39 +3,47 @@
 import ToolIcons from "./ToolIcons.astro";
 
 const stackTools = [
-  { id: "astro", label: "Astro 5 SSR", role: "Frontend Ultra-Rápido", bg: "var(--ca-yellow)" },
-  { id: "django", label: "Django 5 + DRF", role: "Core Backend & ERPs", bg: "var(--ca-mint)" },
-  { id: "react", label: "React 18", role: "Interfaces Interactivas", bg: "var(--ca-cyan)" },
-  { id: "nextjs", label: "Next.js", role: "Portales & Dashboards", bg: "var(--ca-yellow-soft)" },
-  { id: "typescript", label: "TypeScript", role: "Tipado Estricto", bg: "var(--ca-cyan)" },
-  { id: "python", label: "Python 3.12", role: "IA, OpenCV & FinTech", bg: "var(--ca-yellow)" },
-  { id: "postgresql", label: "PostgreSQL + PostGIS", role: "Base de Datos & GIS", bg: "var(--ca-mint)" },
-  { id: "threejs", label: "Three.js / WebGL", role: "Salones 3D & Tours 360°", bg: "var(--ca-pink-soft)" },
-  { id: "tailwind", label: "Tailwind CSS", role: "Design Systems", bg: "var(--ca-cyan)" },
-  { id: "docker", label: "Docker + Nginx", role: "Despliegue Cloud", bg: "var(--ca-yellow-soft)" },
-  { id: "redis", label: "Redis + Celery", role: "Colas Asíncronas", bg: "var(--ca-pink-soft)" },
-  { id: "googlemaps", label: "Google Maps + CAD", role: "Planos .DXF Georreferenciados", bg: "var(--ca-yellow)" },
-  { id: "sunat", label: "SUNAT UBL 2.1", role: "Firma XMLDSig RSA-SHA256", bg: "var(--ca-mint)" },
-  { id: "whatsapp", label: "WhatsApp Cloud API", role: "CRM Multi-Agente", bg: "var(--ca-green)" },
-  { id: "gemini", label: "Google Gemini AI", role: "Agentes IA 24/7", bg: "var(--ca-pink-soft)" },
-  { id: "nodejs", label: "Node.js + Express", role: "Microservicios & Tiempo Real", bg: "var(--ca-yellow-soft)" },
+  { id: "astro", label: "Astro 5 SSR", roleEs: "Frontend Ultra-Rápido", roleEn: "Ultra-Fast Frontend", bg: "var(--ca-yellow)" },
+  { id: "django", label: "Django 5 + DRF", roleEs: "Core Backend & ERPs", roleEn: "Core Backend & ERPs", bg: "var(--ca-mint)" },
+  { id: "react", label: "React 18", roleEs: "Interfaces Interactivas", roleEn: "Interactive UI", bg: "var(--ca-cyan)" },
+  { id: "nextjs", label: "Next.js", roleEs: "Portales & Dashboards", roleEn: "Portals & Dashboards", bg: "var(--ca-yellow-soft)" },
+  { id: "typescript", label: "TypeScript", roleEs: "Tipado Estricto", roleEn: "Strict Typing", bg: "var(--ca-cyan)" },
+  { id: "python", label: "Python 3.12", roleEs: "IA, OpenCV & FinTech", roleEn: "AI, OpenCV & FinTech", bg: "var(--ca-yellow)" },
+  { id: "postgresql", label: "PostgreSQL + PostGIS", roleEs: "Base de Datos & GIS", roleEn: "Database & GIS", bg: "var(--ca-mint)" },
+  { id: "threejs", label: "Three.js / WebGL", roleEs: "Salones 3D & Tours 360°", roleEn: "3D Rooms & 360° Tours", bg: "var(--ca-pink-soft)" },
+  { id: "tailwind", label: "Tailwind CSS", roleEs: "Design Systems", roleEn: "Design Systems", bg: "var(--ca-cyan)" },
+  { id: "docker", label: "Docker + Nginx", roleEs: "Despliegue Cloud", roleEn: "Cloud Deployment", bg: "var(--ca-yellow-soft)" },
+  { id: "redis", label: "Redis + Celery", roleEs: "Colas Asíncronas", roleEn: "Async Task Queues", bg: "var(--ca-pink-soft)" },
+  { id: "googlemaps", label: "Google Maps + CAD", roleEs: "Planos .DXF Georreferenciados", roleEn: "Georeferenced .DXF CAD", bg: "var(--ca-yellow)" },
+  { id: "sunat", label: "SUNAT UBL 2.1", roleEs: "Firma XMLDSig RSA-SHA256", roleEn: "XMLDSig RSA-SHA256", bg: "var(--ca-mint)" },
+  { id: "whatsapp", label: "WhatsApp Cloud API", roleEs: "CRM Multi-Agente", roleEn: "Multi-Agent CRM", bg: "var(--ca-green)" },
+  { id: "gemini", label: "Google Gemini IA", roleEs: "Agentes IA 24/7", roleEn: "24/7 AI Agents", bg: "var(--ca-pink-soft)" },
+  { id: "nodejs", label: "Node.js + Express", roleEs: "Microservicios & Tiempo Real", roleEn: "Realtime Microservices", bg: "var(--ca-yellow-soft)" },
 ];
 ---
 
 <div class="mt-16 space-y-16">
   <!-- ==================== TABLERO DE HERRAMIENTAS EN SVG (STICKER BOARD) ==================== -->
-  <div class="mx-auto max-w-5xl">
+  <div class="mx-auto max-w-6xl">
     <div class="flex flex-col items-center text-center">
       <span class="ca-mono inline-flex items-center gap-2 rounded-full border-2 border-[var(--ca-ink)] bg-[var(--ca-yellow)] px-4 py-1 text-xs font-bold uppercase tracking-widest text-[var(--ca-ink)] shadow-[2px_3px_0_var(--ca-ink)]">
         <svg viewBox="0 0 24 24" fill="currentColor" class="h-3.5 w-3.5" aria-hidden="true">
           <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"></path>
         </svg>
-        Stack &amp; Herramientas en SVG
+        <span data-es="Stack & Herramientas en SVG" data-en="SVG Tech Stack & Tools">Stack &amp; Herramientas en SVG</span>
       </span>
-      <h3 class="ca-display mt-4 text-4xl uppercase tracking-tight text-[var(--ca-ink)] sm:text-6xl">
-        TOOLS WE BUILD WITH
+      <h3
+        class="ca-display mt-4 text-4xl uppercase tracking-tight text-[var(--ca-ink)] sm:text-6xl"
+        data-es="HERRAMIENTAS CON LAS QUE TRABAJAMOS"
+        data-en="TOOLS WE BUILD WITH"
+      >
+        HERRAMIENTAS CON LAS QUE TRABAJAMOS
       </h3>
-      <p class="ca-hand mt-1 text-2xl text-[var(--ca-ink)]/80 sm:text-3xl">
+      <p
+        class="ca-hand mt-1 text-2xl text-[var(--ca-ink)]/80 sm:text-3xl"
+        data-es="las tecnologías reales detrás de cada ERP, SaaS, visor 3D y motor SUNAT"
+        data-en="the real technologies behind every ERP, SaaS, 3D viewer and SUNAT engine"
+      >
         las tecnologías reales detrás de cada ERP, SaaS, visor 3D y motor SUNAT
       </p>
     </div>
@@ -56,8 +64,12 @@ const stackTools = [
               </span>
               <div class="min-w-0 text-left">
                 <p class="truncate text-sm font-bold text-[var(--ca-ink)]">{tool.label}</p>
-                <p class="ca-mono truncate text-[10px] font-medium uppercase tracking-wider text-[var(--ca-ink)]/65">
-                  {tool.role}
+                <p
+                  class="ca-mono truncate text-[10px] font-medium uppercase tracking-wider text-[var(--ca-ink)]/65"
+                  data-es={tool.roleEs}
+                  data-en={tool.roleEn}
+                >
+                  {tool.roleEs}
                 </p>
               </div>
             </div>
@@ -88,7 +100,7 @@ const stackTools = [
             </span>
           </div>
           <span class="ca-mono rounded bg-amber-400/20 px-2 py-0.5 text-[10px] font-bold text-amber-300">
-            3D MASCOT
+            MASCOTA 3D
           </span>
         </div>
 
@@ -99,11 +111,10 @@ const stackTools = [
             class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
           />
-          <!-- HUD flotante sobre el render 3D -->
           <div class="pointer-events-none absolute inset-x-3 bottom-3 flex items-center justify-between rounded-lg border border-white/20 bg-black/75 px-3 py-2 backdrop-blur-md">
             <div class="flex items-center gap-2">
               <span class="h-2 w-2 animate-ping rounded-full bg-emerald-400"></span>
-              <span class="ca-mono text-[11px] font-bold text-emerald-300">&gt; ARCHITY_CORE: 8 PROD SYSTEMS</span>
+              <span class="ca-mono text-[11px] font-bold text-emerald-300">&gt; ARCHITY_CORE: 8 SISTEMAS</span>
             </div>
             <div class="flex items-center gap-1">
               <ToolIcons name="astro" class="h-4 w-4" />
@@ -114,8 +125,14 @@ const stackTools = [
         </div>
 
         <div class="mt-4">
-          <h4 class="text-lg font-bold text-white">Arquitecto 3D Archity</h4>
-          <p class="mt-1 text-xs leading-relaxed text-white/75">
+          <h4 class="text-lg font-bold text-white" data-es="Arquitecto 3D Archity" data-en="Archity 3D Architect">
+            Arquitecto 3D Archity
+          </h4>
+          <p
+            class="mt-1 text-xs leading-relaxed text-white/75"
+            data-es="Nuestro personaje oficial ensamblando bloques modulares de ERPs, cartografía GIS, pasarelas FinTech y servidores Cloud."
+            data-en="Our official 3D character mascot assembling modular ERP, GIS mapping, FinTech and Cloud server blocks."
+          >
             Nuestro personaje oficial ensamblando bloques modulares de ERPs, cartografía GIS, pasarelas FinTech y servidores Cloud.
           </p>
         </div>
@@ -135,7 +152,7 @@ const stackTools = [
             <span class="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]"></span>
             <span class="h-2.5 w-2.5 rounded-full bg-[#27c93f]"></span>
             <span class="ca-mono ml-1.5 text-xs font-bold uppercase tracking-wider text-sky-300">
-              LIVE CODE &amp; SYSTEM VIDEO
+              VIDEO · CREACIÓN DE SISTEMAS
             </span>
           </div>
           <span class="ca-mono inline-flex items-center gap-1 rounded bg-emerald-400/20 px-2 py-0.5 text-[10px] font-bold text-emerald-300">
@@ -145,7 +162,6 @@ const stackTools = [
         </div>
 
         <div class="relative mt-4 aspect-[4/3] w-full overflow-hidden rounded-xl border-2 border-white/15 bg-[#0b0e17]">
-          <!-- Video real alimentado a 60fps desde el motor Canvas de programación de sistemas -->
           <video
             id="ca-code-video"
             autoplay
@@ -163,9 +179,15 @@ const stackTools = [
         </div>
 
         <div class="mt-4">
-          <h4 class="text-lg font-bold text-white">Creación de Sistemas en Vivo</h4>
-          <p class="mt-1 text-xs leading-relaxed text-white/75">
-            Simulación en tiempo real del flujo de ingeniería de Archity: compilación de módulos Django/Astro, firmas XML SUNAT y despliegue continuo.
+          <h4 class="text-lg font-bold text-white" data-es="Creación de Sistemas en Vivo" data-en="Live System Creation">
+            Creación de Sistemas en Vivo
+          </h4>
+          <p
+            class="mt-1 text-xs leading-relaxed text-white/75"
+            data-es="Video en tiempo real del flujo de ingeniería de Archity: compilación de módulos Django/Astro, firmas XML SUNAT y despliegue continuo."
+            data-en="Real-time video of Archity's engineering pipeline: compiling Django/Astro modules, SUNAT XML signatures and continuous deployment."
+          >
+            Video en tiempo real del flujo de ingeniería de Archity: compilación de módulos Django/Astro, firmas XML SUNAT y despliegue continuo.
           </p>
         </div>
       </div>
@@ -184,10 +206,14 @@ const stackTools = [
             <span class="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]"></span>
             <span class="h-2.5 w-2.5 rounded-full bg-[#27c93f]"></span>
             <span class="ca-mono ml-1.5 text-xs font-bold uppercase tracking-wider text-pink-300">
-              3D INTERACTIVE MOCKUP
+              MOCKUP 3D INTERACTIVO
             </span>
           </div>
-          <span class="ca-mono rounded bg-pink-400/20 px-2 py-0.5 text-[10px] font-bold text-pink-300">
+          <span
+            class="ca-mono rounded bg-pink-400/20 px-2 py-0.5 text-[10px] font-bold text-pink-300"
+            data-es="MUEVE EL CURSOR"
+            data-en="MOVE CURSOR"
+          >
             MUEVE EL CURSOR
           </span>
         </div>
@@ -210,8 +236,14 @@ const stackTools = [
         </div>
 
         <div class="mt-4">
-          <h4 class="text-lg font-bold text-white">Mockup 3D de Arquitectura</h4>
-          <p class="mt-1 text-xs leading-relaxed text-white/75">
+          <h4 class="text-lg font-bold text-white" data-es="Mockup 3D de Arquitectura" data-en="3D Architecture Mockup">
+            Mockup 3D de Arquitectura
+          </h4>
+          <p
+            class="mt-1 text-xs leading-relaxed text-white/75"
+            data-es="Pila tridimensional interactiva (Base de datos PostGIS, API ERP/FinTech, Motor 3D Three.js y UI React) que responde a tu cursor."
+            data-en="Interactive 3D stack (PostGIS Database, ERP/FinTech API, Three.js 3D Engine & React UI) that responds to your cursor."
+          >
             Pila tridimensional interactiva (Base de datos PostGIS, API ERP/FinTech, Motor 3D Three.js y UI React) que responde a tu cursor.
           </p>
         </div>
@@ -251,11 +283,9 @@ const stackTools = [
       const w = codeCanvas.width;
       const h = codeCanvas.height;
 
-      // Fondo oscuro de IDE
       ctx.fillStyle = "#0b0f19";
       ctx.fillRect(0, 0, w, h);
 
-      // Cuadrícula cibernética en perspectiva
       ctx.strokeStyle = "rgba(56, 189, 248, 0.08)";
       ctx.lineWidth = 1;
       const offset = (frame * 0.6) % 32;
@@ -272,7 +302,6 @@ const stackTools = [
         ctx.stroke();
       }
 
-      // Ventana de código izquierda
       ctx.fillStyle = "rgba(17, 24, 39, 0.92)";
       ctx.strokeStyle = "rgba(255, 255, 255, 0.14)";
       ctx.lineWidth = 2;
@@ -281,12 +310,10 @@ const stackTools = [
       ctx.fill();
       ctx.stroke();
 
-      // Cabecera IDE
       ctx.fillStyle = "#f7c948";
       ctx.font = "bold 13px monospace";
-      ctx.fillText("⚡ archity-engine.ts — LIVE COMPILER", 42, 52);
+      ctx.fillText("⚡ archity-engine.ts — COMPILADOR EN VIVO", 42, 52);
 
-      // Líneas de código animadas
       const activeIdx = Math.floor(frame / 90) % codeSnippets.length;
       for (let i = 0; i < codeSnippets.length; i++) {
         const item = codeSnippets[i];
@@ -312,12 +339,10 @@ const stackTools = [
         ctx.fillText(item.status, 290, y + 16);
       }
 
-      // Panel derecho: Nodos de sistema conectados en vivo
       const cx = 510;
       const cy = h / 2;
       const radius = 78;
 
-      // Círculo central Archity Core
       ctx.save();
       ctx.translate(cx, cy);
       for (let i = 0; i < 6; i++) {
@@ -325,7 +350,6 @@ const stackTools = [
         const nx = Math.cos(angle) * radius;
         const ny = Math.sin(angle) * radius;
 
-        // Línea de datos con pulso
         ctx.strokeStyle = codeSnippets[i].color;
         ctx.lineWidth = 2;
         ctx.beginPath();
@@ -333,14 +357,12 @@ const stackTools = [
         ctx.lineTo(nx, ny);
         ctx.stroke();
 
-        // Paquete de datos viajando
-        const pulse = ((frame * 0.03 + i * 0.2) % 1);
+        const pulse = (frame * 0.03 + i * 0.2) % 1;
         ctx.fillStyle = "#ffffff";
         ctx.beginPath();
         ctx.arc(nx * pulse, ny * pulse, 3.5, 0, Math.PI * 2);
         ctx.fill();
 
-        // Nodo satélite
         ctx.fillStyle = "#111827";
         ctx.strokeStyle = codeSnippets[i].color;
         ctx.lineWidth = 2.5;
@@ -355,7 +377,6 @@ const stackTools = [
         ctx.fillText(`0${i + 1}`, nx, ny + 3);
       }
 
-      // Nodo central con la 'A' de Archity
       ctx.fillStyle = "#f7c948";
       ctx.beginPath();
       ctx.arc(0, 0, 26, 0, Math.PI * 2);
@@ -428,7 +449,6 @@ const stackTools = [
         });
       }
 
-      // Caras laterales para dar volumen 3D real
       ctx3.fillStyle = colorSide;
       ctx3.beginPath();
       ctx3.moveTo(pts[0].x, pts[0].y);
@@ -454,7 +474,6 @@ const stackTools = [
       ctx3.closePath();
       ctx3.fill();
 
-      // Cara superior
       ctx3.fillStyle = colorTop;
       ctx3.strokeStyle = "#ffffff";
       ctx3.lineWidth = 2;
@@ -467,7 +486,6 @@ const stackTools = [
       ctx3.fill();
       ctx3.stroke();
 
-      // Etiqueta técnica sobre la capa 3D
       ctx3.fillStyle = "#191510";
       ctx3.font = "bold 11px monospace";
       ctx3.textAlign = "center";
@@ -483,7 +501,6 @@ const stackTools = [
       ctx3.fillStyle = "#0b0f19";
       ctx3.fillRect(0, 0, w, h);
 
-      // Halo de fondo
       const grad = ctx3.createRadialGradient(w / 2, h / 2, 10, w / 2, h / 2, 240);
       grad.addColorStop(0, "rgba(43, 87, 214, 0.32)");
       grad.addColorStop(1, "rgba(11, 15, 25, 0)");
@@ -493,7 +510,6 @@ const stackTools = [
       const baseRot = t * 0.45 + mouseX * 1.2;
       const spread = 1 + Math.sin(t * 1.4) * 0.12 + mouseY * 0.25;
 
-      // Dibujar de abajo hacia arriba para orden Z correcto
       for (let i = layers.length - 1; i >= 0; i--) {
         const layer = layers[i];
         const cx = w / 2 + mouseX * (40 - i * 15);
@@ -501,9 +517,8 @@ const stackTools = [
         drawIsoSlab(cx, cy, 138, 22, baseRot, layer.colorTop, layer.colorSide, layer.label);
       }
 
-      // Partículas de telemetría subiendo entre las capas 3D
       for (let p = 0; p < 12; p++) {
-        const py = ((h - ((t * 60 + p * 40) % h)));
+        const py = h - ((t * 60 + p * 40) % h);
         const px = w / 2 + Math.sin(t + p) * 140;
         ctx3.fillStyle = p % 2 === 0 ? "#f7c948" : "#38bdf8";
         ctx3.beginPath();

@@ -2,7 +2,7 @@
 const year = new Date().getFullYear();
 ---
 
-<footer class="ca-grid relative">
+<footer class="ca-grid relative w-full">
   <svg viewBox="0 0 1440 130" fill="none" preserveAspectRatio="none" class="h-16 w-full sm:h-24" aria-hidden="true">
     <path d="M-10 120C420 10 1030 4 1450 80" stroke="var(--ca-tick)" stroke-width="1.5"></path>
   </svg>
@@ -23,23 +23,28 @@ const year = new Date().getFullYear();
         </div>
         <p class="ca-mono mt-4 inline-flex items-center gap-2.5 text-sm font-bold uppercase tracking-[0.2em] text-[var(--ca-ink)]">
           <span class="h-3 w-3 rounded-full bg-[var(--ca-blue)]"></span>
-          Software Studio &amp; Incubadora SaaS · WhatsApp 940 771 896
+          <span
+            data-es="Estudio de Software & Incubadora SaaS · WhatsApp 940 771 896"
+            data-en="Software Studio & SaaS Incubator · WhatsApp 940 771 896"
+          >
+            Estudio de Software &amp; Incubadora SaaS · WhatsApp 940 771 896
+          </span>
         </p>
       </div>
 
       <div class="flex flex-col items-start gap-5 md:items-end">
         <nav class="flex flex-wrap gap-1" aria-label="Enlaces del pie de página">
           <a class="ca-mono px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-yellow)]" href="/#about">
-            About &amp; Stack
+            <span data-es="Nosotros" data-en="About">Nosotros</span>
           </a>
           <a class="ca-mono px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-yellow)]" href="/#work">
-            Case Study (8)
+            <span data-es="Proyectos (8)" data-en="Case Study (8)">Proyectos (8)</span>
           </a>
           <a class="ca-mono px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-yellow)]" href="/#playground">
-            Playground 3D
+            <span data-es="Servicios (Mural)" data-en="Playground">Servicios (Mural)</span>
           </a>
-          <a class="ca-mono px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-yellow)]" href="/productos/billing-service">
-            SUNAT UBL 2.1
+          <a class="ca-mono px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-yellow)]" href="/#contact">
+            <span data-es="Contacto" data-en="Contact">Contacto</span>
           </a>
         </nav>
 
@@ -113,7 +118,9 @@ const year = new Date().getFullYear();
         href="/#work"
         class="ca-mono inline-flex items-center gap-1.5 rounded-full bg-[var(--ca-chrome)] px-3.5 py-2 font-bold uppercase tracking-wide text-[var(--ca-ink)] transition-opacity hover:opacity-80"
       >
-        ✦ 8 Proyectos en Producción Real
+        <span data-es="✦ 8 Proyectos en Producción Real" data-en="✦ 8 Live Production Systems">
+          ✦ 8 Proyectos en Producción Real
+        </span>
       </a>
     </div>
   </div>

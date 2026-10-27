@@ -252,6 +252,33 @@
   transform: translate(-50%, -50%) scale(1);
 }
 
+/* Lente circular de inversión de color ("VER" / "SEE") que sigue el cursor sobre los proyectos (Case Study) */
+.ca-see-lens {
+  pointer-events: none;
+  position: absolute;
+  z-index: 30;
+  width: 7.25rem;
+  height: 7.25rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%) scale(0.4);
+  opacity: 0;
+  backdrop-filter: invert(1);
+  -webkit-backdrop-filter: invert(1);
+  transition:
+    opacity 0.22s ease-out,
+    transform 0.26s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: left, top, transform, opacity;
+}
+
+.ca-see-zone:hover .ca-see-lens,
+.ca-see-zone.is-hovered .ca-see-lens {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
 .ca-emoji-a {
   animation: 4.4s ease-in-out infinite ca-emoji-swap;
 }

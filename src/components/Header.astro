@@ -1,13 +1,13 @@
 ---
-// Header idéntico a Portfoliofy Crayon (creative-artsy), con el logo SVG oficial de Archity (sin texto escrito al lado) y redes oficiales
+// Header idéntico a Portfoliofy Crayon (creative-artsy), a pantalla completa, en español por defecto + botón de cambio de idioma ES/EN a la derecha
 const pathname = Astro.url.pathname;
 const isHome = pathname === "/" || pathname === "";
 ---
 
-<header class="sticky top-0 z-50 bg-[var(--ca-surface)]/95 backdrop-blur-sm">
-  <div class="relative flex items-stretch justify-between border-b border-[var(--ca-ink)]/10 pl-4 pr-3 sm:pl-5">
+<header class="sticky top-0 z-50 w-full bg-[var(--ca-surface)]/95 backdrop-blur-sm">
+  <div class="relative flex w-full items-stretch justify-between border-b border-[var(--ca-ink)]/10 pl-4 pr-3 sm:pl-6 sm:pr-6">
     <div class="flex items-stretch gap-2">
-      <!-- Logo empresarial Archity en SVG (reemplaza la carita inicial, sin texto escrito al lado) -->
+      <!-- Logo empresarial Archity en SVG (sin texto escrito al lado) -->
       <a
         aria-label="Archity"
         title="Archity"
@@ -34,29 +34,29 @@ const isHome = pathname === "/" || pathname === "";
       <nav class="hidden items-stretch md:flex" aria-label="Navegación principal">
         <a
           aria-current={isHome ? "page" : undefined}
-          class={`ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors ${
+          class={`ca-nav-link ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors ${
             isHome ? "bg-[var(--ca-yellow)]" : "hover:bg-[var(--ca-chrome)]"
           }`}
-          href="/"
+          href="/#home"
         >
           <svg viewBox="0 0 24 24" fill="currentColor" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke" class="overflow-visible [filter:drop-shadow(1px_1.5px_0_rgba(25,21,16,0.28))] h-5 w-5 shrink-0" aria-hidden="true">
             <path d="M12 2l2.9 6.26 6.85.72-5.1 4.62 1.44 6.7L12 17.6l-6.09 3.7 1.44-6.7-5.1-4.62 6.85-.72z"></path>
           </svg>
-          Home
+          <span data-es="Inicio" data-en="Home">Inicio</span>
         </a>
 
         <a
-          class="ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-chrome)]"
+          class="ca-nav-link ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-chrome)]"
           href="/#about"
         >
           <svg viewBox="0 0 24 24" fill="currentColor" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke" class="overflow-visible [filter:drop-shadow(1px_1.5px_0_rgba(25,21,16,0.28))] h-5 w-5 shrink-0" aria-hidden="true">
             <path d="M12 3a3.6 3.6 0 100 7.2A3.6 3.6 0 0012 3zM4.8 20a7.2 7.2 0 0114.4 0z"></path>
           </svg>
-          About
+          <span data-es="Nosotros" data-en="About">Nosotros</span>
         </a>
 
         <a
-          class={`ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors ${
+          class={`ca-nav-link ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors ${
             !isHome ? "bg-[var(--ca-yellow)]" : "hover:bg-[var(--ca-chrome)]"
           }`}
           href="/#work"
@@ -64,22 +64,22 @@ const isHome = pathname === "/" || pathname === "";
           <svg viewBox="0 0 24 24" fill="currentColor" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke" class="overflow-visible [filter:drop-shadow(1px_1.5px_0_rgba(25,21,16,0.28))] h-5 w-5 shrink-0" aria-hidden="true">
             <path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"></path>
           </svg>
-          Case Study
+          <span data-es="Proyectos" data-en="Case Study">Proyectos</span>
         </a>
 
         <a
-          class="ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-chrome)]"
+          class="ca-nav-link ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-chrome)]"
           href="/#playground"
         >
           <svg viewBox="0 0 24 24" fill="currentColor" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke" class="overflow-visible [filter:drop-shadow(1px_1.5px_0_rgba(25,21,16,0.28))] h-5 w-5 shrink-0" aria-hidden="true">
             <path d="M12 2l10 10-10 10L2 12z"></path>
           </svg>
-          Playground
+          <span data-es="Servicios" data-en="Playground">Servicios</span>
         </a>
       </nav>
     </div>
 
-    <!-- Botones sociales circulares oficiales (LinkedIn, Facebook, WhatsApp 940771896) + botón Contact -->
+    <!-- Botones sociales circulares oficiales + Botón de cambio de idioma ES/EN + Botón Contacto -->
     <div class="flex items-center gap-2 py-2">
       <!-- LinkedIn Oficial -->
       <a
@@ -126,21 +126,22 @@ const isHome = pathname === "/" || pathname === "";
         </svg>
       </a>
 
-      <!-- GitHub -->
-      <a
-        href="https://github.com/DraftraX"
-        target="_blank"
-        rel="noopener"
-        aria-label="GitHub"
-        title="GitHub · DraftraX"
-        class="hidden sm:flex h-10 w-10 items-center justify-center rounded-full border-2 border-white text-[var(--ca-ink)] shadow-[1.5px_1.5px_0_rgba(25,21,16,0.25)] transition-transform duration-200 hover:-translate-y-0.5"
-        style="background-color:var(--ca-magenta)"
+      <!-- Botón de cambio de idioma (ES / EN) con el mismo diseño Crayon -->
+      <button
+        id="ca-lang-toggle"
+        type="button"
+        aria-label="Cambiar idioma ES / EN"
+        title="Cambiar idioma (Español / English)"
+        class="ca-mono inline-flex items-center gap-1.5 border-2 border-[var(--ca-ink)] bg-[var(--ca-yellow)] px-3 py-2 text-xs font-bold uppercase tracking-widest text-[var(--ca-ink)] shadow-[2px_2px_0_var(--ca-ink)] transition-colors hover:bg-[var(--ca-ink)] hover:text-white cursor-pointer"
       >
-        <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4" aria-hidden="true">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="h-3.5 w-3.5" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"></circle>
+          <path d="M3 12h18M12 3a14.5 14.5 0 0 1 0 18M12 3a14.5 14.5 0 0 0 0 18"></path>
         </svg>
-      </a>
+        <span id="ca-lang-label">ES</span>
+      </button>
 
+      <!-- Botón Contacto -->
       <a
         class="ca-mono hidden items-center gap-2.5 border-2 border-[var(--ca-ink)] px-5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-ink)] hover:text-white sm:inline-flex"
         href="/#contact"
@@ -148,7 +149,7 @@ const isHome = pathname === "/" || pathname === "";
         <svg viewBox="0 0 24 22" fill="currentColor" class="h-4 w-4" aria-hidden="true">
           <path d="M12 21C5 16 1 12 1 7.5 1 4 3.6 1.5 6.8 1.5c2 0 3.9 1 5.2 2.6 1.3-1.6 3.2-2.6 5.2-2.6C20.4 1.5 23 4 23 7.5 23 12 19 16 12 21Z"></path>
         </svg>
-        Contact
+        <span data-es="Contacto" data-en="Contact">Contacto</span>
       </a>
 
       <button
@@ -167,11 +168,21 @@ const isHome = pathname === "/" || pathname === "";
   <!-- Menú móvil desplegable estilo Crayon -->
   <div id="ca-mobile-menu" class="hidden border-b-2 border-[var(--ca-ink)] bg-[var(--ca-surface)] px-4 py-4 md:hidden">
     <nav class="flex flex-col gap-2">
-      <a href="/" class="ca-mono bg-[var(--ca-yellow)] px-4 py-3 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)]">★ Home</a>
-      <a href="/#about" class="ca-mono px-4 py-3 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] hover:bg-[var(--ca-chrome)]">♟ About &amp; Stack SVG</a>
-      <a href="/#work" class="ca-mono px-4 py-3 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] hover:bg-[var(--ca-chrome)]">⊞ Case Study (8 Carpetas)</a>
-      <a href="/#playground" class="ca-mono px-4 py-3 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] hover:bg-[var(--ca-chrome)]">◆ Playground 3D</a>
-      <a href="/#contact" class="ca-mono border-2 border-[var(--ca-ink)] px-4 py-3 text-center text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)]">♥ Contact · 940 771 896</a>
+      <a href="/#home" class="ca-mono bg-[var(--ca-yellow)] px-4 py-3 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)]">
+        ★ <span data-es="Inicio" data-en="Home">Inicio</span>
+      </a>
+      <a href="/#about" class="ca-mono px-4 py-3 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] hover:bg-[var(--ca-chrome)]">
+        ♟ <span data-es="Nosotros" data-en="About">Nosotros</span>
+      </a>
+      <a href="/#work" class="ca-mono px-4 py-3 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] hover:bg-[var(--ca-chrome)]">
+        ⊞ <span data-es="Proyectos (8 Carpetas)" data-en="Case Study (8 Folders)">Proyectos (8 Carpetas)</span>
+      </a>
+      <a href="/#playground" class="ca-mono px-4 py-3 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] hover:bg-[var(--ca-chrome)]">
+        ◆ <span data-es="Servicios (Mural)" data-en="Playground (Services)">Servicios (Mural)</span>
+      </a>
+      <a href="/#contact" class="ca-mono border-2 border-[var(--ca-ink)] px-4 py-3 text-center text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)]">
+        ♥ <span data-es="Contacto · 940 771 896" data-en="Contact · 940 771 896">Contacto · 940 771 896</span>
+      </a>
     </nav>
   </div>
 </header>
@@ -185,5 +196,41 @@ const isHome = pathname === "/" || pathname === "";
   });
   menu?.querySelectorAll("a").forEach((a) => {
     a.addEventListener("click", () => menu.classList.add("hidden"));
+  });
+
+  // Sistema global de cambio de idioma Español (por defecto) <-> Inglés
+  const langToggle = document.getElementById("ca-lang-toggle");
+  const langLabel = document.getElementById("ca-lang-label");
+
+  const applyLanguage = (lang: "es" | "en") => {
+    document.documentElement.lang = lang;
+    if (langLabel) langLabel.textContent = lang.toUpperCase();
+
+    document.querySelectorAll<HTMLElement>("[data-es][data-en]").forEach((el) => {
+      const val = lang === "es" ? el.getAttribute("data-es") : el.getAttribute("data-en");
+      if (val !== null) el.textContent = val;
+    });
+
+    document.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("[data-placeholder-es][data-placeholder-en]").forEach((el) => {
+      const val = lang === "es" ? el.getAttribute("data-placeholder-es") : el.getAttribute("data-placeholder-en");
+      if (val !== null) el.placeholder = val;
+    });
+
+    try {
+      localStorage.setItem("archity_lang", lang);
+    } catch (_) {}
+  };
+
+  let currentLang: "es" | "en" = "es";
+  try {
+    const saved = localStorage.getItem("archity_lang");
+    if (saved === "en" || saved === "es") currentLang = saved;
+  } catch (_) {}
+
+  applyLanguage(currentLang);
+
+  langToggle?.addEventListener("click", () => {
+    currentLang = currentLang === "es" ? "en" : "es";
+    applyLanguage(currentLang);
   });
 </script>
