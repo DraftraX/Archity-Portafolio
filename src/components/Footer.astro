@@ -1,5 +1,5 @@
 ---
-const year = new Date().getFullYear();
+import { heroData } from "../data/portfolioData";
 ---
 
 <footer class="ca-grid relative w-full">
@@ -10,52 +10,44 @@ const year = new Date().getFullYear();
   <div class="px-4 pb-10 pt-6 sm:px-8 lg:px-20">
     <div class="flex flex-col justify-between gap-10 md:flex-row md:items-end">
       <div>
-        <div class="flex items-center gap-4">
-          <span class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border-2 border-[var(--ca-ink)] bg-[var(--ca-ink)] p-2.5 shadow-[3px_4px_0_var(--ca-yellow)]">
-            <svg viewBox="0 0 150 140" fill="none" class="h-8 w-8" aria-hidden="true">
-              <polygon points="74.5,0 88.5,26 35.5,126 0,140" fill="#ffffff"></polygon>
-              <polygon points="97,43.5 86,63.5 100.5,90.5 70,90.5 62.5,104.5 108,104.5 126.5,138.5 149,138.5" fill="var(--ca-yellow)"></polygon>
-            </svg>
-          </span>
-          <p class="ca-display text-6xl uppercase leading-none tracking-tight text-[var(--ca-ink)] sm:text-8xl">
-            Archity
-          </p>
-        </div>
+        <p class="ca-display text-6xl uppercase leading-none tracking-tight text-[var(--ca-ink)] sm:text-8xl">
+          Archity
+        </p>
         <p class="ca-mono mt-4 inline-flex items-center gap-2.5 text-sm font-bold uppercase tracking-[0.2em] text-[var(--ca-ink)]">
           <span class="h-3 w-3 rounded-full bg-[var(--ca-blue)]"></span>
-          <span
-            data-es="Estudio de Software & Incubadora SaaS · WhatsApp 940 771 896"
-            data-en="Software Studio & SaaS Incubator · WhatsApp 940 771 896"
-          >
-            Estudio de Software &amp; Incubadora SaaS · WhatsApp 940 771 896
-          </span>
+          <span data-es={heroData.roleEs} data-en={heroData.roleEn}>{heroData.roleEs}</span>
         </p>
       </div>
 
       <div class="flex flex-col items-start gap-5 md:items-end">
-        <nav class="flex flex-wrap gap-1" aria-label="Enlaces del pie de página">
-          <a class="ca-mono px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-yellow)]" href="/#about">
+        <nav class="flex flex-wrap gap-1" aria-label="Footer navigation">
+          <a
+            class="ca-mono px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-blue)] hover:text-white"
+            href="/about"
+          >
             <span data-es="Nosotros" data-en="About">Nosotros</span>
           </a>
-          <a class="ca-mono px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-yellow)]" href="/#work">
-            <span data-es="Proyectos (8)" data-en="Case Study (8)">Proyectos (8)</span>
+          <a
+            class="ca-mono px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-blue)] hover:text-white"
+            href="/case-studies"
+          >
+            <span data-es="Case Study" data-en="Case Study">Case Study</span>
           </a>
-          <a class="ca-mono px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-yellow)]" href="/#playground">
-            <span data-es="Servicios (Mural)" data-en="Playground">Servicios (Mural)</span>
-          </a>
-          <a class="ca-mono px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-yellow)]" href="/#contact">
-            <span data-es="Contacto" data-en="Contact">Contacto</span>
+          <a
+            class="ca-mono px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-blue)] hover:text-white"
+            href="/playground"
+          >
+            <span data-es="Playground" data-en="Playground">Playground</span>
           </a>
         </nav>
 
-        <div class="flex flex-wrap gap-3">
-          <!-- LinkedIn Oficial -->
+        <div class="flex gap-3">
+          <!-- LinkedIn -->
           <a
             href="https://www.linkedin.com/company/archit-tech/posts/?viewAsMember=true"
             target="_blank"
             rel="noopener"
-            aria-label="LinkedIn de Archity"
-            title="LinkedIn · Archity"
+            aria-label="LinkedIn"
             class="flex h-11 w-11 items-center justify-center rounded-full border-2 border-white text-[var(--ca-ink)] shadow-[1.5px_1.5px_0_rgba(25,21,16,0.25)] transition-transform duration-200 hover:-translate-y-0.5"
             style="background-color:var(--ca-yellow)"
           >
@@ -64,28 +56,26 @@ const year = new Date().getFullYear();
             </svg>
           </a>
 
-          <!-- Facebook Oficial -->
+          <!-- Facebook -->
           <a
             href="https://www.facebook.com/profile.php?id=61590953622590"
             target="_blank"
             rel="noopener"
-            aria-label="Facebook de Archity"
-            title="Facebook Oficial · Archity"
+            aria-label="Facebook"
             class="flex h-11 w-11 items-center justify-center rounded-full border-2 border-white text-[var(--ca-ink)] shadow-[1.5px_1.5px_0_rgba(25,21,16,0.25)] transition-transform duration-200 hover:-translate-y-0.5"
             style="background-color:var(--ca-magenta)"
           >
-            <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="h-4.5 w-4.5" aria-hidden="true">
               <path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"></path>
             </svg>
           </a>
 
-          <!-- WhatsApp Oficial 940771896 -->
+          <!-- WhatsApp -->
           <a
             href="https://wa.me/51940771896?text=Hola%20Archity,%20vi%20su%20portafolio%20y%20me%20gustar%C3%ADa%20conversar%20sobre%20un%20proyecto."
             target="_blank"
             rel="noopener"
-            aria-label="WhatsApp 940771896"
-            title="WhatsApp · +51 940 771 896"
+            aria-label="WhatsApp"
             class="flex h-11 w-11 items-center justify-center rounded-full border-2 border-white text-[var(--ca-ink)] shadow-[1.5px_1.5px_0_rgba(25,21,16,0.25)] transition-transform duration-200 hover:-translate-y-0.5"
             style="background-color:var(--ca-green)"
           >
@@ -93,34 +83,17 @@ const year = new Date().getFullYear();
               <path d="M12.031 2c-5.516 0-9.999 4.486-9.999 10.001 0 1.766.461 3.489 1.338 5.008L2 22l5.125-1.344c1.471.801 3.129 1.224 4.904 1.225h.004c5.515 0 9.998-4.486 9.998-10.001 0-2.672-1.04-5.184-2.928-7.073C17.215 3.04 14.703 2 12.031 2zm5.828 14.122c-.246.693-1.434 1.326-1.988 1.409-.508.076-1.151.108-1.858-.116-.429-.136-.978-.318-1.682-.622-2.961-1.278-4.894-4.258-5.042-4.455-.148-.197-1.205-1.602-1.205-3.056 0-1.454.763-2.169 1.034-2.465.271-.296.591-.37.788-.37.197 0 .394.002.566.01.182.009.426-.069.665.508.246.592.838 2.046.912 2.194.074.148.123.32.025.517-.099.197-.148.32-.296.493-.148.172-.311.385-.444.517-.148.148-.302.309-.13.605.172.296.766 1.264 1.645 2.047 1.13.998 2.083 1.307 2.379 1.455.296.148.468.123.641-.074.172-.197.739-.863.936-1.159.197-.296.394-.246.665-.148.271.099 1.725.813 2.021.961.296.148.493.222.567.345.074.123.074.715-.172 1.408z"></path>
             </svg>
           </a>
-
-          <!-- GitHub -->
-          <a
-            href="https://github.com/DraftraX"
-            target="_blank"
-            rel="noopener"
-            aria-label="GitHub"
-            title="GitHub · DraftraX"
-            class="flex h-11 w-11 items-center justify-center rounded-full border-2 border-white text-[var(--ca-ink)] shadow-[1.5px_1.5px_0_rgba(25,21,16,0.25)] transition-transform duration-200 hover:-translate-y-0.5"
-            style="background-color:var(--ca-magenta)"
-          >
-            <svg viewBox="0 0 24 24" fill="currentColor" class="h-4.5 w-4.5" aria-hidden="true">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
-            </svg>
-          </a>
         </div>
       </div>
     </div>
 
     <div class="mt-12 flex flex-col items-center justify-between gap-3 text-sm text-[var(--ca-ink)]/70 sm:flex-row">
-      <span>© {year} Archity · WhatsApp +51 940 771 896 · wmanuelga@gmail.com</span>
+      <span>© 2026 Archity</span>
       <a
-        href="/#work"
+        href="/contact"
         class="ca-mono inline-flex items-center gap-1.5 rounded-full bg-[var(--ca-chrome)] px-3.5 py-2 font-bold uppercase tracking-wide text-[var(--ca-ink)] transition-opacity hover:opacity-80"
       >
-        <span data-es="✦ 8 Proyectos en Producción Real" data-en="✦ 8 Live Production Systems">
-          ✦ 8 Proyectos en Producción Real
-        </span>
+        <span>✦ Archity Studio</span>
       </a>
     </div>
   </div>

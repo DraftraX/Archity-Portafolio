@@ -1,0 +1,113 @@
+---
+import { contactData } from "../data/portfolioData";
+---
+
+<section id="contact" class="ca-grid relative scroll-mt-24">
+  <!-- Carita amarilla parpadeante + Let's talk con el cuadro que invierte los colores -->
+  <div
+    data-invert-zone
+    class="ca-invert-zone group/talk relative mx-auto flex max-w-3xl flex-col items-center gap-5 px-4 pb-4 pt-16 text-center sm:gap-6 sm:pt-20"
+  >
+    <div>
+      <svg viewBox="0 0 200 200" class="overflow-visible h-52 w-52 sm:h-64 sm:w-64" aria-hidden="true">
+        <circle cx="100" cy="100" r="88" fill="var(--ca-yellow)" stroke="var(--ca-ink)" stroke-width="3"></circle>
+        <circle cx="56" cy="120" r="12" fill="var(--ca-magenta)" opacity="0.45"></circle>
+        <circle cx="144" cy="120" r="12" fill="var(--ca-magenta)" opacity="0.45"></circle>
+        <g class="ca-blink">
+          <rect x="65" y="68" width="16" height="42" rx="8" fill="var(--ca-ink)"></rect>
+          <rect x="119" y="68" width="16" height="42" rx="8" fill="var(--ca-ink)"></rect>
+        </g>
+        <path d="M62 130 Q100 172 138 130" fill="none" stroke="var(--ca-ink)" stroke-width="6" stroke-linecap="round"></path>
+      </svg>
+    </div>
+
+    <span
+      class="ca-display text-7xl uppercase leading-[0.9] tracking-tight text-[var(--ca-ink)] sm:text-9xl"
+      data-es={contactData.titleEs}
+      data-en={contactData.titleEn}
+    >
+      {contactData.titleEs}
+    </span>
+
+    <p
+      class="ca-hand mx-auto max-w-xl text-2xl leading-snug text-[var(--ca-ink)]/80 sm:text-3xl"
+      data-es={contactData.descriptionEs}
+      data-en={contactData.descriptionEn}
+    >
+      {contactData.descriptionEs}
+    </p>
+
+    <!-- Cuadro inversor de colores ([backdrop-filter:invert(1)]) con las 4 esquinas negras -->
+    <span aria-hidden="true" data-cursor-lens class="ca-cursor-lens">
+      <span class="absolute -left-2 -top-2 h-4 w-4 bg-[var(--ca-ink)]"></span>
+      <span class="absolute -right-2 -top-2 h-4 w-4 bg-[var(--ca-ink)]"></span>
+      <span class="absolute -bottom-2 -left-2 h-4 w-4 bg-[var(--ca-ink)]"></span>
+      <span class="absolute -bottom-2 -right-2 h-4 w-4 bg-[var(--ca-ink)]"></span>
+    </span>
+  </div>
+
+  <!-- Nota celeste con reacción "1" + Banner Amarillo CONTACT que lleva a /contact -->
+  <div class="px-4 pb-20 pt-10 sm:px-8 lg:px-20">
+    <div class="relative mx-auto max-w-4xl">
+      <div class="relative z-20 mb-6 flex justify-center lg:absolute lg:-left-24 lg:-top-14 lg:mb-0 lg:block lg:w-80">
+        <div class="relative w-full max-w-sm -rotate-2 bg-[var(--ca-cyan)] p-5 pt-6 shadow-[2px_6px_18px_rgba(17,18,18,0.22)]">
+          <span aria-hidden="true" class="absolute -left-4 -top-2 z-10 h-5 w-16 -rotate-[38deg] bg-[var(--ca-yellow-soft)]/70 shadow-[0_1px_3px_rgba(17,18,18,0.15)]"></span>
+          <span aria-hidden="true" class="absolute -right-4 -top-2 z-10 h-5 w-16 rotate-[38deg] bg-[var(--ca-pink-soft)]/70 shadow-[0_1px_3px_rgba(17,18,18,0.15)]"></span>
+          <div class="flex items-start gap-3">
+            <span class="h-10 w-10 shrink-0 overflow-hidden rounded-full bg-[var(--ca-ink)]/10">
+              <img
+                src={contactData.commentAvatar}
+                alt={contactData.commentAuthor}
+                loading="lazy"
+                class="h-full w-full object-cover"
+              />
+            </span>
+            <div>
+              <p class="font-semibold text-[var(--ca-ink)]">{contactData.commentAuthor}</p>
+              <p
+                class="mt-1 text-sm leading-relaxed text-[var(--ca-ink)]/75"
+                data-es={contactData.commentNoteEs}
+                data-en={contactData.commentNoteEn}
+              >
+                {contactData.commentNoteEs}
+              </p>
+              <span class="mt-3 inline-flex items-center gap-1.5 rounded-md border border-[var(--ca-blue)] px-2.5 py-1 text-xs font-bold text-[var(--ca-ink)]">
+                <svg viewBox="0 0 24 24" fill="var(--ca-yellow)" stroke="var(--ca-ink)" stroke-width="1.5" class="h-3.5 w-3.5" aria-hidden="true">
+                  <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"></path>
+                </svg>
+                {contactData.commentReactions}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="/contact" aria-label="Go to contact page" class="group relative block">
+        <span aria-hidden="true" class="absolute -left-5 -top-3 z-10 h-6 w-28 -rotate-[8deg] bg-white/60 shadow-[0_1px_3px_rgba(17,18,18,0.15)]"></span>
+        <span aria-hidden="true" class="absolute -right-5 -top-3 z-10 h-6 w-28 rotate-[8deg] bg-white/60 shadow-[0_1px_3px_rgba(17,18,18,0.15)]"></span>
+        <div class="ca-doodle-box relative flex flex-col items-center gap-2 border-[3px] border-[var(--ca-ink)] bg-[var(--ca-yellow)] px-6 py-16 text-center shadow-[8px_12px_0_var(--ca-ink)] sm:gap-3 sm:py-24">
+          <p
+            class="ca-hand text-3xl text-[var(--ca-ink)] sm:text-4xl"
+            data-es={contactData.bannerTaglineEs}
+            data-en={contactData.bannerTaglineEn}
+          >
+            {contactData.bannerTaglineEs}
+          </p>
+          <span
+            class="ca-display text-7xl uppercase leading-none tracking-tight text-[var(--ca-ink)] sm:text-[9rem]"
+            data-es={contactData.bannerEs}
+            data-en={contactData.bannerEn}
+          >
+            {contactData.bannerEs}
+          </span>
+          <span class="ca-mono mt-3 inline-flex items-center gap-2 border-b-2 border-[var(--ca-ink)] pb-1 text-sm font-bold uppercase tracking-[0.2em] text-[var(--ca-ink)] transition-transform duration-200 group-hover:translate-x-1">
+            <span data-es={contactData.dropALineEs} data-en={contactData.dropALineEn}>{contactData.dropALineEs}</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" class="h-4 w-4" aria-hidden="true">
+              <path d="M7 17 17 7M9 7h8v8"></path>
+            </svg>
+          </span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>

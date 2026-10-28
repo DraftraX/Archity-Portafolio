@@ -1,43 +1,38 @@
 ---
-// Header idéntico a Portfoliofy Crayon (creative-artsy), a pantalla completa, en español por defecto + botón de cambio de idioma ES/EN a la derecha
-const pathname = Astro.url.pathname;
-const isHome = pathname === "/" || pathname === "";
+const rawPath = Astro.url.pathname.replace(/\/+$/, "") || "/";
+const isHome = rawPath === "/";
+const isAbout = rawPath.startsWith("/about");
+const isCaseStudy = rawPath.startsWith("/case-studies") || rawPath.startsWith("/productos");
+const isPlayground = rawPath.startsWith("/playground");
+const isContact = rawPath.startsWith("/contact");
 ---
 
 <header class="sticky top-0 z-50 w-full bg-[var(--ca-surface)]/95 backdrop-blur-sm">
-  <div class="relative flex w-full items-stretch justify-between border-b border-[var(--ca-ink)]/10 pl-4 pr-3 sm:pl-6 sm:pr-6">
+  <div class="relative flex w-full items-stretch justify-between border-b border-[var(--ca-ink)]/10 pl-4 pr-3 sm:pl-5">
     <div class="flex items-stretch gap-2">
-      <!-- Logo empresarial Archity en SVG (sin texto escrito al lado) -->
+      <!-- Icono principal en la barra superior -->
       <a
-        aria-label="Archity"
+        aria-label="Archity Home"
         title="Archity"
-        class="group flex items-center pr-3 py-2 transition-transform duration-200 hover:scale-105"
+        class="group flex items-center pr-2 transition-transform duration-200 hover:scale-105"
         href="/"
       >
-        <span class="relative flex h-10 w-10 items-center justify-center rounded-xl border-2 border-white bg-[var(--ca-ink)] p-1.5 shadow-[2px_2.5px_0_rgba(25,21,16,0.32)] transition-colors duration-200 group-hover:bg-[var(--ca-blue)]">
-          <svg
-            viewBox="0 0 150 140"
-            fill="none"
-            class="h-6 w-6 overflow-visible"
-            aria-hidden="true"
-          >
+        <span class="relative flex h-9 w-9 items-center justify-center rounded-full border-2 border-white bg-[var(--ca-ink)] p-1.5 shadow-[1.5px_2px_0_rgba(25,21,16,0.28)] transition-colors duration-200 group-hover:bg-[var(--ca-blue)]">
+          <svg viewBox="0 0 150 140" fill="none" class="h-5 w-5 overflow-visible" aria-hidden="true">
             <polygon points="74.5,0 88.5,26 35.5,126 0,140" fill="#ffffff"></polygon>
-            <polygon
-              points="97,43.5 86,63.5 100.5,90.5 70,90.5 62.5,104.5 108,104.5 126.5,138.5 149,138.5"
-              fill="var(--ca-yellow)"
-            ></polygon>
+            <polygon points="97,43.5 86,63.5 100.5,90.5 70,90.5 62.5,104.5 108,104.5 126.5,138.5 149,138.5" fill="var(--ca-yellow)"></polygon>
           </svg>
         </span>
       </a>
 
-      <!-- Navegación principal estilo Crayon -->
+      <!-- Navegación principal idéntica a Portfoliofy Crayon (creative-artsy) con páginas separadas -->
       <nav class="hidden items-stretch md:flex" aria-label="Navegación principal">
         <a
           aria-current={isHome ? "page" : undefined}
-          class={`ca-nav-link ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors ${
+          class={`ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors ${
             isHome ? "bg-[var(--ca-yellow)]" : "hover:bg-[var(--ca-chrome)]"
           }`}
-          href="/#home"
+          href="/"
         >
           <svg viewBox="0 0 24 24" fill="currentColor" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke" class="overflow-visible [filter:drop-shadow(1px_1.5px_0_rgba(25,21,16,0.28))] h-5 w-5 shrink-0" aria-hidden="true">
             <path d="M12 2l2.9 6.26 6.85.72-5.1 4.62 1.44 6.7L12 17.6l-6.09 3.7 1.44-6.7-5.1-4.62 6.85-.72z"></path>
@@ -46,8 +41,11 @@ const isHome = pathname === "/" || pathname === "";
         </a>
 
         <a
-          class="ca-nav-link ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-chrome)]"
-          href="/#about"
+          aria-current={isAbout ? "page" : undefined}
+          class={`ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors ${
+            isAbout ? "bg-[var(--ca-yellow)]" : "hover:bg-[var(--ca-chrome)]"
+          }`}
+          href="/about"
         >
           <svg viewBox="0 0 24 24" fill="currentColor" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke" class="overflow-visible [filter:drop-shadow(1px_1.5px_0_rgba(25,21,16,0.28))] h-5 w-5 shrink-0" aria-hidden="true">
             <path d="M12 3a3.6 3.6 0 100 7.2A3.6 3.6 0 0012 3zM4.8 20a7.2 7.2 0 0114.4 0z"></path>
@@ -56,101 +54,101 @@ const isHome = pathname === "/" || pathname === "";
         </a>
 
         <a
-          class={`ca-nav-link ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors ${
-            !isHome ? "bg-[var(--ca-yellow)]" : "hover:bg-[var(--ca-chrome)]"
+          aria-current={isCaseStudy ? "page" : undefined}
+          class={`ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors ${
+            isCaseStudy ? "bg-[var(--ca-yellow)]" : "hover:bg-[var(--ca-chrome)]"
           }`}
-          href="/#work"
+          href="/case-studies"
         >
           <svg viewBox="0 0 24 24" fill="currentColor" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke" class="overflow-visible [filter:drop-shadow(1px_1.5px_0_rgba(25,21,16,0.28))] h-5 w-5 shrink-0" aria-hidden="true">
             <path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"></path>
           </svg>
-          <span data-es="Proyectos" data-en="Case Study">Proyectos</span>
+          <span data-es="Case Study" data-en="Case Study">Case Study</span>
         </a>
 
         <a
-          class="ca-nav-link ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-chrome)]"
-          href="/#playground"
+          aria-current={isPlayground ? "page" : undefined}
+          class={`ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors ${
+            isPlayground ? "bg-[var(--ca-yellow)]" : "hover:bg-[var(--ca-chrome)]"
+          }`}
+          href="/playground"
         >
           <svg viewBox="0 0 24 24" fill="currentColor" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke" class="overflow-visible [filter:drop-shadow(1px_1.5px_0_rgba(25,21,16,0.28))] h-5 w-5 shrink-0" aria-hidden="true">
             <path d="M12 2l10 10-10 10L2 12z"></path>
           </svg>
-          <span data-es="Servicios" data-en="Playground">Servicios</span>
+          <span data-es="Playground" data-en="Playground">Playground</span>
         </a>
       </nav>
     </div>
 
-    <!-- Los 3 botones sociales circulares oficiales (LinkedIn, Facebook, WhatsApp 940771896) + Botón ES/EN + Botón Contacto -->
+    <!-- Redes oficiales + Selector de idioma ES/EN + Botón Contact (oculto cuando ya estamos en /contact, igual que la captura 4) -->
     <div class="flex items-center gap-2 py-2">
-      <!-- 1. LinkedIn Oficial (Círculo Amarillo) -->
+      <!-- LinkedIn -->
       <a
         href="https://www.linkedin.com/company/archit-tech/posts/?viewAsMember=true"
         target="_blank"
         rel="noopener"
-        aria-label="LinkedIn de Archity"
-        title="LinkedIn · Archity"
+        aria-label="LinkedIn"
         class="flex h-10 w-10 items-center justify-center rounded-full border-2 border-white text-[var(--ca-ink)] shadow-[1.5px_1.5px_0_rgba(25,21,16,0.25)] transition-transform duration-200 hover:-translate-y-0.5"
         style="background-color:var(--ca-yellow)"
       >
-        <svg viewBox="0 0 24 24" fill="currentColor" class="h-4.5 w-4.5" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4" aria-hidden="true">
           <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
         </svg>
       </a>
 
-      <!-- 2. Facebook Oficial (Círculo Rosa/Magenta Crayon con el icono oficial de Facebook) -->
+      <!-- Facebook -->
       <a
         href="https://www.facebook.com/profile.php?id=61590953622590"
         target="_blank"
         rel="noopener"
-        aria-label="Facebook de Archity"
-        title="Facebook Oficial · Archity"
+        aria-label="Facebook"
         class="flex h-10 w-10 items-center justify-center rounded-full border-2 border-white text-[var(--ca-ink)] shadow-[1.5px_1.5px_0_rgba(25,21,16,0.25)] transition-transform duration-200 hover:-translate-y-0.5"
         style="background-color:var(--ca-magenta)"
       >
-        <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor" class="h-4.5 w-4.5" aria-hidden="true">
           <path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"></path>
         </svg>
       </a>
 
-      <!-- 3. WhatsApp Oficial 940771896 (Círculo Verde) -->
+      <!-- WhatsApp -->
       <a
         href="https://wa.me/51940771896?text=Hola%20Archity,%20vi%20su%20portafolio%20y%20me%20gustar%C3%ADa%20conversar%20sobre%20un%20proyecto."
         target="_blank"
         rel="noopener"
-        aria-label="WhatsApp 940771896"
-        title="WhatsApp · +51 940 771 896"
+        aria-label="WhatsApp"
         class="flex h-10 w-10 items-center justify-center rounded-full border-2 border-white text-[var(--ca-ink)] shadow-[1.5px_1.5px_0_rgba(25,21,16,0.25)] transition-transform duration-200 hover:-translate-y-0.5"
         style="background-color:var(--ca-green)"
       >
-        <svg viewBox="0 0 24 24" fill="currentColor" class="h-4.5 w-4.5" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4" aria-hidden="true">
           <path d="M12.031 2c-5.516 0-9.999 4.486-9.999 10.001 0 1.766.461 3.489 1.338 5.008L2 22l5.125-1.344c1.471.801 3.129 1.224 4.904 1.225h.004c5.515 0 9.998-4.486 9.998-10.001 0-2.672-1.04-5.184-2.928-7.073C17.215 3.04 14.703 2 12.031 2zm5.828 14.122c-.246.693-1.434 1.326-1.988 1.409-.508.076-1.151.108-1.858-.116-.429-.136-.978-.318-1.682-.622-2.961-1.278-4.894-4.258-5.042-4.455-.148-.197-1.205-1.602-1.205-3.056 0-1.454.763-2.169 1.034-2.465.271-.296.591-.37.788-.37.197 0 .394.002.566.01.182.009.426-.069.665.508.246.592.838 2.046.912 2.194.074.148.123.32.025.517-.099.197-.148.32-.296.493-.148.172-.311.385-.444.517-.148.148-.302.309-.13.605.172.296.766 1.264 1.645 2.047 1.13.998 2.083 1.307 2.379 1.455.296.148.468.123.641-.074.172-.197.739-.863.936-1.159.197-.296.394-.246.665-.148.271.099 1.725.813 2.021.961.296.148.493.222.567.345.074.123.074.715-.172 1.408z"></path>
         </svg>
       </a>
 
-      <!-- Botón de cambio de idioma (ES / EN) con el mismo diseño Crayon -->
+      <!-- Selector de idioma ES / EN -->
       <button
         id="ca-lang-toggle"
         type="button"
         aria-label="Cambiar idioma ES / EN"
         title="Cambiar idioma (Español / English)"
-        class="ca-mono inline-flex items-center gap-1.5 border-2 border-[var(--ca-ink)] bg-[var(--ca-yellow)] px-3 py-2 text-xs font-bold uppercase tracking-widest text-[var(--ca-ink)] shadow-[2px_2px_0_var(--ca-ink)] transition-colors hover:bg-[var(--ca-ink)] hover:text-white cursor-pointer"
+        class="ca-mono inline-flex items-center gap-1 border-2 border-[var(--ca-ink)] bg-[var(--ca-surface)] px-2.5 py-2 text-xs font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-yellow)] cursor-pointer"
       >
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="h-3.5 w-3.5" aria-hidden="true">
-          <circle cx="12" cy="12" r="9"></circle>
-          <path d="M3 12h18M12 3a14.5 14.5 0 0 1 0 18M12 3a14.5 14.5 0 0 0 0 18"></path>
-        </svg>
         <span id="ca-lang-label">ES</span>
       </button>
 
-      <!-- Botón Contacto -->
-      <a
-        class="ca-mono hidden items-center gap-2.5 border-2 border-[var(--ca-ink)] px-5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-ink)] hover:text-white sm:inline-flex"
-        href="/#contact"
-      >
-        <svg viewBox="0 0 24 22" fill="currentColor" class="h-4 w-4" aria-hidden="true">
-          <path d="M12 21C5 16 1 12 1 7.5 1 4 3.6 1.5 6.8 1.5c2 0 3.9 1 5.2 2.6 1.3-1.6 3.2-2.6 5.2-2.6C20.4 1.5 23 4 23 7.5 23 12 19 16 12 21Z"></path>
-        </svg>
-        <span data-es="Contacto" data-en="Contact">Contacto</span>
-      </a>
+      {
+        !isContact && (
+          <a
+            class="ca-mono hidden items-center gap-2.5 border-2 border-[var(--ca-ink)] px-5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-ink)] hover:text-white sm:inline-flex"
+            href="/contact"
+          >
+            <svg viewBox="0 0 24 22" fill="currentColor" class="h-4 w-4" aria-hidden="true">
+              <path d="M12 21C5 16 1 12 1 7.5 1 4 3.6 1.5 6.8 1.5c2 0 3.9 1 5.2 2.6 1.3-1.6 3.2-2.6 5.2-2.6C20.4 1.5 23 4 23 7.5 23 12 19 16 12 21Z"></path>
+            </svg>
+            <span data-es="Contacto" data-en="Contact">Contacto</span>
+          </a>
+        )
+      }
 
       <button
         id="ca-menu-btn"
@@ -165,50 +163,54 @@ const isHome = pathname === "/" || pathname === "";
     </div>
   </div>
 
-  <!-- Menú móvil desplegable estilo Crayon -->
-  <div id="ca-mobile-menu" class="hidden border-b-2 border-[var(--ca-ink)] bg-[var(--ca-surface)] px-4 py-4 md:hidden">
-    <nav class="flex flex-col gap-2">
-      <a href="/#home" class="ca-mono bg-[var(--ca-yellow)] px-4 py-3 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)]">
-        ★ <span data-es="Inicio" data-en="Home">Inicio</span>
+  <!-- Menú móvil desplegable -->
+  <div id="ca-mobile-menu" class="hidden border-b-2 border-[var(--ca-ink)] bg-[var(--ca-surface)] p-2 md:hidden">
+    <nav class="flex flex-col">
+      <a
+        href="/"
+        class={`ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] ${
+          isHome ? "bg-[var(--ca-yellow)]" : "hover:bg-[var(--ca-chrome)]"
+        }`}
+      >
+        <span data-es="Inicio" data-en="Home">Inicio</span>
       </a>
-      <a href="/#about" class="ca-mono px-4 py-3 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] hover:bg-[var(--ca-chrome)]">
-        ♟ <span data-es="Nosotros" data-en="About">Nosotros</span>
+      <a
+        href="/about"
+        class={`ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] ${
+          isAbout ? "bg-[var(--ca-yellow)]" : "hover:bg-[var(--ca-chrome)]"
+        }`}
+      >
+        <span data-es="Nosotros" data-en="About">Nosotros</span>
       </a>
-      <a href="/#work" class="ca-mono px-4 py-3 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] hover:bg-[var(--ca-chrome)]">
-        ⊞ <span data-es="Proyectos (8 Carpetas)" data-en="Case Study (8 Folders)">Proyectos (8 Carpetas)</span>
+      <a
+        href="/case-studies"
+        class={`ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] ${
+          isCaseStudy ? "bg-[var(--ca-yellow)]" : "hover:bg-[var(--ca-chrome)]"
+        }`}
+      >
+        <span data-es="Case Study" data-en="Case Study">Case Study</span>
       </a>
-      <a href="/#playground" class="ca-mono px-4 py-3 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] hover:bg-[var(--ca-chrome)]">
-        ◆ <span data-es="Servicios (Mural)" data-en="Playground (Services)">Servicios (Mural)</span>
+      <a
+        href="/playground"
+        class={`ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] ${
+          isPlayground ? "bg-[var(--ca-yellow)]" : "hover:bg-[var(--ca-chrome)]"
+        }`}
+      >
+        <span data-es="Playground" data-en="Playground">Playground</span>
       </a>
-      <a href="/#contact" class="ca-mono border-2 border-[var(--ca-ink)] px-4 py-3 text-center text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)]">
-        ♥ <span data-es="Contacto · 940 771 896" data-en="Contact · 940 771 896">Contacto · 940 771 896</span>
-      </a>
-      <div class="mt-2 flex items-center justify-center gap-3 pt-2 border-t border-[var(--ca-ink)]/15">
-        <a
-          href="https://www.linkedin.com/company/archit-tech/posts/?viewAsMember=true"
-          target="_blank"
-          rel="noopener"
-          class="ca-mono rounded-full border-2 border-[var(--ca-ink)] bg-[var(--ca-yellow)] px-3.5 py-1.5 text-xs font-bold uppercase text-[var(--ca-ink)]"
-        >
-          LinkedIn
-        </a>
-        <a
-          href="https://www.facebook.com/profile.php?id=61590953622590"
-          target="_blank"
-          rel="noopener"
-          class="ca-mono rounded-full border-2 border-[var(--ca-ink)] bg-[var(--ca-magenta)] px-3.5 py-1.5 text-xs font-bold uppercase text-[var(--ca-ink)]"
-        >
-          Facebook
-        </a>
-        <a
-          href="https://wa.me/51940771896"
-          target="_blank"
-          rel="noopener"
-          class="ca-mono rounded-full border-2 border-[var(--ca-ink)] bg-[var(--ca-green)] px-3.5 py-1.5 text-xs font-bold uppercase text-[var(--ca-ink)]"
-        >
-          WhatsApp
-        </a>
-      </div>
+      {
+        !isContact && (
+          <a
+            href="/contact"
+            class="ca-mono mt-1 inline-flex items-center justify-center gap-2 border-2 border-[var(--ca-ink)] bg-[var(--ca-blue)] px-4 py-2.5 text-xs font-bold uppercase tracking-widest text-white"
+          >
+            <svg viewBox="0 0 24 22" fill="currentColor" class="h-3.5 w-3.5" aria-hidden="true">
+              <path d="M12 21C5 16 1 12 1 7.5 1 4 3.6 1.5 6.8 1.5c2 0 3.9 1 5.2 2.6 1.3-1.6 3.2-2.6 5.2-2.6C20.4 1.5 23 4 23 7.5 23 12 19 16 12 21Z"></path>
+            </svg>
+            <span data-es="Contacto" data-en="Contact">Contacto</span>
+          </a>
+        )
+      }
     </nav>
   </div>
 </header>
@@ -220,11 +222,8 @@ const isHome = pathname === "/" || pathname === "";
     const isHidden = menu?.classList.toggle("hidden");
     btn.setAttribute("aria-expanded", String(!isHidden));
   });
-  menu?.querySelectorAll("a").forEach((a) => {
-    a.addEventListener("click", () => menu.classList.add("hidden"));
-  });
 
-  // Sistema global de cambio de idioma Español (por defecto) <-> Inglés
+  // Cambio de idioma global ES / EN
   const langToggle = document.getElementById("ca-lang-toggle");
   const langLabel = document.getElementById("ca-lang-label");
 

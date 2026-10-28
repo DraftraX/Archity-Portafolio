@@ -1,0 +1,91 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import LetsTalkSection from "../components/LetsTalkSection.astro";
+import Footer from "../components/Footer.astro";
+import { projectsData } from "../data/portfolioData";
+---
+
+<Layout title="Archity — Case Study">
+  <Header />
+
+  <main class="ca-grid px-4 pb-24 pt-14 sm:px-8 sm:pt-20 lg:px-20">
+    <div data-invert-zone class="ca-invert-zone relative mb-16 inline-block pr-8">
+      <p class="ca-hand text-2xl text-[var(--ca-ink)]" data-es="¡explora mi trabajo!" data-en="explore my work!">
+        ¡explora mi trabajo!
+      </p>
+      <span
+        class="ca-display mt-3 inline-block text-7xl leading-[0.92] tracking-tight text-[var(--ca-ink)] sm:text-9xl xl:text-[12rem]"
+        data-es="TRABAJOS DESTACADOS"
+        data-en="FEATURED WORKS"
+      >
+        TRABAJOS DESTACADOS
+      </span>
+
+      <span aria-hidden="true" data-cursor-lens class="ca-cursor-lens">
+        <span class="absolute -left-2 -top-2 h-4 w-4 bg-[var(--ca-ink)]"></span>
+        <span class="absolute -right-2 -top-2 h-4 w-4 bg-[var(--ca-ink)]"></span>
+        <span class="absolute -bottom-2 -left-2 h-4 w-4 bg-[var(--ca-ink)]"></span>
+        <span class="absolute -bottom-2 -right-2 h-4 w-4 bg-[var(--ca-ink)]"></span>
+      </span>
+    </div>
+
+    <div class="grid grid-cols-1 gap-x-10 gap-y-20 sm:grid-cols-2">
+      {
+        projectsData.map((p) => (
+          <div>
+            <a class="group block" href={p.internalUrl}>
+              <div class="flex">
+                <span class="ca-mono inline-flex items-center gap-3.5 bg-[var(--ca-chrome)] py-6 pl-9 pr-28 text-base font-bold uppercase tracking-[0.2em] text-[var(--ca-ink)] transition-colors duration-700 ease-in-out [clip-path:polygon(0_0,calc(100%-76px)_0,100%_100%,0_100%)] group-hover:bg-[var(--ca-ink)] group-hover:text-white">
+                  <span class="h-3.5 w-3.5 rounded-full bg-[var(--ca-ink)] transition-colors duration-700 ease-in-out group-hover:bg-white" />
+                  <span data-es={p.dateEs} data-en={p.dateEn}>{p.dateEs}</span>
+                </span>
+              </div>
+
+              <div class="bg-[var(--ca-chrome)] p-5 transition-colors duration-700 ease-in-out group-hover:bg-[var(--ca-ink)]">
+                <div data-see-zone class="ca-see-zone relative overflow-hidden">
+                  <div class="transition-transform duration-500 ease-out group-hover:scale-[1.05]">
+                    <div class="relative overflow-hidden aspect-[16/9] w-full">
+                      <img
+                        src={p.coverImg}
+                        alt={p.title}
+                        loading="lazy"
+                        class="absolute inset-0 h-full w-full object-cover"
+                      />
+                    </div>
+                  </div>
+
+                  <span aria-hidden="true" data-see-lens class="ca-see-lens">
+                    <span
+                      class="ca-mono text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)]"
+                      data-es="Ver"
+                      data-en="See"
+                    >
+                      Ver
+                    </span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="pt-7 text-center">
+                <h2 class="text-3xl font-semibold tracking-tight text-[var(--ca-ink)] sm:text-4xl">
+                  {p.title}
+                </h2>
+                <p
+                  class="mx-auto mt-3 max-w-md text-base leading-relaxed text-[var(--ca-ink)]/70"
+                  data-es={p.shortDescEs}
+                  data-en={p.shortDescEn}
+                >
+                  {p.shortDescEs}
+                </p>
+              </div>
+            </a>
+          </div>
+        ))
+      }
+    </div>
+  </main>
+
+  <LetsTalkSection />
+  <Footer />
+</Layout>

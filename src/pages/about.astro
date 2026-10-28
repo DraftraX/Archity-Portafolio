@@ -1,0 +1,319 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import LetsTalkSection from "../components/LetsTalkSection.astro";
+import Footer from "../components/Footer.astro";
+import { bioData, heroData } from "../data/portfolioData";
+
+const rippedClips = [
+  "polygon(2% 6%, 12% 0%, 25% 4%, 40% 1%, 55% 5%, 70% 0%, 85% 4%, 98% 1%, 96% 15%, 100% 30%, 97% 45%, 100% 60%, 96% 75%, 99% 90%, 97% 98%, 85% 96%, 70% 100%, 55% 96%, 40% 100%, 25% 95%, 12% 100%, 3% 97%, 1% 85%, 4% 70%, 0% 55%, 3% 40%, 0% 25%, 2% 12%)",
+  "polygon(1% 8%, 10% 2%, 22% 6%, 35% 0%, 48% 5%, 62% 1%, 76% 6%, 90% 1%, 99% 6%, 97% 20%, 100% 35%, 98% 50%, 100% 66%, 97% 80%, 99% 94%, 88% 98%, 74% 94%, 60% 99%, 46% 95%, 32% 100%, 18% 96%, 6% 99%, 2% 88%, 5% 74%, 1% 60%, 4% 46%, 0% 32%, 3% 18%)",
+  "polygon(3% 3%, 16% 1%, 28% 5%, 44% 0%, 58% 4%, 72% 1%, 84% 5%, 97% 2%, 100% 18%, 96% 32%, 100% 48%, 97% 64%, 100% 80%, 96% 94%, 98% 99%, 84% 95%, 68% 100%, 52% 96%, 38% 100%, 22% 95%, 8% 99%, 1% 92%, 4% 78%, 0% 62%, 3% 48%, 0% 34%, 4% 20%, 1% 8%)",
+];
+---
+
+<Layout title="Archity — About">
+  <Header />
+
+  <main class="ca-grid relative px-4 pb-24 pt-10 sm:pt-14">
+    <!-- Navegación lateral izquierda fija idéntica a la captura 3 (MAIN BIO · STORY · WORK) -->
+    <nav
+      class="fixed left-0 top-1/3 z-40 hidden flex-col gap-3 lg:flex"
+      aria-label="About sections"
+    >
+      <a
+        href="#bio"
+        class="ca-mono flex items-center gap-2 rounded-r-xl border-2 border-l-0 border-[var(--ca-ink)] py-3 pl-3 pr-5 text-[11px] font-bold uppercase tracking-widest text-[var(--ca-ink)] shadow-[3px_3px_0_var(--ca-ink)] transition-transform duration-200 hover:translate-x-1"
+        style="background-color:var(--ca-yellow)"
+      >
+        <svg viewBox="0 0 24 24" fill="currentColor" class="h-3.5 w-3.5" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"></circle>
+          <circle cx="12" cy="12" r="3.5" fill="white"></circle>
+        </svg>
+        <span data-es={bioData.cardLabelEs} data-en={bioData.cardLabelEn}>{bioData.cardLabelEs}</span>
+      </a>
+
+      <a
+        href="#story"
+        class="ca-mono flex items-center gap-2 rounded-r-xl border-2 border-l-0 border-[var(--ca-ink)] py-3 pl-3 pr-5 text-[11px] font-bold uppercase tracking-widest text-[var(--ca-ink)] shadow-[3px_3px_0_var(--ca-ink)] transition-transform duration-200 hover:translate-x-1"
+        style="background-color:var(--ca-magenta)"
+      >
+        <svg viewBox="0 0 24 24" fill="currentColor" class="h-3.5 w-3.5" aria-hidden="true">
+          <path d="M12 2l10 10-10 10L2 12z"></path>
+        </svg>
+        <span data-es={bioData.storyLabelEs} data-en={bioData.storyLabelEn}>{bioData.storyLabelEs}</span>
+      </a>
+
+      <a
+        href="#work"
+        class="ca-mono flex items-center gap-2 rounded-r-xl border-2 border-l-0 border-[var(--ca-ink)] py-3 pl-3 pr-5 text-[11px] font-bold uppercase tracking-widest text-white shadow-[3px_3px_0_var(--ca-ink)] transition-transform duration-200 hover:translate-x-1"
+        style="background-color:var(--ca-blue)"
+      >
+        <svg viewBox="0 0 24 24" fill="currentColor" class="h-3.5 w-3.5" aria-hidden="true">
+          <path d="M12 2 15 9l7 3-7 3-3 7-3-7-7-3 7-3 3-7Z"></path>
+        </svg>
+        <span data-es={bioData.workLabelEs} data-en={bioData.workLabelEn}>{bioData.workLabelEs}</span>
+      </a>
+    </nav>
+
+    <div class="mx-auto max-w-4xl">
+      <!-- Encabezado ABOUT con cuadro inversor de colores -->
+      <div data-invert-zone class="ca-invert-zone relative inline-block py-2 pr-8">
+        <span
+          class="ca-display mt-4 inline-block text-7xl leading-[0.9] tracking-tight text-[var(--ca-ink)] sm:text-9xl xl:text-[12rem]"
+          data-es={bioData.titleEs}
+          data-en={bioData.titleEn}
+        >
+          {bioData.titleEs}
+        </span>
+        <span aria-hidden="true" data-cursor-lens class="ca-cursor-lens">
+          <span class="absolute -left-2 -top-2 h-4 w-4 bg-[var(--ca-ink)]"></span>
+          <span class="absolute -right-2 -top-2 h-4 w-4 bg-[var(--ca-ink)]"></span>
+          <span class="absolute -bottom-2 -left-2 h-4 w-4 bg-[var(--ca-ink)]"></span>
+          <span class="absolute -bottom-2 -right-2 h-4 w-4 bg-[var(--ca-ink)]"></span>
+        </span>
+      </div>
+
+      <!-- Píldoras en móvil -->
+      <div class="mt-6 flex gap-2 lg:hidden">
+        <a
+          href="#bio"
+          class="ca-mono flex items-center gap-1.5 rounded-full bg-[var(--ca-chrome)] px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[var(--ca-ink)]"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-3 w-3" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"></circle>
+            <circle cx="12" cy="12" r="3.5" fill="white"></circle>
+          </svg>
+          <span data-es={bioData.cardLabelEs} data-en={bioData.cardLabelEn}>{bioData.cardLabelEs}</span>
+        </a>
+        <a
+          href="#story"
+          class="ca-mono flex items-center gap-1.5 rounded-full bg-[var(--ca-chrome)] px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[var(--ca-ink)]"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-3 w-3" aria-hidden="true">
+            <path d="M12 2l10 10-10 10L2 12z"></path>
+          </svg>
+          <span data-es={bioData.storyLabelEs} data-en={bioData.storyLabelEn}>{bioData.storyLabelEs}</span>
+        </a>
+        <a
+          href="#work"
+          class="ca-mono flex items-center gap-1.5 rounded-full bg-[var(--ca-chrome)] px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[var(--ca-ink)]"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-3 w-3" aria-hidden="true">
+            <path d="M12 2 15 9l7 3-7 3-3 7-3-7-7-3 7-3 3-7Z"></path>
+          </svg>
+          <span data-es={bioData.workLabelEs} data-en={bioData.workLabelEn}>{bioData.workLabelEs}</span>
+        </a>
+      </div>
+
+      <!-- ==================== 1. MAIN BIO ==================== -->
+      <section id="bio" class="mt-14 scroll-mt-28 sm:mt-20">
+        <span
+          class="ca-mono -rotate-2 inline-block bg-[var(--ca-yellow)] px-4 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] [filter:drop-shadow(2px_3px_3px_rgba(17,18,18,0.18))] sm:text-base"
+          style={`clip-path:${rippedClips[0]}`}
+          data-es={bioData.cardLabelEs}
+          data-en={bioData.cardLabelEn}
+        >
+          {bioData.cardLabelEs}
+        </span>
+
+        <div class="ca-doodle-box relative mt-6 border-2 border-[var(--ca-yellow)] p-6 sm:p-10">
+          <div class="lg:pr-56">
+            <p class="ca-hand text-2xl font-medium leading-snug text-[var(--ca-ink)] sm:text-4xl">
+              <span data-es={bioData.bodyPart1Es} data-en={bioData.bodyPart1En}>{bioData.bodyPart1Es}</span>{" "}
+              <span aria-hidden="true">✨</span>{" "}
+              <span data-es={bioData.bodyPart2Es} data-en={bioData.bodyPart2En}>{bioData.bodyPart2Es}</span>{" "}
+              <span aria-hidden="true">🎨</span>
+            </p>
+
+            <div class="mt-8 flex max-w-2xl flex-col gap-4">
+              {
+                bioData.storyParagraphs.map((para) => (
+                  <p
+                    class="text-base leading-relaxed text-[var(--ca-ink)]/80"
+                    data-es={para.es}
+                    data-en={para.en}
+                  >
+                    {para.es}
+                  </p>
+                ))
+              }
+            </div>
+
+            <div class="relative mt-8 max-w-xl -rotate-1 bg-[var(--ca-yellow-soft)] p-5 text-sm leading-relaxed text-[var(--ca-ink)] shadow-[3px_5px_14px_rgba(17,18,18,0.18)] sm:text-base">
+              <span aria-hidden="true" class="absolute -left-4 -top-2 z-10 h-5 w-16 -rotate-[38deg] bg-white/55 shadow-[0_1px_3px_rgba(17,18,18,0.15)]"></span>
+              <span data-es={bioData.calloutEs} data-en={bioData.calloutEn}>
+                {bioData.calloutEs}
+              </span>
+            </div>
+
+            <div
+              class="mt-8 max-w-md -rotate-2 bg-[var(--ca-yellow-soft)] p-4 text-sm leading-relaxed text-[var(--ca-ink)] shadow-[2px_3px_10px_rgba(17,18,18,0.14)] sm:ml-16 sm:text-base"
+              data-es={bioData.noteEs}
+              data-en={bioData.noteEn}
+            >
+              {bioData.noteEs}
+            </div>
+          </div>
+
+          <div class="mt-10 flex items-end justify-center gap-4 lg:absolute lg:right-0 lg:top-1 lg:mt-0 lg:block">
+            <div class="rotate-6">
+              <figure class="relative inline-block bg-white p-2 pb-1 shadow-[0_6px_18px_rgba(17,18,18,0.22)] w-36 lg:w-44">
+                <span aria-hidden="true" class="absolute -left-4 -top-2 z-10 h-5 w-16 -rotate-[38deg] bg-[var(--ca-cyan)]/70 shadow-[0_1px_3px_rgba(17,18,18,0.15)]"></span>
+                <span aria-hidden="true" class="absolute -right-4 -top-2 z-10 h-5 w-16 rotate-[38deg] bg-[var(--ca-yellow-soft)]/70 shadow-[0_1px_3px_rgba(17,18,18,0.15)]"></span>
+                <div class="aspect-[4/5] w-full overflow-hidden">
+                  <img src={bioData.photo0.src} alt="2026" loading="lazy" class="h-full w-full object-cover" />
+                </div>
+                <figcaption class="ca-hand mt-1 text-center text-lg leading-tight text-[var(--ca-ink)]/70">
+                  2026
+                </figcaption>
+              </figure>
+            </div>
+
+            <span class="relative mt-4 inline-block lg:mt-5">
+              <span
+                class="ca-mono inline-block rounded-full border-[3px] border-white px-4 py-1.5 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] shadow-[0_4px_10px_rgba(25,21,16,0.25)]"
+                style="background-color:var(--ca-yellow)"
+              >
+                {heroData.nameDisplay}
+              </span>
+              <svg viewBox="0 0 40 40" fill="none" stroke="var(--ca-ink)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="absolute -left-6 -top-5 h-8 w-8" aria-hidden="true">
+                <path d="M34 33 C 25 24, 15 21, 9 9"></path>
+                <path d="M8 21 L 7 7 L 21 11"></path>
+              </svg>
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 2. STORY ==================== -->
+      <section id="story" class="mt-16 scroll-mt-28 sm:mt-24">
+        <span
+          class="ca-mono inline-block rotate-2 bg-[var(--ca-magenta)] px-4 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] [filter:drop-shadow(2px_3px_3px_rgba(17,18,18,0.18))] sm:text-base"
+          style={`clip-path:${rippedClips[1]}`}
+          data-es={bioData.storyLabelEs}
+          data-en={bioData.storyLabelEn}
+        >
+          {bioData.storyLabelEs}
+        </span>
+
+        <div class="ca-doodle-box relative mt-6 border-2 border-[var(--ca-magenta)] p-6 sm:p-10">
+          <div class="pointer-events-none absolute -right-2 top-[54%] hidden rotate-[-8deg] lg:block" aria-hidden="true">
+            <span class="relative">
+              <svg viewBox="0 0 40 40" fill="none" stroke="var(--ca-ink)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="absolute -left-6 -top-5 h-8 w-8" aria-hidden="true">
+                <path d="M34 33 C 25 24, 15 21, 9 9"></path>
+                <path d="M8 21 L 7 7 L 21 11"></path>
+              </svg>
+              <span
+                class="ca-mono inline-block rounded-full border-[3px] border-white px-4 py-1.5 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] shadow-[0_4px_10px_rgba(25,21,16,0.25)]"
+                style="background-color:var(--ca-magenta)"
+                data-es={bioData.storyLabelEs}
+                data-en={bioData.storyLabelEn}
+              >
+                {bioData.storyLabelEs}
+              </span>
+            </span>
+          </div>
+
+          <div class="flex flex-col gap-12 lg:gap-16 lg:pr-24">
+            {
+              bioData.principles.map((pr) => (
+                <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-10">
+                  <div
+                    class={`relative w-full max-w-xl p-6 pt-7 shadow-[2px_6px_18px_rgba(17,18,18,0.22)] sm:p-8 sm:pt-9 ${pr.tilt}`}
+                    style={`background-color:${pr.bg}`}
+                  >
+                    {pr.tapes.map((tapeCls) => (
+                      <span
+                        aria-hidden="true"
+                        class={`absolute z-10 bg-white/55 shadow-[0_1px_3px_rgba(17,18,18,0.15)] ${tapeCls}`}
+                      />
+                    ))}
+                    <h3
+                      class="text-2xl font-semibold tracking-tight text-[var(--ca-ink)] sm:text-3xl"
+                      data-es={pr.titleEs}
+                      data-en={pr.titleEn}
+                    >
+                      {pr.titleEs}
+                    </h3>
+                    <p
+                      class="mt-3 text-sm leading-relaxed text-[var(--ca-ink)]/85 sm:text-base"
+                      data-es={pr.bodyEs}
+                      data-en={pr.bodyEn}
+                    >
+                      {pr.bodyEs}
+                    </p>
+                  </div>
+
+                  <div class="flex items-center gap-3 self-center">
+                    <svg viewBox="0 0 48 24" fill="none" stroke="var(--ca-ink)" stroke-width="1.8" stroke-linecap="round" class="h-6 w-12 shrink-0" aria-hidden="true">
+                      <path d="M2 6c12 10 26 14 40 12"></path>
+                      <path d="M36 14l6 4-7 3"></path>
+                    </svg>
+                    <p
+                      class="ca-hand whitespace-nowrap text-2xl text-[var(--ca-ink)] sm:text-3xl"
+                      data-es={pr.noteEs}
+                      data-en={pr.noteEn}
+                    >
+                      {pr.noteEs}
+                    </p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 3. WORK ==================== -->
+      <section id="work" class="mt-16 scroll-mt-28 sm:mt-24">
+        <span
+          class="ca-mono -rotate-2 inline-block bg-[var(--ca-blue)] px-4 py-2 text-sm font-bold uppercase tracking-widest text-white [filter:drop-shadow(2px_3px_3px_rgba(17,18,18,0.18))] sm:text-base"
+          style={`clip-path:${rippedClips[2]}`}
+          data-es={bioData.workLabelEs}
+          data-en={bioData.workLabelEn}
+        >
+          {bioData.workLabelEs}
+        </span>
+
+        <div class="ca-doodle-box mt-6 flex flex-col gap-7 border-2 border-[var(--ca-blue)] p-6 sm:p-10">
+          {
+            bioData.work.map((w) => (
+              <div class="flex flex-col gap-1.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+                <div class="flex items-baseline gap-3 sm:gap-4">
+                  <span class="h-3 w-3 shrink-0 translate-y-0.5 bg-[var(--ca-blue)]" aria-hidden="true" />
+                  <div class="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-4">
+                    <p
+                      class="text-lg font-semibold text-[var(--ca-ink)]"
+                      data-es={w.roleEs}
+                      data-en={w.roleEn}
+                    >
+                      {w.roleEs}
+                    </p>
+                    <p
+                      class="text-sm text-[var(--ca-ink)]/70"
+                      data-es={w.companyEs}
+                      data-en={w.companyEn}
+                    >
+                      {w.companyEs}
+                    </p>
+                  </div>
+                </div>
+                <span
+                  class="ca-mono ml-6 inline-block bg-[var(--ca-blue)] px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-white sm:ml-0"
+                  data-es={w.periodEs}
+                  data-en={w.periodEn}
+                >
+                  {w.periodEs}
+                </span>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <LetsTalkSection />
+  <Footer />
+</Layout>

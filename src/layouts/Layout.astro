@@ -4,11 +4,13 @@ import "../styles/global.css";
 interface Props {
   title?: string;
   description?: string;
+  flexBody?: boolean;
 }
 
 const {
-  title = "Archity — Estudio de Ingeniería de Software & Sistemas en Producción",
-  description = "Portafolio oficial de Archity: AltoPlanta SaaS, Vinkula CRM, Sencillo FinTech, ERP Grupo Pineda, Inmobiliaria Flamingo, Banco de Sangre Loreto, RestoManager 3D y Facturación Electrónica SUNAT UBL 2.1.",
+  title = "Archity — Product Design & Software Engineering Studio",
+  description = "Portafolio oficial de Archity: diseño de software, plataformas SaaS inmobiliarias, ERPs industriales y experiencias digitales.",
+  flexBody = false,
 } = Astro.props;
 ---
 
@@ -33,11 +35,62 @@ const {
       rel="stylesheet"
     />
   </head>
-  <body class="t-creative-artsy ca-grid min-h-screen w-full overflow-x-clip bg-[var(--ca-surface)] text-[var(--ca-ink)] antialiased m-0 p-0">
-    <!-- Hoja real de cuaderno cubriendo el 100% del ancho y alto de la pantalla -->
-    <div class="relative w-full min-h-screen overflow-x-clip bg-[var(--ca-surface)] ca-grid text-[var(--ca-ink)]">
+  <body class="t-creative-artsy min-h-screen w-full overflow-x-clip bg-[var(--ca-surface)] text-[var(--ca-ink)] antialiased m-0 p-0">
+    <div
+      class={`t-creative-artsy min-h-screen w-full overflow-x-clip bg-[var(--ca-surface)] text-[var(--ca-ink)] antialiased ${
+        flexBody ? "flex flex-col" : ""
+      }`}
+    >
       <div aria-hidden="true" class="ca-grain pointer-events-none fixed inset-0 z-[1] mix-blend-multiply"></div>
       <slot />
     </div>
+
+    <script>
+      // Seguimiento global en tiempo real para el cuadro inversor de colores ([data-invert-zone]) y el círculo VER/SEE ([data-see-zone])
+      const setupLenses = (zoneSel: string, lensSel: string, clamp?: [number, number]) => {
+        document.querySelectorAll<HTMLElement>(zoneSel).forEach((zone) => {
+          const lens = zone.querySelector<HTMLElement>(lensSel);
+          if (!lens) return;
+          let raf = 0;
+
+          const moveLens = (clientX: number, clientY: number) => {
+            cancelAnimationFrame(raf);
+            raf = requestAnimationFrame(() => {
+              const rect = zone.getBoundingClientRect();
+              if (!rect.width || !rect.height) return;
+              let xPct = ((clientX - rect.left) / rect.width) * 100;
+              let yPct = ((clientY - rect.top) / rect.height) * 100;
+              if (clamp) {
+                xPct = Math.min(clamp[1], Math.max(clamp[0], xPct));
+                yPct = Math.min(clamp[1], Math.max(clamp[0], yPct));
+              }
+              lens.style.left = `${xPct}%`;
+              lens.style.top = `${yPct}%`;
+            });
+          };
+
+          zone.addEventListener("mouseenter", (e) => {
+            zone.classList.add("is-hovered");
+            moveLens(e.clientX, e.clientY);
+          });
+
+          zone.addEventListener("mousemove", (e) => {
+            if (!zone.classList.contains("is-hovered")) {
+              zone.classList.add("is-hovered");
+            }
+            moveLens(e.clientX, e.clientY);
+          });
+
+          zone.addEventListener("mouseleave", () => {
+            zone.classList.remove("is-hovered");
+            lens.style.left = "";
+            lens.style.top = "";
+          });
+        });
+      };
+
+      setupLenses("[data-invert-zone]", "[data-cursor-lens]", [8, 92]);
+      setupLenses("[data-see-zone]", "[data-see-lens]");
+    </script>
   </body>
 </html>
