@@ -218,19 +218,18 @@
 .ca-cursor-lens {
   pointer-events: none;
   position: absolute;
-  left: 46%;
-  top: 56%;
+  left: 50%;
+  top: 50%;
   z-index: 30;
   width: 14rem;
   height: 14rem;
-  transform: translate(-50%, -50%) scale(1);
-  opacity: 1;
+  transform: translate(-50%, -50%) scale(0.35);
+  opacity: 0;
   backdrop-filter: invert(1);
   -webkit-backdrop-filter: invert(1);
-  animation: 7s ease-in-out infinite ca-lens-roam;
   transition:
-    opacity 0.28s ease-out,
-    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.3s ease-out,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @media (min-width: 640px) {
@@ -240,10 +239,11 @@
   }
 }
 
+.group\/name:hover .ca-cursor-lens,
+.group\/talk:hover .ca-cursor-lens,
 .ca-invert-zone.is-hovered .ca-cursor-lens {
-  animation: none;
   opacity: 1;
-  transform: translate(-50%, -50%) scale(1.02);
+  transform: translate(-50%, -50%) scale(1);
 }
 
 /* Lente circular de inversión de color ("VER" / "SEE") que sigue el cursor sobre los proyectos (Case Study) */
@@ -313,6 +313,76 @@
 .ca-grain {
   opacity: 0.09;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='cn'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23cn)'/%3E%3C/svg%3E");
+}
+
+/* Animación del borde que se dibuja en vivo con trazo de lápiz */
+@keyframes ca-draw-border {
+  0% {
+    stroke-dashoffset: 800;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+.ca-draw-border {
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+  animation: ca-draw-border 1.3s cubic-bezier(0.65, 0, 0.35, 1) 1.6s forwards;
+}
+
+/* Animación de caída letra por letra de ARCHITY */
+@keyframes ca-drop-letter {
+  0% {
+    opacity: 0;
+    transform: translateY(-90px) rotate(-6deg) scale(0.9);
+  }
+  65% {
+    opacity: 1;
+    transform: translateY(12px) rotate(2deg) scale(1.05);
+  }
+  85% {
+    transform: translateY(-4px) rotate(-1deg) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0) scale(1);
+  }
+}
+
+.ca-drop-letter {
+  opacity: 0;
+  display: inline-block;
+  animation: ca-drop-letter 0.55s cubic-bezier(0.2, 0.9, 0.3, 1.2) forwards;
+}
+
+/* Animación de caída con rebote de las notas/stickers que caen desde arriba */
+@keyframes ca-drop-note {
+  0% {
+    opacity: 0;
+    transform: translateY(-140px) scale(0.85);
+  }
+  65% {
+    opacity: 1;
+    transform: translateY(14px) scale(1.04);
+  }
+  85% {
+    transform: translateY(-5px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.ca-drop-note {
+  opacity: 0;
+  animation: ca-drop-note 0.65s cubic-bezier(0.2, 0.9, 0.3, 1.2) forwards;
 }
 
 ::selection {

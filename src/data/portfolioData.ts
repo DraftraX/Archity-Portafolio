@@ -1,408 +1,510 @@
+// Datos centralizados de Archity: Estudio de Software & SaaS
 export interface ProjectItem {
-  num: string;
+  id: string;
   slug: string;
+  number: string;
   dateEs: string;
   dateEn: string;
   title: string;
-  shortDescEs: string;
-  shortDescEn: string;
-  coverImg: string;
-  color: string;
-  darkText: boolean;
-  internalUrl: string;
-  externalUrl: string;
-  tagsEs: [string, string];
-  tagsEn: [string, string];
+  taglineEs: string;
+  taglineEn: string;
+  descriptionEs: string;
+  descriptionEn: string;
+  category1: string;
+  category2: string;
+  folderColor: string; // Color de carpeta Crayon
+  textColorClass?: string;
+  mirrorTitle?: boolean; // Para Grupo Pineda con letras al revés
+  logoUrl: string; // Logo oficial
+  accentColor: string;
+  demoUrl?: string;
+  repoUrl?: string;
+  stats?: { label: string; value: string }[];
 }
 
 export const heroData = {
-  labelEs: "nuestro nombre es",
-  labelEn: "my name is",
   nameDisplay: "ARCHITY",
-  pill1Es: "Hacemos cosas",
-  pill1En: "Made things",
-  pill2Es: "Cuidamos los detalles",
-  pill2En: "Sweat the details",
-  roleEs: "Product Designer & Software",
-  roleEn: "Product Designer",
-  locationEs: "Lima, PE",
-  locationEn: "Chicago, IL",
-  statusEs: "Abiertos a nuevos proyectos y buenos problemas",
-  statusEn: "Open to new work and good problems",
-  titlePart1Es: "Diseñamos software que ",
-  titlePart1En: "I design software that ",
-  titlePart2Es: "se quita de tu camino.",
-  titlePart2En: "gets out of your way.",
-  ctaEs: "Contáctame",
-  ctaEn: "Contact me",
-  media0:
-    "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?q=80&w=2070&auto=format&fit=crop",
-  media1:
-    "https://images.unsplash.com/photo-1602471615287-d733c59b79c4?q=80&w=2071&auto=format&fit=crop",
+  labelEs: "somos",
+  labelEn: "we are",
+  roleEs: "Estudio de Software & SaaS",
+  roleEn: "Software Studio & SaaS Incubator",
+  locationEs: "Perú",
+  locationEn: "Peru",
+  statusEs: "Abiertos a nuevos proyectos y soluciones de software",
+  statusEn: "Open to new software projects & hard problems",
+  descEs: "Diseñamos y construimos software que se quita del camino.",
+  descEn: "We design software that gets out of your way.",
+  pill1Es: "Sistemas Reales",
+  pill1En: "Real Systems",
+  pill2Es: "Arquitectura Cloud",
+  pill2En: "Cloud Architecture",
+  media0: "/mascot/archity-mascot-avatar.jpg",
+  media1: "/mascot/archity-mascot-coder.jpg",
 };
 
 export const bioData = {
-  labelEs: "¡sobre mí!",
-  labelEn: "about me!",
-  badgeEs: "qué tal",
+  sectionLabelEs: "sobre nosotros",
+  sectionLabelEn: "about us",
+  labelEs: "sobre nosotros",
+  labelEn: "about us",
+  year: "2026",
+  badgeEs: "¡qué tal!",
   badgeEn: "what's up",
-  titleEs: "NOSOTROS",
-  titleEn: "ABOUT",
-  cardLabelEs: "Bio principal",
-  cardLabelEn: "Main bio",
-  bodyPart1Es:
-    "Soy un diseñador de producto y estudio de software que se emociona haciendo que las cosas complicadas se sientan simples.",
-  bodyPart1En:
-    "I'm a product designer who gets a little too excited about making complicated things feel simple.",
-  bodyPart2Es:
-    "Cuidamos los pequeños detalles, los casos extremos que todos olvidan y lanzamos trabajo que genuinamente hace más fácil el día de alguien.",
-  bodyPart2En:
-    "I care about the small details, the edge cases everyone forgets, and shipping work that genuinely makes someone's day easier.",
+  workspaceLabelEs: "nuestro estudio",
+  workspaceLabelEn: "our studio",
+  whatsupLabelEs: "¡qué tal!",
+  whatsupLabelEn: "what's up",
+  whatsupTextEs:
+    "En Archity somos un estudio de ingeniería de software e incubadora SaaS en Perú que se emociona haciendo que los sistemas complejos se sientan simples, rápidos y confiables. ✨ Cuidamos cada detalle operativo, los casos extremos que otros ignoran y desplegamos plataformas de misión crítica que hacen crecer a las empresas. 🎨",
+  whatsupTextEn:
+    "At Archity, we are a software engineering studio and SaaS incubator in Peru obsessed with making complicated systems feel simple, fast, and reliable. ✨ We obsess over operational edge cases everyone forgets and ship mission-critical platforms that genuinely elevate businesses. 🎨",
   photo0: {
-    src: "https://images.unsplash.com/photo-1602471615287-d733c59b79c4?q=80&w=2071&auto=format&fit=crop",
+    src: "/mascot/archity-mascot-3d-systems.jpg",
     captionEs: "2026",
     captionEn: "2026",
   },
   photo1: {
-    src: "https://images.unsplash.com/photo-1663298172343-9238ba22cd30?q=80&w=927&auto=format&fit=crop",
-    captionEs: "mi espacio",
-    captionEn: "my workspace",
+    src: "/mascot/archity-mascot-avatar.jpg",
+    captionEs: "nuestro estudio",
+    captionEn: "our studio",
   },
   skills: [
-    {
-      labelEs: "Diseño de Interacción",
-      labelEn: "Interaction Design",
-      color: "var(--ca-blue)",
-      dark: true,
-      emojiA: "✨",
-      emojiB: "🎨",
-    },
-    {
-      labelEs: "Prototipado",
-      labelEn: "Prototyping",
-      color: "var(--ca-magenta)",
-      dark: false,
-      emojiA: "🎨",
-      emojiB: "🧩",
-    },
-    {
-      labelEs: "Investigación UX",
-      labelEn: "User Research",
-      color: "var(--ca-yellow)",
-      dark: false,
-      emojiA: "🧩",
-      emojiB: "👀",
-    },
-    {
-      labelEs: "Motion Design",
-      labelEn: "Motion Design",
-      color: "var(--ca-green)",
-      dark: false,
-      emojiA: "👀",
-      emojiB: "💡",
-    },
+    { labelEs: "Arquitectura SaaS", labelEn: "SaaS Architecture", titleEs: "Arquitectura SaaS", titleEn: "SaaS Architecture", emojiA: "✨", emojiB: "🚀", color: "var(--ca-yellow-soft)", bg: "var(--ca-yellow-soft)", dark: false },
+    { labelEs: "Desarrollo Cloud", labelEn: "Cloud Engineering", titleEs: "Desarrollo Cloud", titleEn: "Cloud Engineering", emojiA: "💻", emojiB: "☁️", color: "var(--ca-mint)", bg: "var(--ca-mint)", dark: false },
+    { labelEs: "PropTech & GIS 360°", labelEn: "PropTech & 360° GIS", titleEs: "PropTech & GIS 360°", titleEn: "PropTech & 360° GIS", emojiA: "🗺️", emojiB: "🏢", color: "var(--ca-cyan)", bg: "var(--ca-cyan)", dark: false },
+    { labelEs: "FinTech & SUNAT", labelEn: "FinTech & SUNAT", titleEs: "FinTech & SUNAT", titleEn: "FinTech & SUNAT", emojiA: "💳", emojiB: "⚡", color: "var(--ca-pink-soft)", bg: "var(--ca-pink-soft)", dark: false },
   ],
+  titleEs: "NOSOTROS",
+  titleEn: "ABOUT",
+  cardLabelEs: "Bio empresarial",
+  cardLabelEn: "Main bio",
+  storyLabelEs: "Principios",
+  storyLabelEn: "Story",
+  workLabelEs: "Trayectoria",
+  workLabelEn: "Work",
+  bodyPart1Es: "Somos un estudio de software y arquitectura cloud que transforma problemas complejos en sistemas simples y robustos.",
+  bodyPart1En: "We are a software studio and cloud architecture hub turning complex problems into simple, robust systems.",
+  bodyPart2Es: "Cuidamos los detalles operativos, la resiliencia en obra y el código que respalda negocios reales.",
+  bodyPart2En: "We obsess over operational edge cases, field resilience, and mission-critical engineering.",
   storyParagraphs: [
     {
-      es: "Paso la mayor parte de mis días en aplicaciones inmobiliarias, financieras e industriales, del tipo que la gente abre cuando tiene prisa, está distraída o un poco estresada. Una pantalla confusa ahí no solo es molesta: hace que alguien pierda una operación o dude de un pago. Por eso me siento con las partes que la mayoría salta: los errores, los estados vacíos y los momentos de qué-pasa-si.",
-      en: "I spend most days on transit and money apps, the kind people open when they're rushed, distracted, or a little stressed. A confusing screen there isn't just annoying, it makes someone miss a bus or second-guess a payment. So I sit with the parts most people skip: the errors, the empty states, the what-happens-if moments.",
+      es: "En Archity diseñamos y desplegamos plataformas de misión crítica: sistemas inmobiliarios (PropTech), motores de cobranza y facturación electrónica (FinTech), ERPs industriales y suites clínicas.",
+      en: "At Archity we engineer mission-critical platforms: real estate PropTech, FinTech collection and billing engines, industrial ERPs, and clinical suites.",
     },
     {
-      es: "Las herramientas cambian pero mi forma de trabajar no. Me acerco a las personas que realmente usan el producto, boceto rápido y sigo recortando hasta que solo queda lo que importa. El buen diseño debe sentirse obvio en el momento en que lo ves, incluso cuando llegar ahí fue todo menos sencillo.",
-      en: "The tools change but the way I work doesn't. I get close to the people actually using the thing, sketch fast, and keep cutting until only what matters is left. Good design should feel obvious the moment you see it, even when getting there was anything but.",
+      es: "Desarrollamos software para los momentos donde no hay margen de error: contratos con firma digital, cronogramas de amortización, despacho de concreto en plantas industriales o emisión ante SUNAT en milisegundos. Cuando una pantalla falla ahí, se detiene una operación. Por eso resolvemos lo que otros esquivan: la resiliencia en red, la conciliación automática y la experiencia clara.",
+      en: "We build software for high-stakes operational moments: digital contracts, financial amortizations, automated concrete batching, or instant SUNAT tax authorization. When software fails there, business stops. That's why we focus on what most skip: offline resilience, automated reconciliation, and effortless UX.",
+    },
+    {
+      es: "Nuestra metodología combina ingeniería de sistemas estricta con diseño de producto obvio. Nos sentamos con los operadores en obra, con los contadores y con los usuarios reales, prototipamos rápido y pulimos hasta que cada flujo se sienta natural e intuitivo.",
+      en: "Our approach couples rigorous systems engineering with intuitive product design. We shadow plant operators, accountants, and field users, prototype rapidly, and cut complexity until only what matters remains.",
+    },
+    {
+      es: "Hoy impulsamos plataformas líderes como AltoPlanta, Vinkula CRM, Sencillo FinTech y el ERP de Grupo Pineda, transformando la gestión digital en el Perú.",
+      en: "Today we power production platforms like AltoPlanta, Vinkula CRM, Sencillo FinTech, and the industrial ERP of Grupo Pineda, setting new standards for business software in Peru.",
     },
   ],
-  calloutEs:
-    "Ahora mismo en Archity estamos rediseñando cómo las empresas inmobiliarias e industriales operan en la nube, para que gestionar un proyecto entero se sienta menos como resolver un rompecabezas y más como algo natural.",
-  calloutEn:
-    "Right now I'm at Wayline, redesigning how a whole city plans a trip, so catching the next train feels less like solving a puzzle and more like second nature.",
-  noteEs:
-    "Cuando no estoy diseñando, suelo desarmar alguna aplicación que me encanta para descubrir por qué una pantalla se siente sin esfuerzo y la siguiente me da ganas de cerrar la pestaña. Impulsado de principio a fin por cold brew.",
-  noteEn:
-    "When I'm not designing, I'm usually pulling apart some app I love to figure out why one screen feels effortless and the next one makes me want to close the tab. Fueled start to finish by cold brew.",
-  storyLabelEs: "Historia",
-  storyLabelEn: "Story",
+  calloutEs: "Right now en Archity: expandiendo la suite PropTech AltoPlanta y el motor SUNAT UBL 2.1 para conectar a empresas de todo el país en tiempo real.",
+  calloutEn: "Right now at Archity: expanding the AltoPlanta PropTech suite and SUNAT UBL 2.1 engine to connect enterprises across the country in real-time.",
+  noteEs: "Impulsados de principio a fin por arquitectura limpia, observabilidad continua y tecnología orientada a resultados reales.",
+  noteEn: "Driven start to finish by clean architecture, continuous observability, and real-world impact.",
   principles: [
     {
       titleEs: "Empieza por el porqué",
       titleEn: "Start with the why",
       bodyEs:
-        "Antes de abrir una herramienta de diseño o escribir código, quiero saber qué estamos resolviendo realmente y para quién es. Si te saltas eso, lanzas algo pulido que nadie necesitaba. Cada buen proyecto que hemos hecho empezó con una mejor pregunta.",
+        "Antes de escribir código o abrir una herramienta de diseño, definimos el problema de negocio y quién lo opera. Saltarse eso es construir software costoso que nadie usa. Cada plataforma exitosa comenzó con una mejor pregunta.",
       bodyEn:
-        "Before I open a design tool, I want to know what we're actually solving and who it's for. Skip that and you ship something polished that nobody needed. Every good project I've done started with a better question.",
-      noteEs: "preguntas antes que píxeles.",
+        "Before writing code or opening a design tool, we pin down the core business bottleneck and who will operate it. Skip that and you ship expensive software nobody needed. Every successful system starts with a better question.",
+      noteEs: "preguntas antes que código.",
       noteEn: "questions before pixels.",
-      bg: "var(--ca-cyan)",
+      bg: "var(--ca-yellow-soft)",
       tilt: "-rotate-1",
-      tapes: [
-        "-left-5 -top-2 h-5 w-16 -rotate-[40deg]",
-        "-right-4 bottom-8 h-5 w-14 rotate-[62deg]",
-      ],
+      tapes: ["-left-4 -top-2 h-5 w-16 -rotate-[38deg]", "-right-4 -top-2 h-5 w-16 rotate-[38deg]"],
     },
     {
       titleEs: "Diseña para un mal día",
       titleEn: "Design for a bad day",
       bodyEs:
-        "Nadie usa tu producto descansado, con wifi rápido y tiempo de sobra. Diseño para el usuario apurado, el operador en obra y la señal inestable en campo. Ahí es donde el buen diseño se gana su lugar.",
+        "Nadie usa un software empresarial descansado, con fibra óptica perfecta y tiempo de sobra. Diseñamos para el operador en obra con señal intermitente, el contador al cierre de mes y el cliente apurado. Ahí es donde el buen software gana su valor.",
       bodyEn:
-        "Nobody uses your product rested, on fast wifi, with time to spare. I design for the rushed commuter, the tired parent, the spotty signal on the platform. That's where good design earns its keep.",
+        "Nobody uses business software fully rested, on high-speed fiber, with time to spare. We design for the field worker on spotty 3G, the accountant during month-end closing, and the rushed buyer. That's where solid engineering shines.",
       noteEs: "¡aquí no hay usuarios perfectos!",
       noteEn: "no perfect users here!",
-      bg: "var(--ca-yellow-soft)",
+      bg: "var(--ca-mint)",
       tilt: "rotate-1",
-      tapes: [
-        "-right-5 -top-2 h-5 w-16 rotate-[40deg]",
-        "-left-4 bottom-10 h-5 w-14 -rotate-[62deg]",
-      ],
+      tapes: ["-left-4 -top-2 h-5 w-16 -rotate-[38deg]", "-right-4 -top-2 h-5 w-16 rotate-[38deg]"],
     },
     {
-      titleEs: "Hazlo con el equipo",
-      titleEn: "Make it with the team",
+      titleEs: "Construye con el equipo",
+      titleEn: "Build with the team",
       bodyEs:
-        "El mejor trabajo que hemos lanzado surgió de ingenieros y PMs encontrando detalles temprano, mientras aún era un boceto. Prefiero equivocarme en una pizarra el martes que encariñarme con un mockup el viernes. Lanzamos mejor juntos.",
+        "Las arquitecturas más sólidas que hemos lanzado nacieron de iterar directamente con ingenieros de planta, contadores y gerentes desde el primer boceto. Es mejor iterar un martes en pizarra que encariñarse con una idea el viernes. Construimos mejor en equipo.",
       bodyEn:
-        "The best work I've shipped came from engineers and PMs poking holes in it early, while it was still a rough sketch. I'd rather be wrong on a whiteboard Tuesday than precious about a mockup Friday. We ship better together.",
+        "The most resilient architectures we've deployed came from engineers, operators, and stakeholders testing early sketches. We'd rather iterate fast on a whiteboard on Tuesday than cling to a flawed mockup on Friday. We build better together.",
       noteEs: "nosotros, no yo.",
       noteEn: "us, not me.",
-      bg: "var(--ca-purple)",
-      tilt: "-rotate-2",
-      tapes: [
-        "-left-4 top-1/2 h-5 w-14 -rotate-[78deg]",
-        "-right-5 -top-2 h-5 w-16 rotate-[36deg]",
-      ],
+      bg: "var(--ca-pink-soft)",
+      tilt: "-rotate-1",
+      tapes: ["-left-4 -top-2 h-5 w-16 -rotate-[38deg]", "-right-4 -top-2 h-5 w-16 rotate-[38deg]"],
     },
   ],
-  workLabelEs: "Trayectoria",
-  workLabelEn: "Work",
   work: [
     {
-      roleEs: "Lead Product Designer & Arquitectura SaaS",
-      roleEn: "Lead Product Designer",
-      companyEs: "Archity · AltoPlanta & Inmobiliaria Flamingo",
-      companyEn: "Wayline",
+      roleEs: "Fundación & Plataforma PropTech SaaS 360°",
+      roleEn: "Founder & 360° PropTech SaaS Platform",
+      companyEs: "AltoPlanta · Inmobiliaria Flamingo",
+      companyEn: "AltoPlanta · Flamingo Real Estate",
       periodEs: "2024 a Hoy",
-      periodEn: "2024 to Now",
+      periodEn: "2024 to Present",
     },
     {
-      roleEs: "Product Designer & Sistemas ERP",
-      roleEn: "Product Designer",
-      companyEs: "Grupo Pineda · Vinkula CRM & Sencillo",
-      companyEn: "Formwork",
+      roleEs: "Arquitectura ERP Industrial & Plantas Concreto",
+      roleEn: "Industrial ERP Architecture & Concrete Plants",
+      companyEs: "Consorcio Grupo Pineda · MATEPCO / ROCAFER",
+      companyEn: "Grupo Pineda Consortium · MATEPCO / ROCAFER",
       periodEs: "2021 a 2024",
       periodEn: "2021 to 2024",
     },
     {
-      roleEs: "Product Designer & Full-Stack",
-      roleEn: "Product Designer",
-      companyEs: "Halcyon Labs · Sistemas Digitales",
-      companyEn: "Halcyon Labs",
-      periodEs: "2019 a 2021",
-      periodEn: "2019 to 2021",
+      roleEs: "Core FinTech, Amortización & CRM WhatsApp AI",
+      roleEn: "FinTech Core, Amortization & WhatsApp AI CRM",
+      companyEs: "Vinkula CRM & Sencillo FinTech",
+      companyEn: "Vinkula CRM & Sencillo FinTech",
+      periodEs: "2021 a Hoy",
+      periodEn: "2021 to Present",
+    },
+    {
+      roleEs: "Estudio de Software & Arquitectura de Sistemas",
+      roleEn: "Software Studio & Systems Architecture",
+      companyEs: "Archity Software Studio",
+      companyEn: "Archity Software Studio",
+      periodEs: "2019 a Hoy",
+      periodEn: "2019 to Present",
     },
   ],
 };
 
-export const projectsData: ProjectItem[] = [
+// LOS 5 PROYECTOS ESPECÍFICOS SOLICITADOS CON SUS LOGOS OFICIALES:
+// 1. AltoPlanta
+// 2. Vinkula
+// 3. Sencillo
+// 4. Proyecto Flamingo (EN CARPETA ROSA)
+// 5. Grupo Pineda (EN CARPETA AMARILLA CON LETRAS NEGRAS AL REVÉS)
+export const featuredProjects: ProjectItem[] = [
   {
-    num: "01",
+    id: "altoplanta",
     slug: "altoplanta",
-    dateEs: "19 Mar, 2026",
+    number: "Proyecto 01",
+    dateEs: "Mar 19, 2026",
     dateEn: "Mar 19, 2026",
     title: "AltoPlanta",
-    shortDescEs:
-      "Haciendo que los planos CAD y mapas inmobiliarios de toda una ciudad se sientan simples de explorar.",
-    shortDescEn:
-      "Making a whole city's real estate CAD maps and 360° tours feel less like decoding a puzzle.",
-    coverImg:
-      "https://images.unsplash.com/photo-1746690052484-f49bee6e48c7?q=80&w=2070&auto=format&fit=crop",
-    color: "var(--ca-blue)",
-    darkText: false,
-    internalUrl: "/productos/altoplanta",
-    externalUrl: "https://altoplanta.com/",
-    tagsEs: ["PropTech", "SaaS App"],
-    tagsEn: ["Mobility", "Consumer App"],
+    taglineEs: "Cartografía interactiva GIS, digitalización CAD .DXF y recorridos virtuales 360° para inmobiliarias.",
+    taglineEn: "Interactive GIS cartography, CAD .DXF digitization, and 360° virtual tours for real estate.",
+    descriptionEs:
+      "Plataforma SaaS PropTech de ventas inmobiliarias con planos georreferenciados sobre Google Maps JS API, portales White-Label y sincronización de lotes.",
+    descriptionEn:
+      "SaaS PropTech platform for real estate sales featuring georeferenced cadastral maps over Google Maps, White-Label portals, and lot syncing.",
+    category1: "PropTech",
+    category2: "Cartografía GIS",
+    folderColor: "var(--ca-cyan)",
+    logoUrl: "/logos/altoplanta-logo.svg",
+    accentColor: "#2b57d6",
+    demoUrl: "/productos/altoplanta",
+    stats: [
+      { label: "Lotes Cartografiados", value: "+2,400" },
+      { label: "Carga de Mapa", value: "< 1.2s" },
+      { label: "Visor 360°", value: "8K HDR" },
+    ],
   },
   {
-    num: "02",
-    slug: "sencillo",
-    dateEs: "2 Mar, 2026",
+    id: "vinkula",
+    slug: "vinkula",
+    number: "Proyecto 02",
+    dateEs: "Mar 2, 2026",
     dateEn: "Mar 2, 2026",
+    title: "Vinkula CRM",
+    taglineEs: "Suite CRM inmobiliaria con embudo reactivo, bandeja de WhatsApp Cloud API y agentes IA 24/7.",
+    taglineEn: "Real estate CRM suite with reactive Kanban funnel, WhatsApp Cloud API inbox, and 24/7 AI agents.",
+    descriptionEs:
+      "CRM multi-tenant inspirado en Twenty CRM con vista Spreadsheet reactiva, cotizaciones en PDF en 1 clic y bot calificador con Google Gemini.",
+    descriptionEn:
+      "Multi-tenant CRM with reactive spreadsheet view, 1-click PDF quotations, and automated lead qualification with Google Gemini.",
+    category1: "CRM Inmobiliario",
+    category2: "WhatsApp AI",
+    folderColor: "var(--ca-mint)",
+    logoUrl: "/logos/vinkula-logo.svg",
+    accentColor: "#16b06a",
+    demoUrl: "/productos/vinkula",
+    stats: [
+      { label: "Tiempo de Respuesta", value: "0.8s" },
+      { label: "Leads Gestionados", value: "+18,500" },
+      { label: "Disponibilidad Bot", value: "99.98%" },
+    ],
+  },
+  {
+    id: "sencillo",
+    slug: "sencillo",
+    number: "Proyecto 03",
+    dateEs: "Feb 14, 2026",
+    dateEn: "Feb 14, 2026",
     title: "Sencillo",
-    shortDescEs:
-      "De hojas de cálculo confusas a contratos, letras y cobranzas que finalmente se sienten claras.",
-    shortDescEn:
-      "From 'who owes who' to contracts and payments that finally feel shared.",
-    coverImg:
-      "https://cdn.dribbble.com/userupload/13712927/file/original-963ef9be53325cefd88bec052cdf2aa6.png?resize=2048x1536&vertical=center",
-    color: "var(--ca-ink)",
-    darkText: false,
-    internalUrl: "/productos/sencillo",
-    externalUrl: "https://sencillo.altoplanta.com/",
-    tagsEs: ["Fintech", "Consumer App"],
-    tagsEn: ["Fintech", "Consumer App"],
+    taglineEs: "Core FinTech de cobranzas, amortización francesa / 0% TEA, letras y conciliación bancaria.",
+    taglineEn: "FinTech amortization engine, French/0% APR schedules, promissory notes, and automated reconciliation.",
+    descriptionEs:
+      "Motor financiero con cálculo diario de mora compensatoria, emisión de recibos y conciliación automática vía Webhooks de Mercado Pago.",
+    descriptionEn:
+      "Financial engine with daily penalty interest calculation, receipt generation, and automated reconciliation via Mercado Pago Webhooks.",
+    category1: "FinTech",
+    category2: "Amortización & SUNAT",
+    folderColor: "var(--ca-yellow-soft)",
+    logoUrl: "/logos/sencillo-logo.svg",
+    accentColor: "#f7c948",
+    demoUrl: "/productos/sencillo",
+    stats: [
+      { label: "Letras Cobradas", value: "+S/ 4.8M" },
+      { label: "Conciliación Webhooks", value: "Tiempo Real" },
+      { label: "Kardex Auditable", value: "100%" },
+    ],
   },
   {
-    num: "03",
+    id: "proyect-flamingo",
     slug: "proyect-flamingo",
-    dateEs: "2 Ene, 2026",
-    dateEn: "Jan 2, 2026",
-    title: "Flamingo",
-    shortDescEs:
-      "Llevando al comprador desde el vuelo en dron hasta elegir su lote ideal en 360° sin fricción.",
-    shortDescEn:
-      "Getting a home buyer from aerial drone view to choosing a lot without the panic.",
-    coverImg:
-      "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070&auto=format&fit=crop",
-    color: "var(--ca-yellow)",
-    darkText: true,
-    internalUrl: "/productos/proyect-flamingo",
-    externalUrl: "https://proyect-flamingo.vercel.app/",
-    tagsEs: ["Inmobiliaria", "Showroom 360°"],
-    tagsEn: ["Dev Tools", "Onboarding"],
+    number: "Proyecto 04",
+    dateEs: "Ene 20, 2026",
+    dateEn: "Jan 20, 2026",
+    title: "Proyecto Flamingo",
+    taglineEs: "Showroom interactivo 360° con vuelos de dron multicapa y plano interactivo de 133 lotes.",
+    taglineEn: "Interactive 360° showroom with multi-layer drone flights and interactive 133-lot masterplan.",
+    descriptionEs:
+      "Aero-visor inmobiliario desarrollado para Inmobiliaria Flamingo con cambio de modo Día/Noche, 4 modelos de casa y calibración visual por OpenCV.",
+    descriptionEn:
+      "Interactive aerial showroom built for Inmobiliaria Flamingo featuring Day/Night modes, 4 house models, and OpenCV-assisted alignment.",
+    category1: "Inmobiliaria",
+    category2: "Showroom 360°",
+    // DE PREFERENCIA EN LA CARPETA ROSA SOLICITADA POR EL USUARIO:
+    folderColor: "var(--ca-magenta)",
+    textColorClass: "text-white",
+    logoUrl: "/logos/flamingo-logo.png",
+    accentColor: "#ff4d8d",
+    demoUrl: "/productos/proyect-flamingo",
+    stats: [
+      { label: "Lotes Habilitados", value: "133 Lotes" },
+      { label: "Transición Dron", value: "0ms Crossfade" },
+      { label: "Visor Aéreo", value: "Full HD 60fps" },
+    ],
   },
   {
-    num: "04",
+    id: "grupo-pineda",
     slug: "grupo-pineda",
-    dateEs: "16 Mar, 2026",
-    dateEn: "Mar 16, 2026",
+    number: "Proyecto 05",
+    dateEs: "Ene 2, 2026",
+    dateEn: "Jan 2, 2026",
     title: "Grupo Pineda",
-    shortDescEs:
-      "Ayudando a las plantas industriales y canteras a controlar su producción en tiempo real.",
-    shortDescEn:
-      "Helping industrial plants actually understand the production and telemetry they run daily.",
-    coverImg:
-      "https://cdn.dribbble.com/userupload/45634536/file/78267e4a088043e8a75ea78d6ecafce9.png?resize=2048x1536&vertical=center",
-    color: "var(--ca-magenta)",
-    darkText: false,
-    internalUrl: "/productos/grupo-pineda",
-    externalUrl: "https://grupopineda.pe/",
-    tagsEs: ["ERP Industrial", "Data Design"],
-    tagsEn: ["Climate", "Data Design"],
+    taglineEs: "ERP multi-empresa para plantas de concreto premezclado, canteras chancadoras y flota pesada.",
+    taglineEn: "Multi-company industrial ERP for ready-mix concrete plants, aggregate quarries, and heavy fleet.",
+    descriptionEs:
+      "Sistema centralizado para MATEPCO (Tarapoto, Moyobamba, Chachapoyas), cantera ROCAFER (780 TM/día), flota SERVIPIPA y distribuidora PRINCOR.",
+    descriptionEn:
+      "Centralized ERP managing MATEPCO concrete batching plants, ROCAFER quarry (780 MT/day), SERVIPIPA fleet, and PRINCOR distribution.",
+    category1: "ERP Industrial",
+    category2: "Concreto & Canteras",
+    // DE PREFERENCIA EN LA CARPETA AMARILLA CON LETRAS NEGRAS AL REVÉS SOLICITADA POR EL USUARIO:
+    folderColor: "var(--ca-yellow)",
+    textColorClass: "text-[var(--ca-ink)]",
+    mirrorTitle: true, // Letras al revés
+    logoUrl: "/logos/grupo-pineda-logo.svg",
+    accentColor: "#f7c948",
+    demoUrl: "/productos/grupo-pineda",
+    stats: [
+      { label: "Plantas Concreto", value: "3 Sedes" },
+      { label: "Producción Cantera", value: "780 TM/Día" },
+      { label: "Monitoreo Flota", value: "GPS Tiempo Real" },
+    ],
   },
 ];
 
-export const trustedClients = [
+export const trustedLogos = [
   {
-    name: "Inmobiliaria Flamingo Residencial",
+    name: "Inmobiliaria Flamingo",
+    sub: "Flamingo Residencial",
     logo: "/logos/flamingo-trusted.png",
-    bg: "var(--ca-yellow-soft)",
-    tilt: "-rotate-2",
-    href: "/productos/proyect-flamingo",
+    link: "/productos/proyect-flamingo",
   },
   {
-    name: "Peru Builds · JFS Inversiones Inmobiliarias SAC",
+    name: "Peru Builds",
+    sub: "JFS Inversiones Inmobiliarias SAC",
     logo: "/logos/peru-builds-logo.png",
-    bg: "var(--ca-mint)",
-    tilt: "rotate-2",
-    href: "#work",
+    link: "/case-studies",
+  },
+  {
+    name: "Consorcio Grupo Pineda",
+    sub: "MATEPCO · ROCAFER · SERVIPIPA",
+    logo: "/logos/grupo-pineda-logo.svg",
+    link: "/productos/grupo-pineda",
+  },
+];
+
+export const trustedClients = trustedLogos;
+
+export const projectsData = featuredProjects.map((p) => ({
+  ...p,
+  number: p.number,
+  date: p.dateEs,
+  dateEs: p.dateEs,
+  dateEn: p.dateEn,
+  title: p.title,
+  tagline: p.taglineEs,
+  taglineEs: p.taglineEs,
+  taglineEn: p.taglineEn,
+  descEs: p.descriptionEs,
+  descEn: p.descriptionEn,
+  category1: p.category1,
+  category2: p.category2,
+  color: p.folderColor,
+  folderColor: p.folderColor,
+  darkText: p.mirrorTitle || p.textColorClass?.includes("ca-ink"),
+  image: p.logoUrl,
+  logoUrl: p.logoUrl,
+  link: p.demoUrl || `/productos/${p.slug}`,
+  demoUrl: p.demoUrl || `/productos/${p.slug}`,
+  mirrorTitle: p.mirrorTitle,
+}));
+
+export const contactData = {
+  titleEs: "Hablemos",
+  titleEn: "Let's talk",
+  descriptionEs: "¿Tienes un proyecto, un problema difícil o solo quieres saludar? Envíalo. Leemos cada mensaje.",
+  descriptionEn: "Got a project, a hard problem, or just want to say hi? Send it over. We read every message.",
+  commentAuthor: "Archity Studio",
+  commentAvatar: "/mascot/archity-mascot-avatar.jpg",
+  commentNoteEs: "Abiertos a trabajo por contrato, proyectos de software y alianzas tecnológicas.",
+  commentNoteEn: "Open to contract work, software projects, and tech partnerships.",
+  commentReactions: "1",
+  email: "contacto@archity.pe",
+  phone: "+51 940 771 896",
+  whatsappUrl: "https://wa.me/51940771896?text=Hola%20Archity,%20me%20gustar%C3%ADa%20cotizar%20un%20proyecto%20de%20software.",
+  linkedinUrl: "https://www.linkedin.com/company/archit-tech/posts/?viewAsMember=true",
+  facebookUrl: "https://www.facebook.com/profile.php?id=61590953622590",
+  githubUrl: "https://github.com/DraftraX",
+  addressEs: "Tarapoto, San Martín · Lima, Perú",
+  addressEn: "Tarapoto, San Martin · Lima, Peru",
+};
+
+// Servicios oficiales de Archity para la página Servicios (/playground)
+export const servicesData = [
+  {
+    id: "saas-cloud",
+    titleEs: "Desarrollo SaaS & Plataformas Cloud",
+    titleEn: "SaaS Development & Cloud Platforms",
+    category: "Cloud & Multi-Tenant",
+    descEs:
+      "Arquitectura de software escalable con bases de datos multi-tenant, microservicios en Docker/Linux, colas Redis/Celery y autenticación segura para productos digitales de alto tráfico.",
+    descEn:
+      "Scalable software architecture with multi-tenant databases, Docker/Linux microservices, Redis/Celery task queues, and secure auth for high-traffic digital products.",
+    img: "/services/service-saas-cloud.jpg",
+    tags: ["Astro 5", "Next.js", "Python", "Docker", "AWS/Vercel"],
+    color: "var(--ca-yellow)",
+  },
+  {
+    id: "gis-proptech",
+    titleEs: "PropTech & Cartografía GIS 360°",
+    titleEn: "PropTech & 360° GIS Mapping",
+    category: "GIS & Inmobiliaria",
+    descEs:
+      "Digitalización de planos catastrales y archivos CAD .DXF georreferenciados sobre Google Maps JS API, con visores aéreos 360° en 8K y portales White-Label para ventas de condominios.",
+    descEn:
+      "Digitization of cadastral blueprints and georeferenced CAD .DXF files over Google Maps, with 8K 360° aerial tours and White-Label portals for condominium sales.",
+    img: "/services/service-gis-360.jpg",
+    tags: ["Google Maps API", "PostGIS", "CAD .DXF", "Three.js", "OpenCV"],
+    color: "var(--ca-cyan)",
+  },
+  {
+    id: "erp-industrial",
+    titleEs: "ERPs Industriales & Control de Planta",
+    titleEn: "Industrial ERPs & Batching Plant Systems",
+    category: "Industria & Operaciones",
+    descEs:
+      "Sistemas empresariales a medida para plantas de concreto premezclado, canteras de agregados y flotas de transporte pesado, con despacho automatizado, control de stock y telemetría.",
+    descEn:
+      "Custom ERPs for ready-mix concrete plants, aggregate quarries, and heavy transport fleets, with automated batching, inventory tracking, and fleet telemetry.",
+    img: "/services/service-erp-industrial.jpg",
+    tags: ["Django 5", "PostgreSQL", "GPS Telemetry", "Redis", "Nginx"],
+    color: "var(--ca-mint)",
+  },
+  {
+    id: "fintech-amortizacion",
+    titleEs: "FinTech, Amortización & Cobranzas",
+    titleEn: "FinTech, Amortization & Collections",
+    category: "Core Financiero",
+    descEs:
+      "Plataformas financieras para emisión de contratos de financiamiento directo, cronogramas de pago (sistema francés / 0% interés), cálculo automático de mora diaria y conciliación bancaria.",
+    descEn:
+      "Financial core for direct financing contracts, amortization schedules (French system / 0% APR), automatic daily interest penalty calculations, and reconciliation.",
+    img: "/services/service-fintech-contracts.jpg",
+    tags: ["Mercado Pago API", "Webhooks", "Contratos Digitales", "Kardex"],
+    color: "var(--ca-yellow-soft)",
+  },
+  {
+    id: "sunat-billing",
+    titleEs: "Facturación Electrónica SUNAT UBL 2.1",
+    titleEn: "SUNAT Electronic Invoicing UBL 2.1",
+    category: "GovTech & Tributario",
+    descEs:
+      "Motor multi-tenant de emisión electrónica ante SUNAT con firma digital XMLDSig RSA-SHA256, envío directo por SOAP a servidores OSE/SEE, CDR instantáneo y generación de PDF con código QR.",
+    descEn:
+      "Multi-tenant electronic invoicing engine with XMLDSig RSA-SHA256 digital signature, direct SOAP dispatch to SUNAT OSE/SEE, instant CDR, and QR PDF generation.",
+    img: "/services/service-sunat-fintech.jpg",
+    tags: ["XMLDSig", "RSA-SHA256", "SOAP SUNAT", "UBL 2.1", "Microservicios"],
+    color: "var(--ca-pink-soft)",
+  },
+  {
+    id: "crm-whatsapp-ai",
+    titleEs: "CRM Inmobiliario & WhatsApp AI 24/7",
+    titleEn: "Real Estate CRM & 24/7 WhatsApp AI",
+    category: "IA & Omnicanal",
+    descEs:
+      "Bandeja compartida para equipos de ventas integrada con la API Cloud oficial de WhatsApp, embudo de prospección visual y agentes inteligentes impulsados por Google Gemini para responder clientes 24/7.",
+    descEn:
+      "Shared sales inbox integrated with the official WhatsApp Cloud API, visual sales pipeline, and smart agents powered by Google Gemini to qualify leads 24/7.",
+    img: "/services/service-crm-ai-3d.jpg",
+    tags: ["WhatsApp Cloud API", "Google Gemini AI", "Spreadsheet UI", "Webhooks"],
+    color: "var(--ca-green)",
+  },
+  {
+    id: "healthtech-clinica",
+    titleEs: "HealthTech & Sistemas Clínicos",
+    titleEn: "HealthTech & Clinical Suites",
+    category: "Salud & Trazabilidad",
+    descEs:
+      "Plataformas para bancos de sangre y centros médicos con trazabilidad completa de unidades de hemoterapia, donantes voluntarios, medicina transfusional y campañas hospitalarias.",
+    descEn:
+      "Platforms for blood banks and medical centers with end-to-end traceability of hemotherapy units, volunteer donors, transfusion medicine, and hospital drives.",
+    img: "/services/service-healthtech.jpg",
+    tags: ["Trazabilidad Clínica", "Aféresis", "PostgreSQL", "Cifrado SSL"],
+    color: "var(--ca-cyan)",
   },
 ];
 
 export const playgroundItems = [
   {
-    src: "https://images.unsplash.com/photo-1769750216011-28855a9aad37?q=80&w=987&auto=format&fit=crop",
-    captionEs: "toma casual",
-    captionEn: "random shot",
-    left: "3%",
-    top: "6%",
-    w: "w-44 sm:w-64 lg:w-80",
-    tilt: "-rotate-3",
-    color: "var(--ca-yellow-soft)",
+    src: "/mascot/archity-mascot-avatar.jpg",
+    captionEs: "2026",
+    captionEn: "2026",
+    color: "var(--ca-yellow)",
+    tilt: "-rotate-6",
+    w: "w-56 sm:w-64",
+    left: "10%",
+    top: "20%",
   },
   {
-    src: "https://images.unsplash.com/photo-1761641466573-f240b6e446de?q=80&w=1065&auto=format&fit=crop",
-    captionEs: "qué es esto",
-    captionEn: "what is this",
-    left: "56%",
-    top: "2%",
-    w: "w-36 sm:w-52 lg:w-64",
-    tilt: "rotate-2",
-    color: "var(--ca-purple)",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1611264327630-8090373c8cef?q=80&w=927&auto=format&fit=crop",
-    captionEs: "hola mundo",
-    captionEn: "hello world",
-    left: "30%",
-    top: "26%",
-    w: "w-48 sm:w-72 lg:w-96",
-    tilt: "rotate-3",
-    color: "var(--ca-cyan)",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1655735223921-43367e3a36b5?q=80&w=2232&auto=format&fit=crop",
-    captionEs: "primera vez",
-    captionEn: "first time",
-    left: "76%",
-    top: "24%",
-    w: "w-32 sm:w-48 lg:w-56",
-    tilt: "-rotate-2",
-    color: "var(--ca-yellow-soft)",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1617695744007-68ef55752789?q=80&w=1036&auto=format&fit=crop",
-    captionEs: "toma 20",
-    captionEn: "20th take",
-    left: "6%",
-    top: "48%",
-    w: "w-40 sm:w-56 lg:w-72",
-    tilt: "rotate-2",
-    color: "var(--ca-cyan)",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1760008486599-e62d30e2ca95?q=80&w=2232&auto=format&fit=crop",
-    captionEs: "prácticaaa",
-    captionEn: "practiceee",
-    left: "52%",
-    top: "52%",
-    w: "w-44 sm:w-64 lg:w-[22rem]",
-    tilt: "-rotate-3",
-    color: "var(--ca-purple)",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1782328497904-8beec6bd7962?q=80&w=2232&auto=format&fit=crop",
-    captionEs: "mmh",
-    captionEn: "uhm",
-    left: "80%",
-    top: "58%",
-    w: "w-32 sm:w-44 lg:w-52",
-    tilt: "rotate-3",
-    color: "var(--ca-yellow-soft)",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1621360841013-c7683c659ec6?q=80&w=2232&auto=format&fit=crop",
-    captionEs: "¡encontrado!",
-    captionEn: "found!",
-    left: "24%",
-    top: "66%",
-    w: "w-40 sm:w-56 lg:w-64",
-    tilt: "-rotate-2",
-    color: "var(--ca-purple)",
+    src: "/mascot/archity-mascot-3d-systems.jpg",
+    captionEs: "estudio",
+    captionEn: "studio",
+    color: "var(--ca-mint)",
+    tilt: "rotate-6",
+    w: "w-56 sm:w-64",
+    left: "70%",
+    top: "25%",
   },
 ];
-
-export const contactData = {
-  titleEs: "Hablemos",
-  titleEn: "Let's talk",
-  descriptionEs:
-    "¿Tienes un proyecto, un problema difícil o solo quieres saludar? Envíalo. Leo cada mensaje.",
-  descriptionEn:
-    "Got a project, a hard problem, or just want to say hi? Send it over. I read every message.",
-  commentAuthor: "Archity",
-  commentAvatar:
-    "https://images.unsplash.com/photo-1602471615287-d733c59b79c4?q=80&w=2071&auto=format&fit=crop",
-  commentNoteEs:
-    "Abiertos a trabajo por contrato, proyectos full-time y conversaciones interesantes sobre problemas complejos de diseño y software.",
-  commentNoteEn:
-    "Open to contract work, full-time roles, and interesting conversations about hard design problems.",
-  commentReactions: "1",
-  bannerTaglineEs: "hagamos algo juntos",
-  bannerTaglineEn: "let's make something together",
-  bannerEs: "CONTACTO",
-  bannerEn: "CONTACT",
-  dropALineEs: "escríbeme",
-  dropALineEn: "drop a line",
-  sayHiEs: "di hola",
-  sayHiEn: "say hi",
-  email: "wmanuelga@gmail.com",
-};

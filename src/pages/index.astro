@@ -92,9 +92,9 @@ const rippedClips = [
             </svg>
           </div>
 
-          <!-- Píldoras en móvil -->
+          <!-- Píldoras en móvil que caen desde arriba -->
           <div class="mt-4 flex flex-wrap justify-center gap-2 lg:hidden">
-            <div class="-rotate-6">
+            <div class="ca-drop-note -rotate-6" style="animation-delay: 2.10s">
               <span
                 class="ca-mono inline-block rounded-full border-[3px] border-white px-4 py-1.5 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] shadow-[0_4px_10px_rgba(25,21,16,0.25)]"
                 style="background-color:var(--ca-purple)"
@@ -104,7 +104,7 @@ const rippedClips = [
                 {heroData.pill1Es}
               </span>
             </div>
-            <div class="rotate-6">
+            <div class="ca-drop-note rotate-6" style="animation-delay: 2.22s">
               <span
                 class="ca-mono inline-block rounded-full border-[3px] border-white px-4 py-1.5 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] shadow-[0_4px_10px_rgba(25,21,16,0.25)]"
                 style="background-color:var(--ca-yellow-soft)"
@@ -116,18 +116,45 @@ const rippedClips = [
             </div>
           </div>
 
-          <!-- Caja central naranja con ARCHITY -->
+          <!-- Caja central con borde SVG que se dibuja en vivo y letras de ARCHITY que caen -->
           <div class="relative mt-5">
-            <div class="ca-doodle-box relative inline-block border-[3px] px-5 py-1 sm:px-10 sm:py-2" style="border-color:var(--ca-orange)">
+            <div class="ca-doodle-box relative inline-block px-5 py-1 sm:px-10 sm:py-2">
+              <!-- Borde naranja que se dibuja en vivo con trazo tipo dibujo -->
+              <svg
+                class="pointer-events-none absolute inset-0 h-full w-full overflow-visible"
+                viewBox="0 0 100 100"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M 4 4 C 25 1, 75 1, 96 4 C 99 20, 99 80, 96 96 C 75 99, 25 99, 4 96 C 1 80, 1 20, 4 4 Z"
+                  fill="none"
+                  stroke="var(--ca-orange)"
+                  stroke-width="3"
+                  vector-effect="non-scaling-stroke"
+                  class="ca-draw-border"
+                />
+              </svg>
+
+              <!-- Letras de ARCHITY que caen una por una para verse -->
               <span class="ca-display text-[22vw] leading-[0.95] tracking-tight text-[var(--ca-ink)] sm:text-9xl lg:text-[12rem] inline-block select-none">
-                {heroData.nameDisplay}
+                {
+                  Array.from("ARCHITY").map((letter, i) => (
+                    <span
+                      class="ca-drop-letter inline-block"
+                      style={`animation-delay:${(1.75 + i * 0.08).toFixed(2)}s`}
+                    >
+                      {letter}
+                    </span>
+                  ))
+                }
               </span>
             </div>
 
-            <!-- Etiquetas flotantes y notas adhesivas en escritorio -->
+            <!-- Etiquetas flotantes y notas adhesivas en escritorio que caen desde arriba -->
             <div class="pointer-events-none absolute -inset-x-24 -inset-y-6 hidden lg:block">
               <div class="absolute inset-0">
-                <div class="pointer-events-auto absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 -rotate-8">
+                <div class="ca-drop-note pointer-events-auto absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 -rotate-8" style="animation-delay: 2.20s">
                   <span
                     class="ca-mono inline-block rounded-full border-[3px] border-white px-4 py-1.5 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] shadow-[0_4px_10px_rgba(25,21,16,0.25)]"
                     style="background-color:var(--ca-purple)"
@@ -137,7 +164,7 @@ const rippedClips = [
                     {heroData.pill1Es}
                   </span>
                 </div>
-                <div class="pointer-events-auto absolute right-0 top-0 -translate-y-1/2 translate-x-1/2 rotate-6">
+                <div class="ca-drop-note pointer-events-auto absolute right-0 top-0 -translate-y-1/2 translate-x-1/2 rotate-6" style="animation-delay: 2.32s">
                   <span
                     class="ca-mono inline-block rounded-full border-[3px] border-white px-4 py-1.5 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] shadow-[0_4px_10px_rgba(25,21,16,0.25)]"
                     style="background-color:var(--ca-yellow-soft)"
@@ -149,7 +176,7 @@ const rippedClips = [
                 </div>
               </div>
 
-              <div class="pointer-events-auto absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2 -rotate-4">
+              <div class="ca-drop-note pointer-events-auto absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2 -rotate-4" style="animation-delay: 2.45s">
                 <span class="relative inline-block">
                   <span
                     class="ca-hand inline-block px-4 py-2 leading-snug text-[var(--ca-ink)] shadow-[2px_3px_8px_rgba(17,18,18,0.18)] text-2xl"
@@ -166,7 +193,7 @@ const rippedClips = [
                 </span>
               </div>
 
-              <div class="pointer-events-auto absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 rotate-2">
+              <div class="ca-drop-note pointer-events-auto absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 rotate-2" style="animation-delay: 2.58s">
                 <span class="relative inline-block">
                   <svg viewBox="0 0 40 40" fill="none" stroke="var(--ca-ink)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="absolute -left-6 -top-6 h-8 w-8" aria-hidden="true">
                     <path d="M34 33 C 25 24, 15 21, 9 9"></path>
@@ -192,8 +219,15 @@ const rippedClips = [
             </span>
           </p>
 
-          <!-- ÚLTIMO HIJO EN DOM: Cuadro que invierte los colores ([backdrop-filter:invert(1)]) con las 4 esquinas negras -->
-          <span aria-hidden="true" data-cursor-lens class="ca-cursor-lens">
+          <!-- Cuadro inversor de colores interactivo con las 4 esquinas negras -->
+          <span
+            aria-hidden="true"
+            data-cursor-lens
+            class="ca-cursor-lens pointer-events-none absolute left-1/2 top-1/2 z-30 hidden h-72 w-72 -translate-x-1/2 -translate-y-1/2 scale-[0.35] opacity-0 transition-[opacity,scale] duration-300 ease-out group-hover/name:scale-100 group-hover/name:opacity-100 lg:block"
+            style="backdrop-filter: invert(1); -webkit-backdrop-filter: invert(1);"
+          >
+            <!-- Inversión garantizada en todos los navegadores mediante mix-blend-difference -->
+            <span class="absolute inset-0 bg-white mix-blend-difference"></span>
             <span class="absolute -left-2 -top-2 h-4 w-4 bg-[var(--ca-ink)]"></span>
             <span class="absolute -right-2 -top-2 h-4 w-4 bg-[var(--ca-ink)]"></span>
             <span class="absolute -bottom-2 -left-2 h-4 w-4 bg-[var(--ca-ink)]"></span>
@@ -419,23 +453,15 @@ const rippedClips = [
           <span
             class="ca-tape inline-block px-6 py-2.5 text-sm font-medium text-[var(--ca-ink)] shadow-sm [clip-path:polygon(1.5%_0,100%_8%,98.5%_100%,0_92%)] text-base leading-snug"
             style="background-color:var(--ca-yellow-soft)"
-            data-es="Algunos productos que ayudé a hacer más simples, calmados y fáciles de confiar."
-            data-en="A few products I helped make simpler, calmer, and easier to trust."
+            data-es="Nuestros sistemas y plataformas en producción, diseñados para operar sin fricción."
+            data-en="Our systems and platforms in production, engineered for zero friction."
           >
-            Algunos productos que ayudé a hacer más simples, calmados y fáciles de confiar.
+            Nuestros sistemas y plataformas en producción, diseñados para operar sin fricción.
           </span>
         </div>
-
-        <!-- Cuadro inversor de colores sobre FEATURED WORKS -->
-        <span aria-hidden="true" data-cursor-lens class="ca-cursor-lens">
-          <span class="absolute -left-2 -top-2 h-4 w-4 bg-[var(--ca-ink)]"></span>
-          <span class="absolute -right-2 -top-2 h-4 w-4 bg-[var(--ca-ink)]"></span>
-          <span class="absolute -bottom-2 -left-2 h-4 w-4 bg-[var(--ca-ink)]"></span>
-          <span class="absolute -bottom-2 -right-2 h-4 w-4 bg-[var(--ca-ink)]"></span>
-        </span>
       </div>
 
-      <!-- Las 4 Carpetas Apiladas (Project 01..04) con diseño exacto de creative-artsy -->
+      <!-- Las 5 Carpetas Apiladas (AltoPlanta, Vinkula, Sencillo, Proyecto Flamingo en Rosa, Grupo Pineda en Amarillo) -->
       <div class="flex flex-col gap-16 px-4 sm:px-8 lg:px-20 lg:gap-[12vh]">
         {
           projectsData.map((p, idx) => {
@@ -445,7 +471,7 @@ const rippedClips = [
             const accentStroke = isLightOnDark ? "#ffffff" : "var(--ca-ink)";
             const tagText = isLightOnDark ? "text-[var(--ca-ink)]" : "text-white";
             const isFirst = idx === 0;
-            const tabMargin = isFirst ? "0" : `min(calc(${21 * idx}% - 72px), calc(100% - 340px))`;
+            const tabMargin = isFirst ? "0" : `min(calc(${18 * idx}% - 60px), calc(100% - 320px))`;
 
             return (
               <article class="lg:sticky lg:top-28">
@@ -461,8 +487,8 @@ const rippedClips = [
                     <svg viewBox="0 0 24 24" fill="currentColor" class="h-3 w-3 sm:h-4 sm:w-4" aria-hidden="true">
                       <path d="M12 2c1 5 4 8 9 9-5 1-8 4-9 9-1-5-4-8-9-9 5-1 8-4 9-9Z"></path>
                     </svg>
-                    <span data-es={`Proyecto ${p.num}`} data-en={`Project ${p.num}`}>
-                      Proyecto {p.num}
+                    <span>
+                      {p.number}
                     </span>
                   </span>
                 </div>
@@ -477,22 +503,22 @@ const rippedClips = [
                       <span data-es={p.dateEs} data-en={p.dateEn}>{p.dateEs}</span>
                     </span>
 
-                    <h2 class={`mt-6 text-5xl font-semibold tracking-tight sm:text-6xl xl:text-7xl ${textColor}`}>
+                    <h2 class={`mt-6 text-5xl font-semibold tracking-tight sm:text-6xl xl:text-7xl ${textColor} ${p.mirrorTitle ? "-scale-y-100 rotate-180" : ""}`}>
                       {p.title}
                     </h2>
 
                     <p
                       class={`mt-5 max-w-lg text-lg leading-relaxed ${subTextColor}`}
-                      data-es={p.shortDescEs}
-                      data-en={p.shortDescEn}
+                      data-es={p.taglineEs}
+                      data-en={p.taglineEn}
                     >
-                      {p.shortDescEs}
+                      {p.taglineEs}
                     </p>
 
                     <a
                       class={`ca-mono mt-8 inline-flex items-center gap-2.5 self-start border-b-2 pb-1 text-sm font-bold uppercase tracking-[0.2em] ${textColor}`}
                       style={`border-color:${accentStroke}`}
-                      href={p.internalUrl}
+                      href={p.link}
                     >
                       <span data-es="Ver proyecto" data-en="View project">Ver proyecto</span>
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" class="h-4 w-4" aria-hidden="true">
@@ -501,16 +527,18 @@ const rippedClips = [
                     </a>
 
                     <div class="mt-auto flex flex-wrap gap-2.5 pt-12">
-                      {p.tagsEs.map((tagEs, tIdx) => (
-                        <span
-                          class={`ca-mono px-4 pb-2 pt-2.5 text-base font-bold uppercase tracking-wide [clip-path:polygon(0_28%,12%_0,100%_0,100%_100%,0_100%)] ${tagText}`}
-                          style={`background-color:${accentStroke}`}
-                          data-es={tagEs}
-                          data-en={p.tagsEn[tIdx]}
-                        >
-                          {tagEs}
-                        </span>
-                      ))}
+                      <span
+                        class={`ca-mono px-4 pb-2 pt-2.5 text-base font-bold uppercase tracking-wide [clip-path:polygon(0_28%,12%_0,100%_0,100%_100%,0_100%)] ${tagText}`}
+                        style={`background-color:${accentStroke}`}
+                      >
+                        {p.category1}
+                      </span>
+                      <span
+                        class={`ca-mono px-4 pb-2 pt-2.5 text-base font-bold uppercase tracking-wide [clip-path:polygon(0_28%,12%_0,100%_0,100%_100%,0_100%)] ${tagText}`}
+                        style={`background-color:${accentStroke}`}
+                      >
+                        {p.category2}
+                      </span>
                     </div>
                   </div>
 
@@ -519,15 +547,24 @@ const rippedClips = [
                       <span aria-hidden="true" class="absolute -left-5 -top-3 z-10 h-6 w-24 -rotate-[9deg] bg-white/55 shadow-[0_1px_3px_rgba(17,18,18,0.15)]"></span>
                       <span aria-hidden="true" class="absolute -right-5 -top-3 z-10 h-6 w-24 rotate-[9deg] bg-white/55 shadow-[0_1px_3px_rgba(17,18,18,0.15)]"></span>
                       <div
-                        class="relative overflow-hidden border-4 bg-[var(--ca-surface)] aspect-square w-full lg:aspect-auto lg:h-[calc(100vh-21rem)]"
+                        class="relative overflow-hidden border-4 bg-[var(--ca-surface)] aspect-square w-full lg:aspect-auto lg:h-[calc(100vh-21rem)] flex items-center justify-center p-8 sm:p-14"
                         style={`border-color:${accentStroke}`}
                       >
                         <img
-                          src={p.coverImg}
+                          src={p.logoUrl}
                           alt={p.title}
                           loading="lazy"
-                          class="absolute inset-0 h-full w-full object-cover"
+                          class="max-h-36 max-w-[85%] object-contain"
                         />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            );
+          })
+        }
+      </div>
                       </div>
                     </div>
                   </div>

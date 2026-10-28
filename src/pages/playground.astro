@@ -1,158 +1,233 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
-import { playgroundItems } from "../data/portfolioData";
+import { servicesData } from "../data/portfolioData";
+
+// Posiciones en el tablero interactivo de Servicios
+const serviceCardPositions = [
+  { left: "8%", top: "18%", tilt: "-rotate-2", w: "w-80 sm:w-96" },
+  { left: "38%", top: "12%", tilt: "rotate-1", w: "w-80 sm:w-96" },
+  { left: "68%", top: "16%", tilt: "-rotate-1", w: "w-80 sm:w-96" },
+  { left: "14%", top: "54%", tilt: "rotate-2", w: "w-80 sm:w-96" },
+  { left: "44%", top: "50%", tilt: "-rotate-2", w: "w-80 sm:w-96" },
+  { left: "74%", top: "52%", tilt: "rotate-1", w: "w-80 sm:w-96" },
+  { left: "28%", top: "86%", tilt: "-rotate-1", w: "w-80 sm:w-96" },
+];
 ---
 
-<Layout title="Archity — Playground">
+<Layout title="Archity — Servicios de Software & Arquitectura Cloud">
   <Header />
 
   <main class="ca-grid relative h-[calc(100vh-4.5rem)] overflow-hidden">
-    <div class="pointer-events-none absolute left-1/2 top-6 z-40 flex -translate-x-1/2 flex-col items-center text-center">
-      <p class="ca-hand text-2xl text-[var(--ca-ink)] sm:text-3xl">playground</p>
-      <span class="mt-2">
+    <!-- Encabezado superior -->
+    <div class="pointer-events-none absolute left-1/2 top-4 z-40 flex -translate-x-1/2 flex-col items-center text-center">
+      <p class="ca-hand text-2xl text-[var(--ca-ink)] sm:text-3xl" data-es="nuestros servicios" data-en="our services">
+        nuestros servicios
+      </p>
+      <span class="mt-1">
         <span
-          class="ca-display text-5xl leading-[0.92] tracking-tight text-[var(--ca-ink)] sm:text-7xl inline-block"
-          data-es="SOLO POR DIVERSIÓN"
-          data-en="JUST FOR FUN"
+          class="ca-display text-4xl leading-[0.92] tracking-tight text-[var(--ca-ink)] sm:text-6xl inline-block"
+          data-es="SOLUCIONES & SOFTWARE"
+          data-en="SOLUTIONS & SOFTWARE"
         >
-          SOLO POR DIVERSIÓN
+          SOLUCIONES &amp; SOFTWARE
         </span>
+      </span>
+      <span class="ca-hand text-lg text-[var(--ca-ink)]/75 mt-0.5 sm:text-xl" data-es="arrastra las tarjetas y usa zoom para explorar todo el catálogo" data-en="drag cards & use zoom to explore our catalog">
+        arrastra las tarjetas y usa zoom para explorar todo el catálogo
       </span>
     </div>
 
-    <div id="ca-playground-wheel" class="absolute inset-0">
+    <!-- Tablero de lienzo arrastrable con zoom interactivo -->
+    <div id="ca-services-wheel" class="absolute inset-0">
       <div
-        id="ca-playground-stage"
+        id="ca-services-stage"
         class="h-full w-full transition-transform duration-200 ease-out"
-        style="transform:scale(1);transform-origin:50% 45%"
+        style="transform:scale(0.85);transform-origin:50% 45%"
       >
         {
-          playgroundItems.map((item) => (
-            <div
-              data-pg-card
-              class={`
-                absolute select-none ${item.w}
-                cursor-grab touch-none active:cursor-grabbing [&_img]:pointer-events-none
-              `}
-              style={`left:${item.left};top:${item.top}`}
-            >
-              <div class="w-full">
-                <div class={`relative ${item.tilt} w-full`}>
-                  <div class="overflow-hidden bg-[var(--ca-surface)] shadow-[0_10px_28px_rgba(17,18,18,0.22)]">
-                    <div class="relative overflow-hidden aspect-[4/5] w-full">
+          servicesData.map((svc, idx) => {
+            const pos = serviceCardPositions[idx % serviceCardPositions.length];
+            return (
+              <div
+                data-svc-card
+                class={`
+                  absolute select-none ${pos.w}
+                  cursor-grab touch-none active:cursor-grabbing
+                `}
+                style={`left:${pos.left};top:${pos.top}`}
+              >
+                <div class="w-full">
+                  <div class={`relative ${pos.tilt} w-full rounded-2xl border-[3px] border-[var(--ca-ink)] bg-white p-4 shadow-[6px_8px_0_var(--ca-ink)] transition-transform duration-200 hover:scale-105`}>
+                    <!-- Cinta decorativa superior -->
+                    <span aria-hidden="true" class="absolute -left-4 -top-2 z-10 h-5 w-16 -rotate-[38deg] bg-[var(--ca-yellow-soft)]/80 shadow-[0_1px_3px_rgba(17,18,18,0.15)]"></span>
+                    <span aria-hidden="true" class="absolute -right-4 -top-2 z-10 h-5 w-16 rotate-[38deg] bg-[var(--ca-mint)]/80 shadow-[0_1px_3px_rgba(17,18,18,0.15)]"></span>
+
+                    <!-- Imagen limpia del servicio -->
+                    <div class="relative aspect-[16/10] w-full overflow-hidden rounded-xl border-2 border-[var(--ca-ink)]/15 bg-black">
                       <img
-                        src={item.src}
-                        alt={item.captionEn}
+                        src={svc.img}
+                        alt={svc.titleEs}
                         loading="lazy"
-                        class="absolute inset-0 h-full w-full object-cover"
+                        class="h-full w-full object-cover pointer-events-none"
                       />
+                      <span
+                        class="ca-mono absolute left-2.5 top-2.5 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[var(--ca-ink)] border border-[var(--ca-ink)] shadow-[1.5px_1.5px_0_var(--ca-ink)]"
+                        style={`background-color:${svc.color}`}
+                      >
+                        {svc.category}
+                      </span>
+                    </div>
+
+                    <!-- Contenido del servicio -->
+                    <div class="mt-3.5">
+                      <h3
+                        class="text-xl font-bold tracking-tight text-[var(--ca-ink)]"
+                        data-es={svc.titleEs}
+                        data-en={svc.titleEn}
+                      >
+                        {svc.titleEs}
+                      </h3>
+                      <p
+                        class="mt-1.5 text-xs leading-relaxed text-[var(--ca-ink)]/80"
+                        data-es={svc.descEs}
+                        data-en={svc.descEn}
+                      >
+                        {svc.descEs}
+                      </p>
+
+                      <!-- Tags de tecnologías -->
+                      <div class="mt-3 flex flex-wrap gap-1.5">
+                        {svc.tags.map((tag) => (
+                          <span class="ca-mono rounded bg-[var(--ca-chrome)] px-2 py-0.5 text-[10px] font-bold text-[var(--ca-ink)]">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+
+                      <!-- Botón de cotizar -->
+                      <div class="mt-4 flex items-center justify-between border-t border-[var(--ca-ink)]/15 pt-3">
+                        <a
+                          href={`/contact?service=${encodeURIComponent(svc.id)}`}
+                          class="ca-mono inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[var(--ca-blue)] transition-colors hover:underline"
+                          data-es="Cotizar solución →"
+                          data-en="Quote solution →"
+                        >
+                          Cotizar solución →
+                        </a>
+                        <span class="ca-hand text-base text-[var(--ca-ink)]/60">
+                          Archity Core
+                        </span>
+                      </div>
                     </div>
                   </div>
-                  <span
-                    class="ca-hand inline-block px-4 py-2 leading-snug text-[var(--ca-ink)] shadow-[2px_3px_8px_rgba(17,18,18,0.18)] text-2xl sm:text-4xl -rotate-6 absolute -left-3 -top-4 max-w-[85%]"
-                    style={`background-color:${item.color}`}
-                    data-es={item.captionEs}
-                    data-en={item.captionEn}
-                  >
-                    {item.captionEs}
-                  </span>
                 </div>
               </div>
-            </div>
-          ))
+            );
+          })
         }
       </div>
     </div>
 
+    <!-- Controles de zoom flotantes -->
     <div class="absolute bottom-6 right-6 z-40 flex flex-col gap-2">
       <button
-        id="ca-pg-zoom-in"
+        id="ca-svc-zoom-in"
         type="button"
         aria-label="Zoom in"
-        class="ca-mono flex h-11 w-11 items-center justify-center border-2 border-[var(--ca-ink)] bg-[var(--ca-surface)] text-xl font-bold text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-blue)] hover:text-white cursor-pointer"
+        class="ca-mono flex h-11 w-11 items-center justify-center border-2 border-[var(--ca-ink)] bg-[var(--ca-surface)] text-xl font-bold text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-yellow)] cursor-pointer shadow-[2px_2px_0_var(--ca-ink)]"
       >
         +
       </button>
       <button
-        id="ca-pg-zoom-out"
+        id="ca-svc-zoom-out"
         type="button"
         aria-label="Zoom out"
-        class="ca-mono flex h-11 w-11 items-center justify-center border-2 border-[var(--ca-ink)] bg-[var(--ca-surface)] text-xl font-bold text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-blue)] hover:text-white cursor-pointer"
+        class="ca-mono flex h-11 w-11 items-center justify-center border-2 border-[var(--ca-ink)] bg-[var(--ca-surface)] text-xl font-bold text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-yellow)] cursor-pointer shadow-[2px_2px_0_var(--ca-ink)]"
       >
         −
+      </button>
+      <button
+        id="ca-svc-zoom-reset"
+        type="button"
+        aria-label="Reset zoom"
+        class="ca-mono flex h-11 w-11 items-center justify-center border-2 border-[var(--ca-ink)] bg-[var(--ca-surface)] text-xs font-bold text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-cyan)] cursor-pointer shadow-[2px_2px_0_var(--ca-ink)]"
+      >
+        1x
       </button>
     </div>
   </main>
 </Layout>
 
 <script>
-  const wheelEl = document.getElementById("ca-playground-wheel");
-  const stageEl = document.getElementById("ca-playground-stage");
-  const zoomInBtn = document.getElementById("ca-pg-zoom-in");
-  const zoomOutBtn = document.getElementById("ca-pg-zoom-out");
+  const wheelEl = document.getElementById("ca-services-wheel");
+  const stageEl = document.getElementById("ca-services-stage");
+  const zoomInBtn = document.getElementById("ca-svc-zoom-in");
+  const zoomOutBtn = document.getElementById("ca-svc-zoom-out");
+  const zoomResetBtn = document.getElementById("ca-svc-zoom-reset");
 
-  let scale = 1;
-  let topZ = 10;
+  let scale = 0.85;
+  let topZ = 20;
 
   const updateScale = (next: number) => {
-    scale = Math.min(2.5, Math.max(0.35, next));
+    scale = Math.min(2.0, Math.max(0.35, next));
     if (stageEl) {
       stageEl.style.transform = `scale(${scale})`;
     }
   };
 
+  zoomInBtn?.addEventListener("click", () => updateScale(scale + 0.15));
+  zoomOutBtn?.addEventListener("click", () => updateScale(scale - 0.15));
+  zoomResetBtn?.addEventListener("click", () => updateScale(1.0));
+
   wheelEl?.addEventListener(
     "wheel",
     (e) => {
       e.preventDefault();
-      updateScale(scale * (e.deltaY < 0 ? 1.08 : 0.92));
+      const delta = e.deltaY < 0 ? 0.08 : -0.08;
+      updateScale(scale + delta);
     },
     { passive: false }
   );
 
-  zoomInBtn?.addEventListener("click", () => {
-    updateScale(scale * 1.2);
-  });
+  // Arrastre libre de las tarjetas de servicios (Pointer Events)
+  document.querySelectorAll<HTMLElement>("[data-svc-card]").forEach((card) => {
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+    let origLeft = 0;
+    let origTop = 0;
 
-  zoomOutBtn?.addEventListener("click", () => {
-    updateScale(scale * 0.8);
-  });
-
-  let activeDrag: {
-    el: HTMLElement;
-    startX: number;
-    startY: number;
-    origLeft: number;
-    origTop: number;
-  } | null = null;
-
-  document.querySelectorAll<HTMLElement>("[data-pg-card]").forEach((card) => {
     card.addEventListener("pointerdown", (e) => {
-      try {
-        card.setPointerCapture(e.pointerId);
-      } catch (_) {}
+      if ((e.target as HTMLElement).closest("a, button")) return;
+      isDragging = true;
       topZ += 1;
       card.style.zIndex = String(topZ);
-      activeDrag = {
-        el: card,
-        startX: e.clientX,
-        startY: e.clientY,
-        origLeft: card.offsetLeft,
-        origTop: card.offsetTop,
-      };
+      card.setPointerCapture(e.pointerId);
+
+      startX = e.clientX;
+      startY = e.clientY;
+      origLeft = card.offsetLeft;
+      origTop = card.offsetTop;
     });
 
     card.addEventListener("pointermove", (e) => {
-      if (!activeDrag || activeDrag.el !== card) return;
-      card.style.left = `${activeDrag.origLeft + (e.clientX - activeDrag.startX) / scale}px`;
-      card.style.top = `${activeDrag.origTop + (e.clientY - activeDrag.startY) / scale}px`;
+      if (!isDragging) return;
+      const dx = (e.clientX - startX) / scale;
+      const dy = (e.clientY - startY) / scale;
+      card.style.left = `${origLeft + dx}px`;
+      card.style.top = `${origTop + dy}px`;
     });
 
-    const endDrag = () => {
-      activeDrag = null;
+    const stopDrag = (e: PointerEvent) => {
+      if (!isDragging) return;
+      isDragging = false;
+      try {
+        card.releasePointerCapture(e.pointerId);
+      } catch {}
     };
-    card.addEventListener("pointerup", endDrag);
-    card.addEventListener("pointercancel", endDrag);
+
+    card.addEventListener("pointerup", stopDrag);
+    card.addEventListener("pointercancel", stopDrag);
   });
 </script>
