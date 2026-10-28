@@ -55,7 +55,6 @@ import { projectsData } from "../data/portfolioData";
                     class="ca-see-lens overflow-hidden"
                     style="backdrop-filter: invert(1); -webkit-backdrop-filter: invert(1);"
                   >
-                    <span class="absolute inset-0 rounded-full bg-white mix-blend-difference pointer-events-none"></span>
                     <span
                       class="ca-mono relative z-10 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)]"
                       data-es="Ver"
@@ -68,7 +67,7 @@ import { projectsData } from "../data/portfolioData";
               </div>
 
               <div class="pt-7 text-center">
-                <h2 class={`text-3xl font-semibold tracking-tight text-[var(--ca-ink)] sm:text-4xl ${p.mirrorTitle ? "-scale-y-100 rotate-180" : ""}`}>
+                <h2 class="text-3xl font-semibold tracking-tight text-[var(--ca-ink)] sm:text-4xl">
                   {p.title}
                 </h2>
                 <p

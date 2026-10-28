@@ -32,7 +32,13 @@ export const heroData = {
   locationEn: "Peru",
   statusEs: "Abiertos a nuevos proyectos y soluciones de software",
   statusEn: "Open to new software projects & hard problems",
-  descEs: "Diseñamos y construimos software que se quita del camino.",
+  titlePart1Es: "Diseñamos software que",
+  titlePart1En: "We design software that",
+  titlePart2Es: "se quita de tu camino.",
+  titlePart2En: "gets out of your way.",
+  ctaEs: "Contáctanos",
+  ctaEn: "Contact us",
+  descEs: "Diseñamos y construimos software que se quita de tu camino.",
   descEn: "We design software that gets out of your way.",
   pill1Es: "Sistemas Reales",
   pill1En: "Real Systems",
@@ -312,7 +318,7 @@ export const featuredProjects: ProjectItem[] = [
     // DE PREFERENCIA EN LA CARPETA AMARILLA CON LETRAS NEGRAS AL REVÉS SOLICITADA POR EL USUARIO:
     folderColor: "var(--ca-yellow)",
     textColorClass: "text-[var(--ca-ink)]",
-    mirrorTitle: true, // Letras al revés
+    mirrorTitle: false,
     logoUrl: "/logos/grupo-pineda-logo.svg",
     accentColor: "#f7c948",
     demoUrl: "/productos/grupo-pineda",

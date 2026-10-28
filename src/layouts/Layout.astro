@@ -47,7 +47,7 @@ const {
 
     <script>
       // Seguimiento global en tiempo real para el cuadro inversor de colores ([data-invert-zone]) y el círculo VER/SEE ([data-see-zone])
-      const setupLenses = (zoneSel: string, lensSel: string, clamp?: [number, number]) => {
+      const setupLenses = (zoneSel: string, lensSel: string) => {
         document.querySelectorAll<HTMLElement>(zoneSel).forEach((zone) => {
           const lens = zone.querySelector<HTMLElement>(lensSel);
           if (!lens) return;
@@ -58,14 +58,11 @@ const {
             raf = requestAnimationFrame(() => {
               const rect = zone.getBoundingClientRect();
               if (!rect.width || !rect.height) return;
-              let xPct = ((clientX - rect.left) / rect.width) * 100;
-              let yPct = ((clientY - rect.top) / rect.height) * 100;
-              if (clamp) {
-                xPct = Math.min(clamp[1], Math.max(clamp[0], xPct));
-                yPct = Math.min(clamp[1], Math.max(clamp[0], yPct));
-              }
-              lens.style.left = `${xPct}%`;
-              lens.style.top = `${yPct}%`;
+              const x = clientX - rect.left;
+              const y = clientY - rect.top;
+              lens.style.left = `${x}px`;
+              lens.style.top = `${y}px`;
+              lens.style.transform = "scale(1)";
             });
           };
 
@@ -83,13 +80,12 @@ const {
 
           zone.addEventListener("mouseleave", () => {
             zone.classList.remove("is-hovered");
-            lens.style.left = "";
-            lens.style.top = "";
+            lens.style.transform = "scale(0.35)";
           });
         });
       };
 
-      setupLenses("[data-invert-zone]", "[data-cursor-lens]", [3, 97]);
+      setupLenses("[data-invert-zone]", "[data-cursor-lens]");
       setupLenses("[data-see-zone]", "[data-see-lens]");
     </script>
   </body>
