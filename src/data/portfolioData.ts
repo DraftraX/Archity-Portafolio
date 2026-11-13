@@ -214,7 +214,7 @@ export const featuredProjects: ProjectItem[] = [
     category1: "PropTech",
     category2: "Cartografía GIS",
     folderColor: "var(--ca-cyan)",
-    logoUrl: "/logos/altoplanta-logo.svg",
+    logoUrl: "/logos/altoplanta-logo.webp",
     accentColor: "#2b57d6",
     demoUrl: "/productos/altoplanta",
     stats: [
