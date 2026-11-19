@@ -1,0 +1,17 @@
+---
+// Cloudflare Pages sirve dist/404.html con código 404 a las rutas que no existen. Sin este archivo
+// respondía 200 con la portada a cualquier ruta (/.env, /admin…): auditoría de seguridad del 19-11-2026, H-05.
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+---
+
+<Layout title="Archity — Página no encontrada" flexBody={true}>
+  <Header />
+  <main class="flex flex-1 flex-col items-start justify-center gap-4 px-4 py-16 mx-auto w-full max-w-3xl">
+    <p class="font-mono text-sm text-[var(--ca-ink)]/60">404</p>
+    <h1 class="text-3xl font-bold text-[var(--ca-ink)]" data-es="Esta página no existe" data-en="This page does not exist">
+      Esta página no existe
+    </h1>
+    <a href="/" class="underline text-[var(--ca-ink)]" data-es="Volver al inicio" data-en="Back to home">Volver al inicio</a>
+  </main>
+</Layout>
